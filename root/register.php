@@ -48,9 +48,9 @@ else {
 			'email' => $_POST['email'],
 			'password' => $_POST['password'],
 			'first_name' => $_POST['first_name'],
-			'last_name' => $_POST['last_name']
+			'last_name' => $_POST['last_name'],
+			'type' => $_POST['type']
 		);
-
 		register_user($register_data);
 		//redirect
 		header('Location: register.php?success');
@@ -80,9 +80,12 @@ else {
 				<input type="text" name="first_name">
 			</li>
 			<li>
-				Last Name*:<br>
+				Last Name:<br>
 				<input type="text" name="last_name">
 			</li>
+			<li>
+				<input type="radio" name="type" value="provider" checked="">I am a provider <br>
+				<input type="radio" name="type" value="customer">I am a customer <br>
 			<li>
 				<input type="submit" value="Register">
 			</li>
