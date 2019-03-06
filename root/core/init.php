@@ -10,7 +10,7 @@ require 'functions/general.php';
 if (logged_in() === true) {
 	//collect logged in user data
 	$session_user_id = $_SESSION['user_id'];
-	$user_data = user_data($session_user_id, 'user_id', 'email', 'password', 'first_name', 'last_name');
+	$user_data = user_data($session_user_id, 'user_id', 'email', 'password', 'first_name', 'last_name', 'type');
 	//check if the user account is not active
 	if (user_active($user_data['email']) === false) {
 		//end user session
