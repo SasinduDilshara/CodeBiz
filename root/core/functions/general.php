@@ -1,4 +1,8 @@
 <?php 
+function array_sanitize(&$item) {
+	$item = mysqli_real_escape_string($GLOBALS['conn'], $item);
+}
+
 function sanitize($data) {
 	return mysqli_real_escape_string($GLOBALS['conn'], $data);
 }
