@@ -1,4 +1,15 @@
 <?php
+function register_user($register_data) {
+	//register user or add user data to user data table
+	array_walk($register_data, 'array_sanitize');
+	$register_data['password'] = md5($register_data['password']);
+	$fields = '`' .implode('`, `', array_keys($register_data)) .'`';
+	$data = '\'' .implode('\', \'', $register_data) .'\'';
+	$sql = "INSERT INTO `users` ($fields) VALUES ($data)";
+	mysqli_query($GLOBALS['conn'], $sql);
+	echo $sql;
+}
+
 function user_data($user_id) {
 	// input user id and needed field names, then output array of values of those fields
 	$data = array();
@@ -10,9 +21,9 @@ function user_data($user_id) {
 	if ($func_num_args > 1) {
 		unset($func_get_args[0]);
 
-		$fields = implode(', ', $func_get_args);
+		$fields = '`' .implode('`, `', $func_get_args) .'`';
 
-		$sql = "SELECT $fields FROM users WHERE user_id = $user_id";
+		$sql = "SELECT $fields FROM `users` WHERE `user_id` = $user_id";
 		$result = mysqli_query($GLOBALS['conn'], $sql);
 		return mysqli_fetch_assoc($result);
 	}
@@ -26,7 +37,7 @@ function logged_in() {
 function user_exists($email) {
 	// return true if email exists
 	$email = sanitize($email);
-	$sql = "SELECT * FROM users WHERE email = '$email'";
+	$sql = "SELECT * FROM `users` WHERE `email` = '$email'";
 	$result = mysqli_query($GLOBALS['conn'], $sql);
 	return (mysqli_num_rows($result) > 0) ? true : false; 
 }
@@ -34,7 +45,7 @@ function user_exists($email) {
 function user_active($email) {
 	// return true if the user account is activated
 	$email = sanitize($email);
-	$sql = "SELECT * FROM users WHERE email = '$email' AND active = 1";
+	$sql = "SELECT * FROM `users` WHERE `email` = '$email' AND `active` = 1";
 	$result = mysqli_query($GLOBALS['conn'], $sql);
 	return (mysqli_num_rows($result) > 0) ? true : false; 
 }
@@ -42,7 +53,7 @@ function user_active($email) {
 function user_id_from_email($email) {
 	// return user_id when email is given
 	$email = sanitize($email);
-	$sql = "SELECT user_id FROM users WHERE email = '$email'";
+	$sql = "SELECT `user_id` FROM `users` WHERE `email` = '$email'";
 	$result = mysqli_query($GLOBALS['conn'], $sql);
 	return mysqli_fetch_array($result, MYSQLI_NUM)[0];
 }
@@ -54,7 +65,7 @@ function login($email, $password) {
 	$email = sanitize($email);
 	$password = md5($password);
 
-	$sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+	$sql = "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password'";
 	$result = mysqli_query($GLOBALS['conn'], $sql);
 	return (mysqli_num_rows($result) > 0) ? true : false; 
 }
