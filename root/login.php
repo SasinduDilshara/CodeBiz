@@ -17,7 +17,7 @@ if (empty($_POST) === false) {
 			$errors[] = 'Email/password is incorrect';
 		} else {
 			//set the user session 
-			$_SESSION['user_id'] = $login;
+			$_SESSION['user_id'] = user_id_from_email($email);
 			//redirect to homepage
 			header('Location: index.php');
 			exit();
