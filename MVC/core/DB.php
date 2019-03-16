@@ -58,6 +58,7 @@ class DB  //never use directly. check if exists and use
 
 	protected function _read($table,$params=[])
 	{
+		// dnd($params);
 		$conditionString = '';
 		$bind = [];
 		$order = '';
@@ -109,9 +110,8 @@ class DB  //never use directly. check if exists and use
 
 
 		$sql = "SELECT * FROM {$table}{$conditionString}{$order}{$limit}";
-		//var_dump($bind);
-
-
+		// dnd($bind);
+		// dnd($sql);
 		if($this->query($sql,$bind))
 		{ 
 			if(!count($this->_result))
@@ -141,8 +141,12 @@ class DB  //never use directly. check if exists and use
 
 	public function findFirst($table,$params=[])
 {
+	// $table='contacts';
+	// dnd($table);
 		if($this->_read($table,$params))
 		{
+			// dnd("dfsjjkjhsd");
+
 			return $this->first();
 		}
 		return false;
