@@ -7,7 +7,7 @@ define("DB_HOST", '127.0.0.1'); // database HOST *** use ip address to avoid DNS
 
 define('DEFAULT_CONTROLLER','Home');//default controller if there isn't one defined inthe url.
 define('DEFAULT_LAYOUT','defaultlay'); //if no layout is set in the controller use this layout.
-define('PROOT', '/MVC/' );// set this to '/' for a live server. 
+define('PROOT', '/CodeBiz/MVC/' );// set this to '/' for a live server. 
 define('SITE_TITLE','OOSD MVC'); ////This will be used if no site title in SITE_TITLE is set
 define('CURRENT_USER_SESSION_NAME','dilsharadilshara' ); //session name for logged in user
 define('REMEMBER_ME_COOKIE_NAME','sasiya1sasiya'); //cookie name for remember me
