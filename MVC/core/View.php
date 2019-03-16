@@ -74,6 +74,16 @@ class View
 		$this->_layout = $path;
 	}
 
+	public function insert($path)
+	{
+		include(ROOT.DS.'app'.DS.'view'.DS.$path.'.php' );
+	}
+
+	public function partial($group,$partial)
+	{
+		include(ROOT.DS.'app'.DS.'view'.DS.$group.DS.'partials'.DS.$partial.'.php');
+		// dnd(ROOT.DS.'app'.DS.'view'.DS.$group.DS.'partials'.DS.$partial.'.php');
+	}
 
 }
 
