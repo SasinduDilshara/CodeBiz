@@ -80,3 +80,21 @@
    <?php $this->content('head'); ?>
 
   </head>
+
+
+
+
+
+  <?= input_block('text', 'Favourote Color:', 'favourite_color', 'red', ['class'=>'form-control'],['class'=>'form-group']); ?>
+
+<?= submitBlock("Save",['class'=> 'btn btn-primary'],["class"=>'text-right']); ?>
+
+
+
+  "Google" : "https://www.google.com",
+  "PHP Docs" : "http://php.net/manual/en",
+
+
+
+  <?= var_dump(submitBlock('Save',['class'=>'btn btn-primary']) );?>
+<?= submitBlock("Save",['class'=> 'btn btn-primary'],["class"=>'text-right']);?>
