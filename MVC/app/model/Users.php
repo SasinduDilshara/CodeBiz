@@ -126,6 +126,7 @@ class Users extends Model
 	public function registerNewUser($params)
 	{
 		$this->assign($params);
+		 $this->deleted=0;
 		// $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 		$this->password = $this->password;
 		$this->save();
