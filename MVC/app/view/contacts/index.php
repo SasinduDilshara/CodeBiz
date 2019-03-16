@@ -15,12 +15,17 @@
 		<?php foreach($this->contacts as $contact): ?>
 
 			<tr>
-				<td><?= $contact->displayName(); ?></td>
+				<td>
+					<a 
+					href="<?=PROOT?>contacts/details/<?=$contact->id?>">
+					<?= $contact->displayName(); ?>
+					</a>
+				</td>
+				<td><?= $contact->age; ?></td>
 				<td><?= $contact->email; ?></td>
 				<td><?= $contact->cell_phone; ?></td>
 				<td><?= $contact->home_phone; ?></td>
-				<td><?= $contact->age; ?></td>
-				
+				<td><a href="<?=PROOT?>contacts/delete/<?=$contact->id?>" class="btn btn-danger btn-xs" onclick="if(!confirm('Are you sure to Delete <?=$contact->displayName()?>')){return false;}"><i class="glyphicon glyphicon-remove"></i> Delete </a></td>
 			</tr>
 
 		<?php endforeach; ?>
