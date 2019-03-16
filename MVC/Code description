@@ -1,0 +1,99 @@
+.htacess file eka ape request tika index.php ekata yawanawa.
+
+index.php eken api dena link eka route 1ta dala check karala balanawa adala controller ekek thiyanawada kyla. thiyanawanm eekata yawanawa.
+
+ape link eka kotas walata kadanna pluwan. localhost/OOSD/registration/details/568 unoth registration kynne mage controller eka, details kynne mama eeka athule call karanna oone method eka 568 kynne nikn mama eekata denna oone parameter wage ekak. onna oowa balala ganata bedala denne Router.php eke route method eken. 
+route ekta balanna lassanata link eka kadala denne index.php eken.
+
+Home eka thama Default controller eka router eken dena.
+Action eke default eka IndexAction.
+
+Application.php eken errors report karana eka hadanawa. DEBUG kyna eka wenas karala eeke method eka haddunaganna pluwan.
+
+unregister global eken security eka hadanawa.
+
+controller class eka athule thama controller and action and view thiyenne. controller eka application eke extends karana nisa ara kalin error reporting and unregister eka meketh wenawa.
+
+View eka athule render method eke n karanne link eken (/viewname) kyla ena view name eka file walata yawanawa adala vdiyata ekathu karala.
+ex:- windows nam \viewname. eetapasse adala layout eka call karanawa.
+
+Code 1 ee adala action 1ta methods gahanne Action kyla nama gahala.
+
+View eke content method 1n karanne head ekei body ekei thiyana ewa kyna 1.
+
+Home.php kyla controller ekak hadanawa eeka thama default controller eka.
+eeka athule index Action kyla ekak hadala eeken denawa default controller eke view eka.
+e kynne view eke home athule thiyenne default controller ekata adala view eka(front end eka)<layouts wenama layout walin link karanna pluwan>.
+eeke start and end function nikn me wage. start eke patan aran ena data tika output buffer ekata store karala end unama outputbuffer eka clean karala eke thibba ewa screen 1ta print karanawa.
+
+Tool controller ekak thiyanawa.
+
+$_instance eken ganne thiyana DB objt 1 pth gddi null. instance 1n thma hadanne.
+DB eka gaththoth get instance eken karanne objt ekak hadala nm eeka gannawa. nathnm thiyana 1 gannawa.
+Application 1 DB objts 1i lu.
+
+DB class eke _pdo kynnne connection objt eka.
+
+rowcount() eken ena _count kyna 1n wenne number of rows or records effected by last sql command
+last insert id kynne return the last id of the row or value
+
+read function eken karanne ape eke sql statement ekak hadanawa danna oona ewa thiyala(dictionary ekaka key eka dunnama value eke enawa wage)
+
+read eken lassanata ekak hadala query method 1n run karawanawa
+
+model.php eke
+
+construtor eken adala database ekai table ekai gannawa.
+e wagema table nama lassanata hadanawa.(ex-: user_session = UserSession)
+
+set_column walin apita adala table eke thiyana colum wala details _columname kyna array ekata danawa.
+
+populated kyna 1n apita ena id=>3 wage ewa kelinma 3 karanawa(adala eka)
+find eke e populated eke dunna eka model class eke objt ekaka adala key namin kyna attribute ekaka save karanawa.
+ex-: eka model objt ekaka e e welawe firstname,lastname kiya kiya runtime attributes hadenawa.
+
+save kyna eken save karanawa database ekata.
+data() eken karanne column gana details eliyata dena eka.
+std class object kynne empty object ekak.(Java wala Object wge)
+assaign eke check karala adala colum ekata dena value eka denawa
+
+Session class eka session eka control krnawa.
+uagent method eka kwru hari delete kaloth apita aye update karana agent kenek hadanawa.(Chrome ekatai firefox ekatai e e wage user agents la hadanawa.)
+
+Users.php eke login method eken karanne log wena session eka hadanawa. hadala eekata parameters dala databse ekata insert karanawa. kalin insert karapuwa thiyenm delete karanawa.
+
+Register.php eke login method eken log in wena eka hadanawa.
+router eken login unama home page ekata geniyanawa.
+
+login eke wena thanaka remember me nathuwa thibba nm eeka delete karala aluth eka danawa
+
+logput kalama ayr login page ekata yanawa
+
+Dan okkoma karala insect ghin application ghin cookies baluwama cookie eka na. dan eeka hadanna thama yanne.
+eka haduwa.
+
+dan User.php eka athule loginUserFromCookie() oya method 1 gahamnawa remember me damamama lesiyen log wenna
+
+acl eke guest kynne acl object 1k
+denied pages.
+eelga ewa actons and access karanna pluwan ewa denawa
+
+menu ekata dewal add karanne menu_acl file eken
+
+soft delete eka hadanawa.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
