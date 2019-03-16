@@ -4,22 +4,27 @@
 	"Register" :{
 
 		"Provider"  : "register/register",
-		"separator" : "",
+		"separator" : "<br>",
 		"Customer" : "register/register"
 
 	},
 	"Tools" : {
 		"My Tools" : "tools",
-		"separator" : "",
+		"separator" : "<br>",
 		"Tool 1" : "tools/first",
-		"separator" : "",
+		"separator" : "<br>",
 		"Tool 2" : "tools/second",
-		"separator" : "",
+		"separator" : "<br>",
 		"Tool 3" : "tools/third"
 	},
 
-	"Google" : "https://www.google.com",
-	"PHP Docs" : "http://php.net/manual/en",
+	"Contacts" : {
+		"My Contacts" : "contacts",
+		"separator" : "<br>",
+		"Add Contacts" : "contacts/add"
+	},
+
+
 	"Login" : "register/login",
 	"Logout" : "register/logout"
 
