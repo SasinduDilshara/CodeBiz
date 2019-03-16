@@ -81,11 +81,16 @@ eelga ewa actons and access karanna pluwan ewa denawa
 menu ekata dewal add karanne menu_acl file eken
 
 soft delete eka hadanawa.
+soft delete true kyla user eke thiyanawa.
 
 
+Aluth controller 1k hadanakota index Action method ekai load model ekai hadanna oone. model 1 athule method oone 
 
+model ekei view ekei conctions nathi awlk enawa hamawelema.
 
-
+display error eka passe hadanawa.
+ Important : api form ekaka mokak hari dala fill nokara innawanm eeke type eka watenne none (null newe). ethakota null allow oone na.
+ eeth api form ekata danne nathnm eeka null. ethkota eeka null allow wenna oone.
 
 
 
