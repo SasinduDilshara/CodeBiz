@@ -3,6 +3,8 @@
 
 class RegisterController extends Controller
 {
+	public $deleted =0;
+
 	public function __construct($controller, $action)
 	{
 		parent::__construct($controller , $action);
@@ -123,6 +125,7 @@ class RegisterController extends Controller
             $newUser = $this->UsersModel;
             // dnd($newUser);
             // dnd($newUser);
+           
             $newUser->registerNewUser($_POST);
             // dnd($_POST);
             // dnd($newUser);
