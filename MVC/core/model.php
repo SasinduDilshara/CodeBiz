@@ -66,7 +66,7 @@ class Model
 
 	public function find($params=[])
 	{
-		// $params = $this->_softDeleteParams($params);
+		$params = $this->_softDeleteParams($params);
 		$results =[];
 
 		$resultsQuery = $this->_db->find($this->_table, $params);
@@ -90,7 +90,10 @@ class Model
 
 	public function findFirst($params=[])
 	{
-		// $params = $this->_softDeleteParams($params);
+		// dnd($params);
+		// dnd($this->_table);
+		$params = $this->_softDeleteParams($params);
+		// dnd($params);
 		$resultQuery = $this->_db->findFirst($this->_table, $params);
 		$result = new $this->_modelName($this->_table);
 		//$result->$obj->populateObjData($resultQuery);
@@ -98,6 +101,11 @@ class Model
 		{
 			$result->populateObjData($resultQuery);
 		}
+		else
+		{
+			$result=false;
+		}
+		// dnd($resultQuery);
 		return $result;
 	}
 
