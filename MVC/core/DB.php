@@ -29,8 +29,10 @@ class DB  //never use directly. check if exists and use
 		return self::$_instance; 
 	}
 
-    public function query($sql, $params = [])
+    public function query($sql, $params=[])
     {
+    	// dnd($sql);
+    	// dnd($params);
         $this->_error = false;
         if ($this->_query = $this->_pdo->prepare($sql)) {
             $x = 1;
@@ -39,6 +41,7 @@ class DB  //never use directly. check if exists and use
                     $this->_query->bindValue($x, $param);
                     $x++;
                 }
+                
             }
 
             if ($this->_query->execute()) {
@@ -149,6 +152,7 @@ class DB  //never use directly. check if exists and use
 	public function insert($table,$fields=[])
 	{	
 		// dnd($fields);
+		// dnd("kjkllk");
 		// dnd($table);
 		$fieldString = '';
 		$valueString = '';
@@ -158,6 +162,8 @@ class DB  //never use directly. check if exists and use
 		foreach($fields as $field => $value)
 		{
 		// {	dnd("for");
+			// dnd($field);
+			// dnd($value);
 			$fieldString.='`'.$field .'`,';
 			$valueString .='?,';
 			$values[]=$value;
@@ -166,15 +172,20 @@ class DB  //never use directly. check if exists and use
 		}
 		$fieldString=rtrim($fieldString,',');
 		$valueString=rtrim($valueString,',');
+		// dnd($fieldString);
+		// dnd($valueString);
+		// dnd($values);
 		$sql="INSERT INTO {$table} ({$fieldString}) VALUES ({$valueString})";
 		// dnd($sql);
-		//var_dump($values);
+		// dnd($value);
 		if(!$this->query($sql,$values)->error())
-		{
+		{	
+			// dnd("lklk");
 			return true;
 		}
+		// dnd("fail");
 		return false;
-		//dnd($sql);
+		
 
 	}
 
