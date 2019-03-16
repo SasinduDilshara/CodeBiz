@@ -72,54 +72,46 @@ class ContactsController extends Controller
 		$this->view->render('contacts/add');
 	}
 
-	// public function addAction(){
- //    $contact = new Contacts();
- //    if($this->request->isPost()){
- //      $this->request->csrfCheck();
- //      $contact->assign($this->request->get());
- //      $contact->user_id = Users::currentUser()->id;
- //      if($contact->save()){
- //        Router::redirect('contacts');
- //      }
- //    }
- //    $this->view->contact = $contact;
- //    $this->view->displayErrors = $contact->getErrorMessages();
- //    $this->view->postAction = PROOT . 'contacts' . DS . 'add';
- //    $this->view->render('contacts/add');
- //  }
 
-  public function editAction($id){
-    $contact = $this->ContactsModel->findByIdAndUserId((int)$id, Users::currentUser()->id);
-    if(!$contact) Router::redirect('contacts');
-    if($this->request->isPost()){
-      $this->request->csrfCheck();
-      $contact->assign($this->request->get());
-      if($contact->save()){
-        Router::redirect('contacts');
-      }
-    }
-    $this->view->displayErrors = $contact->getErrorMessages();
-    $this->view->contact = $contact;
-    $this->view->postAction = PROOT . 'contacts' . DS . 'edit' . DS . $contact->id;
-    $this->view->render('contacts/edit');
-  }
-
-  public function detailsAction($id){
-    $contact = $this->ContactsModel->findByIdAndUserId((int)$id,Users::currentUser()->id);
+  public function detailsAction($id)
+  {
+  	// dnd($id);
+    $contact = $this->ContactsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+    // dnd($contact);
     if(!$contact){
-      Router::redirect('contacts');
+      Router::redirect('contacts');//no contact
     }
     $this->view->contact = $contact;
     $this->view->render('contacts/details');
   }
 
+
+  // public function editAction($id)
+  // {
+  // 	// dnd($id);
+  //   $contact = $this->ContactsModel->findByIdAndUserId((int)$id,currentUser()->id);
+  //   if(!$contact) Router::redirect('contacts');
+  //   if($this->request->isPost()){
+  //     $this->request->csrfCheck();
+  //     $contact->assign($this->request->get());
+  //     if($contact->save()){
+  //       Router::redirect('contacts');
+  //     }
+  //   }
+  //   $this->view->displayErrors = $contact->getErrorMessages();
+  //   $this->view->contact = $contact;
+  //   $this->view->postAction = PROOT . 'contacts' . DS . 'edit' . DS . $contact->id;
+  //   $this->view->render('contacts/edit');
+  // }
+
   public function deleteAction($id){
-    $contact = $this->ContactsModel->findByIdAndUserId((int)$id,Users::currentUser()->id);
+    $contact = $this->ContactsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+    // dnd($contact);
     if($contact){
-      $contact->delete();
-      Session::addMsg('success','Contact has been deleted.');
+      $contact->delete(); 
+      // Session::addMsg('success','Contact has been deleted.');
     }
     Router::redirect('contacts');
   }
 
-}
+ }
