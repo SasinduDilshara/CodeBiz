@@ -66,10 +66,15 @@ class Model
 
 	public function find($params=[])
 	{
-		$params = $this->_softDeleteParams($params);
+		// $params = $this->_softDeleteParams($params);
 		$results =[];
 
 		$resultsQuery = $this->_db->find($this->_table, $params);
+
+		if(!$resultsQuery)
+		{
+			return [];
+		}
 
 		foreach($resultsQuery as $result)
 		{
@@ -85,7 +90,7 @@ class Model
 
 	public function findFirst($params=[])
 	{
-		$params = $this->_softDeleteParams($params);
+		// $params = $this->_softDeleteParams($params);
 		$resultQuery = $this->_db->findFirst($this->_table, $params);
 		$result = new $this->_modelName($this->_table);
 		//$result->$obj->populateObjData($resultQuery);
@@ -110,10 +115,11 @@ class Model
 		if(property_exists($this, 'id') && $this->id != '')
 		{
 			return $this->update($this->id , $fields);
-			// dnd("klk");
+			//dnd("klk");
 		}
 		else
 		{	
+			// dnd($fields);
 			// dnd($this->insert($fields));
 			return $this->insert($fields);
 		}
@@ -170,7 +176,8 @@ class Model
 	}
 
 	public function assign($params)
-	{
+	{	
+		// dnd($params);
 		if(!empty($params))
 		{
 			foreach($params as $key => $val)
