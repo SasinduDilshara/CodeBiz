@@ -91,6 +91,10 @@ model ekei view ekei conctions nathi awlk enawa hamawelema.
 display error eka passe hadanawa.
  Important : api form ekaka mokak hari dala fill nokara innawanm eeke type eka watenne none (null newe). ethakota null allow oone na.
  eeth api form ekata danne nathnm eeka null. ethkota eeka null allow wenna oone.
+ get bootstrap 1n classes danaganna pluwan
+
+ soft delete karala delete kalama database 1 delete function eken deleted kyna eka 1 karanawa
+ soft delete eken karanne asamanai 1 nam delete karanna kynawa
 
 
 
