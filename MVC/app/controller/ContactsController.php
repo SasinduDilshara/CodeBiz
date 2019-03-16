@@ -86,23 +86,40 @@ class ContactsController extends Controller
   }
 
 
-  // public function editAction($id)
-  // {
-  // 	// dnd($id);
-  //   $contact = $this->ContactsModel->findByIdAndUserId((int)$id,currentUser()->id);
-  //   if(!$contact) Router::redirect('contacts');
-  //   if($this->request->isPost()){
-  //     $this->request->csrfCheck();
-  //     $contact->assign($this->request->get());
-  //     if($contact->save()){
-  //       Router::redirect('contacts');
-  //     }
-  //   }
-  //   $this->view->displayErrors = $contact->getErrorMessages();
-  //   $this->view->contact = $contact;
-  //   $this->view->postAction = PROOT . 'contacts' . DS . 'edit' . DS . $contact->id;
-  //   $this->view->render('contacts/edit');
-  // }
+  public function editAction($id)
+  {
+  	// dnd($id);
+  	$validation = new Validate();
+    $contact = $this->ContactsModel->findByIdAndUserId((int)$id,currentUser()->id);
+
+    if(!$contact) Router::redirect('contacts');
+
+    if($_POST)
+    {
+			$contact->assign($_POST);	//form validation
+			// dnd($contact->assign($_POST));
+		$validation->check($_POST,Contacts::$addValidation);
+
+			
+			// dnd($_POST);
+			
+			if($validation->passed())
+			{ 
+			// dnd($contact->deleted);
+				// $contact->assign($_POST);
+				// dnd()
+			// dnd($contact->save());
+				$contact->save();
+
+				Router::redirect('contacts');
+			}
+		}
+
+    $this->view->displayErrors=$validation->displayErrors();
+    $this->view->contact = $contact;
+    $this->view->postAction = PROOT . 'contacts' . DS . 'edit' . DS . $contact->id;
+    $this->view->render('contacts/edit');
+  }
 
   public function deleteAction($id){
     $contact = $this->ContactsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
