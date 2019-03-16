@@ -11,6 +11,7 @@
 	 	"denied" : { "Register" : [ "login","register" ]
 	 	},
 	 	"Register" : ["logout"],
+	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"]
 	 }
 }
