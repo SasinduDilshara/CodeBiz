@@ -14,6 +14,6 @@ define('REMEMBER_ME_COOKIE_NAME','sasiya1sasiya'); //cookie name for remember me
 define('REMEMBER_ME_COOKIE_EXPIRY',2592000); //remember me cookie kive time 30 days
 define("ACCESS_RESTRICTED","Restricted");//controller name is restricted redirect
 
-define("MENU_BRAND","OOSD");
+define("MENU_BRAND","OOSD");//brand
 
  ?>
