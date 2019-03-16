@@ -8,11 +8,13 @@ class HomeController extends Controller
 	}
 
 	protected function load_model($model)
-	{
+	{	dnd($model);
 		if(class_exists($model))
-		{
+		{	
+			// dnd('rtrtt');
 			$this->{$model.'Model'} = new $model(strtolower($model));
 		}
+		// dnd("hjh");
 	}
 
 	public function indexAction()//$name/)
