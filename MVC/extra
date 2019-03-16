@@ -98,3 +98,13 @@
 
   <?= var_dump(submitBlock('Save',['class'=>'btn btn-primary']) );?>
 <?= submitBlock("Save",['class'=> 'btn btn-primary'],["class"=>'text-right']);?>
+
+
+    // if($this->request->isPost()){
+    //   $this->request->csrfCheck();
+    //   $contact->assign($this->request->get());
+    //   if($contact->save()){
+        // Router::redirect('contacts');
+      // }
+    // }
+    // $this->view->displayErrors = $contact->getErrorMessages();
