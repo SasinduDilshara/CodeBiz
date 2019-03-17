@@ -24,6 +24,12 @@
 		"Add Contacts" : "contacts/add"
 	},
 
+	"Advertisements" : {
+		"My Adds" : "advertisements",
+		"separator" : "<br>",
+		"Add Advertisements" : "advertisements/add"
+	},
+
 
 	"Login" : "register/login",
 	"Logout" : "register/logout"
