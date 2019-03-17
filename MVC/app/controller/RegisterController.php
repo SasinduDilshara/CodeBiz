@@ -26,8 +26,8 @@ class RegisterController extends Controller
 			],
 			'password' => [
 				'display' => "Password",
-				'required' => true,
-				'min'=>6
+				'required' => true
+				
 			]
 		]);
 
@@ -38,7 +38,8 @@ class RegisterController extends Controller
 			// dnd(Input::get('password'));
 
 			// if($user && password_verify(Input::get('password'),$user->password))
-			if(Input::get('password') == $user->password)
+
+			if($user && Input::get('password') == $user->password)
 			{ 
 				
 				$remember = (isset($_POST['remember_me']) && Input::get('remember_me')) ? true :false;
@@ -76,22 +77,47 @@ class RegisterController extends Controller
 	{
      {  
         $validation = new Validate();
-        $posted_values = ['fname'=>'', 'lname'=>'', 'email'=>'','username' => '' , 'password'=>'', 'confirm'=>''];
+        $posted_values = ['fname'=>'', 'lname'=>'', 'email'=>'','username' => '' , 'password'=>'', 'confirm'=>'','address'=>'','phoneNumber2'=>'','serviceType'=>'','userType'=>'','customerResidence'=>'','age'=>''];
         if($_POST)
         {     
-            $posted_values = posted_values($_POST);   
+            // dnd($_POST);
+        if(isset($_POST['serviceType']))
+        {//to run PHP script on submit
+            if(!empty($_POST['serviceType']))
+            {   $temporary="";
+            // Loop to store and display values of individual checked checkbox.
+                foreach($_POST['serviceType'] as $selected)
+                {   
+
+                    $temporary.=$selected." AND ";
+                }
+                $temporary=rtrim($temporary,' AND ');
+            }
+            if($temporary=='' || is_null($temporary))
+            {
+                return Null;
+            }
+            else
+            {
+                $_POST['serviceType'] = $temporary;
+            }
+            
+        }
+           
+            $posted_values = posted_values($_POST);  
+            // dnd($_POST['userType']);
             $validation->check($_POST,[
                 'fname'=>[
-                    'display' => 'First Name',
-                    'required' => true
+                    'display' => 'First Name'
+                    // 'required' => true
                 ],
                 'lname'=>[
-                    'display' => 'Last Name',
-                    'required' => true
+                    'display' => 'Last Name'
+                    // 'required' => true
                 ],
                 'username' => [
                     'display' => 'username',
-                    'required' => true,
+                    // 'required' => true,
                     'unique' => 'users',
                     //'valid_email' => true
                     'min'=> 4
@@ -107,14 +133,53 @@ class RegisterController extends Controller
                 ],
                 'password' => [
                     'display' => 'Password',
-                    'required' => true,
-                    'min' => 6,
+                    // 'required' => true,
+                    'min' => 6
                     //'max' => 100
                 ],
+                'address' => [
+                    'display' => 'Address',
+                    // 'required' => true,
+                    'min' => 6
+                    //'max' => 100
+                ],
+                // 'phoneNumber' => [
+                //     'display' => 'Contact Number 1',
+                //     'required' => true,
+                //     'min' => 10,
+                //     'max' => 10
+                // ],
+                'phoneNumber2' => [
+                    'display' => 'Contact Number 2',
+                    'min' => 10
+                    //'max' => 100
+                ],
+                'serviceType' => [
+                    'display' => 'Service Type'
+                    // 'required' => true
+                    
+                ],
+                'userType' => [
+                    'display' => 'User type'
+                    // 'required' => true
+                    //'max' => 100
+                ],
+                'customerResidence' => [
+                    'display' => 'Customer Residence',
+                    // 'required' => true
+                    //'max' => 100
+                ],
+                'age' => [
+                    'display' => 'Age',
+                    // 'required' => true,
+                    'min' => 2
+                    //'max' => 100
+                ],
+
                 'confirm' => [
                     'display' => 'Confirm Password',
-                    'required' => true,
-                    'matches' => 'password',
+                    // 'required' => true,
+                    'matches' => 'password'
 
                 ]
             ]);
