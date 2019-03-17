@@ -12,6 +12,7 @@
 	 	},
 	 	"Register" : ["logout"],
 	 	"Contacts" :["*"],
-	 	"Tools"    : ["*"]
+	 	"Tools"    : ["*"],
+	 	"Advertisements" : ["*"]
 	 }
 }
