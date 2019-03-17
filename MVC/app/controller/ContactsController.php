@@ -28,17 +28,7 @@ class ContactsController extends Controller
 		{
 			$contact->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
-		$validation->check($_POST,[
-			'fname' => [
-				'display' => "First name",
-				'required' => true
-			],
-			'lname' => [
-				'display' => "last name",
-				'required' => true,
-				'min'=>6
-			]
-		]);
+		$validation->check($_POST,Contacts::$addValidation);
 
 			
 			// dnd($_POST);
@@ -69,6 +59,7 @@ class ContactsController extends Controller
 		$this->view->displayErrors=$validation->displayErrors();
 		$this->view->contact = $contact;
 		$this->view->postAction=PROOT.'contacts'.DS.'add';
+		// dnd($this->view->postAction);
 		$this->view->render('contacts/add');
 	}
 
