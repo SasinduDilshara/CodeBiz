@@ -86,7 +86,7 @@
             </div>
 
             <div>
-                <label for="phoneNumber"><h4>Contact Number 2</h4></label>
+                <label for="phoneNumber"><h4>Contact Number </h4></label>
                 <input 
                 type="text" 
                 name="phoneNumber2" 
