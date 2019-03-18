@@ -188,7 +188,7 @@ class RegisterController extends Controller
             $newUser->registerNewUser($_POST);
             // dnd($_POST);
             // dnd($newUser);
-            Router::redirect('register/login');
+            Router::redirect('');
         }
         $this->view->post = $posted_values;
         $this->view->displayErrors = $validation->displayErrors();
