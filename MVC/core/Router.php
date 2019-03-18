@@ -8,7 +8,7 @@ class Router
 		$controller_name=str_replace("Controller","",$controller);
 		array_shift($url); 
 		//mula element 1 ain karala //return karanawa pop(0)
-		//dnd($controller);
+		// dnd($controller);
 		//echo $controller . '<br>';
 		//dnd($url);
 
@@ -23,7 +23,7 @@ class Router
 		if(!$grantAccess)
 		{	
 			$controller = ACCESS_RESTRICTED."Controller";
-			$controller_name =ACESS_RESTRICTED;
+			$controller_name ="ACESS_RESTRICTED";
 			$action = 'indexAction';
 		}
 		//echo $action . '<br>';
