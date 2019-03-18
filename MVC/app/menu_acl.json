@@ -1,13 +1,7 @@
 {
 
-	
-	"Register" :{
+"Provider":{
 
-		"Provider"  : "register/register",
-		"separator" : "<br>",
-		"Customer" : "register/register"
-
-	},
 
 	"Contacts" : {
 		"My Contacts" : "contacts",
@@ -22,7 +16,42 @@
 	},
 
 
-	"Login" : "register/login",
 	"Logout" : "register/logout"
 	
+},
+
+"Customer":{
+
+	"Register" :{
+
+		"Provider"  : "register/register",
+		"separator" : "<br>",
+		"Customer" : "register/register"
+
+	},
+
+	"Contacts" : {
+		"My Contacts" : "contacts",
+		"separator" : "<br>",
+		"Add Contacts" : "contacts/add"
+	},
+
+	"Logout" : "register/logout"
+
+},
+
+"Guest":{
+
+		"Register" :{
+
+		"Provider"  : "register/register",
+		"separator" : "<br>",
+		"Customer" : "register/register"
+
+	},
+
+	"Login" : "register/login"
+
+}
+
 }
