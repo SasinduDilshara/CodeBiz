@@ -22,14 +22,6 @@
 
 "Customer":{
 
-	"Register" :{
-
-		"Provider"  : "register/register",
-		"separator" : "<br>",
-		"Customer" : "register/register"
-
-	},
-
 	"Contacts" : {
 		"My Contacts" : "contacts",
 		"separator" : "<br>",
