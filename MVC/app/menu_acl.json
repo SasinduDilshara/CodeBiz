@@ -30,8 +30,13 @@
 		"Add Advertisements" : "advertisements/add"
 	},
 
+	"Account details" : {
+		"View Account" : "accounts",
+		"separator" : "<br>",
+		"Edit Accounts" : "accounts/edit"
+	},
 
 	"Login" : "register/login",
 	"Logout" : "register/logout"
-
+	
 }
