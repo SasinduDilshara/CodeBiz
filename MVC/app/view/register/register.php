@@ -77,6 +77,7 @@
             <div class="col">
                 <label for="customerResidence">Customer Residence</label>
                 <input type="text" name="customerResidence" id="customerResidence" class="form-control" required value="<?=$this->post['customerResidence'] ?>">
+            </div>
             <div><?=$this->displayErrors ?></div>
             <div class="text-center">
                 <input type="submit" class="btn btn-xs btn-primary" value="Register" >
