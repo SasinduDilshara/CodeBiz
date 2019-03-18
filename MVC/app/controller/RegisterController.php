@@ -15,7 +15,7 @@ class RegisterController extends Controller
 	public function loginAction()
 	
 	{	
-		$validation = new validate();
+		$validation = new Validate();
 		if($_POST)
 		{ 
 		//form validation
