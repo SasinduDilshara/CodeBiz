@@ -99,7 +99,7 @@
   <?= var_dump(submitBlock('Save',['class'=>'btn btn-primary']) );?>
 <?= submitBlock("Save",['class'=> 'btn btn-primary'],["class"=>'text-right']);?>
 
-
+menu acl eke
     // if($this->request->isPost()){
     //   $this->request->csrfCheck();
     //   $contact->assign($this->request->get());
@@ -108,3 +108,27 @@
       // }
     // }
     // $this->view->displayErrors = $contact->getErrorMessages();
+
+
+
+
+      "Account details" : {
+    "View Account" : "accounts",
+    "separator" : "<br>",
+    "Edit Accounts" : "accounts/edit"
+  },
+
+
+    "Tools" : {
+    "My Tools" : "tools",
+    "separator" : "<br>",
+    "Tool 1" : "tools/first",
+    "separator" : "<br>",
+    "Tool 2" : "tools/second",
+    "separator" : "<br>",
+    "Tool 3" : "tools/third"
+  },
+"Home" : "home",
+
+//acl eke
+"Home" : ["*"],
