@@ -222,12 +222,6 @@ class Users extends Model
                     // 'required' => true
                     //'max' => 100
                 ],
-                'age' => [
-                    'display' => 'Age',
-                    // 'required' => true,
-                    'min' => 2
-                    //'max' => 100
-                ],
 
                 'confirm' => [
                     'display' => 'Confirm Password',
