@@ -5,7 +5,6 @@
 <table class="table table-striped table-condensed table-bordered">
 	<thead>
 		<th> Name</th>
-		<th> age</th>
 		<th> Email</th>
 		<th> Mobile</th>
 		<th> Home_phone</th>
@@ -21,7 +20,6 @@
 					<?= $contact->displayName(); ?>
 					</a>
 				</td>
-				<td><?= $contact->age; ?></td>
 				<td><?= $contact->email; ?></td>
 				<td><?= $contact->cell_phone; ?></td>
 				<td><?= $contact->home_phone; ?></td>
