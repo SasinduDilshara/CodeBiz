@@ -15,6 +15,7 @@ class View
 		$viewString = implode(DS,$viewAry);
 		if(file_exists(ROOT.DS.'app'.DS.'view'.DS.$viewString.'.php' ))
 		{	
+			// dnd(ROOT.DS.'app'.DS.'view'.DS.$viewString.'.php');
 			include(ROOT.DS.'app'.DS.'view'.DS.$viewString.'.php' );
 			
 			include(ROOT.DS.'app'.DS.'view'.DS.'layouts'.DS.$this->_layout.'.php');// include layout
@@ -80,9 +81,17 @@ class View
 	}
 
 	public function partial($group,$partial)
-	{
+	{	
+		if(file_exists(ROOT.DS.'app'.DS.'view'.DS.$group.DS.'partials'.DS.$partial.'.php'))
+		{
 		include(ROOT.DS.'app'.DS.'view'.DS.$group.DS.'partials'.DS.$partial.'.php');
 		// dnd(ROOT.DS.'app'.DS.'view'.DS.$group.DS.'partials'.DS.$partial.'.php');
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 	}
 
 }
