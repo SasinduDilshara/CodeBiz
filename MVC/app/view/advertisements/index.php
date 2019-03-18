@@ -16,13 +16,13 @@
 		<?php foreach($this->advertisements as $advertisement): ?>
 
 			<tr>
-<!-- 				<td>
+
+				<td>
 					<a 
 					href="<?=PROOT?>advertisements/details/<?=$advertisement->id?>">
-					<?= $advertisement->displayName(); ?>
-					</a>
-				</td> -->
-				<td><?= $advertisement->name; ?></td>
+					<?= $advertisement->name; ?>
+				</a>
+			</td>
 				<td><?= $advertisement->topic; ?></td>
 				<td><?= $advertisement->brand; ?></td>
 				<td><?= $advertisement->description; ?></td>
