@@ -21,7 +21,7 @@ class Advertisements extends Model
 
 	public function displayName()
 	{
-		return $this->name.' '.$this->topic;
+		return $this->topic;
 	}
 
 	public static $addValidation =
