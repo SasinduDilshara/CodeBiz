@@ -77,7 +77,7 @@ class RegisterController extends Controller
 	{
      {  
         $validation = new Validate();
-        $posted_values = ['fname'=>'', 'lname'=>'', 'email'=>'','username' => '' , 'password'=>'', 'confirm'=>'','address'=>'','phoneNumber2'=>'','serviceType'=>'','userType'=>'','customerResidence'=>'','age'=>''];
+        $posted_values = ['fname'=>'', 'lname'=>'', 'email'=>'','username' => '' , 'password'=>'', 'confirm'=>'','address'=>'','phoneNumber2'=>'','serviceType'=>'','userType'=>'','customerResidence'=>''];
         if($_POST)
         {     
             // dnd($_POST);
@@ -167,12 +167,6 @@ class RegisterController extends Controller
                 'customerResidence' => [
                     'display' => 'Customer Residence',
                     // 'required' => true
-                    //'max' => 100
-                ],
-                'age' => [
-                    'display' => 'Age',
-                    // 'required' => true,
-                    'min' => 2
                     //'max' => 100
                 ],
 
