@@ -1,14 +1,13 @@
 {
 	"Guest":{
 		"denied" : {},
-		"Home":["*"],
+		"Home" : ["*"],
 		"Register" :["login","register"],
 		"Restricted" : ["*"]
 	},
 
 	"Provider" :
 	 {
-		"Home":["*"],
 	 	"denied" : { "Register" : [ "login","register"]
 	 	},
 	 	"Register" : ["logout"],
