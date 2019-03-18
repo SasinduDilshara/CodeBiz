@@ -100,14 +100,13 @@
                   <input type="checkbox" name="serviceType[]" id="serviceType"   value="Washing" > Washing<br>
                   <input type="checkbox" name="serviceType[]" id="serviceType"   value="Cleaning"> Cleaning<br>
                   <input type="checkbox" name="serviceType[]" id="serviceType"   value="Food"> Food<br>
-                  <input type="checkbox" name="serviceType[]" id="serviceType"   value="Requests"> Allow Requests<br>
+                  <!-- <input type="checkbox" name="serviceType[]" id="serviceType"   value="Requests"> Allow  Requests<br> -->
 
             </div
             <div>
                 <label for="userType"><h4>User type</h4></label><br>
                   <input type="radio" name="userType" id="userType"   value="Provider" checked> Provider<br>
                   <input type="radio" name="userType" id="userType"   value="Customer"> Customer<br>
-                  <input type="radio" name="userType" id="userType"   value="Both"> Both Provider and Customer<br>
             </div>
             <div>
                 <label for="customerResidence"><h4>Customer Residence</h4></label>
