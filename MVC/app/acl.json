@@ -1,7 +1,7 @@
 {
 	"Guest":{
 		"denied" : {},
-		"Home" : ["*"],
+		
 		"Register" :["login","register"],
 		"Restricted" : ["*"]
 	},
@@ -14,7 +14,7 @@
 	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"],
 	 	"Advertisements" : ["*"],
-	 	"Home" : ["*"],
+	 	
 	 	"Accounts" : ["edit","index","delete"]
 	 }
 }
