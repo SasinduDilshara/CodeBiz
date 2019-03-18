@@ -1,20 +1,30 @@
 {
 	"Guest":{
 		"denied" : {},
-		
+		"Home" : ["*"],
 		"Register" :["login","register"],
 		"Restricted" : ["*"]
 	},
 
-	"LoggedIn" :
+	"Provider" :
+	 {
+	 	"denied" : { "Register" : [ "login","register"]
+	 	},
+	 	"Register" : ["logout"],
+	 	"Contacts" :["*"],
+	 	"Advertisements" : ["*"],
+	 	"Home" : ["*"],
+	 	"Accounts" : ["edit","index","delete"]
+	 },
+
+	 "Customer" :
 	 {
 	 	"denied" : { "Register" : [ "login","register"]
 	 	},
 	 	"Register" : ["logout"],
 	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"],
-	 	"Advertisements" : ["*"],
-	 	
+	 	"Home" : ["*"],
 	 	"Accounts" : ["edit","index","delete"]
 	 }
 }
