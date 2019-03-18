@@ -13,8 +13,16 @@
  --> 
 
 <?php
-  $menu = Router::getMenu('menu_acl');
+if(currentUser())
+{
+  $menu = Router::getMenu('menu_acl',currentUser()->userType);
+}
+else
+{
+    $menu = Router::getMenu('menu_acl',"Guest");
+}
   $currentPage =currentPage();
+
 ?>
 
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">

@@ -1,0 +1,93 @@
+//acl
+{
+	"Guest":{
+		"denied" : {},
+		"Home" : ["*"],
+		"Register" :["login","register"],
+		"Restricted" : ["*"]
+	},
+
+	"LoggedIn" :
+	 {
+	 	"denied" : { "Register" : [ "login","register"]
+	 	},
+	 	"Register" : ["logout"],
+	 	"Contacts" :["*"],
+	 	"Tools"    : ["*"],
+	 	"Advertisements" : ["*"],
+	 	"Home" : ["*"],
+	 	"Accounts" : ["edit","index","delete"]
+	 }
+}
+
+//menuacl
+
+{
+
+	"Register" :{
+
+		"Provider"  : "register/register",
+		"separator" : "<br>",
+		"Customer" : "register/register"
+
+	},
+
+	"Contacts" : {
+		"My Contacts" : "contacts",
+		"separator" : "<br>",
+		"Add Contacts" : "contacts/add"
+	},
+
+	"Advertisements" : {
+		"My Adds" : "advertisements",
+		"separator" : "<br>",
+		"Add Advertisements" : "advertisements/add"
+	},
+
+	"Account details" : {
+		"View Account" : "accounts",
+		"separator" : "<br>",
+		"Edit Accounts" : "accounts/edit"
+	},
+
+	"Login" : "register/login",
+	"Logout" : "register/logout"
+	
+}
+
+//acl new
+
+
+{
+	"Guest":{
+		"denied" : {},
+		"Home" : ["*"],
+		"Register" :["login","register"],
+		"Restricted" : ["*"]
+	},
+
+	"Provider" :{
+
+	 	"denied" : { "Register" : [ "login","register"]
+	 	},
+	 	"Register" : ["logout"],
+	 	"Contacts" :["*"],
+	 	"Tools"    : ["*"],
+	 	"Advertisements" : ["*"],
+	 	"Home" : ["*"],
+	 	"Accounts" : ["edit","index","delete"]		
+
+	},
+
+	"Customer":
+	{
+		"denied" : { "Register" : [ "login","register"]
+	 	},
+	 	"Register" : ["logout"],
+	 	"Contacts" :["*"],
+	 	"Tools"    : ["*"],
+	 	"Home" : ["*"],
+	 	"Accounts" : ["edit","index","delete"]
+	}
+	
+}
