@@ -9,7 +9,6 @@
 	<?= input_block('text','Email','email',$this->contact->email,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
 	<?= input_block('text','Service','service',$this->contact->service,['class'=>'form-control'],['class'=>'form-group col-md-4']) ?>
 	<?= input_block('text','Home Phone','home_phone',$this->contact->home_phone,['class'=>'form-control'],['class'=>'form-group col-md-3']) ?>
-	<?= input_block('text','Age','age',$this->contact->age,['class'=>'form-control'],['class'=>'form-group col-md-4']) ?>
 	<?= input_block('text','Mobile','cell_phone',$this->contact->cell_phone,['class'=>'form-control'],['class'=>'form-group col-md-3']) ?>
 	<?= input_block('text','Work_phone','work_phone',$this->contact->work_phone,['class'=>'form-control'],['class'=>'form-group col-md-3']) ?>
 	<?= input_block('text','State','state',$this->contact->state,['class'=>'form-control'],['class'=>'form-group col-md-4']) ?>
