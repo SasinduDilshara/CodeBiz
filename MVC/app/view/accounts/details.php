@@ -10,7 +10,6 @@
 		<p><strong><pre> Name :  </strong><?=$this->account->displayName()?></pre></p>
 		<p><strong><pre> Email :  </strong><?=$this->account->email?></pre></p>
 		<p><strong><pre> Contact :  </strong><?=$this->account->phonenumber2?></pre></p>
-		<p><strong><pre> Age :  </strong><?=$this->account->age?></pre></p>
 		<p><strong><pre> Address :  </strong><?=$this->account->displayAddress()?></pre></p>
 		<p><strong><pre> Type of User :  </strong><?=$this->account->displayType()?></pre></p>
 	</div>
