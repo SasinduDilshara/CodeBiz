@@ -5,9 +5,9 @@
 
 <div class="col-md-8 col-md-offset-2 well">
 	<a href="<?=PROOT?>contacts" class="btn btn-xs btn-default"> Back</a>
-	<h2 class="text-center"><?=$this->contact->displayName()?></h2>
+	<h2 class="text-center"><?=$this->contact->displayaddName()?></h2>
 	<div class="col-md-6">
-		<p><strong><pre> Age :  </strong><?=$this->contact->age?></pre></p>
+		<p><strong><pre> First :  </strong><?=$this->contact->age?></pre></p>
 		<p><strong><pre> Email :  </strong><?=$this->contact->email?></pre></p>
 		<p><strong><pre> Mobile :  </strong><?=$this->contact->cell_phone?></pre></p>
 		<p><strong><pre> Home :  </strong><?=$this->contact->home_phone?></pre></p>
