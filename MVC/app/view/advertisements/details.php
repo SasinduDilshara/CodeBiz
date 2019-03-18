@@ -1,3 +1,4 @@
+@ -1,22 +0,0 @@
 <?php $this->setSiteTitle($this->advertisement->displayName()); ?>
 <?php $this->start('head'); ?>
 <?php $this->end(); ?>
