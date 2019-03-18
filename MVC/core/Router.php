@@ -70,15 +70,59 @@ class Router
     	$grantAccess = false;
     	if(Session ::exists(CURRENT_USER_SESSION_NAME))
     	{
-    		$current_user_acls[]="LoggedIn";
-    		foreach(currentUser()-> acls() as $a)
-    		{
-    			$current_user_acls[]=$a;
-    		}
-    	}
+
+        // if(currentUser()->userType=="Customer")
+        // {
+        //     $current_user_acls[]=["LoggedInCustomer"];
+        //     foreach(currentUser()-> acls() as $a)
+        //     {
+        //         // dnd($current_user_acls);
+        //         $current_user_acls[]=$a;
+        //     }
+
+        // }
+
+        // if(currentUser()->userType==["Provider"])
+        // {
+        //     $current_user_acls[]="LoggedInProvider";
+        //     foreach(currentUser()-> acls() as $a)
+        //     {
+        //         // dnd($current_user_acls);
+        //         $current_user_acls[]=$a;
+        //     }
+
+        // }
+
+
+    	
+
+        if(currentUser()->userType=="Customer")
+        {
+            $current_user_acls[]="Customer";
+            foreach(currentUser()-> acls() as $a)
+            {
+                // dnd($current_user_acls);
+                $current_user_acls[]=$a;
+            }
+
+        }
+
+        elseif(currentUser()->userType=="Provider")
+        {
+            $current_user_acls[]="Provider";
+            foreach(currentUser()-> acls() as $a)
+            {
+                // dnd($current_user_acls);
+                $current_user_acls[]=$a;
+            }
+
+        }
+        }
+
     	 // return true;
     	foreach($current_user_acls as $level)
     	{
+            // dnd($current_user_acls);
     		if(array_key_exists($level,$acl) && array_key_exists($controller_name,$acl[$level]))
     		{
     			if(in_array($action_name,$acl[$level][$controller_name])|| in_array("*",$acl[$level][$controller_name])) //checjk inside acl if controll and action exists
@@ -105,13 +149,26 @@ class Router
     	// dnd($current_user_acls);
     }
 
-    public static function getMenu($menu)
+    public static function getMenu($menu,$type)
     {
     	$menuAry =[];
     	$menuFile = file_get_contents(ROOT.DS.'app'.DS.$menu.'.json');
     	$acl = json_decode($menuFile,true); //create a array
-    	foreach($acl as $key => $val)
+        foreach($acl as $key => $val)
+        {   
+            // dnd($type);
+            
+            if($type===$key)
+            {
+
+                $type=$val;
+                break;
+            }
+        }        
+        // dnd($key);
+    	foreach($type as $key => $val)
     	{	
+            // dnd($type);
     		if(is_array($val))
     		{	//dnd($val);
     			$sub =[];
@@ -131,9 +188,10 @@ class Router
     					$finalVal = self::get_link($v);
     					// var_dump($sub);
     					$sub[$k] = $finalVal;
+                        // dnd($sub[$k]);
     				}
     			}
-    			// dnd($sub);
+    			// dnd($sub[$k]);
 
     			if(!empty($sub))
     			{
@@ -144,15 +202,24 @@ class Router
     			{
     				if($finalVal = self::get_link($val))
     				{
+                        // dnd(self::get_link($val));
     					$menuAry[$key] = $finalVal;
+                        // dnd($val);
+                        // dnd($menuAry[$key]);
+                        
     				}
     			}
     			// dnd($sub);
-    		}
+    	}
     	// dnd($sub);
+
+             // dnd($menuAry);
+
     		return $menuAry;//menu_acl check karana eka
 
     }
+
+    // dnd($this->$menuAry);
 
     private static function get_link($val) //link eka denawa
     {
