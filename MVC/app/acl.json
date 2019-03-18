@@ -8,11 +8,13 @@
 
 	"LoggedIn" :
 	 {
-	 	"denied" : { "Register" : [ "login","register" ]
+	 	"denied" : { "Register" : [ "login","register"]
 	 	},
 	 	"Register" : ["logout"],
 	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"],
-	 	"Advertisements" : ["*"]
+	 	"Advertisements" : ["*"],
+	 	"Home" : ["*"],
+	 	"Accounts" : ["edit","index","delete"]
 	 }
 }
