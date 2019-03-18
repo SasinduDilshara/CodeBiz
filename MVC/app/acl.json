@@ -8,6 +8,7 @@
 
 	"LoggedIn" :
 	 {
+		"Home":["*"],
 	 	"denied" : { "Register" : [ "login","register"]
 	 	},
 	 	"Register" : ["logout"],
