@@ -158,11 +158,17 @@ class Model
 
 	public function delete($id = '')
 	{
-		if($id =="" && $this->id == '') return false;
+			// echo '34	';
+		// dnd($id);
+		// dnd( $this->id );
+			if($id =="" && $this->id == '') return false;
 		//if($id == '') $id = $this->id;
+		// dnd($id);
 		$id=($id =='')? $this->id : $id;
 		if($this->_softDelete)
 		{
+			// dnd("klklk");
+			// dnd($id);
 			return $this->update($id, ['deleted' => 1]);
 		}
 		return $this->_db->delete($this->_table, $id);
