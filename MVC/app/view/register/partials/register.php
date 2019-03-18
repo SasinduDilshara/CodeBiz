@@ -119,16 +119,6 @@
                 required
                 value="<?=$this->post['customerResidence'] ?>">
             </div>
-            <div>
-                <label for="age"><h4>Age</h4></label>
-                <input 
-                type="text" 
-                name="age" 
-                id="age" 
-                class="form-control" 
-                required
-                value="<?=$this->post['age'] ?>">
-            </div>
         </div>
         
         <div class="text-center">
