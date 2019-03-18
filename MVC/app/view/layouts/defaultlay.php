@@ -22,6 +22,13 @@
     <!-- <div class="container-fluid" style="min-height:cal(100% - 125px);"> <-->
 
        <?= $this->content('body'); ?>
+       <style type="text/css">
+         body {
+            background-image: url("img/main.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+         }
+       </style>
 
     </div>
    
