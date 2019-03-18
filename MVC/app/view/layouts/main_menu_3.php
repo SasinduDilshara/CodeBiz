@@ -19,7 +19,7 @@
 
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
     <div class="container">
-        <a class="navbar-brand" href="<?= SROOT ?>">
+        <a class="navbar-brand" href="<?= PROOT ?>">
             <?= MENU_BRAND ?></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
@@ -52,9 +52,9 @@
                 <?php endforeach ?>
             </ul>
 
-            <span class="navbar-item text-right">
+            <span class="navbar-item text-right" name="detailsAccount">
                 <?php if (currentUser()) : ?>
-                <a href="">Hello
+                <a href="<?=PROOT?>accounts">
                     <?= currentUser()->fname ?></a>
                 <?php endif ?>
             </span>
