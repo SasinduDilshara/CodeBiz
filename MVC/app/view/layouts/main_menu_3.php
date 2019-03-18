@@ -25,9 +25,9 @@ else
 
 ?>
 
-<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+<nav class="navbar navbar-light navbar-expand-md navigation-clean-button bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="<?= PROOT ?>">
+        <a class="navbar-brand text-white" href="<?= PROOT ?>">
             <?= MENU_BRAND ?></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
