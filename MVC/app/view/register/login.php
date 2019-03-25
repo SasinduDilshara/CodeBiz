@@ -11,7 +11,7 @@
 			<input type="text" name="username" id="username" class = "form-control" placeholder = "Username">
 		</div>
 		<div class="form-group">
-			<input type="text" name="password" id="password" class="form-control" placeholder = "Password">
+			<input type="password" name="password" id="password" class="form-control" placeholder = "Password">
 		</div>
 		<div class="form-check"> 
 			<input type="checkbox" class="form-check-input" name="remember_me" id="remember_me" value="on">
