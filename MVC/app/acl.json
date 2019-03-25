@@ -25,6 +25,7 @@
 	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"],
 	 	"Home" : ["*"],
-	 	"Accounts" : ["edit","index","delete"]
+	 	"Accounts" : ["*"],
+	 	"Requests" : ["*"]
 	 }
 }
