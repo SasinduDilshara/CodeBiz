@@ -28,6 +28,16 @@
 		"Add Contacts" : "contacts/add"
 	},
 
+	"Requests" : {
+
+		"My Requests" : "requests",
+		"separator" : "<br>",
+		"Add Requests" : "requests/add",
+		"separator" : "<br>"
+
+
+	},
+
 	"Logout" : "register/logout"
 
 },
