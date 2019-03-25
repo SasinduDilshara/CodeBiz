@@ -24,9 +24,8 @@
        <?= $this->content('body'); ?>
        <style type="text/css">
          body {
-            background-image: url("<?=PROOT?>/img/main.jpg");
+            background: url("<?=PROOT?>/img/main.jpg")no-repeat center center fixed;
             background-size: cover;
-            background-repeat: no-repeat;
          }
        </style>
 
