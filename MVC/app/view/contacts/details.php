@@ -5,7 +5,7 @@
 
 <div class="col-md-8 col-md-offset-2 well">
 	<a href="<?=PROOT?>contacts" class="btn btn-xs btn-default"> Back</a>
-	<h2 class="text-center"><?=$this->contact->displayaddName()?></h2>
+	<h2 class="text-center"><?=$this->contact->displayName();?></h2>
 	<div class="col-md-6">
 		<p><strong><pre> First :  </strong><?=$this->contact->age?></pre></p>
 		<p><strong><pre> Email :  </strong><?=$this->contact->email?></pre></p>
