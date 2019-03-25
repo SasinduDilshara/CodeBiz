@@ -91,3 +91,57 @@
 	}
 	
 }
+
+
+
+
+
+{
+
+"Provider":{
+
+
+	"Contacts" : {
+		"My Contacts" : "contacts",
+		"separator" : "<br>",
+		"Add Contacts" : "contacts/add"
+	},
+
+	"Advertisements" : {
+		"My Adds" : "advertisements",
+		"separator" : "<br>",
+		"Add Advertisements" : "advertisements/add"
+	},
+
+
+	"Logout" : "register/logout"
+	
+},
+
+"Customer":{
+
+	"Contacts" : {
+		"My Contacts" : "contacts",
+		"separator" : "<br>",
+		"Add Contacts" : "contacts/add"
+	},
+
+	"Logout" : "register/logout"
+
+},
+
+"Guest":{
+
+		"Register" :{
+
+		"Provider"  : "register/register",
+		"separator" : "<br>",
+		"Customer" : "register/register"
+
+	},
+
+	"Login" : "register/login"
+
+}
+
+}
