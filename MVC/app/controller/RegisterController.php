@@ -154,11 +154,6 @@ class RegisterController extends Controller
                     'min' => 10
                     //'max' => 100
                 ],
-                'serviceType' => [
-                    'display' => 'Service Type'
-                    // 'required' => true
-                    
-                ],
                 'userType' => [
                     'display' => 'User type'
                     // 'required' => true
@@ -188,7 +183,8 @@ class RegisterController extends Controller
             $newUser->registerNewUser($_POST);
             // dnd($_POST);
             // dnd($newUser);
-            Router::redirect('');
+            // $newUser->login();
+            Router::redirect('register/login');
         }
         $this->view->post = $posted_values;
         $this->view->displayErrors = $validation->displayErrors();
