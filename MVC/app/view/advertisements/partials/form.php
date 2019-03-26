@@ -2,7 +2,7 @@
 
 	<div><?=$this->displayErrors ?></div>
 	<!-- HIIIIIIIIIIIIIIIIIIIIIIIIIII -->
-	<?= input_block('text','Name','name',$this->advertisement->name,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
+	<?= input_block('text','Location','location',$this->advertisement->location,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
 	<div>
 	    <label for="topic"> Topic</label><br>
 	<!-- <pre> -->
