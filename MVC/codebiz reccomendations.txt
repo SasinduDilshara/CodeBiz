@@ -1,0 +1,33 @@
+add, request, account eke edit delete view eka athulata danna one
+
+view hodata hadanna
+
+delete and edit account ekata conferm page ekak with password
+
+table clean krnna
+
+search bar ekata galapenna tables edit krnna
+
+validation uncomment krnna
+
+edit eken user type eka edit disable karanna
+
+register eke ekekkema ba disable krnna
+
+table structure eka
+
+request gana balanna
+
+
+pop up msg danna
+
+users types dekata table deka
+
+add type walata table
+
+schedule providers
+
+ratings
+
+
+
