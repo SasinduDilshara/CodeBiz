@@ -3,16 +3,19 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class="col-md-8 col-md-offset-2 well">
+<div class="container">
 	<a href="<?=PROOT?>contacts" class="btn btn-xs btn-default"> Back</a>
+<<<<<<< HEAD
 	<h2 class="text-center"><?=$this->contact->displayName();?></h2>
 	<div class="col-md-6">
+=======
+	<h2 class="text-center"><?=$this->contact->displayaddName()?></h2>
+	<div class="col-md-6 bg-light p-3 rounded">
+>>>>>>> 1f1bb71e756f597a12666060c25a04c1b31bb98d
 		<p><strong><pre> First :  </strong><?=$this->contact->age?></pre></p>
 		<p><strong><pre> Email :  </strong><?=$this->contact->email?></pre></p>
 		<p><strong><pre> Mobile :  </strong><?=$this->contact->cell_phone?></pre></p>
 		<p><strong><pre> Home :  </strong><?=$this->contact->home_phone?></pre></p>
-	</div>
-	<div class="col-md-6">
 		<?=$this->contact->displayAddressLabel()?>
 	</div>
 </div>
