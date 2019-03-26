@@ -11,8 +11,7 @@
 		<th></th>
 	</thead>
 	<body>
-		<?php foreach($this->request as $request): ?>
-				<?= dnd($request)?>
+		<?php foreach($this->requests as $request): ?>		
 			<tr>
 				<td>
 					<a 
