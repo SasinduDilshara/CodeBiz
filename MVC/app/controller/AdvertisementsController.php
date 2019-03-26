@@ -14,7 +14,7 @@ class AdvertisementsController extends Controller
 
 	public function indexAction()
 	{
-		$advertisements = $this->AdvertisementsModel->findByUserId(currentUser()->id,['order'=>'topic, name']);
+		$advertisements = $this->AdvertisementsModel->findByUserId(currentUser()->id,['order'=>'topic, location']);
 		// dnd($Advertisements);
 		$this->view->advertisements=$advertisements;
 		$this->view->render('advertisements/index');
@@ -118,9 +118,34 @@ class AdvertisementsController extends Controller
     // dnd($advertisement);
     if($advertisement){
       $advertisement->delete(); 
+      Router::redirect('advertisements');
       // Session::addMsg('success','advertisement has been deleted.');
-    }
+	}
+}
+	
+	public function searchAction()
+	{	
+		if($_GET)
+		{
+				$advertisements=$this->AdvertisementsModel->findByLocationAndType($_GET["location"],$_GET["adType"]);
+
+			
+			
+			
+		}
+		// else
+		// {
+
+		// 	dnd("jkj");
+		// }
+
+		$this->view->advertisements = $advertisements;
+		// dnd($this->view->postAction);
+		$this->view->render('advertisements/search');
+	
+
     Router::redirect('advertisements');
-  }
+  
 
  }
+}
