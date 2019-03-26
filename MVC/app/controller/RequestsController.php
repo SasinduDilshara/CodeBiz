@@ -68,12 +68,12 @@ class RequestsController extends Controller
   public function detailsAction($id)
   {
   	// dnd($id);
-    $request = $this->RequestsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+    $requests = $this->RequestsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
     // dnd($contact);
-    if(!$request){
+    if(!$requests){
       Router::redirect('requests');//no contact
     }
-    $this->view->request = $request;
+    $this->view->requests = $requests;
     $this->view->render('requests/details');
   }
 
