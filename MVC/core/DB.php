@@ -195,6 +195,7 @@ class DB  //never use directly. check if exists and use
 
 	public function update($table, $id , $fields=[])
 	{
+		$valueString = '';
 		$fieldString = '';
 		$values = [];
 
