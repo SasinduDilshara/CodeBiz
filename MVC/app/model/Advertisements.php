@@ -6,7 +6,7 @@ class Advertisements extends Model
 	{
 		$table = 'advertisements';
 		parent:: __construct($table);
-		$this->_softDelete = true;
+		$this->_softDelete = false;
 	}
 
 	public $deleted =0;
@@ -40,11 +40,11 @@ class Advertisements extends Model
 
 	public static $addValidation =
 	[
-	// 	'name' =>[
-	// 		'display' =>'Name',
-	// 		'required' => true,
-	// 		'min' => 6
-	// ],
+		'location' =>[
+			'display' =>'Name',
+			'required' => true,
+			'min' => 6
+	],
 	
 		'topic' =>
 		[
