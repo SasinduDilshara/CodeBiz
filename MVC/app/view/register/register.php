@@ -64,13 +64,13 @@
                     <div class="col">
                         <input type="checkbox" name="serviceType[]" id="serviceType"   value="Cleaning"> Cleaning
                     </div>
+                    <div class="col">
+                        <input type="checkbox" name="serviceType[]" id="serviceType"   value="Requests"> Allow Requests
+                    </div>
                 </div>
                 <div class="form-row col p-1">
                     <div class="col">
                         <input type="checkbox" name="serviceType[]" id="serviceType"   value="Food"> Food
-                    </div>
-                    <div class="col">
-                        <input type="checkbox" name="serviceType[]" id="serviceType"   value="Requests"> Allow Requests
                     </div>
                 </div>
             </div>
