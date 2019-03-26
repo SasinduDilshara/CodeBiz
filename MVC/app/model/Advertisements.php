@@ -11,6 +11,20 @@ class Advertisements extends Model
 
 	public $deleted =0;
 
+	public function findByLocationAndType($location,$type,$params=[])
+	{
+		$conditions =
+		 [
+		'conditions' => 'location= ? AND type= ?',
+		'bind' => [$location , $type]
+	];
+
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+
+	return $this->find($conditions);
+	}
+	
 	public function findByUserId($userId,$params=[])
 	{
 		$conditions = ['conditions'=>'user_id = ?','bind'=>[$userId]
@@ -26,11 +40,11 @@ class Advertisements extends Model
 
 	public static $addValidation =
 	[
-		'name' =>[
-			'display' =>'Name',
-			'required' => true,
-			'min' => 6
-	],
+	// 	'name' =>[
+	// 		'display' =>'Name',
+	// 		'required' => true,
+	// 		'min' => 6
+	// ],
 	
 		'topic' =>
 		[
