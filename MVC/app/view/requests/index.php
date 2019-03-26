@@ -16,6 +16,7 @@
 				<td>
 					<a 
 					href="<?=PROOT?>requests/details/<?=$request->id?>">
+
 					<?= $request->displayName(); ?>
 					</a>
 				</td>
