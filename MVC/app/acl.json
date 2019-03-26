@@ -3,6 +3,7 @@
 		"denied" : {},
 		"Home" : ["*"],
 		"Register" :["login","register"],
+		"Advertisements" : ["search"],
 		"Restricted" : ["*"]
 	},
 
