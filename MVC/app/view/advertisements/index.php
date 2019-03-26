@@ -20,7 +20,8 @@
 				<td>
 					<a 
 					href="<?=PROOT?>advertisements/details/<?=$advertisement->id?>">
-					<?= $advertisement->name; ?>
+
+					<?= $advertisement->location ?>
 				</a>
 			</td>
 				<td><?= $advertisement->topic; ?></td>
