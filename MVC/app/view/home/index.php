@@ -4,6 +4,10 @@
 
 <!-- extra file -->
 
+<!-- search bar -->
+
+<?php include 'searchbar.php' ?>
+
 
 
 <?php $this->end(); ?>
