@@ -47,7 +47,7 @@ class Validate
 						if($value!= $source[$rule_value])
 						{
 							$matchDisplay = $items[$rule_value]['display'];
-							$this->addError(["{$matchDisplay} and {$display} must watch." , $item]);
+							$this->addError(["{$matchDisplay} and {$display} must match." , $item]);
 						}
 						break;
 
