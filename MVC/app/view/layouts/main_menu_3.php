@@ -25,22 +25,22 @@ else
 
 ?>
 
-<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="<?= PROOT ?>">
+        <a class="navbar-brand text-white" href="<?= PROOT ?>">
             <?= MENU_BRAND ?></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav nav-tabs">
+        <div class="collapse navbar-collapse" id="navcol-1" style = "flex-grow: initial">
+            <ul class="navbar-nav">
                 <?php foreach ($menu as $key => $value) :
                     $active = ''; ?>
                 <?php if (is_array($value)) : ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <?= $key ?></a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" style = "padding: .5rem 1rem;border-radius: initial">
                         <?php foreach ($value as $k => $v) :
                             $active = ($v == $currentPage) ? 'active' : '' ?>
                         <?php if ($k == 'separator') : ?>
