@@ -33,6 +33,28 @@ class Advertisements extends Model
 	return $this->find($conditions);
 	}
 
+
+
+	public function findBySearch($location,$topic)
+	{
+		// dnd($contact_id);
+		// dnd($user_id);
+		$conditions =
+		 [
+		'conditions' => 'location = ? AND topic = ?',
+		'bind' => [$location , $topic]
+	];
+
+	// dnd($conditions);
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+
+	return $this->find($conditions);
+	}
+
+
+
+
 	public function displayName()
 	{
 		return $this->topic;
@@ -41,7 +63,7 @@ class Advertisements extends Model
 	public static $addValidation =
 	[
 		'location' =>[
-			'display' =>'Name',
+			'display' =>'location',
 			'required' => true,
 			'min' => 6
 	],
@@ -75,9 +97,9 @@ class Advertisements extends Model
 	public function displayAdd()
 	{
 		$address = '';
-		if(!empty($this->name))
+		if(!empty($this->location))
 		{
-			$address.=$this->name."<br>";
+			$address.=$this->location."<br>";
 
 		}
 		// if(!empty($this->address1))
