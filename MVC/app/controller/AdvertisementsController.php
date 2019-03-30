@@ -127,10 +127,10 @@ class AdvertisementsController extends Controller
 	{	
 		if($_GET)
 		{
-				$advertisements=$this->AdvertisementsModel->findByLocationAndType($_GET["location"],$_GET["adType"]);
+				$advertisements=$this->AdvertisementsModel->findBySearch($_GET["location"],$_GET["topic"]);
 
 			
-			
+			// dnd($_GET);
 			
 		}
 		// else
