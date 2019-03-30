@@ -1,13 +1,13 @@
 <div class="col-md-3 col-md-offset-3 well">
     <!-- <h3 class="text-center"> Register  </h3> -->
 
-        <form class="form" action="AdvertisementsController.php?action=searchAction" method="get"> 
+        <form class="form" action="advertisements/search" method="get"> 
         <div class="form-group">
             <div>
-            <label for="adType"><h4>I am looking for</h4></label><br>
-                  <input type="radio" name="adType" id="adType"   value="Laundering" checked> Laundering<br>
-                  <input type="radio" name="adType" id="adType"   value="Food"> Food<br>
-                  <input type="radio" name="adType" id="adType"   value="Cleaning"> Cleaning<br>
+            <label for="topic"><h4>I am looking for</h4></label><br>
+                  <input type="radio" name="topic" id="topic"   value="Laundering" checked> Laundering<br>
+                  <input type="radio" name="topic" id="topic"   value="Food"> Food<br>
+                  <input type="radio" name="topic" id="topic"   value="Cleaning"> Cleaning<br>
             </div>
             <div>
                 <label for="location"><h4>I live in</h4></label>
