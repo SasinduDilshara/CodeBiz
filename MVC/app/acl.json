@@ -27,6 +27,7 @@
 	 	"Tools"    : ["*"],
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
+	 	"Advertisements" : ["search"],
 	 	"Requests" : ["*"]
 	 }
 }
