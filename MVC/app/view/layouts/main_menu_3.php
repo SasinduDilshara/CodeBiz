@@ -28,7 +28,7 @@ else
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand text-white" href="<?= PROOT ?>">
-            <?= MENU_BRAND ?></a>
+        <img src="<?=PROOT?>img<?=DS?>logo.png" height = 40 width = 160></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
         </button>
