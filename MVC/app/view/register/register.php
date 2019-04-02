@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div> -->
-            <div class="col">
+<!--             <div class="col">
                 <label for="userType">User Type</label><br>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-primary active">
@@ -57,13 +57,26 @@
                         <input type="radio" name="userType" id="userType" autocomplete="off" value="Customer"> Customer
                     </label>
                 </div>
-            </div>
+            </div> -->
             <div class="col">
                 <label for="address">Address*</label>
                 <input type="text" name="address" id="address" class="form-control" required title="must be a valid address"value="<?=$this->post['address'] ?>">
             </div>
+
             <div class="form-group col-6">
                 <label class="control-label" for="phoneNumber">Contact Number</label>
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+94</span>
+                    </div>
+                    <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber'] ?>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-6">
+                <label class="control-label" for="phoneNumber2">Contact Number 2</label>
                 <div class="form-group">
                     <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -73,25 +86,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <label for="serviceType">Service Type</label><br>
-                <div class="form-row col p-1">
-                    <div class="col">
-                        <input type="checkbox" name="serviceType[]" id="serviceType"   value="Washing" > Laundry
-                    </div>
-                    <div class="col">
-                        <input type="checkbox" name="serviceType[]" id="serviceType"   value="Cleaning"> Cleaning
-                    </div>
-                </div>
-                <div class="form-row col p-1">
-                    <div class="col">
-                        <input type="checkbox" name="serviceType[]" id="serviceType"   value="Food"> Food
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <label for="customerResidence">Customer Residence</label>
-                <input type="text" name="customerResidence" id="customerResidence" class="form-control" required value="<?=$this->post['customerResidence'] ?>">
+            <div class="form-group col-6">
+                <label for="area"> City </label>
+                <input type="text" name="area" id="area" class="form-control" required title="must be a valid address" value="<?=$this->post['area'] ?>">
             </div>
             <div><?=$this->displayErrors ?></div>
             <div class="text-center">
