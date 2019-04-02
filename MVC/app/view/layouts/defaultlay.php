@@ -24,8 +24,7 @@
        <?= $this->content('body'); ?>
        <style type="text/css">
          body {
-            background: url("<?=PROOT?>/img/Background.png")no-repeat center center fixed;
-            background-size: cover;
+            /* background-color:clouds; */
          }
        </style>
 
