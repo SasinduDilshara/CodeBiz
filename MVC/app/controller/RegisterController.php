@@ -73,46 +73,37 @@ class RegisterController extends Controller
 	}
 
 
-	public function registerAction()
+	public function registerAction($userType)
 	{
-     {  
+     
         $validation = new Validate();
-        $posted_values = ['fname'=>'', 'lname'=>'', 'email'=>'','username' => '' , 'password'=>'', 'confirm'=>'','address'=>'','phoneNumber2'=>'','serviceType'=>'','userType'=>'','customerResidence'=>''];
+        $posted_values = [
+            'fname'=>'', 
+            'lname'=>'',
+             'email'=>'',
+             'username' => '' ,
+              'password'=>'', 
+              'confirm'=>'',
+              'address'=>'',
+              'phoneNumber'=>'',
+              'phoneNumber2'=>'',
+              'area'=>''
+    ];
         if($_POST)
         {     
+            $_POST['userType'] = $userType;
             // dnd($_POST);
-        if(isset($_POST['serviceType']))
-        {//to run PHP script on submit
-            if(!empty($_POST['serviceType']))
-            {   $temporary="";
-            // Loop to store and display values of individual checked checkbox.
-                foreach($_POST['serviceType'] as $selected)
-                {   
-
-                    $temporary.=$selected." AND ";
-                }
-                $temporary=rtrim($temporary,' AND ');
-            }
-            if($temporary=='' || is_null($temporary))
-            {
-                return Null;
-            }
-            else
-            {
-                $_POST['serviceType'] = $temporary;
-            }
-            
-        }
            
             $posted_values = posted_values($_POST);  
+            // dnd($posted_values);
             // dnd($_POST['userType']);
             $validation->check($_POST,[
                 'fname'=>[
-                    'display' => 'First Name'
+                    'display' => 'First name'
                     // 'required' => true
                 ],
                 'lname'=>[
-                    'display' => 'Last Name'
+                    'display' => 'Last name'
                     // 'required' => true
                 ],
                 'username' => [
@@ -143,34 +134,29 @@ class RegisterController extends Controller
                     'min' => 6
                     //'max' => 100
                 ],
-                // 'phoneNumber' => [
-                //     'display' => 'Contact Number 1',
-                //     'required' => true,
-                //     'min' => 10,
-                //     'max' => 10
-                // ],
+                'phoneNumber' => [
+                    'display' => 'Contact Number',
+                    'required' => true,
+                    'min' => 10,
+                    'max' => 10
+                ],
                 'phoneNumber2' => [
                     'display' => 'Contact Number 2',
                     'min' => 10
                     //'max' => 100
                 ],
-                'userType' => [
-                    'display' => 'User type'
-                    // 'required' => true
-                    //'max' => 100
-                ],
-                'customerResidence' => [
-                    'display' => 'Customer Residence',
-                    // 'required' => true
-                    //'max' => 100
-                ],
-
                 'confirm' => [
                     'display' => 'Confirm Password',
                     // 'required' => true,
                     'matches' => 'password'
 
-                ]
+                ],
+                'area' => [
+                    'display' => 'City',
+                    'required' => true
+                    
+                ],
+
             ]);
         }
 
@@ -189,7 +175,6 @@ class RegisterController extends Controller
         $this->view->post = $posted_values;
         $this->view->displayErrors = $validation->displayErrors();
         $this->view->render('register/register');
-    }
 
 
     }

@@ -68,20 +68,22 @@ class AccountsController extends Controller
 
     if($_POST)
     {
+        // dnd($_POST);
       $account->assign($_POST); //form validation
       // dnd($contact->assign($_POST));
+      // dnd($account);
     $validation->check($_POST,[
                 'fname'=>[
-                    'display' => 'First Name'
-                    // 'required' => true
+                    'display' => 'First Name',
+                    'required' => true
                 ],
                 'lname'=>[
-                    'display' => 'Last Name'
-                    // 'required' => true
+                    'display' => 'Last Name',
+                    'required' => true
                 ],
                 'username' => [
                     'display' => 'username',
-                    // 'required' => true,
+                    'required' => true,
                     // 'unique' => 'users'
                     //'valid_email' => true
                     'min'=> 4
@@ -97,40 +99,25 @@ class AccountsController extends Controller
                 ],
                 'password' => [
                     'display' => 'Password',
-                    // 'required' => true,
+                    'required' => true,
                     'min' => 6
                     //'max' => 100
                 ],
                 'address' => [
                     'display' => 'Address',
-                    // 'required' => true,
+                    'required' => true,
                     'min' => 6
                     //'max' => 100
                 ],
-                // 'phoneNumber' => [
-                //     'display' => 'Contact Number 1',
-                //     'required' => true,
-                //     'min' => 10,
-                //     'max' => 10
-                // ],
-                'phoneNumber2' => [
-                    'display' => 'Contact Number 2',
+                'phoneNumber' => [
+                    'display' => 'Contact Number',
+                    'required' => true,
                     'min' => 10
                     //'max' => 100
                 ],
-                'serviceType' => [
-                    'display' => 'Service Type'
-                    // 'required' => true
-                    
-                ],
-                'userType' => [
-                    'display' => 'User type'
-                    // 'required' => true
-                    //'max' => 100
-                ],
-                'customerResidence' => [
-                    'display' => 'Customer Residence',
-                    // 'required' => true
+                'phoneNumber2' => [
+                    'display' => 'Contact Number 2',
+                    'min' => 10
                     //'max' => 100
                 ],
 
@@ -144,7 +131,7 @@ class AccountsController extends Controller
 
       
       // dnd($_POST);
-      
+      // dnd($validation->passed());
       if($validation->passed())
       { 
       // dnd($contact->deleted);
