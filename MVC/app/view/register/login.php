@@ -4,7 +4,7 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class = "card border-primary mb-3" style="max-width: 30rem; left:50%; top:100px;" >
+<div class = "card border-primary mb-3" style="max-width: 30rem; left:41%; top:100px;" >
  	<div class="card-header" style="text-align: center;">Sign In</div>
 	<!-- <h3 class="text-center p-4">/h3> -->
 	<div class="card-body">
