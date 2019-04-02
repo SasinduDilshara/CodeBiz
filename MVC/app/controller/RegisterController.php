@@ -137,7 +137,7 @@ class RegisterController extends Controller
                     'display' => 'Contact Number',
                     'required' => true,
                     'min' => 10,
-                    'max' => 11
+                    'max' => 10
                 ],
                 'phoneNumber2' => [
                     'display' => 'Contact Number 2',
