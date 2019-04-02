@@ -4,13 +4,12 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class = "card border-primary mb-3" style="max-width: 30rem; left:41%; top:100px; background-color: ;" >
- 	<div class="card-header" style="text-align: center;padding:0rem"><img src="<?=PROOT?>img<?=DS?>main.jpg" height = 200 width = 478></div>
+<div class = "card border-primary mb-3" style="max-width: 30rem; margin:auto; top:8rem; background-color: ;" >
+ 	<div class="card-header" style="text-align: center">
+		 Login
+	</div>
 	<!-- <h3 class="text-center p-4">/h3> -->
 	<div class="card-body">
-	<div>
-	<h3 style="text-align: center;">Login</h3><br>
-	</div>
 	<form class="form" action="<?=PROOT?>register/login" method="post" >
 		<div class="form-group">
 			<input type="text" name="username" id="username" class = "form-control" placeholder = "Username">
