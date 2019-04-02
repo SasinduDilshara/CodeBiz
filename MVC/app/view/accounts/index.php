@@ -9,7 +9,7 @@
 	<div class="col-md-6 bg-light p-3 rounded">
 		<p><strong><pre> Name :  </strong><?=$this->account->displayName()?></pre></p>
 		<p><strong><pre> Email :  </strong><?=$this->account->email?></pre></p>
-		<p><strong><pre> Contact :  </strong><?=$this->account->phoneNumber2?></pre></p>
+		<p><strong><pre> Contact :  </strong><?=$this->account->phoneNumber?></pre></p>
 		<p><strong><pre> Address :  </strong><?=$this->account->displayAddress()?></pre></p>
 		<p><strong><pre> Type of User :  </strong><?=$this->account->displayType()?></pre></p>
 	</div>
