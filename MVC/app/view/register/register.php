@@ -6,12 +6,15 @@
 
 <?php $this->start('body'); ?>
 <div class = "card border-primary mb-3" style="max-width: 40rem; left:41%; top:100px; background-color: ;" >
-    <div class="card-header" style="text-align: center;">Register</div>
+<div class="card-header" style="padding:0rem"><img src="<?=PROOT?>img<?=DS?>capture.jpg" height = 244 width = 638></div>
         <div class="card-body">
+        <div>
+	        <h3 style="text-align: center;">Register</h3><br>
+	    </div>
         <form class="form" action="" method="post"> 
             <div class="form-row col">
                 <div class="col">
-                    <label for="fname">First name*</label>
+                    <label for="fname">First name*</label><br>
                     <input type="text" name="fname" id="fname" required class="form-control"value="<?=$this->post['fname'] ?>">
                 </div>
                 <div class="col">
