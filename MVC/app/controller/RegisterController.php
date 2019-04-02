@@ -73,9 +73,9 @@ class RegisterController extends Controller
 	}
 
 
-	public function registerAction()
+	public function registerAction($userType)
 	{
-     {  
+     
         $validation = new Validate();
         $posted_values = [
             'fname'=>'', 
@@ -91,6 +91,7 @@ class RegisterController extends Controller
     ];
         if($_POST)
         {     
+            $_POST['userType'] = $userType;
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  
@@ -174,7 +175,6 @@ class RegisterController extends Controller
         $this->view->post = $posted_values;
         $this->view->displayErrors = $validation->displayErrors();
         $this->view->render('register/register');
-    }
 
 
     }
