@@ -6,7 +6,7 @@
 
 <?php $this->start('body'); ?>
 <div class="container">
-    <h3 class="text-center p-4"> Register  </h3>
+    <h3 class="text-center p-4"> Account  </h3>
         <form class="form" action="" method="post"> 
             <div class="form-row col">
                 <div class="col">
