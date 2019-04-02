@@ -161,74 +161,77 @@ class Users extends Model
 	public static $addValidation =
 	[
                 'fname'=>[
-                    'display' => 'First Name'
-                    // 'required' => true
+                    'display' => 'First Name',
+                    'required' => true
                 ],
                 'lname'=>[
-                    'display' => 'Last Name'
-                    // 'required' => true
+                    'display' => 'Last Name',
+                    'required' => true
                 ],
                 'username' => [
                     'display' => 'username',
-                    // 'required' => true,
+                    'required' => true,
                     'unique' => 'users',
-                    //'valid_email' => true
-                    'min'=> 4
-                    //'max' =>25
+                    'valid_email' => true,
+                    'min'=> 4,
+                    'max' =>25
                 ],
                 'email' => [
                     'display' => 'Email',
                     'required' => true,
                     'unique' => 'users',
                     'valid_email' => true,
-                    'min'=> 4
-                    //'max' =>25
+                    'min'=> 4,
+                    'max' =>25
                 ],
                 'password' => [
                     'display' => 'Password',
-                    // 'required' => true,
-                    'min' => 6
-                    //'max' => 100
+                    'required' => true,
+                    'min' => 6,
+                    'max' => 100
                 ],
                 'address' => [
                     'display' => 'Address',
-                    // 'required' => true,
-                    'min' => 6
-                    //'max' => 100
+                    'required' => true,
+                    'min' => 6,
+                    'max' => 100
                 ],
-                // 'phoneNumber' => [
-                //     'display' => 'Contact Number 1',
-                //     'required' => true,
-                //     'min' => 10,
-                //     'max' => 10
-                // ],
+                'phoneNumber' => [
+                    'display' => 'Contact Number',
+                    'required' => true,
+                    'min' => 10,
+                    'max' => 10
+                ],
                 'phoneNumber2' => [
                     'display' => 'Contact Number 2',
-                    'min' => 10
-                    //'max' => 100
+                    'min' => 10,
+                    'max' => 100
                 ],
                 'serviceType' => [
-                    'display' => 'Service Type'
-                    // 'required' => true
+                    'display' => 'Service Type',
+                    'required' => true
                     
                 ],
                 'userType' => [
-                    'display' => 'User type'
-                    // 'required' => true
-                    //'max' => 100
-                ],
-                'customerResidence' => [
-                    'display' => 'Customer Residence',
-                    // 'required' => true
-                    //'max' => 100
+                    'display' => 'User type',
+                    'required' => true,
+                    'max' => 100
                 ],
 
                 'confirm' => [
                     'display' => 'Confirm Password',
-                    // 'required' => true,
+                    'required' => true,
                     'matches' => 'password'
 
-                ]
+                ],
+                'area' => [
+                    'display' => 'area',
+                    'required' => true
+                    
+                ],
+
+
+
             ];
 
 
