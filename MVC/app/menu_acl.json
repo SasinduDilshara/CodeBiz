@@ -44,7 +44,11 @@
 
 "Guest":{
 
-		"Register" : "register/register",
+	"Register" : {
+		"Customer" : "register/register/Provider",
+		"separator" : "<br>",
+		"Provider " : "register/register/Customer"
+	},
 
 
 
