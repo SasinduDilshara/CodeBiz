@@ -1,6 +1,6 @@
  <?php
 define('DEBUG',true);
-define("DB_NAME", 'oosd'); // database
+define("DB_NAME", 'boardingvibes'); // database
 define("DB_USER", 'root'); // USER
 define("DB_PASSWORD", ''); // database PASSWD
 define("DB_HOST", '127.0.0.1'); // database HOST *** use ip address to avoid DNS lookup
