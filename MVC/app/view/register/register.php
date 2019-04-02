@@ -5,12 +5,13 @@
 <?php $this->end(); ?>
 
 <?php $this->start('body'); ?>
-<div class="container">
-    <h3 class="text-center p-4"> Register  </h3>
+<div class = "card border-primary mb-3" style="max-width: 40rem; left:41%; top:100px; background-color: ;" >
+    <div class="card-header" style="text-align: center;">Register</div>
+        <div class="card-body">
         <form class="form" action="" method="post"> 
             <div class="form-row col">
                 <div class="col">
-                    <label for="fname">First name*</label><br>
+                    <label for="fname">First name*</label>
                     <input type="text" name="fname" id="fname" required class="form-control"value="<?=$this->post['fname'] ?>">
                 </div>
                 <div class="col">
@@ -98,6 +99,7 @@
         <a href="<?=PROOT?>" class="btn btn-default"> Cancel </a>
         </div>
     </form>
+</div>
 </div>
 <script type="text/javascript">
     function disableCustomer(){
