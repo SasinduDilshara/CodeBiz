@@ -17,10 +17,10 @@
 				<td>
 					<a 
 					href="<?=PROOT?>advertisements/details/<?=$advertisement->id?>">
-					<?= $advertisement->name; ?>
+					<?= $advertisement->area; ?>
 				</a>
 			</td>
-				<td><?= $advertisement->brand; ?></td>
+
 				<td><?= $advertisement->description; ?></td>	
 			</tr>
 
