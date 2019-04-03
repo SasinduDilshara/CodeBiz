@@ -2,11 +2,15 @@
 
 class AdvertisementsController extends Controller
 {
+	public $type;
 	public function __construct($controller , $action)
 	{
 		parent::__construct($controller , $action);
 		$this->view->setLayout('defaultlay');
-		$this->load_model('Advertisements');
+		$this->load_model('Cateringad');
+		$this->load_model('Cleaningad');
+		$this->load_model('Launderingad');
+		// $this->load_model('Advertisements');
 		//dnd($this->load_model('advertisements'));
 	}
 
@@ -14,18 +18,25 @@ class AdvertisementsController extends Controller
 
 	public function indexAction()
 	{
-		$advertisements = $this->AdvertisementsModel->findByUserId(currentUser()->id,['order'=>'topic, location']);
+		$advertisements = $this->CleaningadModel->findByUserId(currentUser()->id,['order'=>'topic, area']);
 		// dnd($Advertisements);
 		$this->view->advertisements=$advertisements;
 		$this->view->render('advertisements/index');
 	}
 
-	public function addAction()
+	public function chooseAction()
+	{
+		$this->view->render('advertisements/choose');
+	}
+
+	public function addAction($type)
 	{	
-		$advertisement = new Advertisements();
+		$advertisement = $this->classLoad($type);
+		// $advertisement->type = $advertisement;
 		$validation = new Validate();
 		if($_POST)
 		{
+
 				$advertisement->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
 		$validation->check($_POST,Advertisements::$addValidation);
@@ -39,13 +50,16 @@ class AdvertisementsController extends Controller
 			// dnd(currentUser()->id);
 				// dnd("klk");
 				// dnd($advertisement->assign($_POST));
-			$advertisement->deleted=0;
+			// $advertisement->deleted=0;
 			// dnd($advertisement->deleted);
 				// $advertisement->assign($_POST);
 				// dnd()
 			// dnd($advertisement->save());
 			// dnd($advertisement);
+			dnd($advertisement->save());
 				$advertisement->save();
+				$advertisement->type =$type;
+				// dnd($advertisement->type);
 
 				Router::redirect('advertisements');
 			}
@@ -59,16 +73,16 @@ class AdvertisementsController extends Controller
 		// }
 		$this->view->displayErrors=$validation->displayErrors();
 		$this->view->advertisement = $advertisement;
-		$this->view->postAction=PROOT.'advertisements'.DS.'add';
+		$this->view->postAction=PROOT.'advertisements'.DS.'add'.DS.$type;
 		// dnd($this->view->postAction);
 		$this->view->render('advertisements/add');
 	}
 
 
-  public function detailsAction($id)
+  public function detailsAction($type,$id)
   {
   	// dnd($id);
-    $advertisement = $this->AdvertisementsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+    $advertisement = $this->modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
     // dnd($advertisement);
     if(!$advertisement){
       Router::redirect('advertisements');//no advertisement
@@ -78,11 +92,11 @@ class AdvertisementsController extends Controller
   }
 
 
-  public function editAction($id)
+  public function editAction($type,$id)
   {
   	// dnd($id);
   	$validation = new Validate();
-    $advertisement = $this->AdvertisementsModel->findByIdAndUserId((int)$id,currentUser()->id);
+    $advertisement = $this->modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);
 
     if(!$advertisement) Router::redirect('advertisements');
 
@@ -100,7 +114,7 @@ class AdvertisementsController extends Controller
 			// dnd($advertisement->deleted);
 				// $advertisement->assign($_POST);
 				// dnd()
-			// dnd($advertisement->save());
+			// dnd($advertisement->$this->save());
 				$advertisement->save();
 
 				Router::redirect('advertisements');
@@ -109,12 +123,12 @@ class AdvertisementsController extends Controller
 
     $this->view->displayErrors=$validation->displayErrors();
     $this->view->advertisement = $advertisement;
-    $this->view->postAction = PROOT . 'advertisements' . DS . 'edit' . DS . $advertisement->id;
+    $this->view->postAction = PROOT . 'advertisements' . DS . 'edit' . DS .$type.DS. $advertisement->id;
     $this->view->render('advertisements/edit');
   }
 
-  public function deleteAction($id){
-    $advertisement = $this->AdvertisementsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+  public function deleteAction($type,$id){
+    $advertisement = modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
     // dnd($advertisement);
     if($advertisement){
       $advertisement->delete(); 
@@ -123,11 +137,11 @@ class AdvertisementsController extends Controller
 	}
 }
 	
-	public function searchAction()
+	public function searchAction($type)
 	{	
 		if($_GET)
 		{
-				$advertisements=$this->AdvertisementsModel->findBySearch($_GET["location"],$_GET["topic"]);
+				$advertisements=modelLoad($type)->findBySearch($_GET["location"],$_GET["topic"]);
 
 			
 			// dnd($_GET);
@@ -148,4 +162,43 @@ class AdvertisementsController extends Controller
   
 
  }
+
+ 	public function modelLoad($type)
+
+ 	{
+ 		if($type === 'Cleaning')
+ 		{
+ 			$model_ = $this->CleaningadModel;
+ 		}
+ 		elseif($type === 'Catering')
+ 		{
+ 			$model_ = $this->CateringadModel;
+ 		}
+ 		elseif($type === 'Laundering')
+ 		{
+ 			$model_ = $this->LaunderingadModel;
+ 		}
+
+ 		return $model_;
+ 	}
+
+ 	public function classLoad($type)
+
+ 	{
+ 		if($type === 'Cleaning')
+ 		{
+ 			$class_ = new Cleaningad();
+ 		}
+ 		elseif($type === 'Catering')
+ 		{
+ 			$class_ = new Cateringad();
+ 		}
+ 		elseif($type === 'Laundering')
+ 		{
+ 			$class_ = new Launderingad();
+ 		}
+
+ 		return $class_;
+ 	}
+
 }
