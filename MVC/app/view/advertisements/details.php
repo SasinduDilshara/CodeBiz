@@ -1,23 +1,20 @@
-
-<?php $this->setSiteTitle($this->advertisement->displayName()); ?>
+<?php $this->setSiteTitle($this->advertisement->topic) ?>
 <?php $this->start('head'); ?>
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
 <div class="col-md-8 col-md-offset-2 well">
 	<a href="<?=PROOT?>advertisements" class="btn btn-xs btn-default"> Back</a>
-	<h2 class="text-center"><?=$this->advertisement->displayName()?></h2>
+	<h2 class="text-center"><?=$this->advertisement->topic?></h2>
 	<div class="col-md-6">
-		<p><strong><pre> Location :  </strong><?=$this->advertisement->location?></pre></p>
 		<p><strong><pre> Topic :  </strong><?=$this->advertisement->topic?></pre></p>
-		<p><strong><pre> Brand :  </strong><?=$this->advertisement->brand?></pre></p>
 		<p><strong><pre> Description :  </strong><?=$this->advertisement->description?></pre></p>
-		<p><strong><pre> Delivery :  </strong><?=$this->advertisement->customerType?></pre></p>
-		<p><strong><pre> Photos :  </strong><?=$this->advertisement->links?></pre></p>
+		<p><strong><pre> Location :  </strong><?=$this->advertisement->area?></pre></p>
+
 	</div>
 	<div class="col-md-6">
-		<?=$this->advertisement->displayAddLabel()?>
+		<?=$this->advertisement->displayAddLabel();?>
 	</div>
-</div>
+
 
 <?php $this->end(); ?>
