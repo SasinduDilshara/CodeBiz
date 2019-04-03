@@ -14,9 +14,15 @@ class RequestsController extends Controller
 
 	public function indexAction()
 	{
-		$requests = $this->RequestsModel->findByUserId(currentUser()->id,['order'=>'lname, fname']);
-		// dnd($contacts);
+		$requests = $this->RequestsModel->findByUserId(currentUser()->id,['order'=>'service']);
+		 // dnd($requests);
+// 
 		$this->view->requests=$requests;
+		// dnd($this->view->requests);
+		foreach($requests as $r)
+		{
+			// dnd($r->service);
+		}
 		$this->view->render('requests/index');
 	}
 
@@ -39,8 +45,8 @@ class RequestsController extends Controller
 			// dnd(currentUser()->id);
 				// dnd("klk");
 				// dnd($contact->assign($_POST));
-			$request->deleted=0;
-			$request->customer=currentUser()->username;
+			// $request->deleted=0;
+			// $request->provider=currentUser()->username;
 			// dnd($contact->deleted);
 				// $contact->assign($_POST);
 				// dnd()
@@ -73,7 +79,7 @@ class RequestsController extends Controller
     if(!$requests){
       Router::redirect('requests');//no contact
     }
-    $this->view->requests = $requests;
+    $this->view->request = $requests;
     $this->view->render('requests/details');
   }
 
