@@ -12,7 +12,7 @@
 	"Advertisements" : {
 		"My Adds" : "advertisements",
 		"separator" : "<br>",
-		"Add Advertisements" : "advertisements/add"
+		"Add Advertisements" : "advertisements/choose"
 	},
 
 
@@ -45,9 +45,9 @@
 "Guest":{
 
 	"Register" : {
-		"Customer" : "register/register/Provider",
+		"Customer" : "register/register/Customer",
 		"separator" : "<br>",
-		"Provider " : "register/register/Customer"
+		"Provider " : "register/register/Provider"
 	},
 
 
