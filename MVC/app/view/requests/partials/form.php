@@ -4,13 +4,13 @@
 	<!-- HIIIIIIIIIIIIIIIIIIIIIIIIIII -->
 	<?= input_block('text','Service','service',$this->request->service,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
 	<?= input_block('text','Description','description',$this->request->description,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
-	<?= input_block('text','Address','provider',$this->request->provider,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
 
-
+		<?= submitBlock('Save',['class'=>'btn btn-primary']) ?>
+		
 	<div class = "col-md-12 text-right">
 		<a href="<?=PROOT?>requests" class="btn btn-default"> Cancel </a>
 
-	<?= submitBlock('Save',['class'=>'btn btn-primary']) ?>
+
 
 	</div>
 
