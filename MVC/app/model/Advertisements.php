@@ -1,22 +1,23 @@
 <?php
 
-class Advertisements extends Model
+abstract class Advertisements extends Model
 {
-	public function __construct($advertisement='')
+	public $type;
+	public function __construct($table,$advertisement='')
 	{
-		$table = 'advertisements';
+		// $table = 'advertisements';
 		parent:: __construct($table);
 		$this->_softDelete = false;
 	}
 
-	public $deleted =0;
+	// public $deleted =0;
 
-	public function findByLocationAndType($location,$type,$params=[])
+public function findByLocationAndType($location,$params=[])
 	{
 		$conditions =
 		 [
-		'conditions' => 'location= ? AND type= ?',
-		'bind' => [$location , $type]
+		'conditions' => 'area= ?',
+		'bind' => [$location]
 	];
 
 	$conditions = array_merge($conditions,$params);
@@ -35,14 +36,14 @@ class Advertisements extends Model
 
 
 
-	public function findBySearch($location,$topic)
+	public function findBySearch($location)
 	{
 		// dnd($contact_id);
 		// dnd($user_id);
 		$conditions =
 		 [
-		'conditions' => 'location = ? AND topic = ?',
-		'bind' => [$location , $topic]
+		'conditions' => 'area = ?',
+		'bind' => [$location]
 	];
 
 	// dnd($conditions);
@@ -52,25 +53,28 @@ class Advertisements extends Model
 	return $this->find($conditions);
 	}
 
-
-
-
-	public function displayName()
+	public function displayTopic()
 	{
 		return $this->topic;
 	}
 
 	public static $addValidation =
 	[
-		'location' =>[
-			'display' =>'location',
+		'area' =>[
+			'display' =>'Location',
 			'required' => true,
 			'min' => 6
 	],
-	
-		'topic' =>
-		[
+
+	'topic' =>[
 			'display' =>'Topic',
+			'required' => true,
+			'min' => 4
+	],
+	
+		'description' =>
+		[
+			'display' =>'Description',
 			'required' => true
 			// 'max' => 155
 		] 
@@ -94,35 +98,9 @@ class Advertisements extends Model
 	return $this->findFirst($conditions);
 	}
 
-	public function displayAdd()
-	{
-		$address = '';
-		if(!empty($this->location))
-		{
-			$address.=$this->location."<br>";
+	public abstract function displayAdd();
+	public abstract function displayAddLabel();
 
-		}
-		// if(!empty($this->address1))
-		// {
-		// 	$address.=$this->address1."<br>"; //if two or more address
-
-		// }
-		if(!empty($this->topic))
-		{
-			$address.=$this->topic.",";
-		}
-
-			// $address.=$this->state." ".$this->zip."<br>";
-		// }
-		return $address;
-	}
-
-	public function displayAddLabel()
-	{
-		$html = $this->displayName()."<br>";
-		$html .= $this->displayAdd();
-		return $html;
-	}
 
 }
 
