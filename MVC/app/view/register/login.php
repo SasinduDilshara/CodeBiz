@@ -25,7 +25,6 @@
 	</form>
 	
 	<div>
-		<a href="<?=PROOT?>register/register" class ="text-primary"> Register </a> <br>
 		<a href = #  class ="text-primary"> Forget password ? </a>
 	</div>
 
