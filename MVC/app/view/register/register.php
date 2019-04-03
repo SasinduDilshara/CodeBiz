@@ -5,8 +5,11 @@
 <?php $this->end(); ?>
 
 <?php $this->start('body'); ?>
-<div class="container">
-    <h3 class="text-center p-4"> Register  </h3>
+    <div class = "card border-primary mb-3" style="max-width: 50rem; margin:auto; top:5rem;" >
+        <div class="card-header" style="text-align: center">
+            Register
+        </div>
+        <div class="card-body">
         <form class="form" action="" method="post"> 
             <div class="form-row col">
                 <div class="col">
@@ -47,61 +50,81 @@
                     </div>
                 </div>
             </div> -->
-<!--             <div class="col">
-                <label for="userType">User Type</label><br>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-primary active">
-                        <input type="radio" name="userType" id="userType" autocomplete="off" checked value="Provider"> Provider
-                    </label>
-                    <label class="btn btn-primary">
-                        <input type="radio" name="userType" id="userType" autocomplete="off" value="Customer"> Customer
-                    </label>
-                </div>
-            </div> -->
-            <div class="col">
+            <div class="col" style = "padding-right: 25px;">
                 <label for="address">Address*</label>
                 <input type="text" name="address" id="address" class="form-control" required title="must be a valid address"value="<?=$this->post['address'] ?>">
             </div>
 
-            <div class="form-group col-6">
-                <label class="control-label" for="phoneNumber">Contact Number</label>
-                <div class="form-group">
-                    <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">+94</span>
+            <div class="form-row col">
+                <div class="col">
+                    <label class="control-label" for="phoneNumber">Contact Number*</label>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+94</span>
+                        </div>
+                        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber'] ?>">
+                        </div>
                     </div>
-                    <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber'] ?>">
+                </div>
+                <div class="col">
+                    <label class="control-label" for="phoneNumber2">Contact Number 2</label>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+94</span>
+                        </div>
+                        <input type="text" name="phoneNumber2" id="phoneNumber2" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber2'] ?>">
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="form-group col-6">
-                <label class="control-label" for="phoneNumber2">Contact Number 2</label>
-                <div class="form-group">
-                    <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">+94</span>
-                    </div>
-                    <input type="text" name="phoneNumber2" id="phoneNumber2" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber2'] ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-6">
+            <div class="col-6">
                 <label for="area"> City </label>
                 <input type="text" name="area" id="area" class="form-control" required title="must be a valid address" value="<?=$this->post['area'] ?>">
+                <ul class="list-group" id="result"></ul>
             </div>
             <div><?=$this->displayErrors ?></div>
             <div class="text-center">
                 <input type="submit" class="btn btn-xs btn-primary" value="Register" >
             </div>
-        <div class = "col-md-12 text-center">
-        <a href="<?=PROOT?>" class="btn btn-default"> Cancel </a>
-        </div>
+            <div class = "col-md-12 text-center">
+            <a href="<?=PROOT?>" class="btn btn-default"> Cancel </a>
+            </div>
     </form>
 </div>
-<script type="text/javascript">
-    function disableCustomer(){
-        //code to diasble
-    }
+</div>
+<script>
+    // function to get city names
+    $(document).ready(function(){
+        $.ajaxSetup({ cache: false });
+        $('#area').keyup(function(){
+            $('#result').html('');
+            $('#state').val('');
+            var searchField = $('#area').val();
+            var expression = new RegExp(searchField, "i");
+            $.getJSON('<?=PROOT?>app/cities.json', function(data) {
+                var x = 0;
+                $.each(data, function(key, value){    
+                    if (value.name.search(expression) != -1)
+                    {
+                    $('#result').append('<li class="dropdown-item">'+value.name+'</li>');
+                    x++;
+                    }
+                    // max number of items displayed
+                    if (x == 5)
+                    {
+                        return false;
+                    }
+            });   
+        });
+    });
+    
+    $('#result').on('click', 'li', function() {
+        var click_text = $(this).text().split('|');
+            $('#area').val($.trim(click_text[0]));
+            $("#result").html('');
+        });
+    });
 </script>
 <?php $this->end(); ?>
