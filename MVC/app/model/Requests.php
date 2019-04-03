@@ -6,19 +6,22 @@ class Requests extends Model
 	{
 		$table = 'requests';
 		parent:: __construct($table);
-		$this->_softDelete = true;
+		$this->_softDelete = false;
 	}
 
-	public $deleted =0;
+	
 	
 
 	// public $customer =currentUser()->username;
 
 	public function findByUserId($userId,$params=[])
 	{
+		// dnd($userId);
 		$conditions = ['conditions'=>'user_id = ?','bind'=>[$userId]
 	];
 	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+	// dnd($this->find($conditions));
 	return $this->find($conditions);
 	}
 
