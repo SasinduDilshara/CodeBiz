@@ -75,7 +75,7 @@ class RegisterController extends Controller
 
 	public function registerAction($userType)
 	{
-     
+     // dnd($userType);
         $validation = new Validate();
         $posted_values = [
             'fname'=>'', 
