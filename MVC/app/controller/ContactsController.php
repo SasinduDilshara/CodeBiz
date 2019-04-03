@@ -17,6 +17,7 @@ class ContactsController extends Controller
 		$contacts = $this->ContactsModel->findByUserId(currentUser()->id,['order'=>'lname, fname']);
 		// dnd($contacts);
 		$this->view->contacts=$contacts;
+		dnd($contacts);
 		$this->view->render('contacts/index');
 	}
 
