@@ -112,7 +112,7 @@ class Model
 
 	public function save()
 	{
-	// {	dnd("klk");
+		// dnd("klk");
 		$fields = [];
 		foreach($this->_columnNames as $column)
 		{
@@ -127,7 +127,7 @@ class Model
 		}
 		else
 		{	
-			// dnd($fields);
+			dnd($fields);
 			// dnd($this->insert($fields));
 			return $this->insert($fields);
 		}
