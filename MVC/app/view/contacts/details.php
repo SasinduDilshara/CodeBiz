@@ -6,6 +6,7 @@
 <div class="container">
 	<a href="<?=PROOT?>contacts" class="btn btn-xs btn-default"> Back</a>
 <!-- <<<<<<< HEAD -->
+
 	<h2 class="text-center"><?=$this->contact->displayName();?></h2>
 	<div class="col-md-6">
 <!-- ======= -->

@@ -19,6 +19,7 @@ class AccountsController extends Controller
     // dnd($account);
     $this->view->account=$account;
     $this->view->render('accounts/index');
+    // dnd($account);
   }
 
   public function detailsAction($id)

@@ -74,8 +74,8 @@ class RequestsController extends Controller
   public function detailsAction($id)
   {
   	// dnd($id);
-    $requests = $this->RequestsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
-    // dnd($contact);
+    $requests = $this->RequestsModel->findById((int)$id);//cast is a security to check its a number
+    // dnd($requests);
     if(!$requests){
       Router::redirect('requests');//no contact
     }
@@ -128,5 +128,33 @@ class RequestsController extends Controller
     }
     Router::redirect('requests');
   }
+
+  public function selectAction()
+  {
+  	$this->view->postAction=PROOT.'requests'.DS.'search';
+
+   	$this->view->render('requests/select');
+  }
+
+
+  public function searchAction()
+    {		// dnd($_GET);
+		
+		if($_GET)
+		{
+				$requests=$this->RequestsModel->findByLocation($_GET["area"]);
+
+		}
+
+		$this->view->requests = $requests;
+		// $this->view->came=chooseDetails('');
+		// dnd($this->view->postAction);
+		$this->view->render('requests/search');
+	
+
+    // Router::redirect('advertisements');
+  
+
+ }
 
  }

@@ -23,9 +23,9 @@ class Launderingad extends Advertisements
 
 	public function displayAddLabel()
 	{
-		$html = $this->displayName()."<br>";
-		// $html .= $this->displayAdd();
-		return $html;
+		// $html = $this->displayName()."<br>";
+		// // $html .= $this->displayAdd();
+		// return $html;
 	}
 
 }

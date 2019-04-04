@@ -8,6 +8,6 @@
 
 <?php include 'searchbar.php' ?>
 
-
+<?php include 'showrequests.php' ?>
 
 <?php $this->end(); ?>

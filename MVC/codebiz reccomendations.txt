@@ -31,5 +31,7 @@ ratings
 
 Request thoraddi service 1 radio dala denna oone.
 
+JS walin advertisements wala back button 1 hadanna oone.
+
 
 

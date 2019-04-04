@@ -3,9 +3,10 @@
 <h1 class ="text-center red"> Search Results </h1>
 <table class="table table-striped table-condensed table-bordered">
 	<thead>
-		<th> Name</th>
-		<th> Brand</th>
+		<th> topic</th>
 		<th> Description</th>
+<!-- 		<th> Description</th> -->
+		<th> Location</th>
 		<th></th>
 		<th></th>
 	</thead>
@@ -16,12 +17,13 @@
 
 				<td>
 					<a 
-					href="<?=PROOT?>advertisements/details/<?=$advertisement->id?>">
-					<?= $advertisement->area; ?>
+			href="<?=PROOT?>advertisements/details/<?=$advertisement->type?>/<?=$advertisement->id?>">
+					<?= $advertisement->topic; ?>
 				</a>
 			</td>
 
 				<td><?= $advertisement->description; ?></td>	
+				<td><?= $advertisement->area; ?></td>	
 			</tr>
 
 		<?php endforeach; ?>

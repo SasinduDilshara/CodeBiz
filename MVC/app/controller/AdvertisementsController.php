@@ -18,10 +18,20 @@ class AdvertisementsController extends Controller
 
 	public function indexAction()
 	{
-		$advertisements = $this->CleaningadModel->findByUserId(currentUser()->id,['order'=>'topic, area']);
-		// dnd($Advertisements);
-		$this->view->advertisements=$advertisements;
+		$alladds=[];
+		array_push($alladds, $this->CleaningadModel->findByUserId(currentUser()->id,['order'=>'topic, area']));
+		array_push($alladds,$this->CateringadModel->findByUserId(currentUser()->id,['order'=>'topic, area']));
+		array_push($alladds,$this->LaunderingadModel->findByUserId(currentUser()->id,['order'=>'topic, area']));
+		// dnd($alladds);
+		$this->view->alladds=$alladds;
+		// $this->view->came=chooseDetails();
 		$this->view->render('advertisements/index');
+	}
+
+	public function getHome()
+	{
+		$this->view->render('home/index');
+		Router::redirect('');
 	}
 
 	public function chooseAction()
@@ -56,9 +66,10 @@ class AdvertisementsController extends Controller
 				// dnd()
 			// dnd($advertisement->save());
 			// dnd($advertisement);
-			dnd($advertisement->save());
+			// dnd($advertisement->save());
 				$advertisement->save();
 				$advertisement->type =$type;
+
 				// dnd($advertisement->type);
 
 				Router::redirect('advertisements');
@@ -82,12 +93,13 @@ class AdvertisementsController extends Controller
   public function detailsAction($type,$id)
   {
   	// dnd($id);
-    $advertisement = $this->modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+    $advertisement = $this->modelLoad($type)->findById((int)$id,['order'=>'topic']);//cast is a security to check its a number
     // dnd($advertisement);
     if(!$advertisement){
       Router::redirect('advertisements');//no advertisement
     }
-    $this->view->advertisement = $advertisement;
+$this->view->advertisement = $advertisement[0];
+    // dnd($this->view->advertisement);
     $this->view->render('advertisements/details');
   }
 
@@ -128,7 +140,7 @@ class AdvertisementsController extends Controller
   }
 
   public function deleteAction($type,$id){
-    $advertisement = modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+    $advertisement = $this->modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
     // dnd($advertisement);
     if($advertisement){
       $advertisement->delete(); 
@@ -137,28 +149,23 @@ class AdvertisementsController extends Controller
 	}
 }
 	
-	public function searchAction($type)
-	{	
+	public function searchAction()
+{	
+		// dnd($_GET);
+		$type = $_GET["type"];
 		if($_GET)
 		{
-				$advertisements=modelLoad($type)->findBySearch($_GET["location"],$_GET["topic"]);
+				$advertisements=$this->modelLoad($type)->findBySearch($_GET["area"]);
 
-			
-			// dnd($_GET);
-			
 		}
-		// else
-		// {
-
-		// 	dnd("jkj");
-		// }
 
 		$this->view->advertisements = $advertisements;
+		// $this->view->came=chooseDetails('');
 		// dnd($this->view->postAction);
 		$this->view->render('advertisements/search');
 	
 
-    Router::redirect('advertisements');
+    // Router::redirect('advertisements');
   
 
  }
@@ -199,6 +206,11 @@ class AdvertisementsController extends Controller
  		}
 
  		return $class_;
+ 	}
+
+ 	public function chooseDetails($word)
+ 	{
+ 		return '<?=PROOT?>'.$word;
  	}
 
 }

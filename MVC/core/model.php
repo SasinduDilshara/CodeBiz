@@ -127,7 +127,7 @@ class Model
 		}
 		else
 		{	
-			dnd($fields);
+			// dnd($fields);
 			// dnd($this->insert($fields));
 			return $this->insert($fields);
 		}

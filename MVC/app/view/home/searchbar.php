@@ -1,20 +1,20 @@
 <div class="col-md-3 col-md-offset-3 well">
     <!-- <h3 class="text-center"> Register  </h3> -->
 
-        <form class="form" action="advertisements/search" method="get"> 
+        <form class="form" action="advertisements/search" method="GET"> 
         <div class="form-group">
             <div>
-            <label for="topic"><h4>I am looking for</h4></label><br>
-                  <input type="radio" name="topic" id="topic"   value="Laundering" checked> Laundering<br>
-                  <input type="radio" name="topic" id="topic"   value="Food"> Food<br>
-                  <input type="radio" name="topic" id="topic"   value="Cleaning"> Cleaning<br>
+            <label for="type"><h4>I am looking for</h4></label><br>
+                  <input type="radio" name="type" id="type"   value="Laundering" checked> Laundering<br>
+                  <input type="radio" name="type" id="type"   value="Catering"> Catering<br>
+                  <input type="radio" name="type" id="type"   value="Cleaning"> Cleaning<br>
             </div>
             <div>
-                <label for="location"><h4>I live in</h4></label>
+                <label for="area"><h4>I live in</h4></label>
                 <input 
                 type="text" 
-                name="location" 
-                id="location" 
+                name="area" 
+                id="area" 
                 class="form-control" 
                 value="">
             </div>

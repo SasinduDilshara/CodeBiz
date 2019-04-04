@@ -3,7 +3,7 @@
 		"denied" : {},
 		"Home" : ["*"],
 		"Register" :["login","register"],
-		"Advertisements" : ["search"],
+		"Advertisements" : ["search","details","index"],
 		"Restricted" : ["*"]
 	},
 
@@ -15,12 +15,13 @@
 	 	"Contacts" :["*"],
 	 	"Advertisements" : ["*"],
 	 	"Home" : ["*"],
-	 	"Accounts" : ["edit","index","delete"]
+	 	"Accounts" : ["edit","delete"],
+	 	"Requests" : ["select","search","details"]
 	 },
 
 	 "Customer" :
 	 {
-	 	"denied" : { "Register" : [ "login","register"]
+	 	"denied" : { "Register" : [ "login","register"] , "Advertisements" : ["index"]
 	 	},
 	 	"Register" : ["logout"],
 	 	"Contacts" :["*"],

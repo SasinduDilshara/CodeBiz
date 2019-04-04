@@ -61,35 +61,33 @@ class Requests extends Model
 	return $this->findFirst($conditions);
 	}
 
-	// public function displayAddress()
-	// {
-	// 	$address = '';
-	// 	if(!empty($this->address))
-	// 	{
-	// 		$address.=$this->address."<br>";
+		public function findById($request_id,$params=[])
+	{
+		// dnd($request_id,);
+		// dnd($user_id);
+		$conditions = ['conditions' => 'id = ?','bind' => [$request_id]
+	];
 
-	// 	}
-	// 	// if(!empty($this->address1))
-	// 	// {
-	// 	// 	$address.=$this->address1."<br>"; //if two or more address
+	// dnd($conditions);
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
 
-	// 	// }
-	// 	if(!empty($this->city))
-	// 	{
-	// 		$address.=$this->city.",";
-	// 	}
+	return $this->findFirst($conditions);
+	}
 
-	// 		$address.=$this->state." ".$this->zip."<br>";
-	// 	// }
-	// 	return $address;
-	// }
+	public function findByLocation($location,$params=[])
+	{
+		// dnd($request_id,);
+		// dnd($user_id);
+		$conditions = ['conditions' => 'area = ?','bind' => [$location]
+	];
 
-	// public function displayAddressLabel()
-	// {
-	// 	$html = $this->displayName()."<br>";
-	// 	$html .= $this->displayAddress();
-	// 	return $html;
-	// }
+	// dnd($conditions);
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+
+	return $this->find($conditions);
+	}	
 
 }
 

@@ -47,6 +47,23 @@ public function findByLocationAndType($location,$params=[])
 	];
 
 	// dnd($conditions);
+	$conditions = array_merge($conditions);
+	// dnd($conditions);
+
+	return $this->find($conditions);
+	}
+
+	public function findById($id,$params=[])
+	{
+		// dnd($contact_id);
+		// dnd($user_id);
+		$conditions =
+		 [
+		'conditions' => 'id = ?',
+		'bind' => [$id]
+	];
+
+	// dnd($conditions);
 	$conditions = array_merge($conditions,$params);
 	// dnd($conditions);
 
