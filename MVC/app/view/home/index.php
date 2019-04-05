@@ -7,7 +7,12 @@
 <!-- search bar -->
 
 <?php include 'searchbar.php' ?>
-
-<?php include 'showrequests.php' ?>
+<div>
+	<?php include 'showrequests.php' ?>
+	
+</div>
+<div>
+	<?php include 'messagesbutton.php' ?>
+</div>
 
 <?php $this->end(); ?>

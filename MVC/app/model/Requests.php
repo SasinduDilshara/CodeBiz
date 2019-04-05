@@ -1,12 +1,14 @@
 <?php
 
-class Requests extends Model
+class Requests extends Model implements Observable
 {
+	public $observers=[];
 	public function __construct($request='')
 	{
 		$table = 'requests';
 		parent:: __construct($table);
 		$this->_softDelete = false;
+		$observers = [];
 	}
 
 	
@@ -61,7 +63,7 @@ class Requests extends Model
 	return $this->findFirst($conditions);
 	}
 
-		public function findById($request_id,$params=[])
+	public function findById($request_id,$params=[])
 	{
 		// dnd($request_id,);
 		// dnd($user_id);
@@ -87,7 +89,53 @@ class Requests extends Model
 	// dnd($conditions);
 
 	return $this->find($conditions);
-	}	
+	}
+
+	// public function findcustomer($user_id,$params=[])
+	// {
+	// 	// dnd($request_id,);
+	// 	// dnd($user_id);
+	// 	Users::findByUserId($user_id,$params);
+
+	// return $this->find($conditions);
+	// }	
+
+	public function setAccepted($id)
+	{
+		return $this->update($id, ['accepted' => 1]);
+	}
+
+	public function notify($requests,$provider,$owner)
+	{
+		// dnd($requests);
+		// dnd($this->observers);
+		foreach($this->observers as $observer)
+		{
+			if($observer->userType == "Customer")
+			{
+			$observer->updateObserver($requests,$provider,$owner);
+		    }
+		    elseif($observer->userType == "Provider")
+		    {
+		    $observer->updateProvider($requests,$provider,$owner);
+		    }
+		}
+	}
+	public function attach($observer)
+		{
+			// dnd($this->observers);
+			// dnd($observer);
+			array_push($this->observers,$observer);
+		}
+	public function detach($observer)
+		{
+			// array_push($this->observers,$observer);
+		}
+
+ 	public function sendAcceptance($request,$customer,$provider)
+ 	{
+ 		currentUser()->sendMessage($request,$provider,$customer);
+ 	}
 
 }
 
