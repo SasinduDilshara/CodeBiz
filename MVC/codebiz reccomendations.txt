@@ -6,32 +6,20 @@ delete and edit account ekata conferm page ekak with password
 
 table clean krnna
 
-search bar ekata galapenna tables edit krnna
-
 validation uncomment krnna
 
-edit eken user type eka edit disable karanna
-
-register eke ekekkema ba disable krnna
-
-table structure eka
-
-request gana balanna
-
-
 pop up msg danna
-
-users types dekata table deka
-
-add type walata table
 
 schedule providers
 
 ratings
 
-Request thoraddi service 1 radio dala denna oone.
+JS walin advertisements/request wala back button 1 hadanna oone.
 
-JS walin advertisements wala back button 1 hadanna oone.
+JS walin request kalama anith providerlage accept button eka disable karanna  hadanna oone.
+
+OOP principle balanna(observer observable)
+ida madi unama pirenne nathi nisa databases clean karanna system 1k hadanna.
 
 
 

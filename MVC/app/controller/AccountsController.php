@@ -25,7 +25,7 @@ class AccountsController extends Controller
   public function detailsAction($id)
   {
     // dnd($id);
-    $account = currentUser();//cast is a security to check its a number
+    $account = $this->UsersModel->findById($id);//cast is a security to check its a number
     // dnd($contact);
     if(!$account){
       Router::redirect('accounts');//no contact

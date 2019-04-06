@@ -32,6 +32,9 @@ class RequestsController extends Controller
 		$validation = new Validate();
 		if($_POST)
 		{
+			$_POST['customer'] = currentUser()->username;
+			$_POST['accepted'] = 0;
+			$_POST['completed'] = 0;
 			$request->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
 		$validation->check($_POST,Requests::$addValidation);
@@ -150,11 +153,26 @@ class RequestsController extends Controller
 		// $this->view->came=chooseDetails('');
 		// dnd($this->view->postAction);
 		$this->view->render('requests/search');
-	
-
     // Router::redirect('advertisements');
-  
-
  }
+
+ 	public function acceptAction($id,$user_id)
+ 	{
+ 		$requests = $this->RequestsModel->findById($id);
+ 		$owner = currentUser()->findById($user_id);
+ 		$this->RequestsModel->setAccepted($id);
+ 		$this->RequestsModel->attach($owner);
+ 		$this->RequestsModel->attach(currentUser());
+ 		$this->view->requests=$requests;
+ 		$this->view->owner=$owner;
+ 		$this->RequestsModel->notify($requests,currentUser(),$owner);
+ 		// $customer = $this->RequestsModel->findcustomer($user_id);
+
+ 		// $this->view->customer=$customer;
+ 		// $this->RequestsModel->sendAcceptance($requests,currentUser(),$owner);
+ 		$this->view->render('requests/accept');
+ 	}
+
+
 
  }

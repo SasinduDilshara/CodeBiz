@@ -92,6 +92,7 @@ class RegisterController extends Controller
         if($_POST)
         {     
             $_POST['userType'] = $userType;
+            $_POST['notifications'] = '';
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  

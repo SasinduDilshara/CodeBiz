@@ -3,10 +3,12 @@
 <h1 class ="text-center red"> Results </h1>
 <table class="table table-striped table-condensed table-bordered">
 	<thead>
-		<th> Topic</th>
+		<th> Service</th>
 		<th> Location</th>
+		<th> Customer</th>
 <!-- 		<th> Description</th> -->
 		<th> Description</th>
+		
 		<th></th>
 	</thead>
 	<body>
@@ -15,16 +17,21 @@
 			<tr>
 
 				<td>
-		<a 
-
+		   <a   
 			href="<?=PROOT?>requests/details/<?=$request->id?>">
 					<?= $request->service; ?>
-				</a>
+			</a>
 			</td>
 
 				<td><?= $request->area; ?></td>	
-				<td><?= $request->description; ?></td>	
-				<td><a href="<?=PROOT?>request/accept/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Accept </a></td></td>
+					   <td><a   
+			href="<?=PROOT?>accounts/details/<?=$request->user_id?>">
+					<?= $request->customer; ?>
+			</a>
+		</td>
+			</td>
+				<td><?= $request->description; ?></td>
+				<td><a href="<?=PROOT?>requests/accept/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Accept </a></td></td>
 			</tr>
 
 		<?php endforeach; ?>

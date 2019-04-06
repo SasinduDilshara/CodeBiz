@@ -1,6 +1,6 @@
 <?php
 
-class Users extends Model
+class Users extends Model implements Observer
 {
 	private $_isLoggedIn, $_sessionName , $_cookieName;
 	public static $currentLoggedInUser =null;
@@ -300,7 +300,65 @@ class Users extends Model
 		return $html;
 	}
 
+	// public function update($request,$username)
+	// {
+	// 	// dnd($request->service);
+	// 	$message = 'Your '. $request->service .' is accepted by '. $username;
+	// 	// dnd($message);
+	// 	return $message;
+	// }
 
+	public function findById($user_id,$params=[])
+	{
+		 $conditions = [
+		'conditions' => 'id = ?',
+		'bind' => [$user_id]
+	];
+
+	// dnd($conditions);
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+
+	return $this->findFirst($conditions);
+	}
+
+	public function updateObserver($request,$provider,$customer)
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($customer->notifications==NULL)
+		{
+			$Notification = "Your ". $request->service." has been aceepted by ".$provider->username;
+		}
+	else
+	{
+		$Notification = "Your ". $request->service." has been aceepted by ".$provider->username. ",".$customer->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($customer->id, ['notifications' => $Notification]);
+
+	}
+
+	public function updateProvider($request,$provider,$customer)
+
+	{
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = "You accepted the ". $request->service." which was request by the ".$customer->username;
+		}
+	else
+	{
+		$Notification = "You accepted the ". $request->service." which was requested by the ".$customer->username. ",".$provider->notifications; 
+	}
+		return $this->update($provider->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
+
+	
 }
 
 ?>
