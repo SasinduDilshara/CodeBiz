@@ -8,4 +8,6 @@
 <p> <?= $message ?> </p>
 <?php endforeach; ?>
 
+<a href="<?=PROOT?>messages/clear" class="btn btn-xs btn-default" > Delete Notifications </a>
+
 <?php $this->end() ?>

@@ -31,7 +31,14 @@
 		</td>
 			</td>
 				<td><?= $request->description; ?></td>
-				<td><a href="<?=PROOT?>requests/accept/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Accept </a></td></td>
+				<td>
+				 <?php if(!in_array((string)(currentUser()->id),explode(",",$request->providerId))):?>
+				<a href="<?=PROOT?>requests/accept/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Accept </a>
+				<?php endif; ?>
+				<?php if(in_array((string)(currentUser()->id),explode(",",$request->providerId))) :?>
+				<a href="<?=PROOT?>requests/cancel/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Cancel </a>
+				<?php endif; ?>
+			</td>
 			</tr>
 
 		<?php endforeach; ?>

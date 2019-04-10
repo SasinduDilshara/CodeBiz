@@ -16,7 +16,7 @@ class RequestsController extends Controller
 	{
 		$requests = $this->RequestsModel->findByUserId(currentUser()->id,['order'=>'service']);
 		 // dnd($requests);
-// 
+
 		$this->view->requests=$requests;
 		// dnd($this->view->requests);
 		foreach($requests as $r)
@@ -34,6 +34,7 @@ class RequestsController extends Controller
 		{
 			$_POST['customer'] = currentUser()->username;
 			$_POST['accepted'] = 0;
+			// $_POST['confirmProviderId'] = 0;
 			$_POST['completed'] = 0;
 			$request->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
@@ -160,12 +161,12 @@ class RequestsController extends Controller
  	{
  		$requests = $this->RequestsModel->findById($id);
  		$owner = currentUser()->findById($user_id);
- 		$this->RequestsModel->setAccepted($id);
- 		$this->RequestsModel->attach($owner);
- 		$this->RequestsModel->attach(currentUser());
+ 		$this->RequestsModel->setAccepted($id,$requests,currentUser());
+ 		$this->RequestsModel->attachAccepts($owner);
+ 		$this->RequestsModel->attachAccepts(currentUser());
  		$this->view->requests=$requests;
  		$this->view->owner=$owner;
- 		$this->RequestsModel->notify($requests,currentUser(),$owner);
+ 		$this->RequestsModel->notifyAccepts($requests,currentUser(),$owner);
  		// $customer = $this->RequestsModel->findcustomer($user_id);
 
  		// $this->view->customer=$customer;
@@ -173,6 +174,106 @@ class RequestsController extends Controller
  		$this->view->render('requests/accept');
  	}
 
+ 	public function showAcceptAction($id)
+ 	{
+ 		$request = $this->RequestsModel->findById($id);
+ 	if($request->providerId)
+ 	{
+ 		$providers = explode(",",$request->providerId);
+ 		foreach ($providers as $each_number) {
+      $providerslist[] = currentUser()->findById((int) $each_number);
+     
+  }	 
+  $this->view->providerslist=$providerslist;
+  $this->view->request=$request;
+  $date = date("d:m:Y");
+  $time = date("H:i:s");
+  $this->view->date=$date;
+  $this->view->time=$time;
+  // dnd($this->view->time);
+  $this->view->render('requests/showAccept');
+  // dnd($providerslist);
+}
+else
+{
+	$this->view->request = $request;
+	$this->view->render('requests/noAcceptance');
+}
+ 	}
 
+ 	public function confirmAction($id,$provider_id)
+ 	{
+ 		// $this->RequestsModel->setAccepted($id,$request,$provider);
+ 		$provider = currentUser()->findById($provider_id);
+ 		$requests = $this->RequestsModel->findById($id);
+ 		// $owner = currentUser()->findById($user_id);
+ 		$this->RequestsModel->setAccepted($id,$requests,$provider);
+ 		$requests->confirmProviderId = $provider->id;
+ 		$this->RequestsModel->attachConfirms($provider);
+ 		$this->RequestsModel->attachConfirms(currentUser());
+ 		$this->view->requests=$requests;
+ 		$this->view->provider=$provider;
+ 		$this->RequestsModel->notifyConfirms($requests,currentUser(),$provider);
+ 		// $customer = $this->RequestsModel->findcustomer($user_id);
+
+ 		// $this->view->customer=$customer;
+ 		// $this->RequestsModel->sendAcceptance($requests,currentUser(),$owner);
+ 	if($requests->providerId)
+ 	{
+ 		$providers = explode(",",$requests->providerId);
+ 		$providerslist[]=[];
+ 		foreach ($providers as $each_number) 
+ 		{
+ 			// $x = 0;
+ 			// dnd($requests->confirmProviderId);
+ 			if($requests->confirmProviderId != (int)$each_number)
+ 			{
+ 				// dnd('p');
+// $x+=1;
+      			$provider_= currentUser()->findById((int) $each_number);
+ 			
+      		// dnd($provider_);
+      		currentUser()->sendOthers($provider_ , currentUser(),$requests);
+      		$providerslist[] = $provider_;
+     }
+     // dnd($x);
+     
+     // dnd($each_number);
+  }	
+  // dnd($providerslist);
+ 		$this->view->render('requests/confirm');
+
+ 	}
 
  }
+
+public function cancelAction($id,$user_id)
+ 	{
+ 		$request = $this->RequestsModel->findById($id);
+ 		$owner = currentUser()->findById($user_id);
+ 		$providerList = explode(",",$request->providerId);
+ 		$providernameList = explode(",",$request->providerName);
+ 		// dnd($providerList);
+ 		// dnd((string)(currentUser()->id));
+ 		// array_search($key_to_index,array_keys($array))
+ 		// $userIdIndex = array_search((string)(currentUser()->id),array_keys($providerList));
+ 		$newproviders = $this->RequestsModel->deleteProviderId($providerList);
+ 		$newprovidernames = $this->RequestsModel->deleteProviderName($providernameList);
+ 		// dnd($newproviders);
+ 		$this->RequestsModel->unsetAccepted($id,$newproviders);
+ 		$this->RequestsModel->unsetConfirm($id,$request);
+ 		$this->RequestsModel->updateCancellation($id,$newproviders,$newprovidernames);
+ 		// dnd('1');
+ 		$this->RequestsModel->attachCancellation($owner);
+ 		$this->RequestsModel->attachCancellation(currentUser());
+ 		$this->view->request=$request;
+ 		$this->view->owner=$owner;
+ 		$this->RequestsModel->notifyCancellation($request,currentUser(),$owner);
+ 		// $customer = $this->RequestsModel->findcustomer($user_id);
+
+ 		// $this->view->customer=$customer;
+ 		// $this->RequestsModel->sendAcceptance($requests,currentUser(),$owner);
+ 		$this->view->render('requests/cancel');
+ 	}
+
+}

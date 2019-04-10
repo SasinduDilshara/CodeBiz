@@ -14,7 +14,7 @@ class Users extends Model implements Observer
 		$this->_softDelete = true;
 		if($user != '')
 		{
-			if(is_int($user))//
+			if(is_int($user))
 			{
 				$u = $this->_db->findFirst('users',['conditions' => 'id = ?','bind' =>[$user]]);
 			}
@@ -342,6 +342,42 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	}
 
+		public function updateCancelObserver($request,$provider,$customer)
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($customer->notifications==NULL)
+		{
+			$Notification = $provider->username." has been cancelled the acceptance to your ".$request->service;
+		}
+	else
+	{
+		$Notification = $provider->username." has been cancelled the acceptance to your ".$request->service. ",".$customer->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($customer->id, ['notifications' => $Notification]);
+
+	}
+
+	public function updateCancelProvider($request,$provider,$customer)
+
+	{
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = "You cancelled acceptance of the ". $request->service." which was request by the ".$customer->username;
+		}
+	else
+	{
+		$Notification = "You cancelled acceptance of the ". $request->service." which was request by the ".$customer->username. ",".$provider->notifications; 
+	}
+		return $this->update($provider->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
+
 	public function updateProvider($request,$provider,$customer)
 
 	{
@@ -357,6 +393,62 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		return $this->update($provider->id, ['notifications' => $Notification]);
 	// dnd($Notification);
 	}
+
+	public function updateConfirmObserver($request,$customer,$provider)
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = "Your ". 'acceptance for the '.$request->service.' request'." has been confirmed by ".$customer->username;
+		}
+	else
+	{
+		$Notification =  "Your ". 'acceptance for the '.$request->service.' request'." has been confirmed by ".$customer->username. ",".$provider->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($provider->id, ['notifications' => $Notification]);
+
+	}
+
+	public function updateCustomer($request,$customer,$provider)
+
+	{
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = "You confirm the ". $request->service." which was accepted by the ".$provider->username;
+		}
+	else
+	{
+		$Notification = "You confirm the ". $request->service." which was accepted by the ".$provider->username. ",".$customer->notifications; 
+	}
+		return $this->update($customer->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
+
+	public function setMessagesEmpty($user)
+	{
+		return $this->update($user->id, ['notifications' => '']);
+	}
+
+	public function sendOthers($provider,$customer,$request)
+ 	{
+ 		// if($provider->username!= 'yasith' && $provider->username!= 'provider'){dnd($provider);}
+ 	if($provider->notifications==NULL)
+		{
+			$Notification = $request->service." has been given to another service provider by ".$customer->username;
+		}
+	else
+	{
+		$Notification =  $request->service." has been given to another service provider by ".$customer->username. ",".$provider->notifications; 
+	}
+
+ 		return $this->update($provider->id, ['notifications' => $Notification]);
+ 	}
 
 	
 }

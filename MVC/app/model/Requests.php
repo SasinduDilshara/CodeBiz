@@ -3,16 +3,18 @@
 class Requests extends Model implements Observable
 {
 	public $observers=[];
+	public $confirmobservers=[];
+	public $cancelAceeptsObservers = [];
 	public function __construct($request='')
 	{
 		$table = 'requests';
 		parent:: __construct($table);
 		$this->_softDelete = false;
 		$observers = [];
+		$confirmobservers = [];
+		$cancelAceeptsObservers = [];
 	}
 
-	
-	
 
 	// public $customer =currentUser()->username;
 
@@ -100,12 +102,63 @@ class Requests extends Model implements Observable
 	// return $this->find($conditions);
 	// }	
 
-	public function setAccepted($id)
+	public function setAccepted($id,$request,$owner)
 	{
-		return $this->update($id, ['accepted' => 1]);
+	if(currentUser() && currentUser()->userType == 'Customer')
+		{
+		$this->update($id, ['accepted' => 1]);
+		$this->update($id, ['confirmProviderId' => $owner->id]);
+		}
+		// dnd($owner);
+	else if(currentUser()->userType == 'Provider')
+	{
+		if($request->providerId==null)
+		{
+			$this->update($id, ['providerId' => (string)($owner->id)]);
+			$this->update($id, ['providerName' => $owner->username]);
+		}
+		else
+		{
+			// dnd($request->providerId+","+(string)($owner->id));;
+			$this->update($id, ['providerId' => $request->providerId.",".(string)($owner->id)]);
+			$this->update($id, ['providerName' => $request->providerName.",".$owner->username]);			
+		}
+	}
 	}
 
-	public function notify($requests,$provider,$owner)
+		public function unsetAccepted($id,$newproviders)
+	{
+	if(currentUser() && currentUser()->userType == 'Provider')
+		{
+		$this->update($id, ['accepted' => 0]);
+		$this->update($id, ['confirmProviderId' => $newproviders]);
+		}
+		// dnd($owner);
+	// else if(currentUser()->userType == 'Provider')
+	// {
+	// 	if($request->providerId==null)
+	// 	{
+	// 		$this->update($id, ['providerId' => (string)($owner->id)]);
+	// 		$this->update($id, ['providerName' => $owner->username]);
+	// 	}
+	// 	else
+	// 	{
+	// 		// dnd($request->providerId+","+(string)($owner->id));;
+	// 		$this->update($id, ['providerId' => $request->providerId.",".(string)($owner->id)]);
+	// 		$this->update($id, ['providerName' => $request->providerName.",".$owner->username]);			
+	// 	}
+	// }
+	}
+
+	public function unsetConfirm($id,$request)
+	{
+		if(currentUser() && currentUser()->userType == 'Provider' && $request->confirmProviderId == currentUser()->id)
+			{
+			$this->update($id, ['confirmProviderId' => 0]);
+			}
+	}
+
+	public function notifyAccepts($requests,$provider,$owner)
 	{
 		// dnd($requests);
 		// dnd($this->observers);
@@ -121,13 +174,41 @@ class Requests extends Model implements Observable
 		    }
 		}
 	}
-	public function attach($observer)
+	public function attachAccepts($observer)
 		{
 			// dnd($this->observers);
 			// dnd($observer);
 			array_push($this->observers,$observer);
 		}
-	public function detach($observer)
+	public function detachAccepts($observer)
+		{
+			// array_push($this->observers,$observer);
+		}
+
+	public function notifyConfirms($requests,$customer,$provider)
+	{
+		// dnd($requests);
+		// dnd($this->confirmobservers);
+		foreach($this->confirmobservers as $observer)
+		{
+			// dnd("p");
+			if($observer->userType == "Provider")
+			{
+			$observer->updateConfirmObserver($requests,$customer,$provider);
+		    }
+		    elseif($observer->userType == "Customer")
+		    {
+		    $observer->updateCustomer($requests,$customer,$provider);
+		    }
+		}
+	}
+	public function attachConfirms($observer)
+		{
+			// dnd($this->confirmobservers);
+			// dnd($observer);
+			array_push($this->confirmobservers,$observer);
+		}
+	public function detachConfirms($observer)
 		{
 			// array_push($this->observers,$observer);
 		}
@@ -136,6 +217,74 @@ class Requests extends Model implements Observable
  	{
  		currentUser()->sendMessage($request,$provider,$customer);
  	}
+ 	// public function sendOthers($provider_)
+ 	// {
+
+ 	// }
+ 	public function deleteProviderId($providerList)
+ 	{
+ 	 	$newList='';
+ 		foreach ($providerList as $ids) 
+ 		{
+ 			if($ids!=currentUser()->id)
+ 			{
+ 				$newList.=$ids.",";
+ 			}
+ 			// $index+=1
+ 		}
+ 		$newList = rtrim($newList,',');
+ 		return $newList;
+ 	}
+
+ 	 	public function deleteProviderName($providerList)
+ 	{
+ 	 	$newList='';
+ 		foreach ($providerList as $ids) 
+ 		{
+ 			if($ids!=currentUser()->username)
+ 			{
+ 				$newList.=$ids.",";
+ 			}
+ 			// $index+=1
+ 		}
+ 		$newList = rtrim($newList,',');
+ 		return $newList;
+ 	}
+
+ 	public function updateCancellation($id,$Idlist,$NameList)
+ 	{
+ 		$this->update($id, ['providerId' => $Idlist]);
+ 		$this->update($id, ['providerName' => $NameList]);
+ 	}
+
+
+
+	public function notifyCancellation($requests,$provider,$owner)
+	{
+		// dnd($requests);
+		// dnd($this->observers);
+		foreach($this->cancelAceeptsObservers as $observer)
+		{
+			if($observer->userType == "Customer")
+			{
+			$observer->updateCancelObserver($requests,$provider,$owner);
+		    }
+		    elseif($observer->userType == "Provider")
+		    {
+		    $observer->updateCancelProvider($requests,$provider,$owner);
+		    }
+		}
+	}
+	public function attachCancellation($observer)
+		{
+			// dnd($this->observers);
+			// dnd($observer);
+			array_push($this->cancelAceeptsObservers,$observer);
+		}
+	public function deattachCancellation($observer)
+		{
+			// array_push($this->observers,$observer);
+		}
 
 }
 

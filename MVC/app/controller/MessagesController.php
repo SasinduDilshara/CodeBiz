@@ -21,9 +21,24 @@ class MessagesController extends Controller
 	{
 		$messages= currentUser()->notifications;
 		// dnd($messges);
-		$messages=explode (",", $messages);
-		$this->view->messages=$messages;
-		$this->view->render('messages/show');
+		if(!$messages)
+		{
+			$this->view->render('messages/empty');
+		}
+		else
+			{
+				$messages=explode (",", $messages);
+				$this->view->messages=$messages;
+				$this->view->render('messages/show');
+			}
+	}
+
+		public function clearAction()
+	{
+		$messages= currentUser()->notifications;
+		currentUser()->notifications='';
+		$this->UsersModel->setMessagesEmpty(currentUser());
+		$this->view->render('messages/afterclear');
 	}
 
 

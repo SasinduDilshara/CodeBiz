@@ -16,8 +16,8 @@
 	 	"Advertisements" : ["*"],
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
-	 	"Requests" : ["select","search","details","accept"],
-	 	"Messages" : ["show"]
+	 	"Requests" : ["select","search","details","accept","cancel"],
+	 	"Messages" : ["*"]
 	 },
 
 	 "Customer" :
@@ -31,6 +31,6 @@
 	 	"Accounts" : ["*"],
 	 	"Advertisements" : ["search"],
 	 	"Requests" : ["*"],
-	 	"Messages" : ["show"]
+	 	"Messages" : ["*"]
 	 }
 }
