@@ -9,6 +9,9 @@ interface Observable
 	public function notifyConfirms($requests,$provider,$owner);
 	public function attachConfirms($observer);
 	public function detachConfirms($observer);
+	public function notifyCancellation($requests,$provider,$owner);
+	public function attachCancellation($observer);
+	public function deattachCancellation($observer);
 
 
 } 

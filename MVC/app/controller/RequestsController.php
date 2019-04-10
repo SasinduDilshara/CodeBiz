@@ -276,4 +276,31 @@ public function cancelAction($id,$user_id)
  		$this->view->render('requests/cancel');
  	}
 
-}
+ 	public function cancelConfirmAction($id,$provider_id)
+ 	{
+ 		// $this->RequestsModel->setAccepted($id,$request,$provider);
+ 		$provider = currentUser()->findById($provider_id);
+ 		$request = $this->RequestsModel->findById($id);
+ 		// $owner = currentUser()->findById($user_id);
+ 		$this->RequestsModel->unsetAccepted($id,$request,$provider);
+ 		$request->confirmProviderId = 0;
+ 		$this->RequestsModel->attachCancelConfirms($provider);
+ 		$this->RequestsModel->attachCancelConfirms(currentUser());
+ 		$this->view->request=$request;
+ 		$this->view->provider=$provider;
+ 		$this->RequestsModel->notifyCancelConfirms($request,currentUser(),$provider);
+ 		// $customer = $this->RequestsModel->findcustomer($user_id);
+
+ 		// $this->view->customer=$customer;
+ 		// $this->RequestsModel->sendAcceptance($requests,currentUser(),$owner);
+     // dnd($x);
+     
+     // dnd($each_number);
+  	
+  // dnd($providerslist);
+ 		$this->view->render('requests/confirm');
+
+ 	}
+
+ }
+

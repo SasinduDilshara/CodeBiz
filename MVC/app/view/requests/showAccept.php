@@ -21,7 +21,17 @@
 			</td>
 				<td><?= $this->date ?></td>
 				<td><?= $this->time ?></td>
-				<td><a href="<?=PROOT?>requests/confirm/<?=$this->request->id?>/<?=$provider->id?>" class="btn btn-danger btn-xs"></i> Confirm </a></td></td>
+				<td>
+				<?php if($this->request->confirmProviderId != $provider->id):?>
+				<a href="<?=PROOT?>requests/confirm/<?=$this->request->id?>/<?=$provider->id?>" class="btn btn-danger btn-xs"></i> Confirm </a>
+				<?php endif; ?>
+				<?php if($this->request->confirmProviderId == $provider->id):?>
+				<a href="<?=PROOT?>requests/cancelConfirm/<?=$this->request->id?>/<?=$provider->id?>" class="btn btn-danger btn-xs"></i> Cancel Confirmation </a>
+				<?php endif; ?>
+
+
+					
+				</td>
 			</tr>
 
 		<?php endforeach; ?>

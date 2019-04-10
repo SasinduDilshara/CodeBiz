@@ -5,6 +5,7 @@ class Requests extends Model implements Observable
 	public $observers=[];
 	public $confirmobservers=[];
 	public $cancelAceeptsObservers = [];
+	public $CancelConfirmobservers = [];
 	public function __construct($request='')
 	{
 		$table = 'requests';
@@ -13,6 +14,7 @@ class Requests extends Model implements Observable
 		$observers = [];
 		$confirmobservers = [];
 		$cancelAceeptsObservers = [];
+		$CancelConfirmobservers = [];
 	}
 
 
@@ -134,21 +136,13 @@ class Requests extends Model implements Observable
 		$this->update($id, ['confirmProviderId' => $newproviders]);
 		}
 		// dnd($owner);
-	// else if(currentUser()->userType == 'Provider')
-	// {
-	// 	if($request->providerId==null)
-	// 	{
-	// 		$this->update($id, ['providerId' => (string)($owner->id)]);
-	// 		$this->update($id, ['providerName' => $owner->username]);
-	// 	}
-	// 	else
-	// 	{
-	// 		// dnd($request->providerId+","+(string)($owner->id));;
-	// 		$this->update($id, ['providerId' => $request->providerId.",".(string)($owner->id)]);
-	// 		$this->update($id, ['providerName' => $request->providerName.",".$owner->username]);			
-	// 	}
-	// }
+	else if(currentUser() && currentUser()->userType == 'Customer')
+	{
+		$this->update($id, ['accepted' => 0]);
+		$this->update($id, ['confirmProviderId' => 0 ]);
+		
 	}
+}
 
 	public function unsetConfirm($id,$request)
 	{
@@ -285,6 +279,36 @@ class Requests extends Model implements Observable
 		{
 			// array_push($this->observers,$observer);
 		}
+
+	public function notifyCancelConfirms($requests,$customer,$provider)
+	{
+		// dnd($requests);
+		// dnd($this->confirmobservers);
+		foreach($this->CancelConfirmobservers as $observer)
+		{
+			// dnd("p");
+			if($observer->userType == "Provider")
+			{
+			$observer->updateCancelConfirmObserver($requests,$customer,$provider);
+		    }
+		    elseif($observer->userType == "Customer")
+		    {
+		    $observer->updateCancelCustomer($requests,$customer,$provider);
+		    }
+		}
+	}
+
+	public function attachCancelConfirms($observer)
+	{
+			// dnd($this->observers);
+			// dnd($observer);
+			array_push($this->CancelConfirmobservers,$observer);
+	}
+
+	public function deattachCancelConfirms($observer)
+	{
+
+	}
 
 }
 

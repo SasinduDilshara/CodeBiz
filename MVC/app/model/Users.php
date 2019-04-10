@@ -418,7 +418,7 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 
 	{
 
-	if($provider->notifications==NULL)
+	if($customer->notifications==NULL)
 		{
 			$Notification = "You confirm the ". $request->service." which was accepted by the ".$provider->username;
 		}
@@ -450,6 +450,42 @@ return $this->update($provider->id, ['notifications' => $Notification]);
  		return $this->update($provider->id, ['notifications' => $Notification]);
  	}
 
+ 	public function updateCancelConfirmObserver($requests,$customer,$provider)
+ 	{
+ 		{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = 'Confirmation for your '.$requests->service.' acceptance'." has been cancelled by ".$customer->username;
+		}
+	else
+	{
+		$Notification =  'Confirmation for your '.$requests->service.' acceptance'." has been cancelled by ".$customer->username. ",".$provider->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($provider->id, ['notifications' => $Notification]);
+
+	}
+ 	}
+
+ 	public function updateCancelCustomer($requests,$customer,$provider)
+	{
+
+	if($customer->notifications==NULL)
+		{
+			$Notification = "You cancelled the ". $requests->service." confirmation of ".$provider->username;
+		}
+	else
+	{
+		$Notification = "You cancelled the ". $requests->service." confirmation of ".$provider->username. ",".$customer->notifications; 
+	}
+		return $this->update($customer->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
 	
 }
 
