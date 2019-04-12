@@ -28,6 +28,7 @@
 				<?php if($this->request->confirmProviderId == $provider->id):?>
 				<a href="<?=PROOT?>requests/cancelConfirm/<?=$this->request->id?>/<?=$provider->id?>" class="btn btn-danger btn-xs"></i> Cancel Confirmation </a>
 				<?php endif; ?>
+				
 
 
 					
