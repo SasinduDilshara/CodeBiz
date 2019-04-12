@@ -18,11 +18,6 @@ class RequestsController extends Controller
 		 // dnd($requests);
 
 		$this->view->requests=$requests;
-		// dnd($this->view->requests);
-		foreach($requests as $r)
-		{
-			// dnd($r->service);
-		}
 		$this->view->render('requests/index');
 	}
 
@@ -36,6 +31,7 @@ class RequestsController extends Controller
 			$_POST['accepted'] = 0;
 			// $_POST['confirmProviderId'] = 0;
 			$_POST['completed'] = 0;
+			$_POST['chat'] = '';
 			$request->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
 		$validation->check($_POST,Requests::$addValidation);
@@ -301,6 +297,77 @@ public function cancelAction($id,$user_id)
  		$this->view->render('requests/confirm');
 
  	}
+
+ 	public function ShowConfirmRequestsAction()
+ 	{
+ 		$requests = $this->RequestsModel->findByUserconfirmId(currentUser()->id,['order'=>'service']);
+		 // dnd($requests);
+ 		if(!$requests)
+ 		{
+ 			$this->view->render('requests/noRequestsYet');
+ 		}
+
+		else{
+			$this->view->requests=$requests;
+			$this->view->render('requests/showConfirmsinHome');
+		}
+
+ 	}
+
+ 	public function askQuestionAction($id,$user_id)
+{	
+	// $validation = new Validate();
+    $request = $this->RequestsModel->findByIdAndUserId((int)$id,$user_id);
+    $customer = currentUser()->findById($request->user_id);
+    // if(!$request) Router::redirect('requests');
+    if($_POST)
+    {
+		$message = currentUser()->username." : ".$_POST['chat'];
+		$chat = $this->RequestsModel->getmessage($id,$request,$message); 
+		$request->chat = $chat;
+		// $this->RequestsModel->updateMessages($id,$messages);
+		$this->view->customer = $customer;
+		$this->view->render('requests/succefulAskedQuestion');
+	}
+	else
+	{
+
+	    // $this->view->displayErrors=$validation->displayErrors();
+	    $this->view->request = $request;
+	    // $this->view->chatter = username;
+	    $this->view->postAction = PROOT . 'requests' . DS . 'askQuestion' . DS . $request->id . DS . $request->user_id;
+	    $this->view->render('requests/askQuestionByProvider');
+	}
+}	
+
+ 	public function showChatAction($requestId)
+ {
+ 	$request = $this->RequestsModel->findById((int)$requestId);
+ 	$chat = $request->chat;
+ 	if(!$chat)
+		{
+			$this->view->render('requests/emptyChat');
+		}
+		else
+			{
+				$chat=explode (",", $chat);
+				$this->view->chat=$chat;
+				$this->view->request = $request;
+				$this->view->render('requests/showChat');
+			}
+ }
+
+ public function clearChatAction($requestId)
+ 	{
+ 		$request = $this->RequestsModel->findById((int)$requestId);
+ 		// dnd($request);
+		$messages= $request->chat;
+		 $request->chat='';
+		 // dnd('6');
+		$this->RequestsModel->setChatEmpty($request);
+
+		$this->view->render('requests/AfterClearChat');
+	}
 
  }
 

@@ -12,7 +12,11 @@
 	
 </div>
 <div>
-	<?php include 'messagesbutton.php' ?>
+	<?php include 'notificationsbutton.php' ?>
+</div>
+
+<div>
+	<?php include 'showConfirmRequests.php' ?>
 </div>
 
 <?php $this->end(); ?>

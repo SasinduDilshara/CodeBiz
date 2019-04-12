@@ -16,8 +16,9 @@
 	 	"Advertisements" : ["*"],
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
-	 	"Requests" : ["select","search","details","accept","cancel"],
-	 	"Messages" : ["*"]
+	 	"Requests" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat"],
+	 	"Messages" : ["*"],
+	 	"Notifications" : ["*"]
 	 },
 
 	 "Customer" :
@@ -31,6 +32,7 @@
 	 	"Accounts" : ["*"],
 	 	"Advertisements" : ["search"],
 	 	"Requests" : ["*"],
-	 	"Messages" : ["*"]
+	 	"Messages" : ["*"],
+	 	"Notifications" : ["*"]
 	 }
 }

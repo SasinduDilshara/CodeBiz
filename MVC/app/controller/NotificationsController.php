@@ -1,6 +1,6 @@
 <?php
 
-class MessagesController extends Controller
+class NotificationsController extends Controller
 {
 	public function __construct($controller , $action)
 	{
@@ -19,17 +19,18 @@ class MessagesController extends Controller
 
 	public function showAction()
 	{
+		// dnd("kl");
 		$messages= currentUser()->notifications;
 		// dnd($messges);
 		if(!$messages)
 		{
-			$this->view->render('messages/empty');
+			$this->view->render('notifications/empty');
 		}
 		else
 			{
 				$messages=explode (",", $messages);
 				$this->view->messages=$messages;
-				$this->view->render('messages/show');
+				$this->view->render('notifications/show');
 			}
 	}
 
@@ -38,7 +39,7 @@ class MessagesController extends Controller
 		$messages= currentUser()->notifications;
 		currentUser()->notifications='';
 		$this->UsersModel->setMessagesEmpty(currentUser());
-		$this->view->render('messages/afterclear');
+		$this->view->render('notifications/afterclear');
 	}
 
 

@@ -81,6 +81,17 @@ class Requests extends Model implements Observable
 	return $this->findFirst($conditions);
 	}
 
+	public function findByUserconfirmId($userId,$params=[])
+	{
+		// dnd($userId);
+		$conditions = ['conditions'=>'confirmProviderId = ?','bind'=>[$userId]
+	];
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+	// dnd($this->find($conditions));
+	return $this->find($conditions);
+	}
+
 	public function findByLocation($location,$params=[])
 	{
 		// dnd($request_id,);
@@ -310,6 +321,26 @@ class Requests extends Model implements Observable
 
 	}
 
+	public function getmessage($id,$request,$message)
+	{
+		if($request->chat == '')
+		{
+			$CHATS = $message;
+		}
+		else
+		{
+			$CHATS = $request->chat.','.$message;
+			// dnd($CHATS);
+		}
+
+		$this->update($id, ['chat' => $CHATS]);
+	return $CHATS;
+	}
+
+	public function setChatEmpty($request)
+	{
+		return $this->update($request->id, ['chat' => '']);
+	}
 }
 
 ?>
