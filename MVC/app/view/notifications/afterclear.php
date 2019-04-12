@@ -5,6 +5,6 @@
 
 <p> Your Notifications have been cleared  </p>
 
-<a href="<?=PROOT?>messages/show" class="btn btn-xs btn-default"> Back</a>
+<a href="<?=PROOT?>notifications/show" class="btn btn-xs btn-default"> Back</a>
 
 <?php $this->end(); ?>
