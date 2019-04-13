@@ -93,6 +93,8 @@ class RegisterController extends Controller
         {     
             $_POST['userType'] = $userType;
             $_POST['notifications'] = '';
+            $_POST['overallRating'] = 0;
+            $_POST['ratingtimes'] = 0;
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  
@@ -179,6 +181,39 @@ class RegisterController extends Controller
 
 
     }
+
+    public function confirmedAction($servicerId)
+    {
+        // dnd($servicerId);
+        $servicer = $this->UsersModel->findByUserId((int)$servicerId);
+        // dnd($servicer->id);
+        $servicer = $servicer[0];
+        $rate = $servicer->overallRating * (int)($servicer->ratingtimes);
+    if($_POST)
+    {
+        $rate+=$_POST['overallRating'];
+        $ratingtimes = (int)($servicer->ratingtimes) + 1;
+        // $ratetimes =$_POST['ratetimes'];
+        $servicer->overallRating = $rate/$ratingtimes;
+        $rate = $rate/$ratingtimes;
+        $this->view->servicer = $servicer;
+        $this->view->rate = $rate;
+        $result = $this->UsersModel->markRate($servicer->id , $rate, $ratingtimes);
+        $this->view->render('requests/afterSuccefulRated');
+    }
+    else
+    {
+
+        // $this->view->displayErrors=$validation->displayErrors();
+        $this->view->servicer = $servicer;
+        // $this->view->chatter = username;
+        $this->view->postAction = PROOT . 'register' . DS . 'confirmed' . DS . $servicerId;
+        $this->view->render('requests/askRating');
+    }
+    }
+
+
+
 }
 
 

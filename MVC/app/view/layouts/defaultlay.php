@@ -10,6 +10,13 @@
 
      <script src="<?=PROOT?>js/jQuery-2.2.4.min.js"></script>
      <script src="<?=PROOT?>js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+      function disableButton(id){
+        document.getElementById(id).disabled = true;
+        // alert("Button has been disabled.");
+      }
+    </script>
+  
      
 
     <title><?= $this->siteTitle() ?></title>

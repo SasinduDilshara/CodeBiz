@@ -60,11 +60,11 @@
 		<?php $servicer = currentUser()->findById($request->confirmProviderId) ?>
 				<td>
 					<a 
-					href="<?=PROOT?>accounts/details/<?=$request->user_id?>">
+					href="<?=PROOT?>accounts/details/<?=$request->confirmProviderId?>">
 					<?= $servicer->username ?>
 				</td>
 				<td>
-				<a href="<?=PROOT?>requests/cancelConfirm/<?=$this->request->id?>/<?=$provider?>" class="btn btn-danger btn-xs"></i> Cancel Confirmation </a></a>
+				<a href="<?=PROOT?>requests/cancelConfirm/<?=$request->id?>/<?=$provider?>" class="btn btn-danger btn-xs"></i> Cancel Confirmation </a></a>
 				<td>
 				<td>
 					<a href="<?=PROOT?>requests/askQuestion/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Message to Provider </a>

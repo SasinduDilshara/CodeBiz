@@ -13,6 +13,7 @@
 		<p><strong><pre> Area :  </strong><?=$this->account->area?></pre></p>
 		<p><strong><pre> Address :  </strong><?=$this->account->displayAddress()?></pre></p>
 		<p><strong><pre> Type of User :  </strong><?=$this->account->displayType()?></pre></p>
+		<p><strong><pre> Rating :  </strong><?=$this->account->overallRating?></pre></p>
 	</div>
 	<div class="col-md-6">
 		<?=$this->account->displayAddressLabel()?>

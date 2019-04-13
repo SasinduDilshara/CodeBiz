@@ -12,6 +12,7 @@
 		<p><strong><pre> Contact :  </strong><?=$this->account->phoneNumber?></pre></p>
 		<p><strong><pre> Address :  </strong><?=$this->account->displayAddress()?></pre></p>
 		<p><strong><pre> Type of User :  </strong><?=$this->account->displayType()?></pre></p>
+		
 	</div>
 
 	<a href="<?=PROOT?>accounts/edit/<?=$this->account->id?>" class="btn btn-xs btn-default"> Edit </a>

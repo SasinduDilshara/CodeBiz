@@ -31,7 +31,7 @@ class RequestsController extends Controller
 			$_POST['accepted'] = 0;
 			// $_POST['confirmProviderId'] = 0;
 			$_POST['completed'] = 0;
-			$_POST['completeId'] = 0;
+			$_POST['completed'] = 0;
 			$_POST['chat'] = '';
 			$request->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
@@ -451,6 +451,8 @@ public function cancelAction($id,$user_id)
 		$this->view->render('requests/uncompletionMessage');
 		
 	}
+
+
 
  }
 

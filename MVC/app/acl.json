@@ -11,13 +11,13 @@
 	 {
 	 	"denied" : { "Register" : [ "login","register"]
 	 	},
-	 	"Register" : ["logout"],
+	 	"Register" : ["logout","confirmed"],
 	 	"Contacts" :["*"],
 	 	"Advertisements" : ["*"],
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
 	 	"Requests" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat",
-	 					"FinishedRequests","markCompleted","UnmarkCompleted"],
+	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmed"],
 	 	"Messages" : ["*"],
 	 	"Notifications" : ["*"]
 	 },
@@ -26,7 +26,7 @@
 	 {
 	 	"denied" : { "Register" : [ "login","register"] , "Advertisements" : ["index"]
 	 	},
-	 	"Register" : ["logout"],
+	 	"Register" : ["logout","confirmed"],
 	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"],
 	 	"Home" : ["*"],

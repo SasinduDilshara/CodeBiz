@@ -5,6 +5,6 @@
 
 <p> Your Completion cancelation was inform to the <?= $this->servicer->username ?> </p>
 
-<a href="<?=PROOT?>requests/confirmed" class="btn btn-xs btn-default"> Finish</a>
+<a href="<?=PROOT?>requests/FinishedRequests" class="btn btn-xs btn-default"> Back</a>
 
 <?php $this->end(); ?>

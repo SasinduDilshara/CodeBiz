@@ -200,6 +200,9 @@ public function findByUserIdandCompleteID($user_id,$cId,$params=[])
 		$this->update($id, ['confirmProviderId' => 0 ]);
 		
 	}
+
+	$this->update($id, ['chat' => '' ]);
+
 }
 
 	public function unsetConfirm($id,$request)
@@ -307,6 +310,7 @@ public function findByUserIdandCompleteID($user_id,$cId,$params=[])
  	{
  		$this->update($id, ['providerId' => $Idlist]);
  		$this->update($id, ['providerName' => $NameList]);
+
  	}
 
 
@@ -370,7 +374,7 @@ public function findByUserIdandCompleteID($user_id,$cId,$params=[])
 
 	public function getmessage($id,$request,$message)
 	{
-		if($request->chat == '')
+		if(($request->chat == null))
 		{
 			$CHATS = $message;
 		}
