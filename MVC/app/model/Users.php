@@ -25,6 +25,7 @@ class Users extends Model implements Observer
 
 			//database ekata danawa
 
+
 			if($u)
 			{
 				foreach($u as $key => $val)

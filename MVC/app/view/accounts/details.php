@@ -18,9 +18,10 @@
 	<div class="col-md-6">
 		<?=$this->account->displayAddressLabel()?>
 	</div>
-
+<?php if(currentUser()->username == $this->account->username): ?>
 	<a href="<?=PROOT?>accounts/edit" class="btn btn-xs btn-default"> Edit</a>
 	<a href="<?=PROOT?>home" class="btn btn-xs btn-default"> Back</a>
+<?php endif; ?>
 
 </div>
 

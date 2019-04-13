@@ -180,6 +180,8 @@ public function findByUserIdandCompleteID($user_id,$cId,$params=[])
 		// dnd($userId);
 		$this->update($id, ['completed' => 0]);
 		$this->update($id, ['completeId' => 0]);
+		$this->update($id, ['rated' => 0]);
+		$this->update($id, ['ratedType' => '']);
 
 		return true;
 	}
@@ -391,6 +393,23 @@ public function findByUserIdandCompleteID($user_id,$cId,$params=[])
 	public function setChatEmpty($request)
 	{
 		return $this->update($request->id, ['chat' => '']);
+	}
+
+	public function updateRate($request,$id,$rate)
+	{
+		$rate=$request->rated + $rate;
+		if($request->ratedType == '')
+		{
+			$c = '';
+		}
+		else
+		{
+			$c = ',';
+		}
+		$ratedType = $request->ratedType .$c .currentUser()->userType;
+		$this->update($id, ['rated' => $rate]);
+		$this->update($id, ['ratedType' => $ratedType]);
+		// $this->update($id, ['confirmProviderId' => $newproviders]);
 	}
 
 }

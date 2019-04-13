@@ -5,6 +5,6 @@
 
 <p> No finished requests yet. </p>
 
-<a href="<?=PROOT?>requests" class="btn btn-xs btn-default"> Back</a>
+<a href="<?=PROOT?>" class="btn btn-xs btn-default"> Back</a>
 
 <?php $this->end(); ?>

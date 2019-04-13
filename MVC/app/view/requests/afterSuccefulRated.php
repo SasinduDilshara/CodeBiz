@@ -3,7 +3,7 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<p> You Succefully rated the <?= $this->servicer->username ?> </p>
+<p> You Succefully rated the <?= $this->name ?> </p>
 
 <a href="<?=PROOT?>requests/FinishedRequests" class="btn btn-xs btn-default"> Back</a>
 

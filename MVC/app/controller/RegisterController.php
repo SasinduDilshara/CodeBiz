@@ -12,6 +12,7 @@ class RegisterController extends Controller
 		$this->load_model('Users');
 	}
 
+
 	public function loginAction()
 	
 	{	
@@ -182,15 +183,17 @@ class RegisterController extends Controller
 
     }
 
-    public function confirmedAction($servicerId)
+    public function confirmedAction($servicerId,$reqId)
     {
         // dnd($servicerId);
+        $reqId = (int)$reqId;
         $servicer = $this->UsersModel->findByUserId((int)$servicerId);
         // dnd($servicer->id);
         $servicer = $servicer[0];
         $rate = $servicer->overallRating * (int)($servicer->ratingtimes);
     if($_POST)
     {
+        $newRate = (string)$_POST['overallRating'];
         $rate+=$_POST['overallRating'];
         $ratingtimes = (int)($servicer->ratingtimes) + 1;
         // $ratetimes =$_POST['ratetimes'];
@@ -199,7 +202,7 @@ class RegisterController extends Controller
         $this->view->servicer = $servicer;
         $this->view->rate = $rate;
         $result = $this->UsersModel->markRate($servicer->id , $rate, $ratingtimes);
-        $this->view->render('requests/afterSuccefulRated');
+        Router::redirect('requests/markrate' . DS . $reqId .DS . $newRate . DS . $servicer->username);
     }
     else
     {
@@ -207,7 +210,7 @@ class RegisterController extends Controller
         // $this->view->displayErrors=$validation->displayErrors();
         $this->view->servicer = $servicer;
         // $this->view->chatter = username;
-        $this->view->postAction = PROOT . 'register' . DS . 'confirmed' . DS . $servicerId;
+        $this->view->postAction = PROOT . 'register' . DS . 'confirmed' . DS . $servicerId . DS . $reqId;
         $this->view->render('requests/askRating');
     }
     }

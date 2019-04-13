@@ -11,6 +11,7 @@
 	</thead>
 	<body>
 <?php foreach($this->requests as $request): ?>
+
 			<tr>
 				<td>
 					<a 
@@ -49,8 +50,12 @@
 					<a href="<?=PROOT?>requests/UnmarkCompleted/<?=$request->id?>/<?=currentUser()->id ?>" class="btn btn-danger btn-xs"></i> Mark as Not completed </a>
 				</td>
 				<td>
-					<a href="<?=PROOT?>register/confirmed/<?= $servicer->id ?>" class="btn btn-danger btn-xs" id = 'abc' onclick="disableButton('abc')"> Rate <?= $servicer->username ?></a>
-
+					<?php if(!(in_array(currentUser()->userType,explode (",", ($request->ratedType))))): ?>
+					<a href="<?=PROOT?>register/confirmed/<?=$servicer->id?>/<?=$request->id?>" class="btn btn-danger btn-xs"> Rate <?= $servicer->username ?></a>
+				<?php endif; ?>
+				<?php if((in_array(currentUser()->userType,explode (",", ($request->ratedType))))): ?>
+					<a  class="btn btn-danger btn-xs" disabled> Rate <?= $servicer->username ?></a>
+				<?php endif; ?>
 				</td>
 <?php endif;?>
 
@@ -63,9 +68,7 @@
 					href="<?=PROOT?>accounts/details/<?=$request->confirmProviderId?>">
 					<?= $servicer->username ?>
 				</td>
-<!-- 				<td>
-				<a href="<?=PROOT?>requests/cancelConfirm/<?=$this->request->id?>/<?=$provider?>" class="btn btn-danger btn-xs"></i> Cancel Confirmation </a></a>
-				<td> -->
+
 				<td>
 					<a href="<?=PROOT?>requests/askQuestion/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Message to Provider </a>
 				</td>
@@ -76,10 +79,14 @@
 					<a href="<?=PROOT?>requests/UnmarkCompleted/<?=$request->id?>/<?=currentUser()->id ?>" class="btn btn-danger btn-xs"></i> Mark as Not completed </a>
 				</td>
 				<td>
-					<a href="<?=PROOT?>register/confirmed/<?= $servicer->id ?>" class="btn btn-danger btn-xs"> Rate <?= $servicer->username ?></a>
-
+					<?php if(!(in_array(currentUser()->userType,explode (",", ($request->ratedType))))): ?>
+					<a href="<?=PROOT?>register/confirmed/<?=$servicer->id?>/<?=$request->id?>" class="btn btn-danger btn-xs"> Rate <?= $servicer->username ?></a>
+				<?php endif; ?>
+				<?php if((in_array(currentUser()->userType,explode (",", ($request->ratedType))))): ?>
+					<a  class="btn btn-danger btn-xs" disabled> Rate <?= $servicer->username ?></a>
+				<?php endif; ?>
 				</td>
-
+				
 	<?php endif;?>
 
 

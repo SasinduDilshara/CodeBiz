@@ -4,5 +4,6 @@
 <?php $this->start('body'); ?>
 
 <p> You haven't any notifications yet.</p>
+<a href="<?=PROOT?>" class="btn btn-xs btn-default"> Back</a>
 
 <?php $this->end() ?>

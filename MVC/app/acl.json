@@ -17,7 +17,7 @@
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
 	 	"Requests" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat",
-	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmed"],
+	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmed","markrate"],
 	 	"Messages" : ["*"],
 	 	"Notifications" : ["*"]
 	 },

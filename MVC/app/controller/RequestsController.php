@@ -21,6 +21,7 @@ class RequestsController extends Controller
 		$this->view->render('requests/index');
 	}
 
+
 	public function addAction()
 	{	
 		$request = new Requests();
@@ -33,6 +34,9 @@ class RequestsController extends Controller
 			$_POST['completed'] = 0;
 			$_POST['completed'] = 0;
 			$_POST['chat'] = '';
+			$_POST['ratedType'] = '';
+			$_POST['confirmProviderId'] = 0;
+			$_POST['providerId'] = '';
 			$request->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
 		$validation->check($_POST,Requests::$addValidation);
@@ -161,7 +165,7 @@ class RequestsController extends Controller
  		$this->RequestsModel->setAccepted($id,$requests,currentUser());
  		$this->RequestsModel->attachAccepts($owner);
  		$this->RequestsModel->attachAccepts(currentUser());
- 		$this->view->requests=$requests;
+ 		$this->view->request=$requests;
  		$this->view->owner=$owner;
  		$this->RequestsModel->notifyAccepts($requests,currentUser(),$owner);
  		// $customer = $this->RequestsModel->findcustomer($user_id);
@@ -174,7 +178,7 @@ class RequestsController extends Controller
  	public function showAcceptAction($id)
  	{
  		$request = $this->RequestsModel->findById($id);
- 	if($request->providerId)
+ 	if($request->providerId )
  	{
  		$providers = explode(",",$request->providerId);
  		foreach ($providers as $each_number) {
@@ -208,7 +212,7 @@ else
  		$requests->confirmProviderId = $provider->id;
  		$this->RequestsModel->attachConfirms($provider);
  		$this->RequestsModel->attachConfirms(currentUser());
- 		$this->view->requests=$requests;
+ 		$this->view->request=$requests;
  		$this->view->provider=$provider;
  		$this->RequestsModel->notifyConfirms($requests,currentUser(),$provider);
  		// $customer = $this->RequestsModel->findcustomer($user_id);
@@ -396,9 +400,10 @@ public function cancelAction($id,$user_id)
 			// dnd(currentUser()->findByUserId(($request->confirmProviderId)));
 		}
 		// dnd($servicer);
-		$request = currentUser()->sendCompleteness($request,$servicer,currentUser());
+		$a = currentUser()->sendCompleteness($request,$servicer,currentUser());
 		// dnd("I");
 		$this->view->servicer = $servicer[0];
+		$this->view->request = $request;
 		$this->view->render('requests/completionMessage');
 		
 	}
@@ -450,6 +455,17 @@ public function cancelAction($id,$user_id)
 		$this->view->servicer = $servicer[0];
 		$this->view->render('requests/uncompletionMessage');
 		
+	}
+
+	public function markrateAction($id,$rate,$name)
+	{
+		
+		// dnd($rate);
+		// dnd($id);
+		$request = $this->RequestsModel->findById($id);
+		$this->RequestsModel->updateRate($request,$id,$rate);
+		$this->view->name = $name;
+		$this->view->render('requests/afterSuccefulRated');
 	}
 
 
