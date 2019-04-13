@@ -147,7 +147,8 @@ class Users extends Model implements Observer
 
 	public function findByUserId($userId,$params=[])
 	{
-		$conditions = ['conditions'=>'user_id = ?','bind'=>[$userId]
+		// dnd($userId);
+		$conditions = ['conditions'=>'id = ?','bind'=>[$userId]
 	];
 	$conditions = array_merge($conditions,$params);
 	return $this->find($conditions);
@@ -486,6 +487,63 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 		return $this->update($customer->id, ['notifications' => $Notification]);
 	// dnd($Notification);
 	}
+
+	public function sendCompleteness($request,$servicer,$user)
+	{
+
+ 			// dnd($servicer[0]->username);
+	if($user->notifications==NULL)
+		{
+			$Notification = "You mark complete as the ". $request->service." serviced of ". $servicer[0]->username;
+		}
+	elseif($user->notifications!=NULL)
+	{
+		$Notification = "You mark complete as the ". $request->service." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+	}
+		$this->update($user->id, ['notifications' => $Notification]);
+
+	if($servicer[0]->notifications==NULL)
+		{
+			$Notification = $user->username." mark complete as the ". $request->service." serviced of You";
+		}
+	elseif($servicer[0]->notifications!=NULL)
+	{
+		$Notification = $user->username." mark complete as the ". $request->service." serviced of you". ",". $servicer[0]->notifications; 
+	}
+		$this->update($servicer[0]->id, ['notifications' => $Notification]);
+
+
+
+	}
+
+	public function sendUnCompleteness($request,$servicer,$user)
+	{
+
+ 			// dnd($servicer[0]->username);
+	if($user->notifications==NULL)
+		{
+			$Notification = "You mark not completed yet as the ". $request->service." serviced of ". $servicer[0]->username;
+		}
+	elseif($user->notifications!=NULL)
+	{
+		$Notification = "You mark not completed yet as the ". $request->service." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+	}
+		$this->update($user->id, ['notifications' => $Notification]);
+
+	if($servicer[0]->notifications==NULL)
+		{
+			$Notification = $user->username." mark not completed yet as the ". $request->service." serviced of You";
+		}
+	elseif($servicer[0]->notifications!=NULL)
+	{
+		$Notification = $user->username." mark not completed yet as the ". $request->service." serviced of you". ",". $servicer[0]->notifications; 
+	}
+		$this->update($servicer[0]->id, ['notifications' => $Notification]);
+
+
+
+	}
+
 	
 }
 

@@ -19,4 +19,10 @@
 	<?php include 'showConfirmRequests.php' ?>
 </div>
 
+<div>
+	<?php include 'showFinishedRequests.php' ?>
+</div>
+
+
+
 <?php $this->end(); ?>

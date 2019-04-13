@@ -16,7 +16,8 @@
 	 	"Advertisements" : ["*"],
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
-	 	"Requests" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat"],
+	 	"Requests" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat",
+	 					"FinishedRequests","markCompleted","UnmarkCompleted"],
 	 	"Messages" : ["*"],
 	 	"Notifications" : ["*"]
 	 },

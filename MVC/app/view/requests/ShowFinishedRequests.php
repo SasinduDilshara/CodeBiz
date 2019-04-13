@@ -11,7 +11,6 @@
 	</thead>
 	<body>
 <?php foreach($this->requests as $request): ?>
-		<?php if($request->confirmProviderId != 0 && $request->completed!=1):?>
 			<tr>
 				<td>
 					<a 
@@ -50,13 +49,13 @@
 					<a href="<?=PROOT?>requests/showChat/<?=$request->id?>" class="btn btn-danger btn-xs"></i> Show Chat </a>
 				</td>
 				<td>
-					<a href="<?=PROOT?>requests/markCompleted/<?=$request->id?>/<?=currentUser()->id ?>" class="btn btn-danger btn-xs"></i> Mark as completed </a>
+					<a href="<?=PROOT?>requests/UnmarkCompleted/<?=$request->id?>/<?=currentUser()->id ?>" class="btn btn-danger btn-xs"></i> Mark as Not completed </a>
 				</td>
 <?php endif;?>
 
 <?php if(currentUser()->userType == 'Customer' && currentUser()):?>
 
-		<?php $provider = $request->confirmProviderId ?>
+		<?php $provider = $request->completeId ?>
 		<?php $servicer = currentUser()->findById($request->confirmProviderId) ?>
 				<td>
 					<a 
@@ -73,14 +72,14 @@
 					<a href="<?=PROOT?>requests/showChat/<?=$request->id?>" class="btn btn-danger btn-xs"></i> Show Chat </a>
 				</td>
 				<td>
-					<a href="<?=PROOT?>requests/markCompleted/<?=$request->id?>/<?=currentUser()->id ?>" class="btn btn-danger btn-xs"></i> Mark as completed </a>
+					<a href="<?=PROOT?>requests/UnmarkCompleted/<?=$request->id?>/<?=currentUser()->id ?>" class="btn btn-danger btn-xs"></i> Mark as Not completed </a>
 				</td>
 
 	<?php endif;?>
 
 
 			</tr>
-			<?php endif;?>
+			
 		<?php endforeach; ?>
 	</body>
 </table>

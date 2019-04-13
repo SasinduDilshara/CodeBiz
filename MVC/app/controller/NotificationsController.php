@@ -42,6 +42,21 @@ class NotificationsController extends Controller
 		$this->view->render('notifications/afterclear');
 	}
 
+	public function CompletionsendAction($users,$messages,$requestUserId)
+	{
+		$this->UsersModel->setNotificationsMessages($users,$messages);
+		if(currentUser() && currentUser()->userType == 'Provider')
+		{
+			$servicer = $this->UsersModel->findByUserId($requestUserId);
+		}
+		elseif(currentUser() && currentUser()->userType == 'Customer')
+		{
+			$servicer = $this->UsersModel->findByUserId($requestUserId);
+		}
+		$this->view->servicer = $servicer;
+		$this->view->render = ('requests/completionMessage');
+	}
+
 
  }
 

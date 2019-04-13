@@ -53,6 +53,22 @@ class Requests extends Model implements Observable
 	];
 
 
+
+public function findByUserIdandCompleteID($user_id,$cId,$params=[])
+	{
+		// dnd($request_id,);
+		// dnd($user_id);
+		$conditions = ['conditions' => 'user_id = ? AND completed = ?','bind' => [$user_id,$cId]
+	];
+
+	// dnd($conditions);
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+
+	return $this->find($conditions);
+	}
+
+
 	public function findByIdAndUserId($request_id,$user_id,$params=[])
 	{
 		// dnd($request_id,);
@@ -85,6 +101,17 @@ class Requests extends Model implements Observable
 	{
 		// dnd($userId);
 		$conditions = ['conditions'=>'confirmProviderId = ?','bind'=>[$userId]
+	];
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+	// dnd($this->find($conditions));
+	return $this->find($conditions);
+	}
+
+	public function findByUsercompleteId($userId,$params=[])
+	{
+		// dnd($userId);
+		$conditions = ['conditions'=>'completeId = ?','bind'=>[$userId]
 	];
 	$conditions = array_merge($conditions,$params);
 	// dnd($conditions);
@@ -137,7 +164,27 @@ class Requests extends Model implements Observable
 			$this->update($id, ['providerName' => $request->providerName.",".$owner->username]);			
 		}
 	}
+}
+
+	public function MarkComplete($id,$userId)
+	{
+		// dnd($userId);
+		$this->update($id, ['completed' => 1]);
+		$this->update($id, ['completeId' => $userId]);
+
+		return true;
 	}
+
+	public function UnMarkComplete($id)
+	{
+		// dnd($userId);
+		$this->update($id, ['completed' => 0]);
+		$this->update($id, ['completeId' => 0]);
+
+		return true;
+	}
+
+	
 
 		public function unsetAccepted($id,$newproviders)
 	{
@@ -341,6 +388,7 @@ class Requests extends Model implements Observable
 	{
 		return $this->update($request->id, ['chat' => '']);
 	}
+
 }
 
 ?>

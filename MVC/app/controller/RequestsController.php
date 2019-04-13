@@ -31,6 +31,7 @@ class RequestsController extends Controller
 			$_POST['accepted'] = 0;
 			// $_POST['confirmProviderId'] = 0;
 			$_POST['completed'] = 0;
+			$_POST['completeId'] = 0;
 			$_POST['chat'] = '';
 			$request->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
@@ -99,7 +100,7 @@ class RequestsController extends Controller
 		$validation->check($_POST,Requests::$addValidation);
 
 			
-			// dnd($_POST);
+		// dnd($_POST);
 			
 			if($validation->passed())
 			{ 
@@ -300,7 +301,15 @@ public function cancelAction($id,$user_id)
 
  	public function ShowConfirmRequestsAction()
  	{
- 		$requests = $this->RequestsModel->findByUserconfirmId(currentUser()->id,['order'=>'service']);
+ 		if(currentUser() && currentUser()->userType == 'Provider')
+ 			{
+ 				$requests = $this->RequestsModel->findByUserconfirmId(currentUser()->id,['order'=>'service']);
+ 			}
+ 		elseif(currentUser() && currentUser()->userType == 'Customer')
+ 			{
+ 				$requests = $this->RequestsModel->findByUserId(currentUser()->id,['order'=>'service']);
+ 				// $this->view->provider=$requests;
+ 			}
 		 // dnd($requests);
  		if(!$requests)
  		{
@@ -367,6 +376,80 @@ public function cancelAction($id,$user_id)
 		$this->RequestsModel->setChatEmpty($request);
 
 		$this->view->render('requests/AfterClearChat');
+	}
+
+	public function markCompletedAction($requestId,$user_id)
+	{
+		$request = $this->RequestsModel->findById((int)$requestId);
+		// dnd($request);
+		$result = $this->RequestsModel->MarkComplete((int)$requestId,(int)($request->confirmProviderId));
+		if(currentUser() && currentUser()->userType == 'Provider')
+		{
+			// dnd('8');
+			$servicer = currentUser()->findByUserId($request->user_id);
+		}
+		elseif(currentUser() && currentUser()->userType == 'Customer')
+		{
+			// dnd('7');
+			$servicer = currentUser()->findByUserId((int)($request->confirmProviderId),['order'=>'username']);
+			// dnd((int)($request->confirmProviderId));
+			// dnd(currentUser()->findByUserId(($request->confirmProviderId)));
+		}
+		// dnd($servicer);
+		$request = currentUser()->sendCompleteness($request,$servicer,currentUser());
+		// dnd("I");
+		$this->view->servicer = $servicer[0];
+		$this->view->render('requests/completionMessage');
+		
+	}
+
+	 	public function FinishedRequestsAction()
+ 	{
+ 		if(currentUser() && currentUser()->userType == 'Provider')
+ 			{
+ 				$requests = $this->RequestsModel->findByUsercompleteId(currentUser()->id,['order'=>'service']);
+ 			}
+ 		elseif(currentUser() && currentUser()->userType == 'Customer')
+ 			{
+ 				$requests = $this->RequestsModel->findByUserIdandCompleteID(currentUser()->id,1,['order'=>'service']);
+ 				// $this->view->provider=$requests;
+ 			}
+		 // dnd($requests);
+ 		if(!$requests)
+ 		{
+ 			$this->view->render('requests/NoFinished');
+ 		}
+
+		else{
+			$this->view->requests=$requests;
+			$this->view->render('requests/ShowFinishedRequests');
+		}
+
+ 	}
+
+ 	public function UnmarkCompletedAction($requestId,$user_id)
+	{
+		$request = $this->RequestsModel->findById((int)$requestId);
+		// dnd($request);
+		$result = $this->RequestsModel->UnMarkComplete((int)$requestId);
+		if(currentUser() && currentUser()->userType == 'Provider')
+		{
+			// dnd('8');
+			$servicer = currentUser()->findByUserId($request->user_id);
+		}
+		elseif(currentUser() && currentUser()->userType == 'Customer')
+		{
+			// dnd('7');
+			$servicer = currentUser()->findByUserId((int)($request->confirmProviderId),['order'=>'username']);
+			// dnd((int)($request->confirmProviderId));
+			// dnd(currentUser()->findByUserId(($request->confirmProviderId)));
+		}
+		// dnd($servicer);
+		$request = currentUser()->sendUnCompleteness($request,$servicer,currentUser());
+		// dnd("I");
+		$this->view->servicer = $servicer[0];
+		$this->view->render('requests/uncompletionMessage');
+		
 	}
 
  }
