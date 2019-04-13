@@ -35,8 +35,11 @@
 				 <?php if(!in_array((string)(currentUser()->id),explode(",",$request->providerId))):?>
 				<a href="<?=PROOT?>requests/accept/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Accept </a>
 				<?php endif; ?>
-				<?php if(in_array((string)(currentUser()->id),explode(",",$request->providerId))) :?>
+				<?php if(in_array((string)(currentUser()->id),explode(",",$request->providerId)) && $request->completed==0) :?>
 				<a href="<?=PROOT?>requests/cancel/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Cancel </a>
+				<?php endif; ?>
+				<?php if(in_array((string)(currentUser()->id),explode(",",$request->providerId)) && $request->completed== 1) :?>
+				<a disable class="btn btn-danger btn-xs" ></i> Cancel </a>
 				<?php endif; ?>
 			</td>
 			<td>
