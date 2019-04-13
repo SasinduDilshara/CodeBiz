@@ -544,6 +544,11 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 
 	}
 
+public function markRate($servicerId , $rate ,$time)
+{
+	$this->update($servicerId, ['overallRating' => $rate]);
+	$this->update($servicerId, ['ratingtimes' => $time]);
+}
 	
 }
 
