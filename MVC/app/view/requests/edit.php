@@ -5,8 +5,6 @@
 
 <div class="col-md-8 col-md-offset-2 well">
 	
- <h2 class="text-center"><?=$this->request->displayName()?></h2>
- <?= $this->partial('requests','form') ?>
-
-
+ <h2 class="text-center"> <?php $this->request->displayName()?> </h2>
+ <?php $this->partial('requests','form') ?>
 <?php $this->end(); ?>

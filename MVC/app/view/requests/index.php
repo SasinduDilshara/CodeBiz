@@ -23,7 +23,7 @@
 				<td><a href="<?=PROOT?>requests/edit/<?=$request->id?>" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit </a>
 
 				<a href="<?=PROOT?>requests/delete/<?=$request->id?>" class="btn btn-danger btn-xs" onclick="if(!confirm('Are you sure to Delete <?=$request->service;?>')){return false;}"><i class="glyphicon glyphicon-remove"></i> Delete </a>
-
+				
 				<a href="<?=PROOT?>requests/showAccept/<?=$request->id?>" class="btn btn-danger btn-xs"></i> Show Acceptences </a>
 
 			</td>

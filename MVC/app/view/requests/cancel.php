@@ -5,6 +5,8 @@
 
 <p> Your Cancellation was inform to the <?= $this->owner->username ?> </p>
 
-<a href="<?=PROOT?>requests/search" class="btn btn-xs btn-default"> Back</a>
 
+<?php if(currentUser()->userType == 'Customer'): ?>
+<a href="<?=PROOT?>requests/showAccept/<?=$this->request->id ?>" class="btn btn-xs btn-default"> Back</a>
+<?php endif; ?>
 <?php $this->end(); ?>
