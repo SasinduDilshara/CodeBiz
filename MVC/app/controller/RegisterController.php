@@ -236,6 +236,7 @@ class RegisterController extends Controller
         $result = $this->UsersModel->markRate($servicer->id , $rate, $ratingtimes);
         Router::redirect('advertisements/markrate' . DS . $reqId .DS . $newRate . DS . $servicer->username.DS.$type);
     }
+    //a
     else
     {
 
