@@ -12,6 +12,7 @@
 	<div class="col-md-6">
 		<p><strong><pre> Description :  </strong><?=$this->advertisement->description?></pre></p>
 		<p><strong><pre> Location :  </strong><?=$this->advertisement->area?></pre></p>
+		<p><strong><pre> Type :  </strong><?=$this->advertisement->type?></pre></p>
 
 	</div>
 
