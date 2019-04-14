@@ -3,7 +3,7 @@
 	<div><?=$this->displayErrors ?></div>
 	<!-- HIIIIIIIIIIIIIIIIIIIIIIIIIII -->
 	<?= input_block('text','Topic','topic',$this->advertisement->topic,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
-	<?= input_block('text','Location','area',$this->advertisement->area,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
+	<?= input_block('text','Location','area',currentUser()->area,['class'=>'form-control'],['class'=>'form-group col-md-6']) ?>
 
 	<br>
 	<?= input_block('text','Description','description',$this->advertisement->description,['class'=>'form-control'],['class'=>'form-group col-md-4']) ?>
