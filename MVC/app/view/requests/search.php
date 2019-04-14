@@ -22,7 +22,6 @@
 					<?= $request->service; ?>
 			</a>
 			</td>
-
 				<td><?= $request->area; ?></td>	
 					   <td><a   
 			href="<?=PROOT?>accounts/details/<?=$request->user_id?>">

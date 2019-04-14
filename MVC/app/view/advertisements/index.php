@@ -29,6 +29,11 @@
 				<td><a href="<?=PROOT?>advertisements/edit/<?=$advertisement->type?>/<?=$advertisement->id?>" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit </a>
 
 				<a href="<?=PROOT?>advertisements/delete/<?=$advertisement->type?>/<?=$advertisement->id?>" class="btn btn-danger btn-xs"></i> Delete </a></td>
+			<td>
+
+				<a href="<?=PROOT?>advertisements/showAccept/<?=$advertisement->id ?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"></i> Show Acceptences </a>
+			</td>
+
 			</tr>
 
 		<?php endforeach; ?>

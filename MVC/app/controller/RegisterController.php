@@ -215,7 +215,37 @@ class RegisterController extends Controller
     }
     }
 
+    public function confirmedADDAction($servicerId,$reqId,$type)
+    {
+        // dnd($servicerId);
+        $reqId = (int)$reqId;
+        $servicer = $this->UsersModel->findByUserId((int)$servicerId);
+        // dnd($servicer->id);
+        $servicer = $servicer[0];
+        $rate = $servicer->overallRating * (int)($servicer->ratingtimes);
+    if($_POST)
+    {
+        $newRate = (string)$_POST['overallRating'];
+        $rate+=$_POST['overallRating'];
+        $ratingtimes = (int)($servicer->ratingtimes) + 1;
+        // $ratetimes =$_POST['ratetimes'];
+        $servicer->overallRating = $rate/$ratingtimes;
+        $rate = $rate/$ratingtimes;
+        $this->view->servicer = $servicer;
+        $this->view->rate = $rate;
+        $result = $this->UsersModel->markRate($servicer->id , $rate, $ratingtimes);
+        Router::redirect('advertisements/markrate' . DS . $reqId .DS . $newRate . DS . $servicer->username.DS.$type);
+    }
+    else
+    {
 
+        // $this->view->displayErrors=$validation->displayErrors();
+        $this->view->servicer = $servicer;
+        // $this->view->chatter = username;
+        $this->view->postAction = PROOT . 'register' . DS . 'confirmedADD' . DS . $servicerId . DS . $reqId . DS . $type;
+        $this->view->render('advertisements/askRating');
+    }
+    }
 
 }
 
