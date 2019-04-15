@@ -43,7 +43,7 @@
 				<?php endif; ?>
 			
 				<td>
-					<a href="<?=PROOT?>advertisements/askQuestion/<?=$advertisement->id?>/<?=$advertisement->user_id?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"></i> Message to Providers </a>
+					<a href="<?=PROOT?>advertisements/askQuestion/<?=$advertisement->id?>/<?=$advertisement->user_id?>/<?=$advertisement->type?>/<?= $servicer->username ?>" class="btn btn-danger btn-xs"></i> Message to Providers </a>
 				</td>
 				<td>
 					<a href="<?=PROOT?>advertisements/showChat/<?=$advertisement->id?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"></i> Show Chat </a>
@@ -79,12 +79,7 @@
 					<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"></i> Show Chats </a>
 				</td>
 			<td>
-					<?php if(!in_array((string)(currentUser()->id),explode (",", ($advertisement->ratedType)))): ?>
-					<a href="<?=PROOT?>register/confirmedADD/<?=$servicer->id?>/<?=$advertisement->id?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"> Rate <?= $servicer->username ?> and Finish</a>
-				<?php endif; ?>
-				<?php      if(in_array((string)(currentUser()->id),explode (",", ($advertisement->ratedType)))): ?>
-					<a  class="btn btn-danger btn-xs" disabled> Rate <?= $servicer->username ?></a>
-				<?php endif; ?>
+					<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"></i> Rate Customers </a>
 				</td>
 
 	<?php endif;?>

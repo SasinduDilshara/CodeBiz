@@ -33,21 +33,32 @@
 				<?php if(in_array((string)($customer->id),explode(",",($this->advertisement->confirmCustomerId)))):?>
 
 				<td>
-					<a href="<?=PROOT?>advertisements/askQuestion/<?=$this->advertisement->id?>/<?=$this->advertisement->user_id?>/<?=$this->advertisement->type?>" class="btn btn-danger btn-xs"></i> Message to <?= $customer->username ?> </a>
-					<a href="<?=PROOT?>advertisements/showChat/<?=$this->advertisement->id?>/<?=$this->advertisement->type?>" class="btn btn-danger btn-xs"></i> Show Chat </a>
-				</td>
 
+				</td>
+				<?php endif; ?>
+				<td>
+					<?php if(!in_array($customer->username,explode(",",$this->advertisement->ratedType))): ?>
+					<a href="<?=PROOT?>register/confirmedADD/<?=$customer->id?>/<?=$this->advertisement->id?>/<?=$this->advertisement->type?>" class="btn btn-danger btn-xs"> Rate <?= $customer->username ?> and Finish</a>
 				<?php endif; ?>
 
+					<?php if(in_array($customer->username,explode(",",$this->advertisement->ratedType))): ?>
+					<a  class="btn btn-danger btn-xs" disabled > Rate <?= $customer->username ?> and Finish</a>
+				<?php endif; ?>
 
-					
+				</td>
 				</td>
 			</tr>
 
 		<?php endforeach; ?>
+
+											<a href="<?=PROOT?>advertisements/askQuestion/<?=$this->advertisement->id?>/<?=$this->advertisement->user_id?>/<?=$this->advertisement->type?>/<?= $customer->username ?>" class="btn btn-danger btn-xs"></i> Message to customers  </a>
+					<a href="<?=PROOT?>advertisements/showChat/<?=$this->advertisement->id?>/<?=$this->advertisement->type?>" class="btn btn-danger btn-xs"></i> Show Chat </a>
+
 	</body>
 </table>
 <?php $this->end(); ?>
+
+
 
 
 
