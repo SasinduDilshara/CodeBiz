@@ -334,7 +334,7 @@ else
  		$this->view->owner=$owner;
 
 
- 		// $this->modelLoad($type)->notifyConfirms($advertisement,currentUser(),$customer);
+ 		$this->modelLoad($type)->notifyConfirms($advertisement,currentUser(),$customer);
 
  		//***********************************************************************************************
 
@@ -402,7 +402,7 @@ public function cancelAction($id,$user_id,$type)//done
  		$this->view->owner=$owner;
 
 
- 		// $this->modelLoad($type)->notifyCancellation($advertisement,currentUser(),$owner);
+ 		$this->modelLoad($type)->notifyCancellation($advertisement,currentUser(),$owner);
  		//**************************************************////***
 
  		// $customer = $this->RequestsModel->findcustomer($user_id);
@@ -429,7 +429,7 @@ public function cancelAction($id,$user_id,$type)//done
 
 
 
- 		// $this->RequestsModel->notifyCancelConfirms($request,currentUser(),$provider);
+ 		$this->modelLoad($type)->notifyCancelConfirms($advertisement,currentUser(),$customer);
 
 
 

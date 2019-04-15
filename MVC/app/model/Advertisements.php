@@ -222,19 +222,19 @@ public function findByLocationAndType($location,$params=[])
 			}
 	}
 
-	public function notifyAccepts($advertisement,$provider,$owner)
+	public function notifyAccepts($advertisement,$customer,$provider)
 	{
 		// dnd($requests);
 		// dnd($this->observers);
 		foreach($this->observers as $observer)
 		{
-			if(currentUser()->userType == "Provider")
+			if(true || currentUser()->userType == "Provider")
 			{
-			$observer->updateObserver($advertisement,$provider,$owner);
+			$observer->updateObserver($advertisement,$customer,$provider);
 		    }
-		    elseif(currentUser()->userType == "Provider")
+		    if(true || currentUser()->userType == "Customer")
 		    {
-		    $observer->updateProvider($advertisement,$provider,$owner);
+		    $observer->updateProvider($advertisement,$customer,$provider);
 		    }
 		}
 	}
@@ -256,11 +256,11 @@ public function findByLocationAndType($location,$params=[])
 		foreach($this->confirmobservers as $observer)
 		{
 			// dnd("p");
-			if(currentUser()->username == $customer->username)
+			if(true || currentUser()->userType == "Customer")
 			{
 			$observer->updateConfirmObserver($requests,$provider,$customer);
 		    }
-		    else
+		    if(true)
 		    {
 		    $observer->updateCustomer($requests,$provider,$customer);
 		    }
@@ -349,11 +349,11 @@ public function findByLocationAndType($location,$params=[])
 		// dnd($this->observers);
 		foreach($this->cancelAceeptsObservers as $observer)
 		{
-			if(currentUser()->username== $owner->username)
+			if(true)
 			{
 			$observer->updateCancelObserver($requests,$customer,$owner);
 		    }
-		    elseif(currentUser()->username!= $owner->username)
+		    if(true)
 		    {
 		    $observer->updateCancelProvider($requests,$customer,$owner);
 		    }
@@ -377,11 +377,11 @@ public function findByLocationAndType($location,$params=[])
 		foreach($this->CancelConfirmobservers as $observer)
 		{
 			// dnd("p");
-			if($observer->userType == "Provider")
+			if(true || $observer->userType == "Customer")
 			{
 			$observer->updateCancelConfirmObserver($requests,$customer,$provider);
 		    }
-		    elseif($observer->userType == "Customer")
+		    if(true || $observer->userType == "Provider")
 		    {
 		    $observer->updateCancelCustomer($requests,$customer,$provider);
 		    }

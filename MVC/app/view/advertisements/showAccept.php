@@ -37,12 +37,12 @@
 				</td>
 				<?php endif; ?>
 				<td>
-					<?php if(!in_array($customer->username,explode(",",$this->advertisement->ratedType))): ?>
+					<?php if(!in_array($customer->username,explode(",",$this->advertisement->ratedType)) && in_array((string)($customer->id),explode(",",$this->advertisement->confirmCustomerId))): ?>
 					<a href="<?=PROOT?>register/confirmedADD/<?=$customer->id?>/<?=$this->advertisement->id?>/<?=$this->advertisement->type?>" class="btn btn-danger btn-xs"> Rate <?= $customer->username ?> and Finish</a>
-				<?php endif; ?>
+				
 
-					<?php if(in_array($customer->username,explode(",",$this->advertisement->ratedType))): ?>
-					<a  class="btn btn-danger btn-xs" disabled > Rate <?= $customer->username ?> and Finish</a>
+					<?php elseif(true): ?>
+					<a  class="btn btn-danger btn-xs" disable > Rate <?= $customer->username ?> and Finish</a>
 				<?php endif; ?>
 
 				</td>
