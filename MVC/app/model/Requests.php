@@ -202,10 +202,18 @@ public function findByUserIdandCompleteID($user_id,$cId,$params=[])
 		$this->update($id, ['confirmProviderId' => 0 ]);
 		
 	}
-
-	$this->update($id, ['chat' => '' ]);
-
+if(currentUser()->userType == "Customer")
+{
+	$this->update($id, ['chatCus' => '' ]);
+	$this->update($id, ['chatPro' => '' ]);
 }
+else
+{
+	$this->update($id, ['chatPro' => '' ]);
+}
+}
+
+
 
 	public function unsetConfirm($id,$request)
 	{
@@ -376,23 +384,54 @@ public function findByUserIdandCompleteID($user_id,$cId,$params=[])
 
 	public function getmessage($id,$request,$message)
 	{
-		if(($request->chat == null))
+		// if(currentUser()->userType == "Provider")
+	// {
+		if(($request->chatCus == ''))
+		{
+			$CHATS1 = $message;
+		}
+		else
+		{
+			$CHATS1 = $request->chatCus.','.$message;
+			// dnd($CHATS);
+		}
+	// }
+
+		$this->update($id, ['chatCus' => $CHATS1]);
+	return $CHATS1;
+	}
+
+
+	public function getmessage1($id,$request,$message)
+	{
+		// if(currentUser()->userType == "Provider")
+	// {
+		if(($request->chatPro == ''))
 		{
 			$CHATS = $message;
 		}
 		else
 		{
-			$CHATS = $request->chat.','.$message;
+			$CHATS = $request->chatPro.','.$message;
 			// dnd($CHATS);
 		}
+	// }
+	// }
 
-		$this->update($id, ['chat' => $CHATS]);
+		$this->update($id, ['chatPro' => $CHATS]);
 	return $CHATS;
 	}
 
+
+
 	public function setChatEmpty($request)
 	{
-		return $this->update($request->id, ['chat' => '']);
+		if(currentUser()->userType == "Customer")
+		{
+			return $this->update($request->id, ['chatCus' => '']);
+		}
+		// dnd($this->update($request->id, ['chatPro' => '']));
+		return $this->update($request->id, ['chatPro' => '']);
 	}
 
 	public function updateRate($request,$id,$rate)
