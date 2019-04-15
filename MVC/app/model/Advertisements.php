@@ -228,11 +228,11 @@ public function findByLocationAndType($location,$params=[])
 		// dnd($this->observers);
 		foreach($this->observers as $observer)
 		{
-			if(currentUser()->username!= $owner->username)
+			if(currentUser()->userType == "Provider")
 			{
 			$observer->updateObserver($advertisement,$provider,$owner);
 		    }
-		    elseif(currentUser()->username== $owner->username)
+		    elseif(currentUser()->userType == "Provider")
 		    {
 		    $observer->updateProvider($advertisement,$provider,$owner);
 		    }
@@ -435,7 +435,7 @@ public function findByLocationAndType($location,$params=[])
 		return $this->update($advertisement->id, ['chatPro' => '']);
 	}
 
-	public function updateRate($advertisement,$id,$rate)
+	public function updateRate($advertisement,$id,$rate,$s)
 	{
 		$rate=$advertisement->rated + $rate;
 		if($advertisement->ratedType == '')
@@ -446,7 +446,13 @@ public function findByLocationAndType($location,$params=[])
 		{
 			$c = ',';
 		}
-		$ratedType = $advertisement->ratedType .$c .currentUser()->id;
+		if(currentUser()->userType == "Provider")
+		{
+			$ratedType = $advertisement->ratedType .$c. $s->username;
+		}
+		else{
+			$ratedType = $advertisement->ratedType .$c .currentUser()->id;
+		}
 		$this->update($id, ['rated' => $rate]);
 		$this->update($id, ['ratedType' => $ratedType]);
 		// $this->update($id, ['confirmProviderId' => $newproviders]);
