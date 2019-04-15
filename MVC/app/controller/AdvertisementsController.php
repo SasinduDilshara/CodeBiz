@@ -248,7 +248,7 @@ $this->view->advertisement = $advertisement;
  		$this->view->owner=$owner;
 
 
- 		// $this->modelLoad($type)->notifyAccepts($advertisement,currentUser(),$owner);
+ 		$this->modelLoad($type)->notifyAccepts($advertisement,currentUser(),$owner);
 //*****************************************************************************************************
 
 
@@ -334,7 +334,7 @@ else
  		$this->view->owner=$owner;
 
 
- 		// $this->modelLoad($type)->notifyConfirms($advertisement,currentUser(),$customer);
+ 		$this->modelLoad($type)->notifyConfirms($advertisement,currentUser(),$customer);
 
  		//***********************************************************************************************
 
@@ -402,7 +402,7 @@ public function cancelAction($id,$user_id,$type)//done
  		$this->view->owner=$owner;
 
 
- 		// $this->modelLoad($type)->notifyCancellation($advertisement,currentUser(),$owner);
+ 		$this->modelLoad($type)->notifyCancellation($advertisement,currentUser(),$owner);
  		//**************************************************////***
 
  		// $customer = $this->RequestsModel->findcustomer($user_id);
@@ -429,7 +429,7 @@ public function cancelAction($id,$user_id,$type)//done
 
 
 
- 		// $this->RequestsModel->notifyCancelConfirms($request,currentUser(),$provider);
+ 		$this->modelLoad($type)->notifyCancelConfirms($advertisement,currentUser(),$customer);
 
 
 
@@ -492,7 +492,11 @@ public function cancelAction($id,$user_id,$type)//done
     // if(!$request) Router::redirect('requests');
     if($_POST)
     {
-		$message = currentUser()->username." : ".$_POST['chat'];
+    	if(currentUser()->userType == "Customer")
+    	{
+    		$_POST['to'] = $provider->username;
+    	}
+		$message = "from :- ".currentUser()->username." to :- ".$_POST['to']." MESSAGE??: ".$_POST['chat'];
 		$chat = $this->modelLoad($type)->getmessage($id,$advertisement,$message); 
 		$advertisement->chatCus = $chat;
 		$advertisement->chatPro = $chat;
@@ -630,13 +634,16 @@ public function cancelAction($id,$user_id,$type)//done
 		
 	// }
 
-	public function markrateAction($id,$rate,$name,$type)
+	public function markrateAction($id,$rate,$name,$type,$s)
 	{
 		
 		// dnd($rate);
 		// dnd($id);
 		$advertisement = $this->modelLoad($type)->findById($id);
-		$this->modelLoad($type)->updateRate($advertisement,$id,$rate);
+		// dnd($s);
+		$s = currentUser()->findById((int)$s);
+		// dnd($s);
+		$this->modelLoad($type)->updateRate($advertisement,$id,$rate,$s);
 		$this->view->name = $name;
 		$this->view->render('advertisements/afterSuccefulRated');
 	}
