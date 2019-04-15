@@ -228,27 +228,11 @@ public function findByLocationAndType($location,$params=[])
 		// dnd($this->observers);
 		foreach($this->observers as $observer)
 		{
-<<<<<<< HEAD
 			if(true || currentUser()->userType == "Provider")
 			{
 			$observer->updateObserver($advertisement,$customer,$provider);
 		    }
 		    if(true || currentUser()->userType == "Customer")
-=======
-<<<<<<< HEAD
-			if(true || currentUser()->userType == "Provider")
-=======
-			if(currentUser()->userType == "Provider")
->>>>>>> 583d4ca8a4a7e68de4f1a8fca9bf79ac3d38701b
-			{
-			$observer->updateObserver($advertisement,$customer,$provider);
-		    }
-<<<<<<< HEAD
-		    if(true || currentUser()->userType == "Customer")
-=======
-		    elseif(currentUser()->userType == "Provider")
->>>>>>> 583d4ca8a4a7e68de4f1a8fca9bf79ac3d38701b
->>>>>>> d3a61335876dc2c14cca59911984fd95403a2c05
 		    {
 		    $observer->updateProvider($advertisement,$customer,$provider);
 		    }
