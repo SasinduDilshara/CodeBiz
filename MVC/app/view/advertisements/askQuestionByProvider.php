@@ -9,10 +9,14 @@
  <h2 class="text-center"> Message</h2>
 
  		<?= input_block('text','chat','chat','',['class'=>'form-control'],['class'=>'form-group']) ?>
+ 		<?php if(currentUser()->userType == "Provider"): ?>
+ 		<?= input_block('text','to','to','',['class'=>'form-control'],['class'=>'form-group']) ?>
+ 	<?php endif; ?>
  </div>
 
  	<div class="form-group" style="text-align: center;">
 		<?= submitBlock('Save',['class'=>'btn btn-primary']) ?>
+
 	</div>
 	<div class = "form-group text-right">
 		<a href="<?=PROOT?>advertisements/ShowConfirmRequests" class="btn btn-default"> Cancel </a>
