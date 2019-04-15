@@ -34,6 +34,8 @@ class RequestsController extends Controller
 			$_POST['completed'] = 0;
 			$_POST['completed'] = 0;
 			$_POST['chat'] = '';
+			$_POST['chatCus'] = '';
+			$_POST['chatPro'] = '';
 			$_POST['ratedType'] = '';
 			$_POST['confirmProviderId'] = 0;
 			$_POST['providerId'] = '';
@@ -337,7 +339,9 @@ public function cancelAction($id,$user_id)
     {
 		$message = currentUser()->username." : ".$_POST['chat'];
 		$chat = $this->RequestsModel->getmessage($id,$request,$message); 
-		$request->chat = $chat;
+		$chat1 = $this->RequestsModel->getmessage1($id,$request,$message); 
+		$request->chatCus = $chat;
+		$request->chatPro = $chat1;
 		// $this->RequestsModel->updateMessages($id,$messages);
 		$this->view->customer = $customer;
 		$this->view->render('requests/succefulAskedQuestion');
@@ -356,7 +360,15 @@ public function cancelAction($id,$user_id)
  	public function showChatAction($requestId)
  {
  	$request = $this->RequestsModel->findById((int)$requestId);
- 	$chat = $request->chat;
+ 	// $chat = $request->chat;
+ 	if(currentUser()->userType == "Customer")
+ 	{
+ 		$chat = $request->chatCus;
+ 	}
+ 	else
+ 	{
+ 		$chat = $request->chatPro;
+ 	}
  	if(!$chat)
 		{
 			$this->view->render('requests/emptyChat');
@@ -374,8 +386,19 @@ public function cancelAction($id,$user_id)
  	{
  		$request = $this->RequestsModel->findById((int)$requestId);
  		// dnd($request);
-		$messages= $request->chat;
-		 $request->chat='';
+
+
+	if(currentUser()->userType == "Customer")
+ 	{
+ 		$request->chatCus = '';
+ 	}
+ 	else
+ 	{
+ 		// dnd(')');
+ 		$request->chatPro = '';
+ 	}
+
+		 // $request->chat='';
 		 // dnd('6');
 		$this->RequestsModel->setChatEmpty($request);
 
