@@ -411,7 +411,7 @@ public function findByLocationAndType($location,$params=[])
 			$CHATS = $advertisement->chatPro.','.$message;
 			// dnd($CHATS);
 		}
-				if(($advertisement->chatCus == ''))
+	if(($advertisement->chatCus == ''))
 		{
 			$CHATS = $message;
 		}
@@ -426,13 +426,13 @@ public function findByLocationAndType($location,$params=[])
 	return $CHATS;
 	}
 
-	public function setChatEmpty($request)
+	public function setChatEmpty($advertisement)
 	{
 		if(currentUser()->userType == "Customer")
 		{
-			return $this->update($request->id, ['chatCus' => '']);
+			return $this->update($advertisement->id, ['chatCus' => '']);
 		}
-		return $this->update($request->id, ['chatPro' => '']);
+		return $this->update($advertisement->id, ['chatPro' => '']);
 	}
 
 	public function updateRate($advertisement,$id,$rate)

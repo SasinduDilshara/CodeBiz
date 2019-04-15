@@ -69,9 +69,9 @@ class Users extends Model implements Observer
 			//dnd($this->_sessionName);
 			Cookie::set($this->_cookieName , $hash , REMEMBER_ME_COOKIE_EXPIRY);
 			$fields=['session'=>$hash,'user_agent'=>$user_agent,'user_id'=>$this->id];
-			$this->_db->query("DELETE FROM user_sessions WHERE user_id = ? AND user_agent =?", [$this->id,$user_agent]);
+			$this->_db->query("DELETE FROM user_session WHERE user_id = ? AND user_agent =?", [$this->id,$user_agent]);
 
-			$this->_db->insert('user_sessions',$fields);
+			$this->_db->insert('user_session',$fields);
 		}
 
 	}
@@ -82,7 +82,7 @@ class Users extends Model implements Observer
 	{
 		//dnd(self::$currentLoggedInUser);
 		// $user_agent = Session::uagent_no_version();
-		$userSession = UserSession::getFromCookie();
+		$userSession = Usersession::getFromCookie();
 		// if($userSession) $userSession->delete();
 		if($userSession) $userSession->delete();
 		$this->_db->query("DELETE FROM user_session Where user_id = ? AND user_agent =?", [$this->id,$user_agent]);
@@ -99,7 +99,7 @@ class Users extends Model implements Observer
 
 	public static function loginUserFromCookie()
 	{	
-		$userSession = UserSession::getFromCookie();
+		$userSession = Usersession::getFromCookie();
 		// dnd($userSession);
 		// $user_session_model = new UserSession();
 		// $user_session = $user_session_model->findFirst(
@@ -107,11 +107,12 @@ class Users extends Model implements Observer
 		// 		'conditions' => "user_agent = ? AND session = ?",
 		// 		'bind' => [Session::uagent_no_version(),Cookie::get(REMEMBER_ME_COOKIE_NAME)] //cookie name eka gaththa 
 		// 	]);
-		if($userSession->user_id != '')
+		// dnd($userSession);
+		if(($userSession->user_id) != '')
 		{	
 			// var_dump($userSession->user_id);
-			$user= new self((int)$userSession->user_id);
-
+			$user= new self((int)($userSession->user_id));
+			// dnd($user);
 		}
 		// dnd($user);
 		if($user)

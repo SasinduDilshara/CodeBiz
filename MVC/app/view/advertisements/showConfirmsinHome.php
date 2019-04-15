@@ -48,6 +48,16 @@
 				<td>
 					<a href="<?=PROOT?>advertisements/showChat/<?=$advertisement->id?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"></i> Show Chat </a>
 				</td>
+
+							<td>
+					<?php if(!in_array((string)(currentUser()->id),explode (",", ($advertisement->ratedType)))): ?>
+					<a href="<?=PROOT?>register/confirmedADD/<?=$servicer->id?>/<?=$advertisement->id?>/<?=$advertisement->type?>" class="btn btn-danger btn-xs"> Rate <?= $servicer->username ?> and Finish</a>
+				<?php endif; ?>
+				<?php      if(in_array((string)(currentUser()->id),explode (",", ($advertisement->ratedType)))): ?>
+					<a  class="btn btn-danger btn-xs" disabled> Rate <?= $servicer->username ?></a>
+				<?php endif; ?>
+				</td>
+				
 <?php endif;?>
 
 <?php if(currentUser()->userType == 'Provider' && currentUser()):?>
