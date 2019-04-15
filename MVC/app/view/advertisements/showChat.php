@@ -5,10 +5,26 @@
 
 <?php foreach($this->chat as $chatbar): ?>
 
-<p> <?= $chatbar ?> </p>
+
+<?php
+$chat=explode (" MESSAGE??: ", $chatbar);
+
+$message = $chat[1];
+
+ $chat=explode (" to :- ", $chat[0]);
+$to = $chat[1];
+$from = substr($chat[0], 8);
+// dnd($from);
+if($to == currentUser()->username || $from == currentUser()->username ):  ?>
+
+<p>
+	<?=$from?> : <?=$message?>
+</p>
+
+<?php endif; ?>
+
 <?php endforeach; ?>
 
-<!-- <a href="<?=PROOT?>advertisements/clearChat/<?=$this->advertisement->id ?>/<?= $this->advertisement->type ?>" class="btn btn-xs btn-default" > Delete Chat </a> -->
 
 <a href="<?=PROOT?>advertisements/askQuestion/<?=$this->advertisement->id?>/<?=$this->advertisement->user_id?>/<?= $this->advertisement->type ?>" class="btn btn-danger btn-xs"></i> Ask Doubts </a>
 
