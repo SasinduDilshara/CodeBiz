@@ -22,10 +22,16 @@ class EmailsController extends Controller
     {
         $email = $_POST['email'];
     $user = $this->UsersModel->findByEmail($email);
-
+    if(!$user)
+    {
+        $this->view->render("emails/noEmail");
+    }
+    else
+    {
     $this->view->user = $user;
     $this->UsersModel->sendforgotten($email,(string)($user->id));
     $this->view->render("emails/forgotmsgsend");
+    }
     }
     else
     {
