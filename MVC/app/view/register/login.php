@@ -29,7 +29,7 @@
 	</form>
 
 	<div>
-		<a href = #  class ="text-primary"> Forget password ? </a>
+		<a href = "<?=PROOT?>emails/forgetpassword"  class ="text-primary"> Forget password ? </a>
 	</div>
 
 </div>
