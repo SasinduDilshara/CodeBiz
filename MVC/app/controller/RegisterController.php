@@ -40,20 +40,30 @@ class RegisterController extends Controller
 
 			// if($user && password_verify(Input::get('password'),$user->password))
 
-			if($user && Input::get('password') == $user->password)
-			{ 
-				
-				$remember = (isset($_POST['remember_me']) && Input::get('remember_me')) ? true :false;
+            if($user && $user->active==1)
+            { 
+                
+            if($user && Input::get('password') == $user->password)
+            { 
+                
+                $remember = (isset($_POST['remember_me']) && Input::get('remember_me')) ? true :false;
 
-				// dnd($remember);
-				$user->login($remember);
-				Router:: redirect('');
-			}
+                // dnd($remember);
+                $user->login($remember);
+                Router:: redirect('');
+            }
 
-			else
-		    {
-			$validation->addError("Username and the password does not match");
-		    }
+            else
+            {
+            $validation->addError("Username and the password does not match");
+            }
+            }
+
+            else
+            {
+            $validation->addError("Email hasn't Verified, Check Your Emails.");
+            }
+
 
 		}
 	}
@@ -96,6 +106,7 @@ class RegisterController extends Controller
             $_POST['notifications'] = '';
             $_POST['overallRating'] = 0;
             $_POST['ratingtimes'] = 0;
+            $_POST['active'] = 0;
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  
@@ -174,7 +185,14 @@ class RegisterController extends Controller
             // dnd($_POST);
             // dnd($newUser);
             // $newUser->login();
-            Router::redirect('register/login');
+
+            // Router::redirect('register/login');
+            Router::redirect('emails/verification/'.$newUser->email);
+            // verificationAction($newUser->email,$newUser->id);
+
+
+
+
         }
         $this->view->post = $posted_values;
         $this->view->displayErrors = $validation->displayErrors();
