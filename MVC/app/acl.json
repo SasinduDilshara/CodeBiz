@@ -2,9 +2,10 @@
 	"Guest":{
 		"denied" : {},
 		"Home" : ["*"],
-		"Register" :["login","register"],
+		"Register" :["login","register","verification"],
 		"Advertisements" : ["search","details","index","accept"],
-		"Restricted" : ["*"]
+		"Restricted" : ["*"],
+		"Emails" : ["*"]
 		
 	},
 
@@ -12,7 +13,7 @@
 	 {
 	 	"denied" : { "Register" : [ "login","register"]
 	 	},
-	 	"Register" : ["logout","confirmed","confirmedADD"],
+	 	"Register" : ["logout","confirmed","confirmedADD","verification"],
 	 	"Contacts" :["*"],
 	 	"Advertisements" : ["*"],
 	 	"Home" : ["*"],
@@ -20,14 +21,15 @@
 	 	"Requests" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat",
 	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmedADD","confirmed","markrate"],
 	 	"Messages" : ["*"],
-	 	"Notifications" : ["*"]
+	 	"Notifications" : ["*"],
+	 	"Emails" : ["*"]
 	 },
 
 	 "Customer" :
 	 {
 	 	"denied" : { "Register" : [ "login","register"] , "Advertisements" : ["index"]
 	 	},
-	 	"Register" : ["logout","confirmed","confirmedADD"],
+	 	"Register" : ["logout","confirmed","confirmedADD","verification"],
 	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"],
 	 	"Home" : ["*"],
@@ -36,6 +38,7 @@
 	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmed","markrate","confirmedADD"],
 	 	"Requests" : ["*"],
 	 	"Messages" : ["*"],
+	 	"Emails" : ["*"],
 	 	"Notifications" : ["*"]
 	 }
 }
