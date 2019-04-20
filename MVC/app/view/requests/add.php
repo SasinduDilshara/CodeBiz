@@ -1,8 +1,8 @@
 <?php $this->setSiteTitle("Add Requests"); ?>
 <?php $this->start('body'); ?>
 
-<div class = "card border-primary mb-3" style="max-width: 30rem; margin:auto; top:8rem;">
-	<div class="card-header" style="text-align: center"> Add a Request </div>
+<div class = "card border-primary mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
+	<div class="card-header" style="text-align: center"> Add Request </div>
 	<div class="card-body">
 		<?php $this->partial('requests','form'); ?>
 	</div>
