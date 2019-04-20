@@ -25,7 +25,7 @@ else
 
 ?>
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#292D32">
     <div class="container">
         <a class="navbar-brand text-white" href="<?= PROOT ?>">
         <img src="<?=PROOT?>img<?=DS?>logo.png" height = 40 width = 160></a>
