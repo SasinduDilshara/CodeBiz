@@ -1,9 +1,11 @@
 <?php $this->setSiteTitle("Add Contacts"); ?>
 <?php $this->start('body'); ?>
 
-<div class="col-md-8 col-md-offset-2 well">
-	<h2 class="text-center"> Add a Contact </h2>
-	<?php $this->partial('contacts','form'); ?>
+<div class = "card border-primary mb-3" style="max-width: 50rem; margin:auto; top:5rem;">
+	<div class="card-header" style="text-align: center"> Add Contact </div>
+	<div class="card-body">
+		<?php $this->partial('contacts','form'); ?>
+	
 </div>
 
 <?php $this->end(); ?>

@@ -10,7 +10,7 @@
 	</div>
 	<!-- <h3 class="text-center p-4">/h3> -->
 	<div class="card-body">
-	<form class="form" action="<?=PROOT?>register/login" method="post" >
+	<form class="form" action="<?=PROOT?>register/login" method="post" ><br>
 		<div class="form-group">
 			<input type="text" name="username" id="username" class = "form-control" placeholder = "Username">
 		</div>

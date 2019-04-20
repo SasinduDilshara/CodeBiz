@@ -25,7 +25,7 @@
 			<thead>
 				<tr class="table-light">
 				<td><strong>  Contact :</strong></td>
-				<td>+94<?=$this->account->phoneNumber?></td>
+				<td>+94<?=$this->account->phoneNumber?><br><?=$this->account->phoneNumber2?></td>
 				</tr>
 			</thead>
 			<thead>
