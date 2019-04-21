@@ -46,25 +46,11 @@
             <div class="form-row col">
                 <div class="col">
                     <label class="control-label" for="phoneNumber">Contact Number*</label>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">+94</span>
-                        </div>
-                        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" title="must be a valid Phone number"value="<?=currentUser()->phoneNumber?>">
-                        </div>
-                    </div>
+                    <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" title="must be a valid Phone number"value="<?=currentUser()->phoneNumber?>">
                 </div>
                 <div class="col">
                     <label class="control-label" for="phoneNumber2">Contact Number 2</label>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">+94</span>
-                        </div>
-                        <input type="text" name="phoneNumber2" id="phoneNumber2" class="form-control" title="must be a valid Phone number"value="<?=currentUser()->phoneNumber2 ?>">
-                        </div>
-                    </div>
+                    <input type="text" name="phoneNumber2" id="phoneNumber2" class="form-control" title="must be a valid Phone number"value="<?=currentUser()->phoneNumber2 ?>">
                 </div>
             </div>
             <div class="col-6">

@@ -3,9 +3,9 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class="card border-primary-mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
+<div class="card border-primary mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
 	<div class="card-header" style="text-align: center;padding-top: 5px;padding-bottom: 5px;">
-		<h4 style="margin-bottom: 0px;"><?=$this->account->username?></h4>
+		User Details
 	</div>
 	
 	<div class="card-body" style="background-color:#fdfdfe">
@@ -32,6 +32,12 @@
 				<tr class="table-light">
 				<td><strong>  Address :</strong></td>
 				<td><?=$this->account->displayAddress()?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr class="table-light">
+				<td><strong>  User Rating :</strong></td>
+				<td><?=$this->account->overallRating?></td>
 				</tr>
 			</thead>
 			<thead>
