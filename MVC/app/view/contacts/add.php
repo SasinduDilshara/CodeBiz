@@ -5,7 +5,7 @@
 	<div class="card-header" style="text-align: center"> Add Contact </div>
 	<div class="card-body">
 		<?php $this->partial('contacts','form'); ?>
-	
+	</div>
 </div>
 
 <?php $this->end(); ?>
