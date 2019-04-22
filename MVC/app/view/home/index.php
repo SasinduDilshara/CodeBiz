@@ -8,6 +8,7 @@
 
 <?php include 'searchbar.php' ?>
 
+<!-- Other links -->
 <div>
 	<?php include 'showrequests.php' ?>	
 </div>

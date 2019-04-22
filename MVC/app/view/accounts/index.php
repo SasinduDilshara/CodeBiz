@@ -49,7 +49,7 @@
 		</table>
 		<div class="text-center">
 			<a href="<?=PROOT?>accounts/edit/<?=$this->account->id?>" class="btn btn-outline-primary" style="margin: 13px 12px 12px 10px;">Edit</a>
-			<a href="<?=PROOT?>accounts/delete/<?=$this->account->id?>" class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;">Delete Account</a>
+			<a href="<?=PROOT?>accounts/delete/<?=$this->account->id?>" class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" onclick="if(!confirm('Are you sure you want to delete your account?'<br>'THIS ACTION CANNOT BE UNDONE')){return false;}">Delete Account</a>
 			<a href="<?=PROOT?>home" class="btn btn-outline-secondary" style="margin: 13px 12px 12px 10px;">Back</a>
 		</div>
 	</div>

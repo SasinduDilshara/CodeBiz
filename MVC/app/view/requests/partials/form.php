@@ -7,13 +7,12 @@
 	</div>
 	<div class="form-group col">
 		<?= input_block('text','Location','area',$this->request->area,['class'=>'form-control'],['class'=>'form-group']) ?>
-		<ul class="list-group" id="result"></ul>
 	</div>
 	<div><?=$this->displayErrors ?></div>
 	<div class="form-group" style="text-align: center;">
 		<?= submitBlock('Save',['class'=>'btn btn-primary']) ?>
 	</div>
-	<div class = "form-group text-right">
+	<div class = "form-group text-center">
 		<a href="<?=PROOT?>requests" class="btn btn-default"> Cancel </a>
 	</div>
 
