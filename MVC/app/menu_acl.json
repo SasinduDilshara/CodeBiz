@@ -15,6 +15,15 @@
 		"Add Advertisements" : "advertisements/choose"
 	},
 
+	"Requests" : {
+		"Search" : "requests/select",
+		"separator" : "<br>",
+		"Show Confirmed" : "requests/ShowConfirmRequests",
+		"Show Finished" : "requests/FinishedRequests"
+
+	},
+
+	"Notifications" : "notifications/show",
 
 	"Logout" : "register/logout"
 	
@@ -29,14 +38,15 @@
 	},
 
 	"Requests" : {
-
-		"My Requests" : "requests",
-		"separator" : "<br>",
 		"Add Requests" : "requests/add",
-		"separator" : "<br>"
-
+		"separator" : "<br>",
+		"My Requests" : "requests",
+		"Show Confirmed" : "requests/ShowConfirmRequests",
+		"Show Finished" : "requests/FinishedRequests"
 
 	},
+
+	"Notifications" : "notifications/show",
 
 	"Logout" : "register/logout"
 
