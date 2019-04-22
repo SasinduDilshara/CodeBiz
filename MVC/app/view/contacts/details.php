@@ -9,6 +9,7 @@
 	</div>
 	
 	<div class="card-body" style="background-color:#fdfdfe">
+		<h4><?= $this->contact->fname; ?></h4>
 		<table class="table table-hover">
 			<thead>
 				<tr class="table-light">
@@ -25,7 +26,14 @@
 			<thead>
 				<tr class="table-light">
 				<td><strong>  Contact :</strong></td>
-				<td><?=$this->contact->cell_phone?><br><?=$this->contact->cell_phone?><br><?=$this->contact->home_phone?></td>
+				<td>
+				<?php if($this->contact->cell_phone!=''):?>
+					<?=$this->contact->cell_phone?><br>
+				<?php endif; ?>
+				<?php if($this->contact->home_phone!=''):?>
+					<?=$this->contact->home_phone?><br>
+				<?php endif; ?>
+				</td>
 				</tr>
 			</thead>
 			<thead>
