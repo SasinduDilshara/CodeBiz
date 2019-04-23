@@ -9,7 +9,7 @@
 <?php include 'searchbar.php' ?>
 
 <!-- Other links -->
-<div>
+<!-- <div>
 	<?php include 'showrequests.php' ?>	
 </div>
 <div>
@@ -26,7 +26,7 @@
 
 <div>
 	<?php include 'showAcceptedAdds.php' ?>
-</div>
+</div> -->
 
 
 
