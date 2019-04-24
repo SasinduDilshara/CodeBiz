@@ -10,7 +10,8 @@
 	},
 
 	"Advertisements" : {
-		"My Adds" : "advertisements",
+		"My Adds<br>" : "advertisements",
+		"Show Confirmed" : "advertisements/ShowConfirmRequests",
 		"separator" : "<br>",
 		"Add Advertisements" : "advertisements/choose"
 	},
@@ -18,7 +19,7 @@
 	"Requests" : {
 		"Search" : "requests/select",
 		"separator" : "<br>",
-		"Show Confirmed" : "requests/ShowConfirmRequests",
+		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
 		"Show Finished" : "requests/FinishedRequests"
 
 	},
@@ -37,11 +38,15 @@
 		"Add Contacts" : "contacts/add"
 	},
 
+	"Advertisements" : {
+		"Show Confirmed" : "advertisements/ShowConfirmRequests"
+	}, 
+
 	"Requests" : {
 		"Add Requests" : "requests/add",
 		"separator" : "<br>",
-		"My Requests" : "requests",
-		"Show Confirmed" : "requests/ShowConfirmRequests",
+		"My Requests<br>" : "requests",
+		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
 		"Show Finished" : "requests/FinishedRequests"
 
 	},
