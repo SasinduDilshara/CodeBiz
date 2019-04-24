@@ -1,8 +1,8 @@
 
 <?php $this->setSiteTitle("Requests"); ?>
 <?php $this->start('body'); ?>
-<!-- <h1 class ="text-center red"> My Requests </h1> --><br>
-<div class="col-10" style="margin:auto;top:3rem;">
+<div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:3rem;">My Requsets</div>
+<div class="col-10" style="margin:auto;">
 	<?php foreach($this->requests as $request): ?>
 		<div class="card border-primary mb-3" style="">
 			<div class="card-body">

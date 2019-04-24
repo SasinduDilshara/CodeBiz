@@ -1,8 +1,8 @@
 
 <?php $this->setSiteTitle("Advertisements"); ?>
 <?php $this->start('body'); ?>
-<!-- <h1 class ="text-center red"> My Advertisements </h1> -->
-<div class="col-10" style="margin:auto;top:3rem;">
+<div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:3rem;">My Advertisements</div>
+<div class="col-10" style="margin:auto;">
 	<?php foreach($this->alladds as $advertisements): ?>
 		<?php foreach($advertisements as $advertisement): ?>
 			<div class="card border-primary mb-3" style="">

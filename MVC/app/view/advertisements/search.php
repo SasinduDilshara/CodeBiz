@@ -60,7 +60,7 @@ else: ?>
 					<?php endif; ?>
 					<td>
 						<?php if(!currentUser() ):?>
-							<a href="<?=PROOT?>advertisements/accept/<?=$advertisement->id?>/<?=$advertisement->user_id?>/<?=$advertisement->type?>" > Login to Requset Service </a>
+							<a href="<?=PROOT?>register/login" onclick="if(!confirm('Please Register as a Customer')){return false;}"> Requset Service </a>
 						<?php elseif(!in_array((string)(currentUser()->id),explode(",",$advertisement->CustomerId)) ):?>
 							<a href="<?=PROOT?>advertisements/accept/<?=$advertisement->id?>/<?=$advertisement->user_id?>/<?=$advertisement->type?>" > Request Service </a>
 						<?php elseif(in_array((string)(currentUser()->id),explode(",",$advertisement->CustomerId))) :?>

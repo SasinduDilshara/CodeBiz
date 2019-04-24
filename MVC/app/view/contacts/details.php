@@ -12,19 +12,19 @@
 		<h4><?= $this->contact->fname; ?></h4>
 		<table class="table table-hover">
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Name :</strong></td>
 				<td><?=$this->contact->displayName()?></td>
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Email :</strong></td>
 				<td><?=$this->contact->email?></td>
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Contact :</strong></td>
 				<td>
 				<?php if($this->contact->cell_phone!=''):?>
@@ -37,13 +37,13 @@
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Address :</strong></td>
 				<td><?=$this->contact->displayAddressLabel()?></td>
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Service Type :</strong></td>
 				<td><?=$this->contact->serviceType?></td>
 				</tr>
