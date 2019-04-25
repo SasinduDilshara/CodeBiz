@@ -11,9 +11,17 @@
 		<h4><?= $this->request->service; ?></h4>
 		<table class="table table-hover">
 			<thead>
-				<tr class="table-light">
+			<tr>
+				<td><strong> Customer :</strong></td>
+				<td><?=$this->request->customer?></td>
+				</tr>
+				<tr>
 				<td><strong>  Description :</strong></td>
 				<td><?=$this->request->description?></td>
+				</tr>
+				<tr>
+				<td><strong>  Location :</strong></td>
+				<td><?=$this->request->area?></td>
 				</tr>
 			</thead>
 		</table>

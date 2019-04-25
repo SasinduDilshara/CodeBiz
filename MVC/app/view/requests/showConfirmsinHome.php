@@ -8,6 +8,7 @@
 			<tr class="table-light">
 			<th scope="col">Topic</th>
 			<th scope="col">Description</th>
+			<th scope="col">Location</th>
 			<th scope="col">Service Provider</th>
 			<th scope="col"></th>
 			<th scope="col"></th>
@@ -24,7 +25,7 @@
 							<a href="<?=PROOT?>requests/details/<?=$request->id?>"><?= $request->service; ?></a>
 						</td>
 						<td><?= $request->description; ?></td>
-
+						<td><?= $request->area; ?></td>
 						<?php if(currentUser()->userType == 'Provider' && currentUser()): ?>
 							<?php $servicer = currentUser()->findById($request->user_id) ?>
 							<td>
