@@ -17,14 +17,6 @@
 				</tr>
 			</thead>
 		</table>
-		<div class="form-group text-right">
-			<?php if(currentUser()->userType == 'Customer'): ?>
-				<a href="<?=PROOT?>requests" class="btn btn-xs btn-default"> Back</a>
-			<?php endif; ?>
-			<?php if(currentUser()->userType == 'Provider'): ?>
-				<a href="<?=PROOT?>requests/search?area=<?=$this->request->area?>" class="btn btn-xs btn-default"> Back</a>
-			<?php endif; ?>
-		</div>
 	</div>
 </div>
 

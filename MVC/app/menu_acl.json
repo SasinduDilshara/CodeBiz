@@ -17,8 +17,6 @@
 	},
 
 	"Requests" : {
-		"Search" : "requests/select",
-		"separator" : "<br>",
 		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
 		"Show Finished" : "requests/FinishedRequests"
 

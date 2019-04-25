@@ -51,9 +51,6 @@
 				</tr>
 			</thead>	
 		</table>
-		<div class="form-group text-right">
-		<a href="<?=PROOT?>accounts" class="btn btn-xs btn-default"> Back</a>
-		</div>
 	</div>
 </div>
 

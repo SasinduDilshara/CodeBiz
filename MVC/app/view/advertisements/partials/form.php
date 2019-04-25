@@ -7,7 +7,6 @@
 	</div>
 	<div class="form-group col">
 		<?= input_block('text','Location','area',currentUser()->area,['class'=>'form-control'],['class'=>'form-group']) ?>
-		<ul class="list-group" id="result"></ul>
 	</div>
 	<div><?=$this->displayErrors ?></div>
 	<div class="form-group" style="text-align: center;">
