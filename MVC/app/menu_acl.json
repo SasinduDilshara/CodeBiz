@@ -10,14 +10,14 @@
 	},
 
 	"Advertisements" : {
-		"My Adds<br>" : "advertisements",
-		"Show Confirmed" : "advertisements/ShowConfirmRequests",
+		"My Adds" : "advertisements",
 		"separator" : "<br>",
 		"Add Advertisements" : "advertisements/choose"
 	},
 
 	"Requests" : {
-		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
+		"Show Confirmed" : "requests/ShowConfirmRequests",
+		"separator" : "<br>",
 		"Show Finished" : "requests/FinishedRequests"
 
 	},

@@ -185,24 +185,24 @@ class RequestsController extends Controller
  		$providers = explode(",",$request->providerId);
  		foreach ($providers as $each_number) {
       $providerslist[] = currentUser()->findById((int) $each_number);
-     
-  }	 
-  $this->view->providerslist=$providerslist;
-  $this->view->request=$request;
-  $date = date("d:m:Y");
-  $time = date("H:i:s");
-  $this->view->date=$date;
-  $this->view->time=$time;
-  // dnd($this->view->time);
-  $this->view->render('requests/showAccept');
-  // dnd($providerslist);
+			
+		}	 
+		$this->view->providerslist=$providerslist;
+		$this->view->request=$request;
+		$date = date("d:m:Y");
+		$time = date("H:i:s");
+		$this->view->date=$date;
+		$this->view->time=$time;
+		// dnd($this->view->time);
+		$this->view->render('requests/showAccept');
+		// dnd($providerslist);
+	}
+	else
+	{
+		$this->view->request = $request;
+		$this->view->render('requests/noAcceptance');
+	}
 }
-else
-{
-	$this->view->request = $request;
-	$this->view->render('requests/noAcceptance');
-}
- 	}
 
  	public function confirmAction($id,$provider_id)
  	{
