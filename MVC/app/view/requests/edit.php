@@ -3,8 +3,11 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class="col-md-8 col-md-offset-2 well">
-	
- <h2 class="text-center"> <?php $this->request->displayName()?> </h2>
- <?php $this->partial('requests','form') ?>
+<div class = "card border-primary mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
+	<div class="card-header" style="text-align: center"> Edit Request </div>
+	<div class="card-body">
+		<?php $this->partial('requests','form'); ?>
+	</div>
+</div>
+
 <?php $this->end(); ?>

@@ -3,25 +3,56 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class="container">
-	
-	<h2 class="text-center text-info"><?=$this->account->username?></h2>
-	<div class="col-md-6 bg-light p-3 rounded">
-		<p><strong><pre> Name :  </strong><?=$this->account->displayName()?></pre></p>
-		<p><strong><pre> Email :  </strong><?=$this->account->email?></pre></p>
-		<p><strong><pre> Contact :  </strong><?=$this->account->phoneNumber?></pre></p>
-		<p><strong><pre> Address :  </strong><?=$this->account->displayAddress()?></pre></p>
-		<p><strong><pre> Type of User :  </strong><?=$this->account->displayType()?></pre></p>
-		
+<div class="card border-primary mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
+	<div class="card-header" style="text-align: center;padding-top: 5px;padding-bottom: 5px;">
+		User Details
 	</div>
-
-	<a href="<?=PROOT?>accounts/edit/<?=$this->account->id?>" class="btn btn-xs btn-default"> Edit </a>
-
-	<a href="<?=PROOT?>accounts/delete/<?=$this->account->id?>" class="btn btn-xs btn-default" > Delete Account </a>
-
-	<a href="<?=PROOT?>home" class="btn btn-xs btn-default"> Back</a>
-
-
+	
+	<div class="card-body" style="background-color:#fdfdfe">
+		<table class="table table-hover">
+			<thead>
+				<tr class="table-light">
+				<td><strong>  Name :</strong></td>
+				<td><?=$this->account->displayName()?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr class="table-light">
+				<td><strong>  Email :</strong></td>
+				<td><?=$this->account->email?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr class="table-light">
+				<td><strong>  Contact :</strong></td>
+				<td>+94<?=$this->account->phoneNumber?><br><?=$this->account->phoneNumber2?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr class="table-light">
+				<td><strong>  Address :</strong></td>
+				<td><?=$this->account->displayAddress()?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr class="table-light">
+				<td><strong>  User Rating :</strong></td>
+				<td><?=$this->account->overallRating?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr class="table-light">
+				<td><strong>  Type of User :</strong></td>
+				<td><?=$this->account->displayType()?></td>
+				</tr>
+			</thead>	
+		</table>
+		<div class="text-center">
+			<a href="<?=PROOT?>accounts/edit/<?=$this->account->id?>" class="btn btn-outline-primary" style="margin: 13px 12px 12px 10px;">Edit</a>
+			<a href="<?=PROOT?>accounts/delete/<?=$this->account->id?>" class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" onclick="if(!confirm('Are you sure you want to delete your account?'<br>'THIS ACTION CANNOT BE UNDONE')){return false;}">Delete Account</a>
+			<a href="<?=PROOT?>home" class="btn btn-outline-secondary" style="margin: 13px 12px 12px 10px;">Back</a>
+		</div>
+	</div>
 
 </div>
 

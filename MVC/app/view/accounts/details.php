@@ -2,27 +2,56 @@
 <?php $this->start('head'); ?>
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
-
-<div class="col-md-8 col-md-offset-2 well">
+<div class="card border-primary mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
+	<div class="card-header" style="text-align: center;padding-top: 5px;padding-bottom: 5px;">
+		User Details
+	</div>
 	
-	<h2 class="text-center"><?=$this->account->username?></h2>
-	<div class="col-md-6">
-		<p><strong><pre> Name :  </strong><?=$this->account->displayName()?></pre></p>
-		<p><strong><pre> Email :  </strong><?=$this->account->email?></pre></p>
-		<p><strong><pre> Contact :  </strong><?=$this->account->phoneNumber?></pre></p>
-		<p><strong><pre> Area :  </strong><?=$this->account->area?></pre></p>
-		<p><strong><pre> Address :  </strong><?=$this->account->displayAddress()?></pre></p>
-		<p><strong><pre> Type of User :  </strong><?=$this->account->displayType()?></pre></p>
-		<p><strong><pre> Rating :  </strong><?=$this->account->overallRating?></pre></p>
+	<div class="card-body" style="background-color:#fdfdfe">
+		<h4><?= $this->account->fname; ?></h4>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+				<td><strong>  Name :</strong></td>
+				<td><?=$this->account->displayName()?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Email :</strong></td>
+				<td><?=$this->account->email?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Contact :</strong></td>
+				<td>
+					<?=$this->account->phoneNumber?><br>
+				</td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Area :</strong></td>
+				<td>
+					<?=$this->account->area?><br>
+				</td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Address :</strong></td>
+				<td><?=$this->account->displayAddressLabel()?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Rating :</strong></td>
+				<td><?=$this->account->overallRating?></td>
+				</tr>
+			</thead>	
+		</table>
 	</div>
-	<div class="col-md-6">
-		<?=$this->account->displayAddressLabel()?>
-	</div>
-<?php if(currentUser()->username == $this->account->username): ?>
-	<a href="<?=PROOT?>accounts/edit" class="btn btn-xs btn-default"> Edit</a>
-	<a href="<?=PROOT?>home" class="btn btn-xs btn-default"> Back</a>
-<?php endif; ?>
-
 </div>
 
 <?php $this->end(); ?>

@@ -3,9 +3,12 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class="col-md-8 col-md-offset-2 well">	
- <h2 class="text-center"><?=$this->advertisement->topic?></h2>
- <?= $this->partial('advertisements','form')?>
+<div class = "card border-primary mb-3" style="max-width: 50rem; margin:auto; top:5rem;">
+	<div class="card-header" style="text-align: center"> Edit Advertisement </div>
+	<div class="card-body">
+        <?= $this->partial('advertisements','form')?>
 
+	</div>
+</div>
 
 <?php $this->end(); ?>

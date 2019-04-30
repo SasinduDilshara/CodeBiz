@@ -8,24 +8,7 @@
 
 <?php include 'searchbar.php' ?>
 
-<div>
-	<?php include 'showrequests.php' ?>	
-</div>
-<div>
-	<?php include 'notificationsbutton.php' ?>
-</div>
-
-<div>
-	<?php include 'showConfirmRequests.php' ?>
-</div>
-
-<div>
-	<?php include 'showFinishedRequests.php' ?>
-</div>
-
-<div>
-	<?php include 'showAcceptedAdds.php' ?>
-</div>
+<!-- Other links -->
 
 
 

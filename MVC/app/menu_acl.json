@@ -15,6 +15,14 @@
 		"Add Advertisements" : "advertisements/choose"
 	},
 
+	"Requests" : {
+		"Show Confirmed" : "requests/ShowConfirmRequests",
+		"separator" : "<br>",
+		"Show Finished" : "requests/FinishedRequests"
+
+	},
+
+	"Notifications" : "notifications/show",
 
 	"Logout" : "register/logout"
 	
@@ -28,15 +36,20 @@
 		"Add Contacts" : "contacts/add"
 	},
 
+	"Advertisements" : {
+		"Show Confirmed" : "advertisements/ShowConfirmRequests"
+	}, 
+
 	"Requests" : {
-
-		"My Requests" : "requests",
-		"separator" : "<br>",
 		"Add Requests" : "requests/add",
-		"separator" : "<br>"
-
+		"separator" : "<br>",
+		"My Requests<br>" : "requests",
+		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
+		"Show Finished" : "requests/FinishedRequests"
 
 	},
+
+	"Notifications" : "notifications/show",
 
 	"Logout" : "register/logout"
 

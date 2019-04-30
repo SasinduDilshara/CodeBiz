@@ -23,7 +23,7 @@
    <?php $this->content('head'); ?>
 
   </head>
-  <body> 
+  <body style="background-image:url(<?=PROOT?>img/Background.jpg)"> 
     <!-- bye -->
     <?php include 'main_menu_3.php' ?>
     <!-- <div class="container-fluid" style="min-height:cal(100% - 125px);"> <-->
@@ -31,7 +31,10 @@
        <?= $this->content('body'); ?>
        <style type="text/css">
          body {
-            /* background-color:clouds; */
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center;
+          background-size:cover;
          }
        </style>
 

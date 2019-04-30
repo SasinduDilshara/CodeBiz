@@ -24,8 +24,8 @@ else
   $currentPage =currentPage();
 
 ?>
-
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<!-- TODO: change should revert add "position: fixed;"-->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#292D32;top: 0;width: 100%;z-index: 2;position: fixed;">
     <div class="container">
         <a class="navbar-brand text-white" href="<?= PROOT ?>">
         <img src="<?=PROOT?>img<?=DS?>logo.png" height = 40 width = 160></a>
@@ -68,4 +68,5 @@ else
             </span>
         </div>
     </div>
-</nav> 
+</nav>
+<br>

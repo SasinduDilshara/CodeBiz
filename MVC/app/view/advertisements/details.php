@@ -4,17 +4,34 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-
-
-<div class="col-md-8 col-md-offset-2 well">
-	<a href="<?=PROOT?>advertisements" class="btn btn-xs btn-default"> Back</a>
-	<h2 class="text-center"><?=$this->advertisement->topic?></h2>
-	<div class="col-md-6">
-		<p><strong><pre> Description :  </strong><?=$this->advertisement->description?></pre></p>
-		<p><strong><pre> Location :  </strong><?=$this->advertisement->area?></pre></p>
-		<p><strong><pre> Type :  </strong><?=$this->advertisement->type?></pre></p>
-
+<div class="card border-primary mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
+	<div class="card-header" style="text-align: center;padding-top: 5px;padding-bottom: 5px;">
+		Details
 	</div>
-
+	
+	<div class="card-body" style="background-color:#fdfdfe">
+		<h4><?=$this->advertisement->topic?></h4>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+				<td><strong>  Description :</strong></td>
+				<td><?=$this->advertisement->description?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Location :</strong></td>
+				<td><?=$this->advertisement->area?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Service Type :</strong></td>
+				<td><?=$this->advertisement->area?></td>
+				</tr>
+			</thead>	
+		</table>
+	</div>
+</div>
 
 <?php $this->end(); ?>

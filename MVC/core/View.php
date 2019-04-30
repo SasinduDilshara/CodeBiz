@@ -86,7 +86,7 @@ class View
 		{
 		include(ROOT.DS.'app'.DS.'view'.DS.$group.DS.'partials'.DS.$partial.'.php');
 		// dnd(ROOT.DS.'app'.DS.'view'.DS.$group.DS.'partials'.DS.$partial.'.php');
-		return true;
+		return;
 	}
 	else
 	{
