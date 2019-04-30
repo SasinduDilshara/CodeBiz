@@ -2,7 +2,7 @@
 <?php $this->start('body'); ?>
 <div style="text-align:center;padding:3rem 0rem 1rem 0rem">
     <div class="navbar navbar-expand-sm navbar-light" style="display:inline-block;background-color:rgba(0,0,0,0.8);padding:8px;">
-        <form class="form-inline my-2 my-lg-0"action="requests/search" method="GET">
+        <form class="form-inline my-2 my-lg-0"action="<?=PROOT?>requests/search" method="GET">
         <ul class="navbar-nav mr-auto">
                 <li class="nav-item bg-light" style="padding:6px;">
                     <input type="text" name="area" id="area" class="form-control" value="<?=currentUser()->area ?>">
