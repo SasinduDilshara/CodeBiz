@@ -443,15 +443,10 @@ public function cancelAction($id,$user_id)
  				// $this->view->provider=$requests;
  			}
 		 // dnd($requests);
- 		if(!$requests)
- 		{
- 			$this->view->render('requests/NoFinished');
- 		}
 
-		else{
 			$this->view->requests=$requests;
 			$this->view->render('requests/ShowFinishedRequests');
-		}
+
 
  	}
 
