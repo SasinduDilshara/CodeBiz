@@ -3,10 +3,11 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<p> Your Confirmation was inform to the <?= $this->provider->username ?> </p>
-
-<?php if(currentUser()->userType == 'Customer'): ?>
-<a href="<?=PROOT?>requests/showAccept/<?=$this->request->id ?>" class="btn btn-xs btn-default"> Back</a>
-<?php endif; ?>
+<div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
+    <button type="button" class="close" onclick="window.history.back();" ?>&times;</button>
+	<div class="card-body">
+        <p class="mb-0"> Your confirmation has been informed to <?= $this->provider->username ?> </p>
+	</div>
+</div>
 
 <?php $this->end(); ?>
