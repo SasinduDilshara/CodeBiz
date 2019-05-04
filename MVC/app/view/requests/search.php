@@ -40,17 +40,15 @@ else: ?>
 					<td><?= $request->description; ?></td>
 					<td>
 						<?php if(!in_array((string)(currentUser()->id),explode(",",$request->providerId))):?>
-							<a href="<?=PROOT?>requests/accept/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Accept </a>
+							<a href="<?=PROOT?>requests/accept/<?=$request->id?>/<?=$request->user_id?>" > Accept </a>
 						<?php endif; ?>
-						<?php if(in_array((string)(currentUser()->id),explode(",",$request->providerId)) && $request->completed==0) :?>
-							<a href="<?=PROOT?>requests/cancel/<?=$request->id?>/<?=$request->user_id?>" class="btn btn-danger btn-xs"></i> Cancel </a>
+						<?php if($request->confirmProviderId == currentUser()->id):?>
+							<a href="<?=PROOT?>requests/showChat/<?=$request->id?>" > Show Chat </a>
+						<?php elseif(in_array((string)(currentUser()->id),explode(",",$request->providerId)) && $request->completed==0) :?>
+							<a href="<?=PROOT?>requests/cancel/<?=$request->id?>/<?=$request->user_id?>" > Cancel </a>
 						<?php endif; ?>
 					</td>
-					<?php if($request->confirmProviderId == currentUser()->id):?>
-					<td>
-							<a href="<?=PROOT?>requests/showChat/<?=$request->id?>" class="btn btn-danger btn-xs"></i> Show Chat </a>
-					</td>
-					<?php endif; ?>
+					
 				</tr>
 			<?php endforeach; ?>
 		</tbody>

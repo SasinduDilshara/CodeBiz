@@ -2,10 +2,11 @@
 <?php $this->start('body'); ?>
 <div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:5rem;"><?=$this->request->service ?></div>
 <div class = "card border-primary mb-3" style="max-width: 80rem; margin:auto;">
+
 	<table class="table table-hover">
 		<thead>
 			<th> Provider</th>
-			<th></th>
+			<th><button type="button" class="close" onclick="location.href='<?=PROOT?>requests'">&times;</button></th>
 
 		</thead>
 	<tbody>
