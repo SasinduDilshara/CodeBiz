@@ -89,8 +89,7 @@ public function findByLocationAndType($location,$params=[])
 	[
 		'area' =>[
 			'display' =>'Location',
-			'required' => true,
-			'min' => 6
+			'required' => true
 	],
 
 	'topic' =>[

@@ -3,9 +3,10 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<p>Check out your email to verify your email address</p>
-
-<a href="<?=PROOT?>/register/login" class="btn btn-xs btn-default" > Back to Boardingvibes </a>
+<div class="alert alert-dismissible alert-success" style="max-width: 500px; margin:auto; top:5rem;">
+  <button type="button" class="close" data-dismiss="alert" onclick="window.location.href='<?=PROOT?>/register/login'">&times;</button>
+  Check out your email to verify your email address  <br> <a href="<?=PROOT?>/register/login" class="alert-link"> Back to Boardingvibes </a>
+</div>
 
 <?php $this->end(); ?>
 

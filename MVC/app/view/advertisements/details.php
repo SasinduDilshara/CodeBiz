@@ -14,6 +14,12 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
+				<td><strong>  Service Type :</strong></td>
+				<td><?=$this->advertisement->type?></td>
+				</tr>
+			</thead>
+			<thead>
+				<tr>
 				<td><strong>  Description :</strong></td>
 				<td><?=$this->advertisement->description?></td>
 				</tr>
@@ -26,11 +32,47 @@
 			</thead>
 			<thead>
 				<tr>
-				<td><strong>  Service Type :</strong></td>
-				<td><?=$this->advertisement->area?></td>
+				<td><strong>  Delivery :</strong></td>
+				<td><?=$this->advertisement->delivery?></td>
 				</tr>
-			</thead>	
+			</thead>
+			<thead>
+				<tr>
+				<td><strong>  Schedule :</strong></td>
+				<td><?=$this->advertisement->schedule?></td>
+				</tr>
+			</thead>
+			<?php switch($this->advertisement->type):
+				case 'Cleaning':?>
+					<!-- fields unique for cleaning -->
+					<?php break;
+				case 'Catering':?>
+					<thead>
+						<tr>
+						<td><strong>  Capacity :</strong></td>
+						<td><?=$this->advertisement->capacity?></td>
+						</tr>
+					</thead>
+					<thead>
+						<tr>
+						<td><strong>  Menu :</strong></td>
+						<td><?=$this->advertisement->menu?></td>
+						</tr>
+					</thead>
+					<?php break;
+				case 'Laundering':?>
+					<thead>
+						<tr>
+						<td><strong>  Capacity :</strong></td>
+						<td><?=$this->advertisement->capacity?></td>
+						</tr>
+					</thead>
+					<?php break;
+			endswitch?>
 		</table>
+		<div class = "form-group text-right">
+			<a onclick="window.history.back();" class="btn btn-default"> Back </a>
+		</div>
 	</div>
 </div>
 
