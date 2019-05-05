@@ -12,7 +12,7 @@
 	<div class="form-group" style="text-align: center;">
 		<?= submitBlock('Save',['class'=>'btn btn-primary']) ?>
 	</div>
-	<div class = "form-group text-right">
+	<div class = "form-group text-center">
 	<a href="<?=PROOT?>advertisements" class="btn btn-default"> Cancel </a>
 	</div>
 
