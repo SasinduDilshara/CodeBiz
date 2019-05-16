@@ -3,6 +3,8 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Boarding Vibes </p>
+
 <p> No finished requests yet. </p>
 
 <a href="<?=PROOT?>" class="btn btn-xs btn-default"> Back</a>

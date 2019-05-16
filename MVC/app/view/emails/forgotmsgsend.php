@@ -5,6 +5,8 @@
 
 <p> Check Your Email to reset your password </p>
 
+<p style = "color:red;"> Check Your Email to reset your password </p>
+
 <a href="<?=PROOT?>" class="btn btn-xs btn-default" > Back to Boardingvibes </a>
 
 <?php $this->end(); ?>

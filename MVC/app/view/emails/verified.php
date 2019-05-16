@@ -5,6 +5,8 @@
 
 <p>Your Email verification has been completed</p>
 
+<p style = "color:red;">Your Email verification has been completed</p>
+
 <a href="<?=PROOT?>" class="btn btn-xs btn-default" > Back to Boardingvibes </a>
 
 <?php $this->end(); ?>

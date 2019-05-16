@@ -3,6 +3,8 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Boarding Vibes </p>
+
 <p> Your Chat have been cleared  </p>
 
 <a href="<?=PROOT?>advertisements/ShowConfirmRequests" class="btn btn-xs btn-default"> Back</a>

@@ -37,7 +37,7 @@
 			<thead>
 				<tr class="table-light">
 				<td><strong>  User Rating :</strong></td>
-				<td><?=$this->account->overallRating?></td>
+				<td><?=$this->account->overallRating?> (out of <?=$this->account->ratingtimes?>)</td>
 				</tr>
 			</thead>
 			<thead>

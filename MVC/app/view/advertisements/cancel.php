@@ -3,6 +3,8 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Boarding Vibes </p>
+
 <p> Your Cancellation was inform to the <?= $this->owner->username ?> </p>
 
 

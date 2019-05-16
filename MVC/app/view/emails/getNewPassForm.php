@@ -5,11 +5,13 @@
 
 <form class="form" action='<?=PROOT?>emails/getNewPassword/<?=$this->id?>' method="post">
 
-<p>Type Your Email here. We will send you a form to fill out</p>
+<p>Type Your new Password here. We will send you a form to fill out</p>
+
+<p style = "color:red;">Type Your Email here. We will send you a form to fill out</p>
 
 
 	<div class="form-group col">
-		<?= input_block('text','pass','pass','',['class'=>'form-control'],['class'=>'form-group']) ?>
+		<?= input_block('text','New Password','pass','',['class'=>'form-control'],['class'=>'form-group']) ?>
 		<ul class="list-group" id="result"></ul>
 
 		<div class="text-center">

@@ -22,6 +22,7 @@ class NotificationsController extends Controller
 		// dnd("kl");
 		$messages= currentUser()->notifications;
 		// dnd($messges);
+		// dnd($messages);
 		if(!$messages)
 		{
 			$this->view->render('notifications/empty');
@@ -30,6 +31,7 @@ class NotificationsController extends Controller
 			{
 				$messages=explode (",", $messages);
 				$this->view->messages=$messages;
+				// dnd($messages);
 				$this->view->render('notifications/show');
 			}
 	}

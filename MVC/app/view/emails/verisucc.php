@@ -3,7 +3,13 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<p>Check out your email to verify your email address</p>
+
+
+<p>Messege sent</p>
+<p style="color:red;">Your veryfication message has been sent.
+	<br>
+	Please Check out your email to verify your email address
+</p>
 
 <a href="<?=PROOT?>/register/login" class="btn btn-xs btn-default" > Back to Boardingvibes </a>
 

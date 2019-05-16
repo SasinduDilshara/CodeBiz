@@ -3,6 +3,8 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Boarding Vibes </p>
+
 <p> Your Confirmation was inform to the <?= $this->customer->username ?> </p>
 
 <?php if(currentUser()->username == $this->owner->username): ?>

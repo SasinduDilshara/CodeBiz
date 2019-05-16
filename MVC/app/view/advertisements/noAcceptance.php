@@ -3,8 +3,10 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Boarding Vibes </p>
+
 <p> No requestes yet to the <?= $this->advertisement->topic ?> </p>
 
-<!-- <a href="<?=PROOT?>requests" class="btn btn-xs btn-default"> Back</a> -->
+
 
 <?php $this->end(); ?>

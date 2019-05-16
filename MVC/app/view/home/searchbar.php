@@ -16,9 +16,23 @@
                         </select>
                     </div>
                 </li>
-                <li class="nav-item bg-light" style="padding:6px;">
+                <?php if(!currentUser()): ?>
+
+                    <li class="nav-item bg-light" style="padding:6px;">
                     <input type="text" name="area" id="area" class="form-control" value="" placeholder="I live in">
+                    
                 </li>
+<?php endif; ?>
+
+            
+                
+<?php if(currentUser()): ?>
+                <li class="nav-item bg-light" style="padding:6px;">
+
+                    <input type="text" name="area" id="area" class="form-control" value="<?=currentUser()->area?>" placeholder="I live in">
+                
+                </li>
+<?php endif; ?>
                 <li class="nav-item col bg-light" style="padding:6px;">
                     <input type="submit" class="btn btn-secondary my-2 my-sm-0" value="Search" >
                 </li>

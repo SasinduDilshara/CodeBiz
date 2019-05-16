@@ -246,7 +246,7 @@ $this->view->advertisement = $advertisement;
  		$this->modelLoad($type)->attachAccepts(currentUser());
  		$this->view->advertisement=$advertisement;
  		$this->view->owner=$owner;
-
+ 		// dnd('1');
 
  		$this->modelLoad($type)->notifyAccepts($advertisement,currentUser(),$owner);
 //*****************************************************************************************************

@@ -9,7 +9,7 @@ abstract class Advertisements extends Model implements Observable
 	public $type;
 	public function __construct($table,$advertisement='')
 	{
-		// $table = 'advertisements';
+		//$table = 'advertisements';
 		parent:: __construct($table);
 		$this->_softDelete = false;
 		$observers = [];
@@ -228,14 +228,14 @@ public function findByLocationAndType($location,$params=[])
 		// dnd($this->observers);
 		foreach($this->observers as $observer)
 		{
-			if(true || currentUser()->userType == "Provider")
-			{
-			$observer->updateObserver($advertisement,$customer,$provider);
-		    }
-		    if(true || currentUser()->userType == "Customer")
-		    {
-		    $observer->updateProvider($advertisement,$customer,$provider);
-		    }
+			// if(true || currentUser()->userType == "Provider")
+			// {
+			$observer->updateObserverCus($advertisement,$customer,$provider);
+		    // }
+		    // if(true || currentUser()->userType == "Customer")
+		    // {
+		    $observer->updateProviderCus($advertisement,$customer,$provider);
+		    // }
 		}
 	}
 	public function attachAccepts($observer)
@@ -256,14 +256,14 @@ public function findByLocationAndType($location,$params=[])
 		foreach($this->confirmobservers as $observer)
 		{
 			// dnd("p");
-			if(true || currentUser()->userType == "Customer")
-			{
-			$observer->updateConfirmObserver($requests,$provider,$customer);
-		    }
-		    if(true)
-		    {
-		    $observer->updateCustomer($requests,$provider,$customer);
-		    }
+			// if(true || currentUser()->userType == "Customer")
+			// {
+			$observer->updateConfirmObserverCus($requests,$provider,$customer);
+		    // }
+		    // if(true)
+		    // {
+		    $observer->updateCustomerCus($requests,$provider,$customer);
+		    // }
 		}
 	}
 	public function attachConfirms($observer)
@@ -349,14 +349,14 @@ public function findByLocationAndType($location,$params=[])
 		// dnd($this->observers);
 		foreach($this->cancelAceeptsObservers as $observer)
 		{
-			if(true)
-			{
-			$observer->updateCancelObserver($requests,$customer,$owner);
-		    }
-		    if(true)
-		    {
-		    $observer->updateCancelProvider($requests,$customer,$owner);
-		    }
+			// if(true)
+			// {
+			$observer->updateCancelObserverCus($requests,$customer,$owner);
+		    // }
+		    // if(true)
+		    // {
+		    $observer->updateCancelProviderCus($requests,$customer,$owner);
+		    // }
 		}
 	}
 	public function attachCancellation($observer)
@@ -377,14 +377,14 @@ public function findByLocationAndType($location,$params=[])
 		foreach($this->CancelConfirmobservers as $observer)
 		{
 			// dnd("p");
-			if(true || $observer->userType == "Customer")
-			{
-			$observer->updateCancelConfirmObserver($requests,$customer,$provider);
-		    }
-		    if(true || $observer->userType == "Provider")
-		    {
-		    $observer->updateCancelCustomer($requests,$customer,$provider);
-		    }
+			// if(true || $observer->userType == "Customer")
+			// {
+			$observer->updateCancelConfirmObserverCus($requests,$customer,$provider);
+		    // }
+		    // if(true || $observer->userType == "Provider")
+		    // {
+		    $observer->updateCancelCustomerCus($requests,$customer,$provider);
+		    // }
 		}
 	}
 

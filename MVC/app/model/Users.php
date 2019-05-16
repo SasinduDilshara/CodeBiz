@@ -673,6 +673,244 @@ $mail_content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function updateObserverCus($request,$customer,$provider)
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = "Your ". $request->topic." has been aceepted by ".$customer->username;
+		}
+	else
+	{
+		$Notification = "Your ". $request->topic." has been aceepted by ".$customer->username. ",".$provider->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($provider->id, ['notifications' => $Notification]);
+
+	}
+
+		public function updateCancelObserverCus($request,$customer,$provider)
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = $customer->username." has been cancelled the acceptance to your ".$request->topic;
+		}
+	else
+	{
+		$Notification = $customer->username." has been cancelled the acceptance to your ".$request->topic. ",".$provider->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($provider->id, ['notifications' => $Notification]);
+
+	}
+
+	public function updateCancelProviderCus($request,$customer,$provider)
+
+	{
+
+	if($customer->notifications==NULL)
+		{
+			$Notification = "You cancelled acceptance of the ". $request->topic." which was request by the ".$provider->username;
+		}
+	else
+	{
+		$Notification = "You cancelled acceptance of the ". $request->topic." which was request by the ".$provider->username. ",".$customer->notifications; 
+	}
+		return $this->update($customer->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
+
+	public function updateProviderCus($request,$cus,$pro)
+
+	{
+
+	if($cus->notifications==NULL)
+		{
+			$Notification = "You accepted the ". $request->topic." which was request by the ".$pro->username;
+		}
+	else
+	{
+		$Notification = "You accepted the ". $request->topic." which was requested by the ".$pro->username. ",".$cus->notifications; 
+	}
+		return $this->update($cus->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
+
+	public function updateConfirmObserverCus($request,$customer,$provider)
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($customer->notifications==NULL)
+		{
+			$Notification = "Your ". 'acceptance for the '.$request->topic.' request'." has been confirmed by ".$provider->username;
+		}
+	else
+	{
+		$Notification =  "Your ". 'acceptance for the '.$request->topic.' request'." has been confirmed by ".$provider->username. ",".$customer->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($customer->id, ['notifications' => $Notification]);
+
+	}
+
+	public function updateCustomerCus($request,$customer,$provider)
+
+	{
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = "You confirm the ". $request->topic." which was accepted by the ".$customer->username;
+		}
+	else
+	{
+		$Notification = "You confirm the ". $request->topic." which was accepted by the ".$customer->username. ",".$provider->notifications; 
+	}
+		return $this->update($provider->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
+
+	// public function setMessagesEmpty($user)
+	// {
+	// 	return $this->update($user->id, ['notifications' => '']);
+	// }
+
+	// public function sendOthers($provider,$customer,$request)
+ // 	{
+ // 		// if($provider->username!= 'yasith' && $provider->username!= 'provider'){dnd($provider);}
+ // 	if($provider->notifications==NULL)
+	// 	{
+	// 		$Notification = $request->topic." has been given to another topic provider by ".$customer->username;
+	// 	}
+	// else
+	// {
+	// 	$Notification =  $request->topic." has been given to another topic provider by ".$customer->username. ",".$provider->notifications; 
+	// }
+
+ 	// 	return $this->update($provider->id, ['notifications' => $Notification]);
+ 	// }
+
+ 	public function updateCancelConfirmObserverCus($requests,$provider,$customer)
+ 	{
+ 		{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($customer->notifications==NULL)
+		{
+			$Notification = 'Confirmation for your '.$requests->topic.' acceptance'." has been cancelled by ".$provider->username;
+		}
+	else
+	{
+		$Notification =  'Confirmation for your '.$requests->topic.' acceptance'." has been cancelled by ".$provider->username. ",".$customer->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($customer->id, ['notifications' => $Notification]);
+
+	}
+ 	}
+
+ 	public function updateCancelCustomerCus($requests,$provider,$customer)
+	{
+
+	if($provider->notifications==NULL)
+		{
+			$Notification = "You cancelled the ". $requests->topic." confirmation of ".$customer->username;
+		}
+	else
+	{
+		$Notification = "You cancelled the ". $requests->topic." confirmation of ".$customer->username. ",".$provider->notifications; 
+	}
+		return $this->update($provider->id, ['notifications' => $Notification]);
+	// dnd($Notification);
+	}
+
+	public function sendCompletenessCus($request,$servicer,$user)
+	{
+
+ 			// dnd($servicer[0]->username);
+	if($user->notifications==NULL)
+		{
+			$Notification = "You mark complete as the ". $request->topic." serviced of ". $servicer[0]->username;
+		}
+	elseif($user->notifications!=NULL)
+	{
+		$Notification = "You mark complete as the ". $request->topic." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+	}
+		$this->update($user->id, ['notifications' => $Notification]);
+
+	if($servicer[0]->notifications==NULL)
+		{
+			$Notification = $user->username." mark complete as the ". $request->topic." serviced of You";
+		}
+	elseif($servicer[0]->notifications!=NULL)
+	{
+		$Notification = $user->username." mark complete as the ". $request->topic." serviced of you". ",". $servicer[0]->notifications; 
+	}
+		$this->update($servicer[0]->id, ['notifications' => $Notification]);
+
+
+
+	}
+
+	public function sendUnCompletenessCus($request,$servicer,$user)
+	{
+
+ 			// dnd($servicer[0]->username);
+	if($user->notifications==NULL)
+		{
+			$Notification = "You mark not completed yet as the ". $request->topic." serviced of ". $servicer[0]->username;
+		}
+	elseif($user->notifications!=NULL)
+	{
+		$Notification = "You mark not completed yet as the ". $request->topic." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+	}
+		$this->update($user->id, ['notifications' => $Notification]);
+
+	if($servicer[0]->notifications==NULL)
+		{
+			$Notification = $user->username." mark not completed yet as the ". $request->topic." serviced of You";
+		}
+	elseif($servicer[0]->notifications!=NULL)
+	{
+		$Notification = $user->username." mark not completed yet as the ". $request->topic." serviced of you". ",". $servicer[0]->notifications; 
+	}
+		$this->update($servicer[0]->id, ['notifications' => $Notification]);
+
+
+
+	}
+
+
+
+
+
 	
 }
 

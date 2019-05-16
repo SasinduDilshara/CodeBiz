@@ -3,6 +3,8 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Boarding Vibes </p>
+
 <p> Your have to create account as a customer </p>
 
 <?php if(!currentUser()): ?>

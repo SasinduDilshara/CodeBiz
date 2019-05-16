@@ -3,6 +3,8 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Boarding Vibes </p>
+
 <p> Your Message was inform to the <?= $this->provider->username ?> </p>
 
 <a href="<?=PROOT?>advertisements/ShowConfirmRequests" class="btn btn-xs btn-default"> Back</a>

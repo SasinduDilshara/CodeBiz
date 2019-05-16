@@ -34,6 +34,7 @@ else: ?>
 			<tr class="table-light">
 			<th scope="col">Topic</th>
 			<th scope="col">Description</th>
+			<th scope="col">Details</th>
 			<th scope="col">Location</th>
 			<th scope="col">Type</th>
 			<?php if(currentUser()): ?>
@@ -53,11 +54,21 @@ else: ?>
 					<th scope="row">
 						<a href="<?=PROOT?>advertisements/details/<?=$advertisement->type?>/<?=$advertisement->id?>"><?= $advertisement->topic; ?></a></th>
 					<td><?= $advertisement->description; ?></td>
+
+											<!-- gghg -->
+				<?php if(!currentUser()): ?>
+					<td><a href="<?=PROOT?>accounts/details/<?=$advertisement->user_id?>">Provider Details</a></td>
+					<?php endif; ?>
+				
+					<!-- hjhj -->
+
 					<td><?= $advertisement->area; ?></td>
 					<td><?= $advertisement->type;?></td>
 					<?php if(currentUser()): ?>
 					<td><a href="<?=PROOT?>accounts/details/<?=$advertisement->user_id?>"><?php if(currentUser()): ?><?= $customer->username; ?><?php endif; ?></a></td>
 					<?php endif; ?>
+					
+
 					<td>
 						<?php if(!currentUser() ):?>
 							<a href="<?=PROOT?>register/login" onclick="if(!confirm('Please Register as a Customer')){return false;}"> Requset Service </a>

@@ -3,6 +3,8 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
+<p> Notification Details </p>
+
 <?php foreach($this->messages as $message): ?>
 
 <p> <?= $message ?> </p>

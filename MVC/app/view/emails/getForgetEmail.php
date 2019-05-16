@@ -7,6 +7,8 @@
 
 <p>Type Your Email here. We will send you a form to fill out</p>
 
+<p style = "color:red;">Type Your Email here. We will send you a form to fill out</p>
+
 
 	<div class="form-group col">
 		<?= input_block('text','email','email','',['class'=>'form-control'],['class'=>'form-group']) ?>

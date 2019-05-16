@@ -5,7 +5,8 @@
 		"Register" :["login","register","verification"],
 		"Advertisements" : ["search","details","index","accept"],
 		"Restricted" : ["*"],
-		"Emails" : ["*"]
+		"Emails" : ["*"],
+		"Accounts" : ["details"]
 		
 	},
 
