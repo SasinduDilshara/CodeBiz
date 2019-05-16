@@ -11,6 +11,5 @@
         </p>
 	</div>
 </div>
-<p>  </p>
 
 <?php $this->end(); ?>

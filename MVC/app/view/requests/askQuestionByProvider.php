@@ -12,7 +12,7 @@
 				<?= submitBlock('Send',['class'=>'btn btn-primary']) ?>
 			</div>
 			<div class = "form-group text-right">
-				<a href="<?=PROOT?>requests/ShowConfirmRequests" class="btn btn-default"> Cancel </a>
+				<a onclick="window.history.back();" class="btn btn-default"> Cancel </a>
 			</div>
 	</div>
 </div>
