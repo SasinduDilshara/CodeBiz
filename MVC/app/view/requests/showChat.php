@@ -6,6 +6,7 @@
 <div class = "card border-primary mb-3" style="max-width: 50rem; margin:auto; top:5rem;">
 	<div class="card-header" style="text-align: center"> Chat </div>
 	<div class="card-body">
+        <?php if($this->chat):?>
         <?php foreach($this->chat as $chatbar): 
             $chatarr = explode(':',$chatbar);?>
         
@@ -13,7 +14,10 @@
             <strong><?= $chatarr[0] ?>:</strong> <?= $chatarr[1] ?>
             </div>   
         <?php endforeach; ?>
-
+        <?php else: ?>
+        <div style="text-align: center"> Chat is empty</div>
+        <?php endif; ?>
+        <br>
         <div class="form-group text-center">
             <a href="<?=PROOT?>Requests/clearChat/<?=$this->request->id ?>" class="btn btn-danger" > Delete Chat </a>
             <a href="<?=PROOT?>requests/askQuestion/<?=$this->request->id?>/<?=$this->request->user_id?>" class="btn btn-primary"></i> Send Message </a>
