@@ -33,7 +33,12 @@
 	</tbody>
 	</table>
 </div>
-					
+<div class="text-center">
+<a href="<?=PROOT?>advertisements/askQuestion/<?=$this->advertisement->id?>/<?=$this->advertisement->user_id?>/<?=$this->advertisement->type?>/<?= $customer->username ?>" class="btn btn-primary"></i> Message to customers  </a>
+<a href="<?=PROOT?>advertisements/showChat/<?=$this->advertisement->id?>/<?=$this->advertisement->type?>" class="btn btn-primary"></i> Show Chat </a>
+<a href="" onclick="window.history.back();" class="btn btn-secondary"></i> Back </a>		
+</div>
+			
 <?php $this->end(); ?>
 
 
