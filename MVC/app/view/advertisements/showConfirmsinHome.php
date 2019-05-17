@@ -10,7 +10,8 @@
 			<th scope="col">Description</th>
 			<th scope="col">Location</th>
 			<th scope="col">Type</th>
-			<th scope="col">Service Provider</th>
+			<th scope="col">Servicer</th>
+			<th scope="col"></th>
 			<th scope="col"></th>
 			<th scope="col"></th>
 			<th scope="col"></th>
@@ -59,22 +60,20 @@
 						<?php $provider = $advertisement->confirmCustomerId ?>
 						<?php $servicer = currentUser()->findById($advertisement->confirmCustomerId) ?>
 						<td>
-							<a 
-							href="<?=PROOT?>advertisements/showAccept/<?=$advertisement->id?>/<?=$advertisement->type?>">
-							servicer
+							<a href="<?=PROOT?>accounts/details/<?=$advertisement->confirmCustomerId?>"><?= $servicer->username ?> </a>
 						</td>
 						<td>
-						<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" > Cancel Confirmation </a></a>
+						<a href="<?=PROOT?>advertisements/cancelConfirm/<?=$advertisement->id?>/<?=$advertisement->confirmCustomerId?>/<?=$advertisement->type?>" >Cancel Confirmation</a>
 						<td>
-						<td>
-							<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" > Message to Customers </a>
+						<!-- <td>
+							<a href="<?=PROOT?>advertisements/askQuestion/<?=$advertisement->id?>/<?=$advertisement->type?>" > Message to Customers </a>
 						</td>
 						<td>
-							<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" > Show Chats </a>
+							<a href="<?=PROOT?>advertisements/showChat/<?=$advertisement->id?>/<?=$advertisement->type?>" > Show Chats </a>
 						</td>
 						<td>
 							<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" > Rate Customers </a>
-						</td>
+						</td> -->
 					<?php endif;?>
 				</tr>
 			<?php endforeach; ?>
