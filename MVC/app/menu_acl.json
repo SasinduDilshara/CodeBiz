@@ -12,7 +12,8 @@
 	"Advertisements" : {
 		"My Adds" : "advertisements",
 		"separator" : "<br>",
-		"Add Advertisements" : "advertisements/choose"
+		"Add Advertisements" : "advertisements/choose",
+		"Show Confirmed" : "advertisements/ShowConfirmRequests"
 	},
 
 	"Requests" : {

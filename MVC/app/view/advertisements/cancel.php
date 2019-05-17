@@ -3,12 +3,12 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<p> Boarding Vibes </p>
-
-<p> Your Cancellation was inform to the <?= $this->owner->username ?> </p>
-
-
-<a href="<?=PROOT?>advertisements/search?type=<?=$this->advertisement->type ?>&area=<?=$this->advertisement->area ?>" class="btn btn-xs btn-default"> Back</a>
+<div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
+    <button type="button" class="close" onclick="window.history.back();" ?>&times;</button>
+	<div class="card-body">
+        <p class="mb-0"> Your cancellation has been informed to <?= $this->owner->username ?> </p>
+	</div>
+</div>
 
 
 <?php $this->end(); ?>
