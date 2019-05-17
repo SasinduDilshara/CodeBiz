@@ -529,7 +529,9 @@ public function cancelAction($id,$user_id,$type)//done
  	// $chat = $advertisement->chat;
  	if(!$chat)
 		{
-			$this->view->render('advertisements/emptyChat');
+			$this->view->chat=false;
+			$this->view->advertisement = $advertisement;
+			$this->view->render('advertisements/showChat');
 		}
 		else
 			{
