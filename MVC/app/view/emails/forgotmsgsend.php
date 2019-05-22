@@ -3,11 +3,10 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<p> Check Your Email to reset your password </p>
-
-<p style = "color:red;"> Check Your Email to reset your password </p>
-
-<a href="<?=PROOT?>" class="btn btn-xs btn-default" > Back to Boardingvibes </a>
+<div class="alert alert-dismissible alert-success" style="max-width: 500px; margin:auto; top:5rem;">
+  <button type="button" class="close" data-dismiss="alert" onclick="window.location.href='<?=PROOT?>'">&times;</button>
+  <strong>Well done!</strong> Check Your Email to reset your password <br> <a href="<?=PROOT?>" class="alert-link"> Back to Boardingvibes </a>
+</div>
 
 <?php $this->end(); ?>
 

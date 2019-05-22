@@ -3,9 +3,11 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<p> Boarding Vibes </p>
-
-<p> You haven't any notifications yet.</p>
-<a href="<?=PROOT?>" class="btn btn-xs btn-default"> Back</a>
+<div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
+    <button type="button" class="close" onclick="window.location.href='<?=PROOT?>';" ?>&times;</button>
+	<div class="card-body">
+        <p class="mb-0"> You haven't any notifications yet </p>
+	</div>
+</div>
 
 <?php $this->end() ?>

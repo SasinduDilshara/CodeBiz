@@ -37,7 +37,11 @@
 			<thead>
 				<tr class="table-light">
 				<td><strong>  User Rating :</strong></td>
-				<td><?=$this->account->overallRating?> (out of <?=$this->account->ratingtimes?>)</td>
+				<td><div class="progress">
+  						<div class="progress-bar" role="progressbar" style="width: <?=round($this->account->overallRating,1)*20?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+					<?=round($this->account->overallRating,1)?>/5.0 (out of <?=$this->account->ratingtimes?>)
+				</td>
 				</tr>
 			</thead>
 			<thead>
