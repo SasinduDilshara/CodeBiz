@@ -58,6 +58,7 @@
 				</tr>
 			</thead>
 		</table>
+			<a href="<?=PROOT?>accounts/delete/<?=$this->account->id?>" class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" onclick="if(!confirm('Are you sure you want to delete your account?'<br>'THIS ACTION CANNOT BE UNDONE')){return false;}">Delete Account</a>
 </div>
 
 <?php $this->end(); ?>

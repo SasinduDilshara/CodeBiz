@@ -50,10 +50,17 @@ class AdminController extends Controller
 
 
 
-   public function AllreqsbeforeAction()
+   public function AllreqsbeforeAction($username='')
   {
     
     // if(!$request) Router::redirect('requests');
+    if($username != '')
+      {
+        $_POST[] = [];
+       $_POST['username'] = $username;
+      }
+
+
     if($_POST)
     {
     $name = $_POST['username'];
@@ -77,10 +84,15 @@ class AdminController extends Controller
 
   }
 
-  public function AlladdsbeforeAction()
+  public function AlladdsbeforeAction($username='')
   {
     
     // if(!$request) Router::redirect('requests');
+    if($username != '')
+      {
+        $_POST[] = [];
+       $_POST['username'] = $username;
+      }
     if($_POST)
     {
     $name = $_POST['username'];
@@ -115,9 +127,15 @@ class AdminController extends Controller
     // $id=$this->UsersModel->findByUsername($name)->id;
     
     $account=$this->UsersModel->findByUsername($name);
+    if(!$account)
+    {
+      Router::redirect("admin/Allaccsbefore");
+    }
 
-    $this->view->account = $account;
+    else{$this->view->account = $account;
+    // dnd($name);
     $this->view->render('admin/allaccnts');
+  }
     // $this->RequestsModel->updateMessages($id,$messages);
   }
   else
@@ -163,6 +181,51 @@ class AdminController extends Controller
 
     // AdminsendNoti($message,$reciever)
 
+  }
+
+public function informDAccntAction($username,$email)
+{
+    // $account = currentUser()->findById($id);
+  // dnd($username."  ".$email);
+    $this->UsersModel->DeleteNoti($email);
+    $this->view->username = $username;
+    // dnd($this->view->username);
+    $this->view->render("admin/afterAccountDelete");
+
+}
+
+
+
+  public function ResetaccsbeforeAction()
+  {
+    // $acc=$this->UsersModel->findByUserId($id);
+
+    if($_POST)
+    {
+    $name = $_POST['username'];
+    // $id=$this->UsersModel->findByUsername($name)->id;
+    
+    $account=$this->UsersModel->findByUsername($name);
+    if(!$account)
+    {
+      // alert()
+      Router::redirect("admin/Resetaccs");
+    }
+
+    else{$this->view->account = $account;
+    // dnd($name);
+    $this->view->render('admin/allaccnts');
+  }
+    // $this->RequestsModel->updateMessages($id,$messages);
+  }
+  else
+  {
+
+      // $this->view->displayErrors=$validation->displayErrors();
+      
+      // $this->view->chatter = username;
+      $this->view->postAction = PROOT . 'admin' . DS . 'Allaccsbefore';
+      $this->view->render('admin/typeadd');
   }
 
 

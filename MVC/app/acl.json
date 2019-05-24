@@ -17,7 +17,7 @@
 	 	},
 	"Register" : ["logout","report","register"],
 	"Requests" : ["*"],
-	"Advertisement" : ["*"],
+	"Advertisements" : ["*"],
 	"Accounts" : ["*"],
 	"Home" : ["*"],
 	"Messages" : ["*"],

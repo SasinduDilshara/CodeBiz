@@ -14,6 +14,7 @@
 					<p class="card-text"><strong>Type : </strong><?= $advertisement->type ?></p>
 					<p class="card-text"><strong>Reported Times : </strong><?= $advertisement->reported ?></p>
 					<a href="<?=PROOT?>advertisements/details/<?=$advertisement->type?>/<?=$advertisement->id?>" class="card-link"> Details </a>
+					<a href="<?=PROOT?>advertisements/delete/<?=$advertisement->type?>/<?=$advertisement->id?>" class="card-link" onclick="if(!confirm('Are you sure you want to delete this?')){return false;}"></i> Delete </a>
 				</div>
 			</div>
 		<?php endforeach; ?>

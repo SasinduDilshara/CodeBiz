@@ -36,11 +36,21 @@ class AccountsController extends Controller
 
     public function deleteAction($id)
    {
+    // dnd($id);
+    if(currentUser()->userType == "Admin")
+    {
+        $account =  $this->UsersModel->findById($id);
+    }
+    else
+    {
     $account = currentUser();
+}
     $id=$account->id;
     // dnd($id);
     // $account->logout();
-    
+    $aaa= $account->username;
+    $bbb = $account->email;
+    // dnd($aaa." ".$bbb);
     $account = $this->UsersModel->delete($id);
     // dnd($account->deleted);
     // echo '5';
@@ -54,7 +64,15 @@ class AccountsController extends Controller
     //   $account->delete(); 
       // Session::addMsg('success','Contact has been deleted.');
    // }
+    if(currentUser()->userType == "Admin")
+    {
+        Router::redirect('admin/informDAccnt/'.$aaa.DS.$bbb);
+        
+    }
+    else
+    {
     Router::redirect('register/logout');
+}
   }
 
 

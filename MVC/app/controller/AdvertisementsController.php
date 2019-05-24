@@ -147,10 +147,38 @@ $this->view->advertisement = $advertisement;
   }
 
   public function deleteAction($type,$id){
-    $advertisement = $this->modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+
+  	$add =$this->modelLoad($type)->findById($id);
+
+  	if(currentUser()->userType == "Admin")
+  	{
+  		$user1= currentUser()->findById($add->user_id);
+  		$user=$user1->username;
+  	}
+  	else
+  	{
+  		$user='';
+  	}
+
+  	if(currentUser()->userType == "Admin" || $add->user_id == currentUser()->id)
+  	{
+  		$advertisement = $add;
+  	}
+  	else
+  	{
+  		Router::redirect("restricted/index");
+  	}
+
+    // $advertisement = $this->modelLoad($type)->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
     // dnd($advertisement);
+    // dnd($type."  ".(string)$id);
     if($advertisement){
-      $advertisement->delete(); 
+    	// dnd("L");
+      $advertisement->delete();
+      if(currentUser()->userType == "Admin")
+      {
+      	Router::redirect("admin/Alladdsbefore/".$user);
+      } 
       Router::redirect('advertisements');
       // Session::addMsg('success','advertisement has been deleted.');
 	}

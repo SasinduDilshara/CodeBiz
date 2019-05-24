@@ -1041,7 +1041,12 @@ return $this->update($reciever->id, ['notifications' => $Notification]);
 
 
 
+public function DeleteNoti($reciever)
+{
+	// dnd($reciever);
+	mail($reciever,"Account Banned - Boarding Vibes","Your account has been banned. If you want to reset it Send Email with valid reasons.");
 
+}
 
 
 	

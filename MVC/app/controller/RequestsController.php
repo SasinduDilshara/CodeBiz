@@ -128,13 +128,46 @@ class RequestsController extends Controller
   }
 
   public function deleteAction($id){
-    $request = $this->RequestsModel->findByIdAndUserId((int)$id,currentUser()->id);//cast is a security to check its a number
+    $request = $this->RequestsModel->findById($id);//cast is a security to check its a number
     // dnd($contact);
-    if($request){
-      $request->delete(); 
+
+
+      	// $add =$this->modelLoad($type)->findById($id);
+
+  	if(currentUser()->userType == "Admin")
+  	{
+  		$user1= currentUser()->findById($request->user_id);
+  		$user=$user1->username;
+  	}
+  	else
+  	{
+  		$user='';
+  	}
+
+  	if(currentUser()->userType == "Admin" || $request->user_id == currentUser()->id)
+  	{
+  		$req = $request;
+  	}
+  	else
+  	{
+  		Router::redirect("restricted/index");
+  	}
+
+
+
+    if($req){
+      $req->delete(); 
       // Session::addMsg('success','Contact has been deleted.');
     }
+
+    if(currentUser()->userType == "Admin")
+      {
+      	Router::redirect("admin/Allreqsbefore/".$user);
+      } 
+else
+{
     Router::redirect('requests');
+}
   }
 
   public function selectAction()
