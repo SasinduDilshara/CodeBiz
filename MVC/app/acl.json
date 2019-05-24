@@ -10,17 +10,36 @@
 		
 	},
 
+"Admin" : {
+
+
+	 	"denied" : { "Register" : [ "login"]
+	 	},
+	"Register" : ["logout","report","register"],
+	"Requests" : ["*"],
+	"Advertisement" : ["*"],
+	"Accounts" : ["*"],
+	"Home" : ["*"],
+	"Messages" : ["*"],
+	"Notifications" : ["*"],
+	"Emails" : ["*"],
+	"Admin" : ["*"]
+
+
+},
+
+
 	"Provider" :
 	 {
 	 	"denied" : { "Register" : [ "login","register"]
 	 	},
-	 	"Register" : ["logout","confirmed","confirmedADD","verification"],
+	 	"Register" : ["logout","confirmed","confirmedADD","verification","report"],
 	 	"Contacts" :["*"],
 	 	"Advertisements" : ["*"],
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
 	 	"Requests" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat",
-	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmedADD","confirmed","markrate"],
+	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmedADD","confirmed","markrate","report"],
 	 	"Messages" : ["*"],
 	 	"Notifications" : ["*"],
 	 	"Emails" : ["*"]
@@ -30,13 +49,13 @@
 	 {
 	 	"denied" : { "Register" : [ "login","register"] , "Advertisements" : ["index"]
 	 	},
-	 	"Register" : ["logout","confirmed","confirmedADD","verification"],
+	 	"Register" : ["logout","confirmed","confirmedADD","verification","report"],
 	 	"Contacts" :["*"],
 	 	"Tools"    : ["*"],
 	 	"Home" : ["*"],
 	 	"Accounts" : ["*"],
 	 	"Advertisements" : ["select","search","details","accept","cancel", "ShowConfirmRequests","askQuestion","showChat","clearChat",
-	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmed","markrate","confirmedADD"],
+	 					"FinishedRequests","markCompleted","UnmarkCompleted","confirmed","markrate","confirmedADD","report","report"],
 	 	"Requests" : ["*"],
 	 	"Messages" : ["*"],
 	 	"Emails" : ["*"],

@@ -12,7 +12,6 @@ class RegisterController extends Controller
 		$this->load_model('Users');
 	}
 
-
 	public function loginAction()
 	
 	{	
@@ -40,10 +39,38 @@ class RegisterController extends Controller
 
 			// if($user && password_verify(Input::get('password'),$user->password))
 
-            if($user && $user->active==1)
-            { 
+            // if($user && $user->active==1)
+            // { 
+                
+            // if($user && Input::get('password') == $user->password)
+            // { 
+                
+            //     $remember = (isset($_POST['remember_me']) && Input::get('remember_me')) ? true :false;
+
+            //     // dnd($remember);
+            //     $user->login($remember);
+            //     Router:: redirect('');
+            // }
+
+            // else
+            // {
+            // $validation->addError("Username and the password does not match");
+            // }
+            // }
+
+            // else
+            // {
+            // $validation->addError("Email hasn't Verified, Check Your Emails.");
+            // }
+
+
+
+
                 
             if($user && Input::get('password') == $user->password)
+            { 
+
+            if($user && $user->active==1)
             { 
                 
                 $remember = (isset($_POST['remember_me']) && Input::get('remember_me')) ? true :false;
@@ -55,14 +82,17 @@ class RegisterController extends Controller
 
             else
             {
-            $validation->addError("Username and the password does not match");
+            $validation->addError("Email hasn't Verified, Check Your Emails.");
             }
             }
 
             else
             {
-            $validation->addError("Email hasn't Verified, Check Your Emails.");
+            $validation->addError("Username and the password does not match");
             }
+
+
+
 
 
 		}
@@ -101,12 +131,14 @@ class RegisterController extends Controller
               'area'=>''
     ];
         if($_POST)
-        {     
+        {   
             $_POST['userType'] = $userType;
             $_POST['notifications'] = '';
             $_POST['overallRating'] = 0;
             $_POST['ratingtimes'] = 0;
             $_POST['active'] = 0;
+            $_POST['reported'] = 0;
+            $_POST['reportedBy'] = '';
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  
@@ -266,7 +298,7 @@ class RegisterController extends Controller
     }
     }
 
-}
+
 
 
 
@@ -290,6 +322,36 @@ class RegisterController extends Controller
 
 			// // if($user && password_verify(Input::get('password'),$user->password))
 			// dnd(isset($_POST['remember_me']));
+
+
+        public function reportAction($type,$id,$user_id,$other='')
+    {
+        $add=$this->UsersModel->findById($id);
+        $this->UsersModel->MarkReport($type,$id,$user_id,$other,$add);
+        // dnd("".$type.(string)$id.(string)$user_id.$other);
+
+        if($add->reported>=3)//time delay makes it four
+        {
+            // dnd("p");
+        $reciever = currentUser()->findById($add->user_id);
+        currentUser()->ReportNoti("aa",$add,$add);
+    }
+
+        if($add->reported>=4)
+    {
+        $admins = currentUser()->findByUserType("Admin");
+        foreach($admins as $a)
+        {
+        currentUser()->ReportAdminNoti("aa",$add,$a);
+    }
+    }
+
+
+        Router::redirect("accounts/details/$id");
+
+
+    }
+}
 
 
 ?>

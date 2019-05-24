@@ -115,10 +115,26 @@ class Router
             foreach(currentUser()-> acls() as $a)
             {
                 // dnd($current_user_acls);
+                // dnd(currentUser()-> acls());
                 $current_user_acls[]=$a;
             }
 
         }
+
+        elseif(currentUser()->userType=="Admin")
+        {
+            $current_user_acls[]="Admin";
+            // dnd('l');
+            // dnd(currentUser()-> acls());
+            foreach(currentUser()-> acls() as $a)
+            {
+                dnd('l');
+                // dnd($current_user_acls);
+                $current_user_acls[]=$a;
+            }
+
+        }
+
         }
 
     	 // return true;

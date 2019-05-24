@@ -48,6 +48,20 @@ else: ?>
 							<a href="<?=PROOT?>requests/cancel/<?=$request->id?>/<?=$request->user_id?>" > Cancel </a>
 						<?php endif; ?>
 					</td>
+
+					<td>
+						<?php if(currentUser()):?>
+							<?php if(!in_array((string)(currentUser()->id),explode(",",$request->reportedBy))
+							):?>
+							<a href="<?=PROOT?>requests/report/requests/<?=$request->id?>/<?=currentUser()->id?>" onclick="if(!confirm('Are you sure you want to report this request?')){return false;}"> Report This Add </a>
+						<?php endif; ?>
+						<?php endif; ?>
+						<?php if(in_array((string)(currentUser()->id),explode(",",$request->reportedBy))
+							):?>
+							 Reported
+						<?php endif; ?>
+					</td>
+
 					
 				</tr>
 			<?php endforeach; ?>

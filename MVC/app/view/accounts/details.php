@@ -47,12 +47,33 @@
 			<thead>
 				<tr>
 				<td><strong>  Rating :</strong></td>
-				<td><?=$this->account->overallRating?>(out of <?=$this->account->ratingtimes?>)</td>
+				<td><div class="progress">
+  						<div class="progress-bar" role="progressbar" style="width: <?=round($this->account->overallRating,1)*20?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+					<?=round($this->account->overallRating,1)?>/5.0 (out of <?=$this->account->ratingtimes?>)
+				</td>
 				</tr>
-			</thead>	
+			</thead>
 		</table>
+		<div>
+
+		<?php if(currentUser()):?>
+							<?php if(!in_array((string)(currentUser()->id),explode(",",$this->account->reportedBy))
+							):?>
+							<a href="<?=PROOT?>register/report/register/<?=$this->account->id?>/<?=currentUser()->id?>" onclick="if(!confirm('Are you sure you want to report this account?')){return false;}" style="margin: 13px 12px 12px 10px;"> Report  </a>
+						<?php endif; ?>
+						<?php endif; ?>
+						<?php if(in_array((string)(currentUser()->id),explode(",",$this->account->reportedBy))
+							):?>
+							 Reported
+						<?php endif; ?> 
+
+
+			
 	</div>
+
 </div>
 
 <?php $this->end(); ?>
 
+						

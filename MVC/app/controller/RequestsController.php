@@ -11,7 +11,6 @@ class RequestsController extends Controller
 	}
 
 
-
 	public function indexAction()
 	{
 		$requests = $this->RequestsModel->findByUserId(currentUser()->id,['order'=>'service']);
@@ -39,6 +38,8 @@ class RequestsController extends Controller
 			$_POST['ratedType'] = '';
 			$_POST['confirmProviderId'] = 0;
 			$_POST['providerId'] = '';
+			$_POST['reported'] = 0;
+            $_POST['reportedBy'] = '';
 			$request->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
 		$validation->check($_POST,Requests::$addValidation);
@@ -486,6 +487,54 @@ public function cancelAction($id,$user_id)
 		$this->view->name = $name;
 		$this->view->render('requests/afterSuccefulRated');
 	}
+
+
+
+
+
+
+
+
+	// public function reportAction($type,$id,$user_id,$other='')
+	// {
+
+
+	// 	dnd("".$type.(string)$id.(string)$user_id.$other);
+
+
+	// }
+
+
+		public function reportAction($type,$id,$user_id,$other='')
+	{
+		$add=$this->RequestsModel->findById($id);
+		$this->RequestsModel->MarkReport($type,$id,$user_id,$other,$add);
+		// dnd("".$type.(string)$id.(string)$user_id.$other);
+
+		if($add->reported>=3)//time delay makes it four
+		{
+			// dnd("p");
+		$reciever = currentUser()->findById($add->user_id);
+		currentUser()->ReportNoti("req",$add,$reciever);
+	}
+
+	if($add->reported>=4)
+	{
+		$admins = currentUser()->findByUserType("Admin");
+		foreach($admins as $a)
+		{
+		currentUser()->ReportAdminNoti("req",$add,$a,$reciever);
+	}
+	}
+
+
+
+		Router::redirect('requests/search?area='.$add->area);
+
+
+	}
+
+
 
 
 

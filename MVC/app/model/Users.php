@@ -41,6 +41,11 @@ class Users extends Model implements Observer
 		return $this->findFirst(['conditions' => 'username = ?','bind' =>[$username]]);
 	}
 
+	public function findByUserType($usertype)
+	{
+		return $this->find(['conditions' => 'userType = ?','bind' =>[$usertype]]);
+	}
+
 
 	public static function currentLoggedInUser()
 	{
@@ -123,6 +128,7 @@ class Users extends Model implements Observer
 		// $user->login();
 		// return self::currentLoggedInUser;
 		return $user;
+
 	}
 
 	public function registerNewUser($params)
@@ -907,14 +913,132 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	}
 
-	public function reportAction($type,$id,$user_id,$other='')
+
+
+
+	public function MarkReport($type,$id,$user_id,$other,$add)
+	{
+		// dnd($userId);
+		$xxxx= (string)($add->reportedBy).",".(string)$user_id;
+		$this->update($id, ['reported' => ($add->reported+1)]);
+		$this->update($id, ['reportedBy' => $xxxx]);
+
+		return true;
+	}
+
+
+
+
+
+
+
+
+	public function ReportNoti($type,$obj,$reciever)
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($type == "add")
+	{
+		$vv = $obj->topic." advertisement";
+	}
+	elseif($type == "req")
+	{
+		$vv = $obj->service." request";
+	}
+	else
+	{
+		$vv = "user account";
+	}
+
+	if($reciever->notifications==NULL)
+		{
+			$Notification = "Your ".$vv." has been reported in several times.";
+		}
+	else
+	{
+		$Notification = "Your ".$vv." has been reported in several times.". ",".$reciever->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($reciever->id, ['notifications' => $Notification]);
+
+	}
+
+
+
+
+
+
+
+
+		public function ReportAdminNoti($type,$obj,$reciever,$r='')
+	{
+		// dnd($request);
+		// dnd($provider);
+		// dnd($customer);
+
+	if($type == "add")
+	{
+		$vv = $obj->topic." advertisement";
+		$hh = $r->username;
+	}
+	elseif($type == "req")
+	{
+		$vv = $obj->service." request";
+		$hh = $r->username;
+	}
+	else
+	{
+		$vv = "user account";
+		$hh = $obj->username;
+	}
+
+	
+
+	if($reciever->notifications==NULL)
+		{
+			$Notification = $vv." of ".$hh." has been exceded the maximum reported times..";
+		}
+	else
+	{
+		$Notification = $vv." of ".$hh." has been exceded the maximum reported times..". ",".$reciever->notifications; 
+	}
+	// dnd($Notification);
+
+return $this->update($reciever->id, ['notifications' => $Notification]);
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public function AdminsendNoti($message,$reciever)
 	{
 
 
-		dnd("".$type.(string)$id.(string)$user_id.$other);
+	if($reciever->notifications==NULL)
+		{
+			$Notification = $message;
+		}
+	else
+	{
+		$Notification = $message. ",".$reciever->notifications; 
+	}
+	// dnd($Notification);
 
+return $this->update($reciever->id, ['notifications' => $Notification]);
 
 	}
+
 
 
 

@@ -15,7 +15,6 @@ class AdvertisementsController extends Controller
 	}
 
 
-
 	public function indexAction()
 	{
 		$alladds=[];
@@ -52,6 +51,8 @@ class AdvertisementsController extends Controller
 			$_POST['chatPro'] = '' ;
 			$_POST['rated'] = 0;
 			$_POST['ratedType'] = '';
+			$_POST['reported'] = 0;
+            $_POST['reportedBy'] = '';
 
 				$advertisement->assign($_POST);	//form validation
 			// dnd($contact->assign($_POST));
@@ -648,6 +649,41 @@ public function cancelAction($id,$user_id,$type)//done
 		$this->modelLoad($type)->updateRate($advertisement,$id,$rate,$s);
 		$this->view->name = $name;
 		$this->view->render('advertisements/afterSuccefulRated');
+	}
+
+
+
+
+
+
+
+	public function reportAction($type,$id,$user_id,$other='')
+	{
+		$add=$this->modelLoad($other)->findById($id);
+		
+		$this->modelLoad($other)->MarkReport($type,$id,$user_id,$other,$add);
+
+		
+		// dnd("".$type.(string)$id.(string)$user_id.$other);
+		if($add->reported>=3)//time delay makes it four
+		{
+			// dnd("p");
+		$reciever = currentUser()->findById($add->user_id);
+		currentUser()->ReportNoti("add",$add,$reciever);
+
+	}
+	if($add->reported>=4)
+	{
+		$admins = currentUser()->findByUserType("Admin");
+		foreach($admins as $a)
+		{
+		currentUser()->ReportAdminNoti("add",$add,$a,$reciever);
+	}
+	}
+
+		Router::redirect('advertisements/search?type='.$add->type.'&area='.$add->area);
+
+
 	}
 
 
