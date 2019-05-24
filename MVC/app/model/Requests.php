@@ -451,6 +451,16 @@ else
 		// $this->update($id, ['confirmProviderId' => $newproviders]);
 	}
 
+	public function MarkReport($type,$id,$user_id,$other,$add)
+	{
+		// dnd($userId);
+		$xxxx= (string)($add->reportedBy).",".(string)$user_id;
+		$this->update($id, ['reported' => ($add->reported+1)]);
+		$this->update($id, ['reportedBy' => $xxxx]);
+
+		return true;
+	}
+
 }
 
 ?>

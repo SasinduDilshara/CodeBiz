@@ -16,6 +16,7 @@
 if(currentUser())
 {
   $menu = Router::getMenu('menu_acl',currentUser()->userType);
+  // dnd($menu);
 }
 else
 {

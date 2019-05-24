@@ -1,5 +1,29 @@
 {
 
+
+"Admin":{
+
+
+"Register A New Admin" : "register/register/Admin",
+
+"Show Site Details" : {
+
+	"Show Advertisements" : "admin/alladdsbefore",
+	"separator" : "<br>",
+	"Show Requests" : "admin/allreqsbefore",
+	"separator" : "<br>",
+	"Show Accounts" : "admin/allaccsbefore"
+
+},
+
+"Send Notifications" : "admin/sendNoti",
+
+"My Notifications" : "notifications/show",
+
+"Logout" : "register/logout"
+	
+},
+
 "Provider":{
 
 
@@ -13,6 +37,7 @@
 		"My Adds" : "advertisements",
 		"separator" : "<br>",
 		"Add Advertisements" : "advertisements/choose",
+		"separator" : "<br>",
 		"Show Confirmed" : "advertisements/ShowConfirmRequests"
 	},
 
