@@ -26,7 +26,7 @@ else
 
 ?>
 <!-- TODO: change should revert add "position: fixed;"-->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgba(17,12,17,0.8);top: 0;width: 100%;z-index: 2;position: fixed;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgba(17,12,17,0.8);top: 0;width: 100%;z-index: 2;position: fixed;padding-top: 8px;padding-bottom: 8px;">
     <div class="container">
         <a class="navbar-brand text-white" href="<?= PROOT ?>">
             <img src="<?=PROOT?>img<?=DS?>logo.png" height = 40 width = 160>
