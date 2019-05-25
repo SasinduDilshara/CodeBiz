@@ -1,6 +1,6 @@
 <?php $this->setSiteTitle("Search results"); ?>
 <?php $this->start('body'); ?>
-<div style="text-align:center;padding:3rem 0rem 1rem 0rem">
+<div style="text-align:center;padding:5rem 0rem 1rem 0rem">
     <div class="navbar navbar-expand-sm navbar-light" style="display:inline-block;background-color:rgba(0,0,0,0.8);padding:8px;">
         <form class="form-inline my-2 my-lg-0"action="<?=PROOT?>requests/search" method="GET">
         <ul class="navbar-nav mr-auto">
@@ -8,7 +8,7 @@
                     <input type="text" name="area" id="area" class="form-control" value="<?=currentUser()->area ?>">
                 </li>
                 <li class="nav-item col bg-light" style="padding:6px;">
-                    <input type="submit" class="btn btn-secondary my-2 my-sm-0" value="Search" >
+                    <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Search" >
                 </li>
             </ul>
         </form>
