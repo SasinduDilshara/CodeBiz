@@ -11,31 +11,31 @@
 	<div class="card-body" style="background-color:#fdfdfe">
 		<table class="table table-hover">
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Name :</strong></td>
 				<td><?=$this->account->displayName()?></td>
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Email :</strong></td>
 				<td><?=$this->account->email?></td>
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Contact :</strong></td>
 				<td>+94<?=$this->account->phoneNumber?><br><?=$this->account->phoneNumber2?></td>
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Address :</strong></td>
 				<td><?=$this->account->displayAddress()?></td>
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  User Rating :</strong></td>
 				<td><div class="progress">
   						<div class="progress-bar" role="progressbar" style="width: <?=round($this->account->overallRating,1)*20?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -45,7 +45,7 @@
 				</tr>
 			</thead>
 			<thead>
-				<tr class="table-light">
+				<tr>
 				<td><strong>  Type of User :</strong></td>
 				<td><?=$this->account->displayType()?></td>
 				</tr>
