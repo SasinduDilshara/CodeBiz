@@ -56,7 +56,6 @@
             <div class="col-6">
                 <label for="area"> City </label>
                 <input type="text" name="area" id="area" class="form-control" required title="must be a valid address" value="<?=currentUser()->area ?>">
-                <ul class="list-group" id="result"></ul>
             </div>
             <div><?=$this->displayErrors ?></div>
             <div class="text-center">
@@ -68,38 +67,6 @@
     </div>
     </form>
 </div>
-<script>
-    // function to get city names
-    $(document).ready(function(){
-        $.ajaxSetup({ cache: false });
-        $('#area').keyup(function(){
-            $('#result').html('');
-            $('#state').val('');
-            var searchField = $('#area').val();
-            var expression = new RegExp(searchField, "i");
-            $.getJSON('<?=PROOT?>app/cities.json', function(data) {
-                var x = 0;
-                $.each(data, function(key, value){    
-                    if (value.name.search(expression) != -1)
-                    {
-                    $('#result').append('<li class="dropdown-item">'+value.name+'</li>');
-                    x++;
-                    }
-                    // max number of items displayed
-                    if (x == 5)
-                    {
-                        return false;
-                    }
-            });   
-        });
-    });
-    
-    $('#result').on('click', 'li', function() {
-        var click_text = $(this).text().split('|');
-            $('#area').val($.trim(click_text[0]));
-            $("#result").html('');
-        });
-    });
-</script>
+
 <?php $this->end(); ?>
 

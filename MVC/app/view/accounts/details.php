@@ -63,7 +63,8 @@
 			<?php endif; ?>
 			<?php if(in_array((string)(currentUser()->id),explode(",",$this->account->reportedBy))):?>
 			<button class="btn btn-danger" style="margin: 13px 12px 12px 10px;" disabled>Reported</button>
-			<?php endif; ?> 
+			<?php endif; ?> <br>
+			<a onclick="window.history.back();" style="margin: 13px 12px 12px 10px;">Back</a>
 		</div>		
 	</div>
 
