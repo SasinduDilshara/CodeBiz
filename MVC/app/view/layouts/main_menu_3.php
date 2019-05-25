@@ -42,7 +42,7 @@ else
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <?= $key ?></a>
-                            <div class="dropdown-menu" style = "padding: .5rem 2rem;border-radius: initial;background-color:rgba(17,12,17,0.8);">
+                            <div class="dropdown-menu" style = "padding: .5rem 1rem;border-radius: initial;background-color:rgba(17,12,17,0.8);">
                                 <?php foreach ($value as $k => $v) :
                                     $active = ($v == $currentPage) ? 'active' : '' ?>
                                 <?php if ($k == 'separator') : ?>
@@ -62,10 +62,9 @@ else
                 <?php endforeach ?>
             </ul>
 
-            <span class="navbar-item text-right" name="detailsAccount">
+            <span class="nav-item text-right" name="detailsAccount">
                 <?php if (currentUser()) : ?>
-                <a href="<?=PROOT?>accounts">
-                    <?= currentUser()->fname ?></a>
+                    <a href="<?=PROOT?>accounts"><?= currentUser()->fname ?></a>
                 <?php endif ?>
             </span>
         </div>
