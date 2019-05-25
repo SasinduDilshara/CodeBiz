@@ -405,8 +405,7 @@ public function cancelAction($id,$user_id)
  	}
  	if(!$chat)
 		{
-			$this->view->chat=false;
-			$this->view->render('requests/showChat');
+			$this->view->render('requests/emptyChat');
 		}
 		else
 			{
