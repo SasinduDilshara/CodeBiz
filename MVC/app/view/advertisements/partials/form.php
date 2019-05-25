@@ -1,5 +1,8 @@
 <form class="form" action=<?=$this->postAction?> method="post">
 	<div class="form-group col">
+		<div class="form-group"><label for="type">Type</label><input type="text" value="<?= $this->advertisement->type ?>" class="form-control" disabled></div>
+	</div>
+	<div class="form-group col">
 		<?= input_block('text','Topic','topic',$this->advertisement->topic,['class'=>'form-control'],['class'=>'form-group']) ?>
 	</div>
 	<div class="form-group col">
@@ -37,7 +40,7 @@
 		<?= submitBlock('Save',['class'=>'btn btn-primary']) ?>
 	</div>
 	<div class = "form-group text-center">
-	<a href="<?=PROOT?>advertisements" class="btn btn-default"> Cancel </a>
+	<a href="<?=PROOT?>advertisements/choose" class="btn btn-default"> Cancel </a>
 	</div>
 
 </form>

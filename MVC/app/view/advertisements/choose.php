@@ -3,14 +3,17 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-	<h2 class="text-center"> Choose the addvertisement type</h2>
-
-				<a href="<?=PROOT?>advertisements/add/Cleaning" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i> Cleaning Advertisement </a></td>
-
-				<a href="<?=PROOT?>advertisements/add/Catering" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i> Catering Advertisement </a></td>
-
-
-				<a href="<?=PROOT?>advertisements/add/Laundering" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i> Laundering Advertisement </a></td>
-
+<div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:5rem;padding-bottom:2rem;">
+	Choose the addvertisement 
+</div>
+<div class="list-group" style="max-width: 20rem; margin:auto;">
+  <a href="<?=PROOT?>advertisements/add/Cleaning" class="list-group-item list-group-item-action">
+    Cleaning
+  </a>
+  <a href="<?=PROOT?>advertisements/add/Catering" class="list-group-item list-group-item-action">Catering
+  </a>
+  <a href="<?=PROOT?>advertisements/add/Laundering" class="list-group-item list-group-item-action">Laundry
+  </a>
+</div>
 
 <?php $this->end(); ?>

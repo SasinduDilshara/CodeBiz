@@ -24,7 +24,7 @@
 		<?= submitBlock('Save',['class'=>'btn btn-primary']) ?>
 	</div>
 	<div class = "form-group text-right">
-		<a href="<?=PROOT?>contacts" class="btn btn-default"> Cancel </a>
+		<a href="" onclick="window.history.back();" class="btn btn-default"> Cancel </a>
 	</div>
 
 </form>

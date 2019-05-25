@@ -13,13 +13,18 @@
 			$chat=explode (" to :- ", $chat[0]);
 			$to = $chat[1];
 			$from = substr($chat[0], 8);
-			if($to == currentUser()->username || $from == currentUser()->username ):
-			?>
-        
-            <div class="alert alert-info">
+			if($to == currentUser()->username):?>
+            <div class="btn btn-secondary">
             <strong><?=$from?>:</strong> <?=$message?>
-            </div>
-			<?php endif; ?>  
+            </div> <br>
+			<?php endif;
+			if($from == currentUser()->username ):?>
+			<div class="text-right">
+				<div class="btn btn-info">
+				<strong><?=$from?>:</strong> <?=$message?>
+				</div> <br>
+			</div>  
+			<?php endif; ?> 
         <?php endforeach; ?>
 	<?php else: ?>
 		<div style="text-align: center"> Chat is empty</div>
