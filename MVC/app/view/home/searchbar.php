@@ -34,7 +34,7 @@
                 </li>
 <?php endif; ?>
                 <li class="nav-item col bg-light" style="padding:6px;">
-                    <input type="submit" class="btn btn-secondary my-2 my-sm-0" value="Search" >
+                    <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Search" >
                 </li>
             </ul>
         </form>
@@ -49,7 +49,7 @@
                     <input type="text" name="area" id="area" class="form-control" value="<?=currentUser()->area ?>">
                 </li>
                 <li class="nav-item col bg-light" style="padding:6px;">
-                    <input type="submit" class="btn btn-secondary my-2 my-sm-0" value="Search" >
+                    <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Search" >
                 </li>
             </ul>
         </form>

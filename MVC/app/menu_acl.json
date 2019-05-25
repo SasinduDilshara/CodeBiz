@@ -11,7 +11,7 @@
 	"Show Advertisements" : "admin/alladdsbefore",
 	"separator" : "<br>",
 	"Show Requests" : "admin/allreqsbefore",
-	"separator" : "<br>",
+	"separator2" : "<br>",
 	"Show Accounts" : "admin/allaccsbefore"
 
 },
@@ -28,22 +28,20 @@
 
 
 	"Contacts" : {
-		"My Contacts" : "contacts",
+		"Add Contacts" : "contacts/add",
 		"separator" : "<br>",
-		"Add Contacts" : "contacts/add"
+		"My Contacts" : "contacts"
 	},
 
 	"Advertisements" : {
-		"My Adds" : "advertisements",
+		"Create New Ad" : "advertisements/choose",
 		"separator" : "<br>",
-		"Add Advertisements" : "advertisements/choose",
-		"separator" : "<br>",
+		"My Adds<br>" : "advertisements",
 		"Show Confirmed" : "advertisements/ShowConfirmRequests"
 	},
 
 	"Requests" : {
-		"Show Confirmed" : "requests/ShowConfirmRequests",
-		"separator" : "<br>",
+		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
 		"Show Finished" : "requests/FinishedRequests"
 
 	},
@@ -57,9 +55,9 @@
 "Customer":{
 
 	"Contacts" : {
-		"My Contacts" : "contacts",
+		"Add Contacts" : "contacts/add",
 		"separator" : "<br>",
-		"Add Contacts" : "contacts/add"
+		"My Contacts" : "contacts"
 	},
 
 	"Advertisements" : {
@@ -67,7 +65,7 @@
 	}, 
 
 	"Requests" : {
-		"Add Requests" : "requests/add",
+		"Create New" : "requests/add",
 		"separator" : "<br>",
 		"My Requests<br>" : "requests",
 		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
