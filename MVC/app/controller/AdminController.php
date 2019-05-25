@@ -230,5 +230,6 @@ public function informDAccntAction($username,$email)
 
 
  }
+}
 
  ?>
