@@ -65,15 +65,11 @@
 						<td>
 						<a href="<?=PROOT?>advertisements/cancelConfirm/<?=$advertisement->id?>/<?=$advertisement->confirmCustomerId?>/<?=$advertisement->type?>" >Cancel Confirmation</a>
 						<td>
-						<!-- <td>
-							<a href="<?=PROOT?>advertisements/askQuestion/<?=$advertisement->id?>/<?=$advertisement->type?>" > Message to Customers </a>
-						</td>
+
 						<td>
 							<a href="<?=PROOT?>advertisements/showChat/<?=$advertisement->id?>/<?=$advertisement->type?>" > Show Chats </a>
 						</td>
-						<td>
-							<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" > Rate Customers </a>
-						</td> -->
+
 					<?php endif;?>
 				</tr>
 			<?php endforeach; ?>
