@@ -14,6 +14,7 @@ class Users extends Model implements Observer
 		$this->_softDelete = true;
 		if($user != '')
 		{
+			
 			if(is_int($user))
 			{
 				$u = $this->_db->findFirst('users',['conditions' => 'id = ?','bind' =>[$user]]);

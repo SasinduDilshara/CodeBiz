@@ -61,8 +61,10 @@
 					<a class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" href="<?=PROOT?>register/report/register/<?=$this->account->id?>/<?=currentUser()->id?>" onclick="if(!confirm('Are you sure you want to report this account?')){return false;}" style="margin: 13px 12px 12px 10px;">Report Account</a>
 					<?php endif; ?>
 			<?php endif; ?>
+			<?php if(currentUser()):?>
 			<?php if(in_array((string)(currentUser()->id),explode(",",$this->account->reportedBy))):?>
 			<button class="btn btn-danger" style="margin: 13px 12px 12px 10px;" disabled>Reported</button>
+		<?php endif; ?>
 			<?php endif; ?> <br>
 			<a onclick="window.history.back();" style="margin: 13px 12px 12px 10px;">Back</a>
 		</div>		
