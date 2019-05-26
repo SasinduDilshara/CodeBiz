@@ -3,7 +3,9 @@
 <?php $this->start('body'); ?>
 <div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:5rem;">My Requests</div>
 <div class="col-10" style="margin:auto;">
+	<?php $x=0 ?>
 	<?php foreach($this->requests as $request): ?>
+		<?php $x = $x+1; ?>
 		<div class="card border-primary mb-3" style="">
 			<div class="card-body">
 				<a href="<?=PROOT?>requests/details/<?=$request->id?>" ><h4><?= $request->service; ?></h4></a>				
@@ -15,6 +17,19 @@
 			</div>
 		</div>
 	<?php endforeach; ?>
+
+
+	<?php if($x==0): ?>
+
+	<div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
+    <button type="button" class="close" onclick="window.history.back();" ?>&times;</button>
+	<div class="card-body">
+        <p class="mb-0"> No Requests yet </p>
+    <?php endif; ?>
+	</div>
+</div>
+
+
 </div>
 
 <?php $this->end(); ?>

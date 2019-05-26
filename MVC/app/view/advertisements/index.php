@@ -3,8 +3,11 @@
 <?php $this->start('body'); ?>
 <div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:5rem;">My Advertisements</div>
 <div class="col-10" style="margin:auto;">
+	<?php $x=0 ?>
 	<?php foreach($this->alladds as $advertisements): ?>
+
 		<?php foreach($advertisements as $advertisement): ?>
+			<?php $x = $x+1; ?>
 			<div class="card border-primary mb-3" style="">
 				<div class="card-body">
 					<a href="<?=PROOT?>advertisements/details/<?=$advertisement->type?>/<?=$advertisement->id?>"><h4><?= $advertisement->topic ?></h4></a>
@@ -17,7 +20,21 @@
 				</div>
 			</div>
 		<?php endforeach; ?>
-	<?php endforeach; ?>
+		<?php endforeach; ?>
+<?php if($x==0): ?>
+
+	<div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
+    <button type="button" class="close" onclick="window.history.back();" ?>&times;</button>
+	<div class="card-body">
+        <p class="mb-0"> No Advertisements yet </p>
+	</div>
+</div>
+
+
+<?php endif; ?>
+
+
+	
 </div>
 <?php $this->end(); ?>
 
