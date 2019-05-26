@@ -21,7 +21,11 @@
 			if($from == currentUser()->username ):?>
 			<div class="text-right">
 				<div class="btn btn-info" style=" margin: 3px;">
+					<?php if(currentUser()->userType=="Customer"): ?>
 				<strong><?=$from?>:</strong> <?=$message?>
+				<?php else: ?>
+						<strong><?=$from?>:</strong> <?=$message?> <strong>@<?=$to?></strong>
+				<?php endif; ?>
 				</div> <br>
 			</div>  
 			<?php endif; ?> 
