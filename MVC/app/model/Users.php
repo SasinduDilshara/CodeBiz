@@ -136,7 +136,7 @@ class Users extends Model implements Observer
 		$this->assign($params);
 		 $this->deleted=0;
 		// $this->password = password_hash($this->password, PASSWORD_DEFAULT);
-		$this->password = $this->password;
+		$this->password = md5($this->password);
 		$this->save();
 	}
 
@@ -1045,6 +1045,14 @@ public function DeleteNoti($reciever)
 {
 	// dnd($reciever);
 	mail($reciever,"Account Banned - Boarding Vibes","Your account has been banned. If you want to reset it Send Email with valid reasons.");
+
+}
+
+
+public function reEntryPassword($password)
+{
+	
+	return $this->update(currentUser()->id, ['password' => $password]);
 
 }
 

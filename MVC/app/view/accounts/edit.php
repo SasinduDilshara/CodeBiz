@@ -27,7 +27,7 @@
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" class="form-control" required value="<?=currentUser()->username ?>">
             </div>
-            <div class="form-row col">
+            <!-- <div class="form-row col">
                 <div class="col">
                     <label for="password">Password*</label>
                     <input type="password" name="password" id="password" class="form-control" required value="<?=currentUser()->password ?>">
@@ -36,7 +36,7 @@
                     <label for="confirm">Confirm Password*</label>
                     <input type="password" name="confirm" id="confirm" class="form-control" required value="<?=currentUser()->password ?>">
                 </div>
-            </div>
+            </div> -->
 
             <div class="col" style = "padding-right: 25px;">
                 <label for="address">Address*</label>
@@ -60,6 +60,7 @@
             <div><?=$this->displayErrors ?></div>
             <div class="text-center">
                 <input type="submit" class="btn btn-xs btn-primary" value="Save" >
+                <a href="<?=PROOT?>accounts/changepassword/" class="btn btn-default"> Change Password </a>
             </div>
         <div class = "col-md-12 text-center">
         <a href="<?=PROOT?>" class="btn btn-default"> Cancel </a>

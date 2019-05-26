@@ -116,12 +116,12 @@ class AccountsController extends Controller
                     'min'=> 4
                     //'max' =>25
                 ],
-                'password' => [
-                    'display' => 'Password',
-                    'required' => true,
-                    'min' => 6
-                    //'max' => 100
-                ],
+                // 'password' => [
+                //     'display' => 'Password',
+                //     'required' => true,
+                //     'min' => 6
+                //     //'max' => 100
+                // ],
                 'address' => [
                     'display' => 'Address',
                     'required' => true,
@@ -169,8 +169,69 @@ class AccountsController extends Controller
     $this->view->render('accounts/edit');
   }
 
+  // proot/accounts/changepassword/account->id/
+  public function changepasswordAction()
+  {
+    $validation = new Validate();
+    if($_POST)
+    {
+      if(md5($_POST['current'])!=currentUser()->password)
+      {
+        $validation->addError("Wrong password");
+        $this->view->displayErrors = $validation->displayErrors();
+        // $this->view->displayErrors = $validation->displayErrors();
+      }
+      else
+      {
+            $validation->check($_POST,[
+ 
+                'password' => [
+                    'display' => 'Password',
+                    // 'required' => true,
+                    'min' => 6
+                    //'max' => 100
+                ],
+                'confirm' => [
+                  'display' => 'Confirm Password',
+                  // 'required' => true,
+                  'matches' => 'password'
+
+              ]
+
+            ]);
+            if($validation->passed()) {
+
+              $this->UsersModel->reEntryPassword(md5($_POST['password']));
+              $this->view->displayErrors = $validation->displayErrors();
+              $this->view->render('accounts/AfterChangedPassword');
+
+
+
+            }
+
+
+        }
+
+
+
+
+      }
+
+    
+
+    // else
+    // {
+      $this->view->displayErrors = $validation->displayErrors();
+
+    $this->view->postAction = "accounts/changepassword";
+    $this->view->render('accounts/changepassword');
+  // }
+
+  }
+
 
 
  }
+
 
  ?>
