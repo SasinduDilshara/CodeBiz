@@ -4,9 +4,19 @@
 <?php $this->start('body'); ?>
 
 <div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
-    <button type="button" class="close" onclick="window.history.back();" ?>&times;</button>
+	<?php if (currentUser()->userType == "Customer"): ?> 
+		<button type="button" class="close" onclick="window.location.href = '<?=PROOT?>advertisements/ShowConfirmRequests';" ?>&times;</button>
+	<?php endif; ?>
+
+	<?php if (currentUser()->userType == "Provider"): ?> 
+		<button type="button" class="close" onclick="window.location.href = '<?=PROOT?>advertisements/ShowAccept/<?= (string)($this->id)?>/<?=($this->type) ?>';" ?>&times;</button>
+
+	<?php endif; ?>
+
+
+	
 	<div class="card-body">
-        <p class="mb-0"> Your Message was inform to the <?= $this->provider->username ?> </p>
+        <p class="mb-0"> Your Message was informed to the user </p>
 	</div>
 </div>
 

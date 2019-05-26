@@ -302,6 +302,7 @@ $this->view->advertisement = $advertisement;
   }	 
   $this->view->customerList=$customerList;
   $this->view->advertisement=$advertisement;
+
   $date = date("d:m:Y");
   $time = date("H:i:s");
   $this->view->date=$date;
@@ -531,6 +532,8 @@ public function cancelAction($id,$user_id,$type)//done
 		$advertisement->chatPro = $chat;
 		// $this->modelLoad($type)->updateMessages($id,$messages);
 		$this->view->provider = $provider;
+		  $this->view->type=$type;
+  		$this->view->id=$id;
 		$this->view->render('advertisements/succefulAskedQuestion');
 	}
 	else

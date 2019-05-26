@@ -3,7 +3,7 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class = "card border-primary mb-3" style="max-width: 50rem; margin:auto; top:5rem;">
+<div class = "card border-primary mb-3" style="max-width: 40rem; margin:auto; top:5rem;">
 	<div class="card-header" style="text-align: center"> Chat </div>
 	<div class="card-body">
 	<?php if($this->chat):?>
@@ -14,13 +14,13 @@
 			$to = $chat[1];
 			$from = substr($chat[0], 8);
 			if($to == currentUser()->username):?>
-            <div class="btn btn-secondary">
+            <div class="btn btn-secondary" style=" margin: 3px;">
             <strong><?=$from?>:</strong> <?=$message?>
             </div> <br>
 			<?php endif;
 			if($from == currentUser()->username ):?>
 			<div class="text-right">
-				<div class="btn btn-info">
+				<div class="btn btn-info" style=" margin: 3px;">
 				<strong><?=$from?>:</strong> <?=$message?>
 				</div> <br>
 			</div>  

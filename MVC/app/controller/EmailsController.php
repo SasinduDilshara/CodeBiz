@@ -66,22 +66,54 @@ class EmailsController extends Controller
   }
 public function getNewPasswordAction($id,$s='')
 {
-
+  $validation = new Validate();
     $id =(int)($id);
     $user = $this->UsersModel->findById($id);
     if($_POST)
     {
-        $password = $_POST['pass'];
-        $user->password = $_POST['pass'];
+
+              $validation->check($_POST,[
+ 
+                'password' => [
+                    'display' => 'Password',
+                    // 'required' => true,
+                    'min' => 6
+                    //'max' => 100
+                ],
+                'confirm' => [
+                  'display' => 'Confirm Password',
+                  // 'required' => true,
+                  'matches' => 'password'
+
+              ]
+
+            ]);
+      // if($_POST['password']!==$_POST['confirm'])
+      // {
+      //   // $validation->addError("Confirm password doesn't match");
+      //   $this->view->displayErrors = $validation->displayErrors();
+      //   // $this->view->displayErrors = $validation->displayErrors();
+      // }
+
+      if($validation->passed()) {
+        $password = $_POST['password'];
+        $password = md5($password);
+        $user->password = $_POST['password'];
         $this->UsersModel->updatePassword($id,$password);
         $this->view->render("emails/afterForgotDone");
+      }
+      else
+      {
+        $this->view->displayErrors = $validation->displayErrors();
+      }
     }
-    else
-    {
+    // else
+    // {
+      $this->view->displayErrors = $validation->displayErrors();
     $this->view->id = $id;
 
     $this->view->render("emails/getNewPassForm");
-    }
+    // }
 
 }
 

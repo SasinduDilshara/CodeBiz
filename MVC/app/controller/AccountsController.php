@@ -204,7 +204,7 @@ class AccountsController extends Controller
               $this->UsersModel->reEntryPassword(md5($_POST['password']));
               $this->view->displayErrors = $validation->displayErrors();
               $this->view->render('accounts/AfterChangedPassword');
-
+              return;
 
 
             }
