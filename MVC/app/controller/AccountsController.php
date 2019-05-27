@@ -131,12 +131,12 @@ class AccountsController extends Controller
                 'phoneNumber' => [
                     'display' => 'Contact Number',
                     'required' => true,
-                    'min' => 10
+                    'min' => 9
                     //'max' => 100
                 ],
                 'phoneNumber2' => [
                     'display' => 'Contact Number 2',
-                    'min' => 10
+                    'min' => 9
                     //'max' => 100
                 ],
 
