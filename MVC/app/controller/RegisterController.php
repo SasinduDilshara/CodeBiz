@@ -241,6 +241,7 @@ class RegisterController extends Controller
 
 
         }
+        $this->view->type = $userType;
         $this->view->post = $posted_values;
         $this->view->displayErrors = $validation->displayErrors();
         $this->view->render('register/register');
