@@ -87,6 +87,8 @@ class AccountsController extends Controller
 
     if($_POST)
     {
+      $_POST['phoneNumber'] = (isset($_POST['phoneNumber']) && $_POST['phoneNumber'] !='') ? ('+94' + $_POST['phoneNumber']) : '';
+
         // dnd($_POST);
       $account->assign($_POST); //form validation
       // dnd($contact->assign($_POST));
