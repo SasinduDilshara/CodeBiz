@@ -183,14 +183,14 @@ class RegisterController extends Controller
                 ],
                 'phoneNumber' => [
                     'display' => 'Contact Number',
-                    'required' => true,
-                    'min' => 10,
-                    'max' => 10
+                    // 'required' => true,
+                    'min' => 9
+                    // 'max' => 9
                 ],
                 'phoneNumber2' => [
                     'display' => 'Contact Number 2',
-                    'min' => 10
-                    //'max' => 100
+                    'min' => 9
+                    // 'max' => 9
                 ],
                 'confirm' => [
                     'display' => 'Confirm Password',
