@@ -1,6 +1,6 @@
 <?php $x=0;
 foreach($this->messages as $message): ?>
-    <a href="#"><?= $message ?></a>
+    <a href="javascript:void(0)"><?= $message ?></a>
     
     </div>
 <?php $x++;
