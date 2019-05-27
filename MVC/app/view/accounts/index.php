@@ -11,6 +11,12 @@
 	<div class="card-body" style="background-color:#fdfdfe">
 		<table class="table table-hover">
 			<thead>
+			<tr>
+				<form action="<?=PROOT?>accounts/upload/<?=currentUser()->id?>" method="POST" enctype="multipart/form-data">
+				<input type="file" name="file" id="">
+				<button type="submit" name="submit">UPLOAD</button>
+				</form>
+			</tr>
 				<tr>
 				<td><strong>  Name :</strong></td>
 				<td><?=$this->account->displayName()?></td>

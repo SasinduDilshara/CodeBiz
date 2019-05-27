@@ -35,9 +35,9 @@ else: ?>
 						<a href="<?=PROOT?>requests/details/<?=$request->id?>"> <?= $request->service; ?></a></th>
 					<td><?= $request->area; ?></td>
 					<td>
-						<a href="<?=PROOT?>accounts/details/<?=$request->user_id?>"><?= $request->customer; ?></a>
+						<?= $request->description; ?>
 					</td>
-					<td><?= $request->description; ?></td>
+					<td><a href="<?=PROOT?>accounts/details/<?=$request->user_id?>"><?= $request->customer; ?></a></td>
 					<td>
 						<?php if(!in_array((string)(currentUser()->id),explode(",",$request->providerId))):?>
 							<a href="<?=PROOT?>requests/accept/<?=$request->id?>/<?=$request->user_id?>" > Accept </a>
@@ -47,22 +47,7 @@ else: ?>
 						<?php elseif(in_array((string)(currentUser()->id),explode(",",$request->providerId)) && $request->completed==0) :?>
 							<a href="<?=PROOT?>requests/cancel/<?=$request->id?>/<?=$request->user_id?>" > Cancel </a>
 						<?php endif; ?>
-					</td>
-
-					<td>
-						<?php if(currentUser()):?>
-							<?php if(!in_array((string)(currentUser()->id),explode(",",$request->reportedBy))
-							):?>
-							<a href="<?=PROOT?>requests/report/requests/<?=$request->id?>/<?=currentUser()->id?>" onclick="if(!confirm('Are you sure you want to report this request?')){return false;}"> Report This Add </a>
-						<?php endif; ?>
-						<?php endif; ?>
-						<?php if(in_array((string)(currentUser()->id),explode(",",$request->reportedBy))
-							):?>
-							 Reported
-						<?php endif; ?>
-					</td>
-
-					
+					</td>		
 				</tr>
 			<?php endforeach; ?>
 		</tbody>

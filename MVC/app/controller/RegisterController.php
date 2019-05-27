@@ -128,7 +128,8 @@ class RegisterController extends Controller
               'address'=>'',
               'phoneNumber'=>'',
               'phoneNumber2'=>'',
-              'area'=>''
+              'area'=>'',
+              'photolink'=>''
     ];
         if($_POST)
         {   
@@ -152,6 +153,7 @@ class RegisterController extends Controller
             $_POST['active'] = 0;
             $_POST['reported'] = 0;
             $_POST['reportedBy'] = '';
+            $_POST['photolink'] = '';
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  
