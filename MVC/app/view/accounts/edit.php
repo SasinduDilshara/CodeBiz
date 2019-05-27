@@ -49,7 +49,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">+94</span>
                         </div>
-                        <input type="text" name="phoneNumber" id="phoneNumber" maxlength="9" class="form-control" title="must be a valid Phone number"value="<?=currentUser()->phoneNumber?>">
+                        <input type="text" name="phoneNumber" id="phoneNumber" maxlength="9" class="form-control" title="must be a valid Phone number"value="<?=substr(currentUser()->phoneNumber,3)?>">
                     </div>
                 </div>
                 <div class="col">
@@ -58,7 +58,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">+94</span>
                         </div>
-                         <input type="text" name="phoneNumber2" id="phoneNumber2" maxlength="9" class="form-control" title="must be a valid Phone number"value="<?=currentUser()->phoneNumber2 ?>">
+                         <input type="text" name="phoneNumber2" id="phoneNumber2" maxlength="9" class="form-control" title="must be a valid Phone number"value="<?=substr(currentUser()->phoneNumber2,3) ?>">
                     </div>
                 </div>
             </div>

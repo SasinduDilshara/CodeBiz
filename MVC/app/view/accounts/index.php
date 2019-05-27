@@ -25,7 +25,10 @@
 			<thead>
 				<tr>
 				<td><strong>  Contact :</strong></td>
-				<td>+94<?=$this->account->phoneNumber?><br><?=$this->account->phoneNumber2?></td>
+				<td><?=$this->account->phoneNumber?>
+				<?php if($this->account->phoneNumber2 != ''):?>
+				<br><?=$this->account->phoneNumber2?></td>
+				<?php endif ?>
 				</tr>
 			</thead>
 			<thead>
