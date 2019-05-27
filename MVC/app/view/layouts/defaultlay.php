@@ -26,6 +26,7 @@
   <body style="background-image:url(<?=PROOT?>img/Background.jpg)"> 
     <!-- bye -->
     <?php include 'main_menu_3.php' ?>
+    <?php if(currentUser()) include 'notificationbar.php' ?>
     <!-- <div class="container-fluid" style="min-height:cal(100% - 125px);"> <-->
 
        <?= $this->content('body'); ?>

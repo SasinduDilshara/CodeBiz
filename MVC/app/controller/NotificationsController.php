@@ -25,7 +25,7 @@ class NotificationsController extends Controller
 		// dnd($messages);
 		if(!$messages)
 		{
-			$this->view->render('notifications/empty');
+			//$this->view->render('notifications/empty');
 		}
 		else
 			{
@@ -41,7 +41,7 @@ class NotificationsController extends Controller
 		$messages= currentUser()->notifications;
 		currentUser()->notifications='';
 		$this->UsersModel->setMessagesEmpty(currentUser());
-		$this->view->render('notifications/afterclear');
+		//$this->view->render('notifications/afterclear');
 	}
 
 	public function CompletionsendAction($users,$messages,$requestUserId)

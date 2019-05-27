@@ -61,12 +61,12 @@ else
                     <?php endif ?>
                 <?php endforeach ?>
             </ul>
-
-            <span class="nav-item text-right" name="detailsAccount">
-                <?php if (currentUser()) : ?>
+            <?php if (currentUser()) : ?>
+                <span class="nav-item text-right text-light" style="cursor:pointer;padding:8px" onclick="openNav()">Notifications</span>
+                <span class="nav-item text-right" name="detailsAccount">     
                     <a href="<?=PROOT?>accounts"><?= currentUser()->fname ?></a>
-                <?php endif ?>
-            </span>
+                </span>
+            <?php endif ?>
         </div>
     </div>
 </nav>

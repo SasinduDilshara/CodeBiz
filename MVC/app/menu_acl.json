@@ -44,8 +44,6 @@
 
 	},
 
-	"Notifications" : "notifications/show",
-
 	"Logout" : "register/logout"
 	
 },
@@ -71,7 +69,6 @@
 
 	},
 
-	"Notifications" : "notifications/show",
 
 	"Logout" : "register/logout"
 
