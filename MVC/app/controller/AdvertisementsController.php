@@ -535,7 +535,8 @@ public function cancelAction($id,$user_id,$type)//done
 		$this->view->provider = $provider;
 		  $this->view->type=$type;
   		$this->view->id=$id;
-		$this->view->render('advertisements/succefulAskedQuestion');
+  		Router::redirect('advertisements/showChat/'.$advertisement->id."/".$advertisement->type);
+		// $this->view->render('advertisements/succefulAskedQuestion');
 	}
 	else
 	{
