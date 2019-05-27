@@ -543,6 +543,15 @@ public function cancelAction($id,$user_id,$type)//done
 	    $this->view->advertisement = $advertisement;
 	    // $this->view->chatter = username;
 	    $this->view->postAction = PROOT . 'advertisements' . DS . 'askQuestion' . DS . $advertisement->id . DS . $advertisement->user_id . DS . $advertisement->type;
+
+	    $customers = explode(",",$advertisement->confirmCustomerId);
+	    $b = [];
+	    foreach($customers as $cus)
+	    {
+	    	$aaa = currentUser()->findById($cus)->username;
+	    	array_push($b,$aaa);
+	    }
+	    $this->view->customers = $b;
 	    $this->view->render('advertisements/askQuestionByProvider');
 	}
 }	
