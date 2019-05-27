@@ -17,6 +17,13 @@
 				<button type="submit" name="submit">UPLOAD</button>
 				</form>
 			</tr>
+
+
+<tr>
+				<td><strong>  photo :</strong></td>
+				<td><?=$this->account->photolink?></td>
+</tr>
+
 				<tr>
 				<td><strong>  Name :</strong></td>
 				<td><?=$this->account->displayName()?></td>
