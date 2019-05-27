@@ -1057,6 +1057,13 @@ public function reEntryPassword($password)
 
 }
 
+public function uploadPhoto($id,$file)
+{
+	
+	return $this->update($id, ['photolink' => $file]);
+
+}
+
 
 	
 }

@@ -11,6 +11,12 @@
 	<div class="card-body" style="background-color:#fdfdfe">
 		<table class="table table-hover">
 			<thead>
+			<tr>
+				<form action="<?=PROOT?>accounts/upload/<?=currentUser()->id?>" method="POST" enctype="multipart/form-data">
+				<input type="file" name="file" id="">
+				<button type="submit" name="submit">UPLOAD</button>
+				</form>
+			</tr>
 				<tr>
 				<td><strong>  Name :</strong></td>
 				<td><?=$this->account->displayName()?></td>
@@ -25,7 +31,10 @@
 			<thead>
 				<tr>
 				<td><strong>  Contact :</strong></td>
-				<td>+94<?=$this->account->phoneNumber?><br><?=$this->account->phoneNumber2?></td>
+				<td><?=$this->account->phoneNumber?>
+				<?php if($this->account->phoneNumber2 != ''):?>
+				<br><?=$this->account->phoneNumber2?></td>
+				<?php endif ?>
 				</tr>
 			</thead>
 			<thead>

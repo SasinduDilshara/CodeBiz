@@ -23,9 +23,19 @@
 				</tr>
 			</thead>
 		</table>
-		<div class = "form-group text-right">
-			<a onclick="window.history.back();" class="btn btn-default"> Back </a>
+		<div class="text-center">
+			<?php if(currentUser()):?>
+				<?php if(!in_array((string)(currentUser()->id),explode(",",$this->request->reportedBy))):?>
+					<a class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" href="<?=PROOT?>requests/report/requests/<?=$this->request->id?>/<?=currentUser()->id?>" onclick="if(!confirm('Are you sure you want to report this request?')){return false;}"> Report Advertisement </a>
+				<?php endif; ?>
+				<?php if(in_array((string)(currentUser()->id),explode(",",$this->request->reportedBy))):?>
+					<button class="btn btn-danger" style="margin: 13px 12px 12px 10px;" disabled>Reported</button>
+				<?php endif; ?>
+			<?php endif; ?>
 		</div>
+		<div class = "form-group text-right">
+				<a onclick="window.history.back();" class="btn btn-default"> Back </a>
+			</div>
 	</div>
 </div>
 

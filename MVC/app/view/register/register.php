@@ -51,22 +51,32 @@
                 </div>
             </div> -->
             <div class="col" style = "padding-right: 25px;">
-                <label for="address">Address*</label>
-                <input type="text" name="address" id="address" class="form-control" required title="must be a valid address"value="<?=$this->post['address'] ?>">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" class="form-control" title="must be a valid address"value="<?=$this->post['address'] ?>">
             </div>
 
             <div class="form-row col">
                 <div class="col">
-                    <label class="control-label" for="phoneNumber">Contact Number*</label>
-                    <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber'] ?>">
+                <label class="control-label" for="phoneNumber">Contact Number</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+94</span>
+                        </div>
+                        <input type="text" name="phoneNumber" id="phoneNumber" maxlength="9" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber'] ?>">
+                    </div>
                 </div>
                 <div class="col">
-                    <label class="control-label" for="phoneNumber2">Contact Number 2</label>
-                    <input type="text" name="phoneNumber2" id="phoneNumber2" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber2'] ?>">
+                <label class="control-label" for="phoneNumber2">Contact Number 2</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+94</span>
+                        </div>
+                         <input type="text" name="phoneNumber2" id="phoneNumber2" maxlength="9" class="form-control" title="must be a valid Phone number"value="<?=$this->post['phoneNumber2'] ?>">
+                    </div>
                 </div>
             </div>
             <div class="col-6">
-                <label for="area"> City </label>
+                <label for="area"> City* </label>
                 <input type="text" name="area" id="area" class="form-control" required title="must be a valid address" value="<?=$this->post['area'] ?>">
                 <!-- <ul class="list-group" id="result"></ul> -->
             </div>

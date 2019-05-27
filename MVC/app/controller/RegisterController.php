@@ -128,10 +128,24 @@ class RegisterController extends Controller
               'address'=>'',
               'phoneNumber'=>'',
               'phoneNumber2'=>'',
-              'area'=>''
+              'area'=>'',
+              'photolink'=>''
     ];
         if($_POST)
         {   
+
+
+    if(isset($_POST['phoneNumber']) && $_POST['phoneNumber'] !='')
+      {
+      $_POST['phoneNumber'] = ($_POST['phoneNumber'][0] != '+') ? ('+94'.$_POST['phoneNumber']) : '';
+      }
+
+      if(isset($_POST['phoneNumber2']) && $_POST['phoneNumber2'] !='')
+      {
+      $_POST['phoneNumber2'] = ($_POST['phoneNumber2'][0] != '+') ? ('+94'.$_POST['phoneNumber2']) : '';
+      }
+
+
             $_POST['userType'] = $userType;
             $_POST['notifications'] = '';
             $_POST['overallRating'] = 0;
@@ -139,6 +153,7 @@ class RegisterController extends Controller
             $_POST['active'] = 0;
             $_POST['reported'] = 0;
             $_POST['reportedBy'] = '';
+            $_POST['photolink'] = '';
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  
@@ -183,14 +198,14 @@ class RegisterController extends Controller
                 ],
                 'phoneNumber' => [
                     'display' => 'Contact Number',
-                    'required' => true,
-                    'min' => 10,
-                    'max' => 10
+                    // 'required' => true,
+                    'min' => 9
+                    // 'max' => 9
                 ],
                 'phoneNumber2' => [
                     'display' => 'Contact Number 2',
-                    'min' => 10
-                    //'max' => 100
+                    'min' => 9
+                    // 'max' => 9
                 ],
                 'confirm' => [
                     'display' => 'Confirm Password',

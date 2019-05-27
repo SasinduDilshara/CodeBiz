@@ -27,6 +27,9 @@
 				<td><strong>  Contact :</strong></td>
 				<td>
 					<?=$this->account->phoneNumber?><br>
+					<?php if($this->account->phoneNumber2 != ''):?>
+					<br><?=$this->account->phoneNumber2?></td>
+					<?php endif ?>
 				</td>
 				</tr>
 			</thead>

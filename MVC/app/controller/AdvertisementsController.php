@@ -307,6 +307,7 @@ $this->view->advertisement = $advertisement;
   $time = date("H:i:s");
   $this->view->date=$date;
   $this->view->time=$time;
+
   // dnd($this->view->time);
   $this->view->render('advertisements/showAccept');
   // dnd($providerslist);
@@ -526,7 +527,8 @@ public function cancelAction($id,$user_id,$type)//done
     	{
     		$_POST['to'] = $provider->username;
     	}
-		$message = "from :- ".currentUser()->username." to :- ".$_POST['to']." MESSAGE??: ".$_POST['chat'];
+		$message = "from :- ".base64_encode(currentUser()->username)." to :- ".base64_encode($_POST['to'])." MESSAGE??: ".base64_encode($_POST['chat']);
+		// $message = base64_encode($message);
 		$chat = $this->modelLoad($type)->getmessage($id,$advertisement,$message); 
 		$advertisement->chatCus = $chat;
 		$advertisement->chatPro = $chat;
@@ -534,7 +536,8 @@ public function cancelAction($id,$user_id,$type)//done
 		$this->view->provider = $provider;
 		  $this->view->type=$type;
   		$this->view->id=$id;
-		$this->view->render('advertisements/succefulAskedQuestion');
+  		Router::redirect('advertisements/showChat/'.$advertisement->id."/".$advertisement->type);
+		// $this->view->render('advertisements/succefulAskedQuestion');
 	}
 	else
 	{
@@ -543,6 +546,15 @@ public function cancelAction($id,$user_id,$type)//done
 	    $this->view->advertisement = $advertisement;
 	    // $this->view->chatter = username;
 	    $this->view->postAction = PROOT . 'advertisements' . DS . 'askQuestion' . DS . $advertisement->id . DS . $advertisement->user_id . DS . $advertisement->type;
+
+	    $customers = explode(",",$advertisement->confirmCustomerId);
+	    $b = [];
+	    foreach($customers as $cus)
+	    {
+	    	$aaa = currentUser()->findById($cus)->username;
+	    	array_push($b,$aaa);
+	    }
+	    $this->view->customers = $b;
 	    $this->view->render('advertisements/askQuestionByProvider');
 	}
 }	
@@ -553,23 +565,27 @@ public function cancelAction($id,$user_id,$type)//done
  	if(currentUser()->userType == "Customer")
  	{
  		$chat = $advertisement->chatCus;
+ 		// $chat = base64_decode($chat);
  	}
  	else
  	{
  		$chat = $advertisement->chatPro;
+ 		// $chat = base64_decode($chat);
  	}
  	// $chat = $advertisement->chat;
  	if(!$chat)
 		{
 			$this->view->chat=false;
 			$this->view->advertisement = $advertisement;
-			$this->view->render('advertisements/showChat');
+			$this->view->render('advertisements/emptyChat');
 		}
 		else
 			{
 				$chat=explode (",", $chat);
 				$this->view->chat=$chat;
 				$this->view->advertisement = $advertisement;
+				$this->view->type=$advertisement->type;
+  				$this->view->id=$advertisement->id;
 				$this->view->render('advertisements/showChat');
 			}
  }

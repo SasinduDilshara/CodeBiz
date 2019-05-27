@@ -18,6 +18,8 @@ class AccountsController extends Controller
     // dnd(findByUserId(currentUser()->id,['order'=>'lname, fname']));
     // dnd($account);
     $this->view->account=$account;
+    
+// dnd($a.$b);
     $this->view->render('accounts/index');
     // dnd($account);
   }
@@ -87,6 +89,16 @@ class AccountsController extends Controller
 
     if($_POST)
     {
+      if(isset($_POST['phoneNumber']) && $_POST['phoneNumber'] !='')
+      {
+      $_POST['phoneNumber'] = ($_POST['phoneNumber'][0] != '+') ? ('+94'.$_POST['phoneNumber']) : '';
+      }
+
+      if(isset($_POST['phoneNumber2']) && $_POST['phoneNumber2'] !='')
+      {
+      $_POST['phoneNumber2'] = ($_POST['phoneNumber2'][0] != '+') ? ('+94'.$_POST['phoneNumber2']) : '';
+      }
+
         // dnd($_POST);
       $account->assign($_POST); //form validation
       // dnd($contact->assign($_POST));
@@ -131,20 +143,13 @@ class AccountsController extends Controller
                 'phoneNumber' => [
                     'display' => 'Contact Number',
                     'required' => true,
-                    'min' => 10
+                    'min' => 9
                     //'max' => 100
                 ],
                 'phoneNumber2' => [
                     'display' => 'Contact Number 2',
-                    'min' => 10
+                    'min' => 9
                     //'max' => 100
-                ],
-
-                'confirm' => [
-                    'display' => 'Confirm Password',
-                    // 'required' => true,
-                    'matches' => 'password'
-
                 ]
             ]);
 
@@ -226,6 +231,48 @@ class AccountsController extends Controller
     $this->view->postAction = "accounts/changepassword";
     $this->view->render('accounts/changepassword');
   // }
+
+  }
+
+  public function uploadAction($id)
+  {
+
+    if(isset($_POST['submit'])) {
+      // name given for file
+      // file = [name(name with extension),type,error(0 if no error),size]
+      $file = $_FILES['file'];
+      $fileName = $_FILES['file']['name'];
+      $fileTmpName = $_FILES['file']['tmp_name'];
+      $fileSize = $_FILES['file']['size'];
+      $fileError = $_FILES['file']['error'];
+      $fileType = $_FILES['file']['type'];
+  
+      $fileExt = explode('.', $fileName);
+      $fileActualExt = strtolower(end($fileExt));
+  
+      $allowed = array('jpg','jpeg','png');
+  
+      if(in_array($fileActualExt,$allowed)) {
+          if ($fileError === 0) {
+              if ($fileSize < 1000000) {
+                  // unique filename
+                  $fileNameNew = uniqid('', true).".".$fileActualExt;
+                  // new destination
+                  $fileDestination = "C:\\xampp\\htdocs\\CodeBiz\\MVC\\img\\upload\\".$fileNameNew;
+                  move_uploaded_file($fileTmpName, $fileDestination);
+                  // todo after successful upload
+                  $this->UsersModel->uploadPhoto($id,$fileNameNew);
+                  echo'uploadesuccessful';
+              } else {
+                  echo '// file too large';
+              }
+          } else {
+              echo '// error uploading file';
+          }
+      } else {
+          echo '// error msg to show wrong file type';
+      }
+  }
 
   }
 

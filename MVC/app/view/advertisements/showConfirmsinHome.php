@@ -48,10 +48,10 @@
 						</td>
 						<td>
 						<?php if(!in_array((string)(currentUser()->id),explode (",", ($advertisement->ratedType)))): ?>
-							<a href="<?=PROOT?>register/confirmedADD/<?=$servicer->id?>/<?=$advertisement->id?>/<?=$advertisement->type?>" > Rate <?= $servicer->username ?> and Finish</a>
+							<a href="<?=PROOT?>register/confirmedADD/<?=$servicer->id?>/<?=$advertisement->id?>/<?=$advertisement->type?>" > Rate <?= $servicer->username ?></a>
 						<?php endif; ?>
 						<?php if(in_array((string)(currentUser()->id),explode (",", ($advertisement->ratedType)))): ?>
-							<a   disabled> Rate <?= $servicer->username ?></a>
+							<a   disabled> Rated </a>
 						<?php endif; ?>
 						</td>
 					<?php endif;?>
@@ -65,15 +65,10 @@
 						<td>
 						<a href="<?=PROOT?>advertisements/cancelConfirm/<?=$advertisement->id?>/<?=$advertisement->confirmCustomerId?>/<?=$advertisement->type?>" >Cancel Confirmation</a>
 						<td>
-						<!-- <td>
-							<a href="<?=PROOT?>advertisements/askQuestion/<?=$advertisement->id?>/<?=$advertisement->type?>" > Message to Customers </a>
-						</td>
 						<td>
-							<a href="<?=PROOT?>advertisements/showChat/<?=$advertisement->id?>/<?=$advertisement->type?>" > Show Chats </a>
+						<a href="<?=PROOT?>advertisements/showAccept/<?=$advertisement->id ?>/<?=$advertisement->type?>"> Show Acceptences </a>
 						</td>
-						<td>
-							<a href="<?=PROOT?>advertisements/showAcceptd/<?=$advertisement->id?>/<?=$advertisement->type?>" > Rate Customers </a>
-						</td> -->
+
 					<?php endif;?>
 				</tr>
 			<?php endforeach; ?>
