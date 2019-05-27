@@ -269,14 +269,21 @@ class AccountsController extends Controller
                   Router::redirect('accounts');
                   // echo 'uploadesuccessful';
               } else {
+                Router::redirect('accounts');
                   // echo '// file too large';
               }
           } else {
+            Router::redirect('accounts');
               // echo '// error uploading file';
           }
       } else {
+        Router::redirect('accounts');
           // echo '// error msg to show wrong file type';
       }
+  }
+  else
+  {
+    // Router::redirect('accounts');
   }
 
   }
