@@ -138,13 +138,6 @@ class AccountsController extends Controller
                     'display' => 'Contact Number 2',
                     'min' => 9
                     //'max' => 100
-                ],
-
-                'confirm' => [
-                    'display' => 'Confirm Password',
-                    // 'required' => true,
-                    'matches' => 'password'
-
                 ]
             ]);
 
