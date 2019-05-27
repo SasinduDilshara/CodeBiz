@@ -18,6 +18,9 @@ class AccountsController extends Controller
     // dnd(findByUserId(currentUser()->id,['order'=>'lname, fname']));
     // dnd($account);
     $this->view->account=$account;
+    
+    $b = base64_decode($a);
+// dnd($a.$b);
     $this->view->render('accounts/index');
     // dnd($account);
   }

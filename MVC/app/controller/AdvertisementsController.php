@@ -526,7 +526,8 @@ public function cancelAction($id,$user_id,$type)//done
     	{
     		$_POST['to'] = $provider->username;
     	}
-		$message = "from :- ".currentUser()->username." to :- ".$_POST['to']." MESSAGE??: ".$_POST['chat'];
+		$message = "from :- ".base64_encode(currentUser()->username)." to :- ".base64_encode($_POST['to'])." MESSAGE??: ".base64_encode($_POST['chat']);
+		// $message = base64_encode($message);
 		$chat = $this->modelLoad($type)->getmessage($id,$advertisement,$message); 
 		$advertisement->chatCus = $chat;
 		$advertisement->chatPro = $chat;
@@ -562,17 +563,19 @@ public function cancelAction($id,$user_id,$type)//done
  	if(currentUser()->userType == "Customer")
  	{
  		$chat = $advertisement->chatCus;
+ 		// $chat = base64_decode($chat);
  	}
  	else
  	{
  		$chat = $advertisement->chatPro;
+ 		// $chat = base64_decode($chat);
  	}
  	// $chat = $advertisement->chat;
  	if(!$chat)
 		{
 			$this->view->chat=false;
 			$this->view->advertisement = $advertisement;
-			$this->view->render('advertisements/showChat');
+			$this->view->render('advertisements/emptyChat');
 		}
 		else
 			{

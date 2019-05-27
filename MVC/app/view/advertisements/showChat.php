@@ -10,9 +10,12 @@
         <?php foreach($this->chat as $chatbar): 
 			$chat = explode(" MESSAGE??: ", $chatbar);
 			$message = $chat[1];
+			$message = base64_decode($message);
 			$chat=explode (" to :- ", $chat[0]);
 			$to = $chat[1];
+			$to = base64_decode($to);
 			$from = substr($chat[0], 8);
+			$from = base64_decode($from);
 			if($to == currentUser()->username):?>
             <div class="btn btn-secondary" style=" margin: 3px;">
             <strong><?=$from?>:</strong> <?=$message?>
