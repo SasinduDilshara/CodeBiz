@@ -90,7 +90,12 @@ class AccountsController extends Controller
       if(isset($_POST['phoneNumber']) && $_POST['phoneNumber'] !='')
       {
       $_POST['phoneNumber'] = ($_POST['phoneNumber'][0] != '+') ? ('+94'.$_POST['phoneNumber']) : '';
-    }
+      }
+
+      if(isset($_POST['phoneNumber2']) && $_POST['phoneNumber2'] !='')
+      {
+      $_POST['phoneNumber2'] = ($_POST['phoneNumber2'][0] != '+') ? ('+94'.$_POST['phoneNumber2']) : '';
+      }
 
         // dnd($_POST);
       $account->assign($_POST); //form validation

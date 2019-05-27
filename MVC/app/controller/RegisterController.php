@@ -132,6 +132,19 @@ class RegisterController extends Controller
     ];
         if($_POST)
         {   
+
+
+    if(isset($_POST['phoneNumber']) && $_POST['phoneNumber'] !='')
+      {
+      $_POST['phoneNumber'] = ($_POST['phoneNumber'][0] != '+') ? ('+94'.$_POST['phoneNumber']) : '';
+      }
+
+      if(isset($_POST['phoneNumber2']) && $_POST['phoneNumber2'] !='')
+      {
+      $_POST['phoneNumber2'] = ($_POST['phoneNumber2'][0] != '+') ? ('+94'.$_POST['phoneNumber2']) : '';
+      }
+
+
             $_POST['userType'] = $userType;
             $_POST['notifications'] = '';
             $_POST['overallRating'] = 0;
