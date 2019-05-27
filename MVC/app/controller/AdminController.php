@@ -230,6 +230,15 @@ public function informDAccntAction($username,$email)
 
 
  }
+
+ public function chatAdminAction()
+ {
+
+      
+
+ }
+
+
 }
 
  ?>

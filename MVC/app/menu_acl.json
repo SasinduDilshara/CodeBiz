@@ -20,6 +20,8 @@
 
 "My Notifications" : "notifications/show",
 
+"My Notifications" : "admin/chatAdmin",
+
 "Logout" : "register/logout"
 	
 },
