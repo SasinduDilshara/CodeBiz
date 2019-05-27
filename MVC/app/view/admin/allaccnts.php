@@ -59,6 +59,17 @@
 			</thead>
 		</table>
 			<a href="<?=PROOT?>accounts/delete/<?=$this->account->id?>" class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" onclick="if(!confirm('Are you sure you want to delete your account?'<br>'THIS ACTION CANNOT BE UNDONE')){return false;}">Delete Account</a>
+			<?php if($this->account->userType == "Customer"): ?>
+
+				<a href="<?=PROOT?>admin/Allreqsbefore/<?=$this->account->username?>" class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" >View All Requests</a>
+
+			<?php endif;?>
+
+			<?php if($this->account->userType == "Provider"): ?>
+
+				<a href="<?=PROOT?>admin/Alladdsbefore/<?=$this->account->username?>" class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" >View All Advertisements</a>
+
+			<?php endif;?>
 </div>
 
 <?php $this->end(); ?>

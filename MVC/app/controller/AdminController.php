@@ -11,6 +11,7 @@ class AdminController extends Controller
     $this->load_model('Cleaningad');
     $this->load_model('Launderingad');
     $this->load_model('Requests');
+    $this->mediator = new ChatMediatorImpl;
 		//dnd($this->load_model('Contacts'));
 	}
 
@@ -165,7 +166,8 @@ class AdminController extends Controller
     // $alladds=$this->RequestsModel->findByUserId($id);
 
     // $this->view->alladds = $alladds;
-    $this->UsersModel->AdminsendNoti($message,$reciever);
+    // $this->UsersModel->AdminsendNoti($message,$reciever);
+    $this->mediator->AdminsendNotification($message,$reciever);
     $this->view->render('admin/succsend');
     // $this->RequestsModel->updateMessages($id,$messages);
   }
@@ -234,11 +236,38 @@ public function informDAccntAction($username,$email)
  public function chatAdminAction()
  {
 
-      
+
 
  }
 
 
 }
+
+
+
+
+interface ChatMediator {
+
+
+ public function AdminsendNotification($message,$reciever);
+
+ 
+ }
+
+
+
+ class ChatMediatorImpl implements ChatMediator
+  {
+
+
+ public function AdminsendNotification($message,$reciever)
+      {
+      currentUser()->AdminsendNoti($message,$reciever);
+    }
+  }
+
+
+
+
 
  ?>

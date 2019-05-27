@@ -1068,4 +1068,13 @@ public function uploadPhoto($id,$file)
 	
 }
 
+
+ 
+
+
+
+
+
+
+
 ?>

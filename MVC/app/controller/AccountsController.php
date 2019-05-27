@@ -8,13 +8,14 @@ class AccountsController extends Controller
 		$this->view->setLayout('defaultlay');
 		$this->load_model('Users');
 		//dnd($this->load_model('Contacts'));
+    $this->factory = new AccountFactory;
 	}
 
 
   public function indexAction()
   {
     // $account = $this->AccountsModel->findByUserId(currentUser()->id);
-    $account=currentUser();
+    $account=$this->factory->getCurrentUser();
     // dnd(findByUserId(currentUser()->id,['order'=>'lname, fname']));
     // dnd($account);
     $this->view->account=$account;
@@ -45,7 +46,8 @@ class AccountsController extends Controller
     }
     else
     {
-    $account = currentUser();
+    // $account = currentUser();
+      $account=$this->factory->getCurrentUser();
 }
     $id=$account->id;
     // dnd($id);
@@ -82,7 +84,8 @@ class AccountsController extends Controller
   {
     // dnd($id);
     $validation = new Validate();
-    $account = currentUser();
+    // $account = currentUser();
+    $account=$this->factory->getCurrentUser();
     // dnd($contact->fname);
 
     if(!$account) Router::redirect('accounts');
@@ -262,15 +265,17 @@ class AccountsController extends Controller
                   move_uploaded_file($fileTmpName, $fileDestination);
                   // todo after successful upload
                   $this->UsersModel->uploadPhoto($id,$fileNameNew);
-                  echo'uploadesuccessful';
+
+                  Router::redirect('accounts');
+                  // echo 'uploadesuccessful';
               } else {
-                  echo '// file too large';
+                  // echo '// file too large';
               }
           } else {
-              echo '// error uploading file';
+              // echo '// error uploading file';
           }
       } else {
-          echo '// error msg to show wrong file type';
+          // echo '// error msg to show wrong file type';
       }
   }
 
@@ -278,7 +283,23 @@ class AccountsController extends Controller
 
 
 
+
+
  }
+
+
+
+
+
+
+  class AccountFactory
+{
+
+   public function getCurrentUser()
+   {
+      return currentUser();
+      }
+  }
 
 
  ?>

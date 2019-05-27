@@ -8,11 +8,8 @@
 
 "Show Site Details" : {
 
-	"Show Advertisements" : "admin/alladdsbefore",
-	"separator" : "<br>",
-	"Show Requests" : "admin/allreqsbefore",
-	"separator2" : "<br>",
-	"Show Accounts" : "admin/allaccsbefore"
+	"Show Accounts" : "admin/allaccsbefore",
+	"separator" : "<br>"
 
 },
 
@@ -20,7 +17,6 @@
 
 "My Notifications" : "notifications/show",
 
-"My Notifications" : "admin/chatAdmin",
 
 "Logout" : "register/logout"
 	
