@@ -70,6 +70,18 @@
                 <input type="text" name="area" id="area" class="form-control" required title="must be a valid address" value="<?=$this->post['area'] ?>">
                 <!-- <ul class="list-group" id="result"></ul> -->
             </div>
+
+            <div class="col-6">
+                <label for="profilePhoto">Profile Photo</label>
+                <input 
+                type="file" 
+                name="profilePhoto"
+                class="form-control-file" 
+                id="profilePhoto" 
+                aria-describedby="fileHelp"
+                value="<?=$this->post['profilePhoto'] ?>">
+            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
             <div><?=$this->displayErrors ?></div>
             <div class="text-center">
                 <input type="submit" class="btn btn-xs btn-primary" value="Register" >

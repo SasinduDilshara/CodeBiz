@@ -107,16 +107,6 @@
                 value="<?=$this->post['phoneNumber2'] ?>">
             </div>
 
-            <div>
-                <label for="area"><h4> City </h4></label>
-                <input 
-                type="text" 
-                name="area" 
-                id="area" 
-                class="form-control" 
-                title="area"
-                value="<?=$this->post['area'] ?>">
-            </div>
 
         </div>
         
