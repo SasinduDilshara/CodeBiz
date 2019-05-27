@@ -256,14 +256,13 @@ class AccountsController extends Controller
           if ($fileError === 0) {
               if ($fileSize < 1000000) {
                   // unique filename
-                  echo 'one';
                   $fileNameNew = uniqid('', true).".".$fileActualExt;
                   // new destination
                   $fileDestination = "C:\\xampp\\htdocs\\CodeBiz\\MVC\\img\\upload\\".$fileNameNew;
                   move_uploaded_file($fileTmpName, $fileDestination);
                   // todo after successful upload
                   $this->UsersModel->uploadPhoto($id,$fileNameNew);
-                  echo'index.php?uploadesuccessful';
+                  echo'uploadesuccessful';
               } else {
                   echo '// file too large';
               }
