@@ -39,7 +39,14 @@
 		<br>
         <div class="form-group text-center">
             <a href="<?=PROOT?>advertisements/askQuestion/<?=$this->advertisement->id?>/<?=$this->advertisement->user_id?>/<?= $this->advertisement->type ?>" class="btn btn-primary"></i> Send Message </a>
-            <a onclick="window.history.back();" class="btn btn-secondary" > Back </a>
+<?php if(currentUser()->userType == "Provider"): ?>
+         <a href="<?=PROOT?>advertisements/showAccept/<?= $this->id ?>/<?= $this->type ?>" class="btn btn-secondary" > Back </a>
+       <?php endif; ?>
+<?php if(currentUser()->userType == "Customer"): ?>
+		 <a href="<?=PROOT?>advertisements/ShowConfirmRequests" class="btn btn-secondary"> Back </a>
+
+<?php endif; ?>
+
         </div>
 	</div>
 </div>

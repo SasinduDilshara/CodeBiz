@@ -307,6 +307,7 @@ $this->view->advertisement = $advertisement;
   $time = date("H:i:s");
   $this->view->date=$date;
   $this->view->time=$time;
+
   // dnd($this->view->time);
   $this->view->render('advertisements/showAccept');
   // dnd($providerslist);
@@ -583,6 +584,8 @@ public function cancelAction($id,$user_id,$type)//done
 				$chat=explode (",", $chat);
 				$this->view->chat=$chat;
 				$this->view->advertisement = $advertisement;
+				$this->view->type=$advertisement->type;
+  				$this->view->id=$advertisement->id;
 				$this->view->render('advertisements/showChat');
 			}
  }
