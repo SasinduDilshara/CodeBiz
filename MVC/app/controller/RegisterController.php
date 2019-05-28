@@ -117,6 +117,10 @@ class RegisterController extends Controller
 	public function registerAction($userType)
 	{
      // dnd($userType);
+        if($userType != "Admin" || !currentUser())
+        {
+            Router::redirect('home');
+        }
         $validation = new Validate();
         $posted_values = [
             'fname'=>'', 
