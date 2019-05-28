@@ -86,7 +86,9 @@ $(document).ready(function() {
     $.get( "/CodeBiz/MVC/notifications/show", function( data ) {
         var countNotification = (data.match(/href/g) || []).length ;
         $('.sidenav').append(data);
-        $('.badge').append(countNotification);
+        if (countNotification != 0) {
+          $('.badge').append(countNotification);
+        }       
     });
 });
 function openNav() {
@@ -100,5 +102,6 @@ function closeNav() {
 function clearNav() {
   $.post( "/CodeBiz/MVC/notifications/clear");
   $('.sidenav').html('<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><a href="javascript:void(0)" class="clearbtn" onclick="clearNav()">Clear</a></div>');
+  $('.badge').hide()
 }
 </script>
