@@ -44,11 +44,32 @@
   right: 0;
   font-size: 22px;
   margin-right: 10px;
-} 
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.notification {
+  cursor:pointer;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  position: relative;
+  display: inline-block;
+}
+
+
+.notification .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border-radius: 100%;
+  background: #398ad7;
+  color: white;
+}
+
 </style>
 </head>
 <body>
@@ -63,8 +84,9 @@
 <script>
 $(document).ready(function() {
     $.get( "/CodeBiz/MVC/notifications/show", function( data ) {
-        console.log( "Data Loaded: " + data );
+        var countNotification = (data.match(/href/g) || []).length ;
         $('.sidenav').append(data);
+        $('.badge').append(countNotification);
     });
 });
 function openNav() {
