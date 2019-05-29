@@ -733,6 +733,57 @@ public function cancelAction($id,$user_id,$type)//done
 
 	}
 
+	public function uploadAction($type,$id)
+  {
+
+    if(isset($_POST['submit'])) {
+      // name given for file
+      // file = [name(name with extension),type,error(0 if no error),size]
+      $file = $_FILES['file'];
+      $fileName = $_FILES['file']['name'];
+      $fileTmpName = $_FILES['file']['tmp_name'];
+      $fileSize = $_FILES['file']['size'];
+      $fileError = $_FILES['file']['error'];
+      $fileType = $_FILES['file']['type'];
+  
+      $fileExt = explode('.', $fileName);
+      $fileActualExt = strtolower(end($fileExt));
+  
+      $allowed = array('jpg','jpeg','png');
+  
+      if(in_array($fileActualExt,$allowed)) {
+          if ($fileError === 0) {
+              if ($fileSize < 1000000) {
+                  // unique filename
+                  $fileNameNew = uniqid('', true).".".$fileActualExt;
+                  // new destination
+                  $fileDestination = "C:\\xampp\\htdocs\\CodeBiz\\MVC\\img\\upload\\".$fileNameNew;
+                  move_uploaded_file($fileTmpName, $fileDestination);
+                  // todo after successful upload
+                 $this->modelLoad($type)->uploadPhoto($id,$fileNameNew);
+
+                  Router::redirect('advertisements');
+                  // echo 'uploadesuccessful';
+              } else {
+                Router::redirect('advertisements');
+                  // echo '// file too large';
+              }
+          } else {
+            Router::redirect('advertisements');
+              // echo '// error uploading file';
+          }
+      } else {
+        Router::redirect('advertisements');
+          // echo '// error msg to show wrong file type';
+      }
+  }
+  else
+  {
+    // Router::redirect('advertisements');
+  }
+
+  }
+
 
 
 

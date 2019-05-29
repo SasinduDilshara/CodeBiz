@@ -538,6 +538,11 @@ return $list;
 		return $list;
 	}
 
+	public function uploadPhoto($id,$file)
+	{
+		// dnd($userId);
+		return $this->update($id, ['photolink' => $file]);
+	}
 
 }
 
