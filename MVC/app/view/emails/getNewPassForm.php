@@ -19,7 +19,7 @@
 <div class = "card border-primary mb-3" style="max-width: 40rem; margin:auto; top:5rem;">
     <div class="card-header" style="text-align: center">Change Password</div>
     <div class="card-body">
-        <form class="form" action='<?=PROOT?>emails/getNewPassword/<?=$this->id?>' method="post"> 
+        <form class="form" action='<?=PROOT?>emails/getNewPassword/<?=$this->id?>/<?=$this->pi?>' method="post"> 
         <div><?=$this->displayErrors?></div>
         <div class="form-group">
             <div class="col">

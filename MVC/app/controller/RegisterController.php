@@ -158,6 +158,7 @@ class RegisterController extends Controller
             $_POST['reported'] = 0;
             $_POST['reportedBy'] = '';
             $_POST['photolink'] = '';
+            $_POST['emailLink'] = base64_decode($_POST['username']);
             // dnd($_POST);
            
             $posted_values = posted_values($_POST);  

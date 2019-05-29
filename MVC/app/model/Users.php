@@ -573,6 +573,14 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	}
 
+
+public function randomlink($id,$link,$length = 20) {
+    
+    // dnd((string)$id." ".$link);
+    $this->update($id, ['emailLink' => $link]);
+
+}
+
 public function markRate($servicerId , $rate ,$time)
 {
 	$this->update($servicerId, ['overallRating' => $rate]);
@@ -631,31 +639,21 @@ public function updatePassword($id,$password)
 	$this->update($id, ['password' => $password ]);
 }
 
-public function sendforgotten($email,$id)
+public function sendforgotten($email,$id,$emaillink)
 {
 
+// dnd($emaillink);
 
-
-$link = "https://localhost/CodeBiz/MVC/emails/setActive/".$id."/shdshbxhkankdxsakxnjkj3242kj434jg54hhdaksdhsxdhsbdmas";
+$link = "https://localhost/CodeBiz/MVC/emails/getNewPassword/".$id."/".$emaillink;
 
 // dnd($link);
 	$subject = "Thank you for registering to " . 'BoardingVibes';
 
-$mail_content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body>
+$mail_content = 
 
-<div>
-        <p>' .'You say that you forget the password of your account in  ' . 'BoardingVibes' . '.</p>
-        <p>Please click the following link to proceed to the Questionnaire "https://localhost/CodeBiz/MVC/emails/getNewPassword/'.$id.'/shdshbxhkankdxsakxnjkj3242kj434jg54hhdaksdhsjfjgjgfjfgffg545f5646gf3f1g1fg4fg54f54g5f4g5g4gf4dg4fds45g6s4f5g4fd4g5fd45fd4g4fdg4f5dg456df4g65f4ds5df4gs4fg44fd5gf4f4g5fg6fg654f5d7gf787fg87f7f8d7s8f4g5f4d5g4fd4g6fd4g657fdg7fd87gfd765f4g5f4g57gf7gfs776f765g54g54xdhsbdmas" </p>
+        $link
 
-
-</div>
-</body>
-</html>';
+;
 
 
 

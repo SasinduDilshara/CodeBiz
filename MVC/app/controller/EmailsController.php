@@ -20,8 +20,12 @@ class EmailsController extends Controller
   {
     if($_POST)
     {
-        $email = $_POST['email'];
+      $email = $_POST['email'];
     $user = $this->UsersModel->findByEmail($email);
+    $link =  substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(20/strlen($x)) )),1,20);
+    // dnd($link);
+    $this->UsersModel->randomlink($user->id,$link);
+
     if(!$user)
     {
         $this->view->render("emails/noEmail");
@@ -29,7 +33,7 @@ class EmailsController extends Controller
     else
     {
     $this->view->user = $user;
-    $this->UsersModel->sendforgotten($email,(string)($user->id));
+    $this->UsersModel->sendforgotten($email,(string)($user->id),(string)(base64_encode($link)));
     $this->view->render("emails/forgotmsgsend");
     }
     }
@@ -64,13 +68,24 @@ class EmailsController extends Controller
         $this->UsersModel->setActive($id);
         $this->view->render("emails/verified");
   }
-public function getNewPasswordAction($id,$s='')
+public function getNewPasswordAction($id,$s)
 {
   $validation = new Validate();
-    $id =(int)($id);
-    $user = $this->UsersModel->findById($id);
+
     if($_POST)
     {
+      
+     $id =(int)($id);
+    
+
+    $user = $this->UsersModel->findById($id);
+
+    if( $user->emailLink != base64_decode($s))
+    {
+      // dnd("jkj");
+        Router::redirect("");
+    }
+    else{
 
               $validation->check($_POST,[
  
@@ -107,15 +122,18 @@ public function getNewPasswordAction($id,$s='')
         $this->view->displayErrors = $validation->displayErrors();
       }
     }
+  }
     // else
     // {
       $this->view->displayErrors = $validation->displayErrors();
     $this->view->id = $id;
-
+    $this->view->pi = $s;
     $this->view->render("emails/getNewPassForm");
     // }
 
 }
+
+
 
 
 }
