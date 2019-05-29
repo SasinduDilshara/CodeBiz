@@ -25,11 +25,7 @@
 "Provider":{
 
 
-	"Contacts" : {
-		"New Contact" : "contacts/add",
-		"separator" : "<br>",
-		"My Contacts" : "contacts"
-	},
+
 
 	"Advertisements" : {
 		"New Advertisement" : "advertisements/choose",
@@ -50,11 +46,7 @@
 
 "Customer":{
 
-	"Contacts" : {
-		"New Contacts" : "contacts/add",
-		"separator" : "<br>",
-		"My Contacts" : "contacts"
-	},
+
 
 	"Advertisements" : {
 		"Confirmed advertisements" : "advertisements/ShowConfirmRequests"
