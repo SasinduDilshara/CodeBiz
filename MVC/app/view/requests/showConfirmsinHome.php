@@ -1,7 +1,7 @@
 
 <?php $this->setSiteTitle("Confirmed Requests"); ?>
 <?php $this->start('body'); ?>
-<div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Confirmed Requests</div>
+<div id="title" class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Confirmed Requests</div>
 <div style="display: flex;flex-wrap: wrap;margin:auto;top:3rem;max-width:95%">
 	<?php $x=0;
 	foreach($this->requests as $request): ?>
