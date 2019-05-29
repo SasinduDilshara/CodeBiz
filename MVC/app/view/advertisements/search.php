@@ -85,18 +85,6 @@ else: ?>
 							<a href="<?=PROOT?>advertisements/showChat/<?=$advertisement->id?>/<?= $advertisement->type?>" > Show Chat </a>
 						<?php endif; ?>
 					</td>
-					<td>
-						<?php if(currentUser()):?>
-							<?php if(!in_array((string)(currentUser()->id),explode(",",$advertisement->reportedBy))
-							):?>
-							<a href="<?=PROOT?>advertisements/report/advertisements/<?=$advertisement->id?>/<?=currentUser()->id?>/<?= $advertisement->type?>" onclick="if(!confirm('Are you sure you want to report this advertisement?')){return false;}"> Report This Add </a>
-						<?php endif; ?>
-						<?php endif; ?>
-						<?php if(in_array((string)(currentUser()->id),explode(",",$advertisement->reportedBy))
-							):?>
-							 Reported 
-						<?php endif; ?>
-					</td>
 					<?php endif; ?>
 				</tr>
 				<?php endif; ?>
