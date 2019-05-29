@@ -489,11 +489,11 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	if($customer->notifications==NULL)
 		{
-			$Notification = 'Confirmation for your '.$request->service.' acceptance'." has been cancelled by ".$provider->username;
+			$Notification = 'Confirmation for your '.$requests->service.' acceptance'." has been cancelled by ".$provider->username;
 		}
 	else
 	{
-		$Notification =  'Confirmation for your '.$request->service.' acceptance'." has been cancelled by ".$provider->username. ",".$customer->notifications; 
+		$Notification =  'Confirmation for your '.$requests->service.' acceptance'." has been cancelled by ".$provider->username. ",".$customer->notifications; 
 	}
 	// dnd($Notification);
 
@@ -507,11 +507,11 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	if($provider->notifications==NULL)
 		{
-			$Notification = "You cancelled the ". $request->service." confirmation of ".$customer->username;
+			$Notification = "You cancelled the ". $requests->service." confirmation of ".$customer->username;
 		}
 	else
 	{
-		$Notification = "You cancelled the ". $request->service." confirmation of ".$customer->username. ",".$provider->notifications; 
+		$Notification = "You cancelled the ". $requests->service." confirmation of ".$customer->username. ",".$provider->notifications; 
 	}
 		return $this->update($provider->id, ['notifications' => $Notification]);
 	// dnd($Notification);
