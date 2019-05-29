@@ -1,6 +1,18 @@
 
 <?php $this->setSiteTitle("Completed Requests"); ?>
 <?php $this->start('body'); ?>
+<style>
+.photo 
+{
+	background: url(<?=PROOT?>img/requests.png) 50% 50% no-repeat;
+	background-size: cover;
+	width: 150px;
+	height: 150px;
+	margin: auto;
+	border-radius: 50%;
+	border-style: outset;
+}
+</style>
 <div id="title" class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Completed Requests</div>
 <div style="display: flex;flex-wrap: wrap;margin:auto;top:3rem;max-width:95%">
 	<?php foreach($this->requests as $request): ?>
@@ -8,14 +20,7 @@
 			<div class="card-body">
 				<div class="d-flex">
 					<div class="p-2">
-						<div style="
-							background: url(<?=PROOT?>img/requests.png) 50% 50% no-repeat;
-							background-size: cover;
-							width: 150px;
-							height: 150px;
-							margin: auto;
-							border-radius: 50%;
-							border-style: outset;"></div>
+						<div class="photo"></div>
 					</div>
 					<div class="align-self-start">
 						<a href="<?=PROOT?>requests/details/<?=$request->id?>"><h4><?= $request->service; ?></h4></a>
