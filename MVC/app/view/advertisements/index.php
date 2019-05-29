@@ -1,7 +1,9 @@
 
 <?php $this->setSiteTitle("Advertisements"); ?>
 <?php $this->start('body'); ?>
+<?php if(sizeof($this->alladds)!=0): ?>
 <div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Advertisements</div>
+<?php endif;?>
 <div class="col" style="display: flex;flex-wrap: wrap;margin:auto;top:3rem;max-width:95%">
 	<div class="form-group row">
 	<?php $x=0 ?>
