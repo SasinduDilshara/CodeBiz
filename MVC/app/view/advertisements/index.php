@@ -1,9 +1,7 @@
 
 <?php $this->setSiteTitle("Advertisements"); ?>
 <?php $this->start('body'); ?>
-<?php if(sizeof($this->alladds)!=0): ?>
-<div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Advertisements</div>
-<?php endif;?>
+<div id="title" class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Advertisements</div>
 <div class="col" style="display: flex;flex-wrap: wrap;margin:auto;top:3rem;max-width:95%">
 	<div class="form-group row">
 	<?php $x=0 ?>
@@ -78,17 +76,15 @@
 		<?php endforeach; ?>
 	<?php endforeach; ?>
 	</div>
-	<?php if($x==0): ?>
+</div>
+<?php if($x==0): ?>
+	<script type="text/javascript">document.getElementById("title").style.display = "none";</script>
 	<div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
     	<button type="button" class="close" onclick="window.history.back();" ?>&times;</button>
 		<div class="card-body">
         	<p class="mb-0"> No Advertisements yet </p>
 		</div>
 	</div>
-	<?php endif; ?>
-
-
-	
-</div>
+<?php endif; ?>
 <?php $this->end(); ?>
 
