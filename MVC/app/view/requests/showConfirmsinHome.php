@@ -51,7 +51,7 @@
 					<?php if(currentUser()->userType == 'Customer' && currentUser()):?>
 						<?php $provider = $request->confirmProviderId ?>
 						<?php $servicer = currentUser()->findById($request->confirmProviderId) ?>
-						<p><a href="<?=PROOT?>accounts/details/<?=$request->confirmProviderId?>"><?= $servicer->username ?></a></p>	
+						<p><strong>Servicer : </strong><a href="<?=PROOT?>accounts/details/<?=$request->confirmProviderId?>"><?= $servicer->username ?></a></p>	
 					</div>
 				</div>
 				<div class="d-flex">
