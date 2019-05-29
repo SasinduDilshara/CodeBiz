@@ -1,8 +1,8 @@
 
 <?php $this->setSiteTitle("Finished Requests"); ?>
 <?php $this->start('body'); ?>
-<div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:5rem;">Finished Requests</div>
-<div class = "card border-primary mb-3" style="max-width: 80rem; margin:auto;">
+<div id="title" class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:5rem;">Finished Requests</div>
+<div id="table" class = "card border-primary mb-3" style="max-width: 80rem; margin:auto;">
 	<table class="table table-hover">
 		<thead>
 			<tr class="table-light">
@@ -85,5 +85,17 @@
 		</tbody>
 	</table>
 </div>
+<?php if(count($this->requests)==0): ?>
+	<script type="text/javascript">
+	document.getElementById("title").style.display = "none";
+	document.getElementById("table").style.display = "none";
+	</script>
+	<div class = "alert alert-primary" style="max-width: 30rem; margin:auto; top:5rem;">
+    	<button type="button" class="close" onclick="window.history.back();" ?>&times;</button>
+		<div class="card-body">
+        	<p class="mb-0"> No Requests yet </p>
+		</div>
+	</div>
+<?php endif; ?>
 <?php $this->end(); ?>
 

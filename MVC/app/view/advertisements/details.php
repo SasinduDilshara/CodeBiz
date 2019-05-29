@@ -10,7 +10,32 @@
 	</div>
 	
 	<div class="card-body" style="background-color:#fdfdfe">
-		<h4><?=$this->advertisement->topic?></h4>
+		<h4 class="text-center"><?=$this->advertisement->topic?></h4>
+		<?php if($this->advertisement->type=="Cleaning"): ?>
+			<div style="background: url(<?=PROOT?>img/upload/<?= $this->advertisement->photolink ?>) 50% 50% no-repeat, url(<?=PROOT?>img/cleaning.jpg);
+				background-size: cover;
+				width: 200px;
+				height: 200px;
+				margin: auto;
+				border-radius: 50%;
+				border-style: outset;"></div>
+		<?php elseif($this->advertisement->type=="Catering"): ?>
+			<div style="background: url(<?=PROOT?>img/upload/<?= $this->advertisement->photolink ?>) 50% 50% no-repeat, url(<?=PROOT?>img/cooking.jpg);
+				background-size: cover;
+				width: 200px;
+				height: 200px;
+				margin: auto;
+				border-radius: 50%;
+				border-style: outset;"></div>
+		<?php elseif($this->advertisement->type=="Laundering"): ?>
+			<div style="background: url(<?=PROOT?>img/upload/<?= $this->advertisement->photolink ?>) 50% 50% no-repeat, url(<?=PROOT?>img/laundry.jpg);
+				background-size: cover;
+				width: 200px;
+				height: 200px;
+				margin: auto;
+				border-radius: 50%;
+				border-style: outset;"></div>
+		<?php endif; ?><br>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -69,9 +94,20 @@
 					</thead>
 					<?php break;
 			endswitch?>
+			
 		</table>
+		<div class="text-center">
+		<?php if(currentUser() && currentUser()->userType == 'Customer'):?>
+			<?php if(!in_array((string)(currentUser()->id),explode(",",$this->advertisement->reportedBy))):?>
+				<a class="btn btn-outline-danger" style="margin: 13px 12px 12px 10px;" href="<?=PROOT?>advertisements/report/advertisements/<?=$this->advertisement->id?>/<?=currentUser()->id?>/<?= $this->advertisement->type?>" onclick="if(!confirm('Are you sure you want to report this advertisement?')){return false;}"> Report This Add </a>
+			<?php endif; ?>
+		<?php endif; ?>
+		<?php if(in_array((string)(currentUser()->id),explode(",",$this->advertisement->reportedBy))):?>
+			<button class="btn btn-danger" style="margin: 13px 12px 12px 10px;" disabled>Reported</button> 
+		<?php endif; ?>
 		<div class = "form-group text-right">
 			<a onclick="window.history.back();" class="btn btn-default"> Back </a>
+		</div>
 		</div>
 	</div>
 </div>

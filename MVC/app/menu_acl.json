@@ -6,14 +6,14 @@
 
 "Register A New Admin" : "register/register/Admin",
 
-"Show Site Details" : {
+"Site Details" : {
 
 	"Show Accounts" : "admin/allaccsbefore",
 	"separator" : "<br>"
 
 },
 
-"Send Notifications" : "admin/sendNoti",
+"Send Notification" : "admin/sendNoti",
 
 
 
@@ -26,21 +26,21 @@
 
 
 	"Contacts" : {
-		"Add Contacts" : "contacts/add",
+		"New Contact" : "contacts/add",
 		"separator" : "<br>",
 		"My Contacts" : "contacts"
 	},
 
 	"Advertisements" : {
-		"Create New Ad" : "advertisements/choose",
+		"New Advertisement" : "advertisements/choose",
 		"separator" : "<br>",
-		"My Adds<br>" : "advertisements",
-		"Show Confirmed" : "advertisements/ShowConfirmRequests"
+		"My Advertisements<br>" : "advertisements",
+		"Confirmed advertisements" : "advertisements/ShowConfirmRequests"
 	},
 
 	"Requests" : {
-		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
-		"Show Finished" : "requests/FinishedRequests"
+		"Confirmed requests<br>" : "requests/ShowConfirmRequests",
+		"Completed requests" : "requests/FinishedRequests"
 
 	},
 
@@ -51,21 +51,21 @@
 "Customer":{
 
 	"Contacts" : {
-		"Add Contacts" : "contacts/add",
+		"New Contacts" : "contacts/add",
 		"separator" : "<br>",
 		"My Contacts" : "contacts"
 	},
 
 	"Advertisements" : {
-		"Show Confirmed" : "advertisements/ShowConfirmRequests"
+		"Confirmed advertisements" : "advertisements/ShowConfirmRequests"
 	}, 
 
 	"Requests" : {
-		"Create New" : "requests/add",
+		"New request" : "requests/add",
 		"separator" : "<br>",
 		"My Requests<br>" : "requests",
-		"Show Confirmed<br>" : "requests/ShowConfirmRequests",
-		"Show Finished" : "requests/FinishedRequests"
+		"Confirmed request<br>" : "requests/ShowConfirmRequests",
+		"Completed requests" : "requests/FinishedRequests"
 
 	},
 
