@@ -37,8 +37,8 @@
 
      }
      .bgimg-1 {
-       background-image: url("img/Background.jpg");
-       min-height: 100px;
+       background-image: url("img/food1.jpg");
+       min-height: 600px;
      }
 
      .bgimg-2 {
@@ -58,6 +58,7 @@
        width: 100%;
        text-align: center;
        color: #111;
+       font-size: 35px;
      }
 
      .caption span.border {
@@ -67,6 +68,8 @@
        font-size: 25px;
        color:#111;
        letter-spacing: 10px;
+
+
 
      }
 
@@ -114,15 +117,21 @@
          <p font-size:40px>Are you craving for home-made food?   Wish your laundry would wash themselves?    Wouldn’t it be grand if there was someone to make your boarding place look less messy?    We’ve got the best solution right here within these fancy pages!</p>
        </div>
 
-       <div class="bgimg-3">
+       <div class="bgimg-1">
          <div class="caption">
-         <span class="border" style=font-size:25px;">For a homely boarding life</span>
+         <span class="text-white" >CATERING | LAUNDRY | CLEANING</span>
          </div>
        </div>
 
        <div style="color: #ffffff;background-color:#002851;text-align:center;padding:50px 80px;text-align: justify;">
          <h3 class="text-white" style="text-align:center;">ABOUT US</h3>
          <p>We are a group of four students from Department of computer Science and Engineering of University of Moratuwa. Our aim is to help find catering, cleaning and laundry services for people living in boarding places from their own neighborhood.</p>
+       </div>
+
+       <div class="bgimg-3">
+         <div class="caption">
+         <span class="border" style=font-size:25px;">For a homely boarding life</span>
+         </div>
        </div>
 
     </body>
