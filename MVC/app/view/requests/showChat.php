@@ -7,11 +7,14 @@
 	<div class="card-header" style="text-align: center"> Chat </div>
 	<div class="card-body">
         <?php if($this->chat):?>
-        <?php foreach($this->chat as $chatbar): 
-            $chatarr = explode(':',$chatbar);?>
+        <?php foreach($this->chat as $chatbar):
+
+            $chatarr = explode(':',$chatbar);
+            // dnd($chatarr); 
+            ?>
         
             <div class="alert alert-info">
-            <strong><?= $chatarr[0] ?>:</strong> <?= $chatarr[1] ?>
+            <strong><?= $chatarr[0] ?>:</strong> <?= base64_decode($chatarr[1]) ?>
             </div>   
         <?php endforeach; ?>
         <?php else: ?>

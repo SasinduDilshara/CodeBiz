@@ -371,8 +371,9 @@ public function cancelAction($id,$user_id)
     // if(!$request) Router::redirect('requests');
     if($_POST)
     {
-		$message = currentUser()->username." : ".$_POST['chat'];
-		$message = base64_encode($message);
+		$message = currentUser()->username." : ".base64_encode($_POST['chat']);
+		// $message = base64_encode($message);
+		// dnd($message);
 		$chat = $this->RequestsModel->getmessage($id,$request,$message); 
 		$chat1 = $this->RequestsModel->getmessage1($id,$request,$message); 
 		$request->chatCus = $chat;
@@ -410,7 +411,7 @@ public function cancelAction($id,$user_id)
 		}
 		else
 			{
-				$chat = base64_decode($chat);
+				$chat = ($chat);
 				$chat=explode (",", $chat);
 				$this->view->chat=$chat;
 				$this->view->request = $request;
