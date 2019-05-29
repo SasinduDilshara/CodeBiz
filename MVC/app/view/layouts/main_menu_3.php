@@ -10,7 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
- --> 
+ -->
 
 <?php
 if(currentUser())
@@ -26,7 +26,7 @@ else
 
 ?>
 <!-- TODO: change should revert add "position: fixed;"-->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgba(17,12,17,0.8);top: 0;width: 100%;z-index: 2;position: fixed;padding-top: 8px;padding-bottom: 8px;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#002851;top: 0;width: 100%;z-index: 2;position: fixed;padding-top: 8px;padding-bottom: 8px;">
     <div class="container">
         <a class="navbar-brand text-white" href="<?= PROOT ?>">
             <img src="<?=PROOT?>img<?=DS?>logo.png" height = 40 width = 160>
@@ -66,7 +66,7 @@ else
                     <span class="" id="notification" onclick="openNav()">Notifications</span>
                     <span class="badge"></span>
                 </a>
-                <span class="nav-item text-right" name="detailsAccount" style="padding:8px;">     
+                <span class="nav-item text-right" name="detailsAccount" style="padding:8px;">
                     <a href="<?=PROOT?>accounts"><?= currentUser()->fname ?></a>
                 </span>
             <?php endif ?>
