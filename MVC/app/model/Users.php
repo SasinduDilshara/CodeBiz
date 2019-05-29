@@ -639,6 +639,11 @@ public function updatePassword($id,$password)
 	$this->update($id, ['password' => $password ]);
 }
 
+public function DeleteLink($id)
+{
+	$this->update($id, ['emailLink' => '' ]);
+}
+
 public function sendforgotten($email,$id,$emaillink)
 {
 

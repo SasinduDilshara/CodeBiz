@@ -114,6 +114,7 @@ public function getNewPasswordAction($id,$s)
         $password = $_POST['password'];
         $password = md5($password);
         $user->password = $_POST['password'];
+        $this->UsersModel->DeleteLink($id);
         $this->UsersModel->updatePassword($id,$password);
         $this->view->render("emails/afterForgotDone");
       }
