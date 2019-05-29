@@ -1,26 +1,40 @@
 
 <?php $this->setSiteTitle("Requests"); ?>
 <?php $this->start('body'); ?>
-<div id="title" class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:2rem;padding-top:5rem;">My Requests</div>
-<div class="col-10" style="margin:auto;">
+<div id="title" class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Requests</div>
+<div class="col" style="display: flex;flex-wrap: wrap;margin:auto;top:3rem;max-width:95%">
+	<div class="form-group row">
 	<?php $x=0 ?>
 	<?php foreach($this->requests as $request): ?>
 		<?php $x = $x+1; ?>
-		<div class="card border-primary mb-3" style="">
+		<div class="card border-primary mb-3" style="max-width:690px;margin:12px;width:100%">
 			<div class="card-body">
-				<a href="<?=PROOT?>requests/details/<?=$request->id?>" ><h4><?= $request->service; ?></h4></a>				
-				<p class="card-text"><?= $request->description; ?></p>
-				<a href="<?=PROOT?>requests/edit/<?=$request->id?>" class="btn btn-outline-secondary">Edit</a>
-				<a href="<?=PROOT?>requests/showAccept/<?=$request->id?>" class="btn btn-outline-primary">Show Acceptences </a>
-				<a href="<?=PROOT?>requests/delete/<?=$request->id?>" class="btn btn-outline-danger" style="" onclick="if(!confirm('Are you sure you want to delete <?=$request->service;?>?')){return false;}">Delete</a>
-				
+				<div class="d-flex">
+					<div class="p-2">
+						<div style="
+								background: url(<?=PROOT?>img/requests.png) 50% 50% no-repeat;
+								background-size: cover;
+								width: 150px;
+								height: 150px;
+								margin: auto;
+								border-radius: 50%;
+								border-style: outset;"></div>
+					</div>
+					<div class="align-self-start">
+						<a href="<?=PROOT?>requests/details/<?=$request->id?>" ><h4><?= $request->service; ?></h4></a>				
+						<p class="card-text"><?= $request->description; ?></p>
+					</div>
+				</div>
+				<div class="d-flex">
+					<div class="p-2"><a href="<?=PROOT?>requests/edit/<?=$request->id?>" class="btn btn-outline-secondary">Edit</a></div>
+					<div class="mr-auto p-2"><a href="<?=PROOT?>requests/showAccept/<?=$request->id?>" class="btn btn-outline-primary">Show Acceptences </a></div>
+					<div class="p-2"><a href="<?=PROOT?>requests/delete/<?=$request->id?>" class="btn btn-outline-danger" style="" onclick="if(!confirm('Are you sure you want to delete <?=$request->service;?>?')){return false;}">Delete</a></div>
+				</div>
+				</div>
 			</div>
-		</div>
-	<?php endforeach; ?>
-
-
-	
-
+		<?php endforeach; ?>
+	</div>
+</div>
 
 </div>
 <?php if($x==0): ?>

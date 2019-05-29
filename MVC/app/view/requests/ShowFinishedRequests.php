@@ -11,14 +11,14 @@
 						<div style="
 							background: url(<?=PROOT?>img/requests.png) 50% 50% no-repeat;
 							background-size: cover;
-							width: 200px;
-							height: 200px;
+							width: 150px;
+							height: 150px;
 							margin: auto;
 							border-radius: 50%;
 							border-style: outset;"></div>
 					</div>
-					<div class="p-2">
-						<p class="card-text"><a href="<?=PROOT?>requests/details/<?=$request->id?>"><h5><?= $request->service; ?></h5></a></p>
+					<div class="align-self-start">
+						<a href="<?=PROOT?>requests/details/<?=$request->id?>"><h4><?= $request->service; ?></h4></a>
 						<p class="card-text"><?= $request->description; ?></p>
 						<p class="card-text"><strong>Area : </strong><?= $request->area; ?></p>
 			<?php if(currentUser()->userType == 'Provider' && currentUser()): ?>
