@@ -117,7 +117,7 @@ class RegisterController extends Controller
 	public function registerAction($userType)
 	{
      // dnd($userType);
-        if($userType != "Admin" || !currentUser())
+        if((!currentUser() && $userType=="Admin"))
         {
             Router::redirect('home');
         }
