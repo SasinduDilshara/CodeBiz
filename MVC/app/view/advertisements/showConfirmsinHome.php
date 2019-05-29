@@ -2,8 +2,7 @@
 <?php $this->setSiteTitle("Confirmed Advertisements"); ?>
 <?php $this->start('body'); ?>
 <div class="text-center text-white text-uppercase" style="font-family:Sans-serif;font-size:3rem;padding-top:5rem;text-shadow: 3px 4px 5px #000;">Confirmed Advertisements</div>
-<div class="col" style="display: flex;flex-wrap: wrap;margin:auto;top:3rem;max-width:95%">
-	<?php $x=0 ?>
+<div style="display: flex;flex-wrap: wrap;margin:auto;top:3rem;max-width:95%">
 	<?php foreach($this->advertisements as $advertisement): ?>
 		<div class="card border-primary mb-3" style="max-width:690px;margin:12px;width:100%">
 			<div class="card-body">
