@@ -597,21 +597,9 @@ $link = "https://localhost/CodeBiz/MVC/emails/setActive/".$id."/shdshbxhkankdxsa
 // dnd($link);
 	$subject = "Thank you for registering to " . 'BoardingVibes';
 
-$mail_content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body>
+$mail_content = 
 
-<div>
-        <p>' .'Thank you for registering to ' . 'BoardingVibes' . '.</p>
-        <p>Please click the following link to proceed to the Questionnaire "https://localhost/CodeBiz/MVC/emails/setActive/'.$id.'/shdshbxhkankdxsakxnjkj3242kj434jg54hhdaksdhsxdhsbdmas" </p>
-
-
-</div>
-</body>
-</html>';
+        'Please click the following link to verify your user account "https://localhost/CodeBiz/MVC/emails/setActive/'.$id.'/shdshbxhkankdxsakxnjkj3242kj434jg54hhdaksdhsxdhsbdmas"';
 
 
 
@@ -625,7 +613,7 @@ $mail_content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 
 
 
-	$a = mail($email,"Verify The Password",$mail_content );
+	$a = mail($email,"Boarding Vibes - Verify The Password",$mail_content );
 	// dnd($a);
 }
 
@@ -648,6 +636,7 @@ public function sendforgotten($email,$id,$emaillink)
 {
 
 // dnd($emaillink);
+	$m = "Dear member , To procede your password immediately Click the following link";
 
 $link = "https://localhost/CodeBiz/MVC/emails/getNewPassword/".$id."/".$emaillink;
 
@@ -656,7 +645,7 @@ $link = "https://localhost/CodeBiz/MVC/emails/getNewPassword/".$id."/".$emaillin
 
 $mail_content = 
 
-        $link
+        $m." ".$link
 
 ;
 
@@ -672,7 +661,7 @@ $mail_content =
 
 
 
-	$a = mail($email,"Forget Password",$mail_content );
+	$a = mail($email,"Boarding Vibes - Forget Password",$mail_content );
 	// dnd($a);
 
 
