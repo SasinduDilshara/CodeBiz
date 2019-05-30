@@ -1,7 +1,7 @@
 <div style="text-align:center">
 
 <?php if(!currentUser() || currentUser()->userType == 'Customer'): ?>
-    <div class="text-white text-uppercase" style="font-family:Sans-serif;font-size:4rem;padding:5rem 1rem;">Find Your Services</div>
+    <div class="text-white text-uppercase" style="font-family:Sans-serif;font-size:4rem;padding:5rem 1rem;">Every thing You need in one place</div>
     <div class="navbar navbar-expand-sm navbar-light" style="display:inline-block;background-color:rgba(0,0,0,0.8);padding:8px;">
     <!-- <h3 class="text-center"> Register  </h3> -->
         <form class="form-inline my-2 my-lg-0"action="<?=PROOT?>advertisements/search" method="GET">
