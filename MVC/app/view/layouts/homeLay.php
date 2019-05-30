@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 
-
+        <title><?= $this->siteTitle() ?></title>
 
 
         <link rel="stylesheet" type="text/css" href="<?=PROOT?>css/bootstrap.min.css" />
