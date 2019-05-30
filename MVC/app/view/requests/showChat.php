@@ -3,7 +3,7 @@
 <?php $this->end(); ?>
 <?php $this->start('body'); ?>
 
-<div class = "card border-primary mb-3" style="max-width: 50rem; margin:auto; top:5rem;">
+<div class = "card border-primary mb-3" style="max-width: 40rem; margin:auto; top:5rem;">
 	<div class="card-header" style="text-align: center"> Chat </div>
 	<div class="card-body">
         <?php if($this->chat):?>

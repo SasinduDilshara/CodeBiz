@@ -380,6 +380,7 @@ public function cancelAction($id,$user_id)
 		$request->chatPro = $chat1;
 		// $this->RequestsModel->updateMessages($id,$messages);
 		$this->view->customer = $customer;
+		$this->view->request = $request;
 		$this->view->render('requests/succefulAskedQuestion');
 	}
 	else
