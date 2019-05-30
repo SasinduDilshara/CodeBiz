@@ -14,7 +14,7 @@ class Users extends Model implements Observer
 		$this->_softDelete = true;
 		if($user != '')
 		{
-			
+
 			if(is_int($user))
 			{
 				$u = $this->_db->findFirst('users',['conditions' => 'id = ?','bind' =>[$user]]);
@@ -55,8 +55,8 @@ class Users extends Model implements Observer
 
 			$u=new Users((int)Session::get(CURRENT_USER_SESSION_NAME));
 			self::$currentLoggedInUser = $u;
-			
-		
+
+
 
 		}
 
@@ -65,7 +65,7 @@ class Users extends Model implements Observer
 
 
 	public function login($rememberMe=false)
-	{   
+	{
 		Session::set($this->_sessionName,$this->id);
 		if($rememberMe)
 		{ //dnd($rememberMe);
@@ -104,18 +104,18 @@ class Users extends Model implements Observer
 	}
 
 	public static function loginUserFromCookie()
-	{	
+	{
 		$userSession = Usersession::getFromCookie();
 		// dnd($userSession);
 		// $user_session_model = new UserSession();
 		// $user_session = $user_session_model->findFirst(
 		// 	[
 		// 		'conditions' => "user_agent = ? AND session = ?",
-		// 		'bind' => [Session::uagent_no_version(),Cookie::get(REMEMBER_ME_COOKIE_NAME)] //cookie name eka gaththa 
+		// 		'bind' => [Session::uagent_no_version(),Cookie::get(REMEMBER_ME_COOKIE_NAME)] //cookie name eka gaththa
 		// 	]);
 		// dnd($userSession);
 		if(($userSession->user_id) != '')
-		{	
+		{
 			// var_dump($userSession->user_id);
 			$user= new self((int)($userSession->user_id));
 			// dnd($user);
@@ -220,7 +220,7 @@ class Users extends Model implements Observer
                 'serviceType' => [
                     'display' => 'Service Type',
                     'required' => true
-                    
+
                 ],
                 'userType' => [
                     'display' => 'User type',
@@ -237,7 +237,7 @@ class Users extends Model implements Observer
                 'area' => [
                     'display' => 'area',
                     'required' => true
-                    
+
                 ],
 
 
@@ -302,7 +302,7 @@ class Users extends Model implements Observer
 		return $this->userType;
 	}
 
-	
+
 	public function displayAddressLabel()
 	{
 		$html = $this->displayName()."<br>";
@@ -364,7 +364,7 @@ class Users extends Model implements Observer
 		}
 	else
 	{
-		$Notification = "Your ". $request->service." has been aceepted by ".$customer->username. ",".$provider->notifications; 
+		$Notification = "Your ". $request->service." has been aceepted by ".$customer->username. ",".$provider->notifications;
 	}
 	// dnd($Notification);
 
@@ -380,11 +380,11 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 
 	if($provider->notifications==NULL)
 		{
-			$Notification = $customer->username." has been cancelled the acceptance to your ".$request->service;
+			$Notification = $customer->username." has cancelled accepting your ".$request->service;
 		}
 	else
 	{
-		$Notification = $customer->username." has been cancelled the acceptance to your ".$request->service. ",".$provider->notifications; 
+		$Notification = $customer->username." has cancelled accepting your ".$request->service. ",".$provider->notifications;
 	}
 	// dnd($Notification);
 
@@ -398,11 +398,11 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 
 	if($customer->notifications==NULL)
 		{
-			$Notification = "You cancelled acceptance of the ". $request->service." which was request by the ".$provider->username;
+			$Notification = "You cancelled accepting ". $request->service." which was requested by ".$provider->username;
 		}
 	else
 	{
-		$Notification = "You cancelled acceptance of the ". $request->service." which was request by the ".$provider->username. ",".$customer->notifications; 
+		$Notification = "You cancelled accepting ". $request->service." which was requested by ".$provider->username. ",".$customer->notifications;
 	}
 		return $this->update($customer->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -414,11 +414,11 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 
 	if($cus->notifications==NULL)
 		{
-			$Notification = "You accepted the ". $request->service." which was request by the ".$pro->username;
+			$Notification = "You accepted ". $request->service." which was requested by ".$pro->username;
 		}
 	else
 	{
-		$Notification = "You accepted the ". $request->service." which was requested by the ".$pro->username. ",".$cus->notifications; 
+		$Notification = "You accepted ". $request->service." which was requested by ".$pro->username. ",".$cus->notifications;
 	}
 		return $this->update($cus->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -432,11 +432,11 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 
 	if($customer->notifications==NULL)
 		{
-			$Notification = "Your ". 'acceptance for the '.$request->service.' request'." has been confirmed by ".$provider->username;
+			$Notification = "Your request ". 'to accept '.$request->service.' request'." has been confirmed by ".$provider->username;
 		}
 	else
 	{
-		$Notification =  "Your ". 'acceptance for the '.$request->service.' request'." has been confirmed by ".$provider->username. ",".$customer->notifications; 
+		$Notification =  "Your request ". 'to accept '.$request->service.' request'." has been confirmed by ".$provider->username. ",".$customer->notifications;
 	}
 	// dnd($Notification);
 
@@ -450,11 +450,11 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	if($provider->notifications==NULL)
 		{
-			$Notification = "You confirm the ". $request->service." which was accepted by the ".$customer->username;
+			$Notification = "You confirmed ". $request->service." which was accepted by ".$customer->username;
 		}
 	else
 	{
-		$Notification = "You confirm the ". $request->service." which was accepted by the ".$customer->username. ",".$provider->notifications; 
+		$Notification = "You confirmed ". $request->service." which was accepted by ".$customer->username. ",".$provider->notifications;
 	}
 		return $this->update($provider->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -470,11 +470,11 @@ return $this->update($customer->id, ['notifications' => $Notification]);
  		// if($provider->username!= 'yasith' && $provider->username!= 'provider'){dnd($provider);}
  	if($provider->notifications==NULL)
 		{
-			$Notification = $request->service." has been given to another service provider by ".$customer->username;
+			$Notification = $request->service." has been handed over to another service provider by ".$customer->username;
 		}
 	else
 	{
-		$Notification =  $request->service." has been given to another service provider by ".$customer->username. ",".$provider->notifications; 
+		$Notification =  $request->service." has been handed over to another service provider by ".$customer->username. ",".$provider->notifications;
 	}
 
  		return $this->update($provider->id, ['notifications' => $Notification]);
@@ -489,11 +489,11 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	if($customer->notifications==NULL)
 		{
-			$Notification = 'Confirmation for your '.$requests->service.' acceptance'." has been cancelled by ".$provider->username;
+			$Notification = 'Confirmation for your '.$requests->service.' accepting'." was cancelled by ".$provider->username;
 		}
 	else
 	{
-		$Notification =  'Confirmation for your '.$requests->service.' acceptance'." has been cancelled by ".$provider->username. ",".$customer->notifications; 
+		$Notification =  'Confirmation for your '.$requests->service.' accepting'." was cancelled by ".$provider->username. ",".$customer->notifications;
 	}
 	// dnd($Notification);
 
@@ -507,11 +507,11 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 	if($provider->notifications==NULL)
 		{
-			$Notification = "You cancelled the ". $requests->service." confirmation of ".$customer->username;
+			$Notification = "You cancelled ". $requests->service." confirmation of ".$customer->username;
 		}
 	else
 	{
-		$Notification = "You cancelled the ". $requests->service." confirmation of ".$customer->username. ",".$provider->notifications; 
+		$Notification = "You cancelled ". $requests->service." confirmation of ".$customer->username. ",".$provider->notifications;
 	}
 		return $this->update($provider->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -523,21 +523,21 @@ return $this->update($customer->id, ['notifications' => $Notification]);
  			// dnd($servicer[0]->username);
 	if($user->notifications==NULL)
 		{
-			$Notification = "You mark complete as the ". $request->topic." serviced of ". $servicer[0]->username;
+			$Notification = "You marked ". $request->topic." as completed which was provided by". $servicer[0]->username;
 		}
 	elseif($user->notifications!=NULL)
 	{
-		$Notification = "You mark complete as the ". $request->service." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+		$Notification = "You marked ". $request->service." as completed which was provided by ". $servicer[0]->username. ",".$user->notifications;
 	}
 		$this->update($user->id, ['notifications' => $Notification]);
 
 	if($servicer[0]->notifications==NULL)
 		{
-			$Notification = $user->username." mark complete as the ". $request->service." serviced of You";
+			$Notification = $user->username." marked ". $request->service." provided by you as completed";
 		}
 	elseif($servicer[0]->notifications!=NULL)
 	{
-		$Notification = $user->username." mark complete as the ". $request->service." serviced of you". ",". $servicer[0]->notifications; 
+		$Notification = $user->username." marked ". $request->service." provided by you as completed". ",". $servicer[0]->notifications;
 	}
 		$this->update($servicer[0]->id, ['notifications' => $Notification]);
 
@@ -551,21 +551,21 @@ return $this->update($customer->id, ['notifications' => $Notification]);
  			// dnd($servicer[0]->username);
 	if($user->notifications==NULL)
 		{
-			$Notification = "You mark not completed yet as the ". $request->service." serviced of ". $servicer[0]->username;
+			$Notification = "You marked ". $request->service." as not yet completed which was provided by ". $servicer[0]->username;
 		}
 	elseif($user->notifications!=NULL)
 	{
-		$Notification = "You mark not completed yet as the ". $request->service." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+		$Notification = "You marked ". $request->service." as not yet completed which was provided by ". $servicer[0]->username. ",".$user->notifications;
 	}
 		$this->update($user->id, ['notifications' => $Notification]);
 
 	if($servicer[0]->notifications==NULL)
 		{
-			$Notification = $user->username." mark not completed yet as the ". $request->service." serviced of You";
+			$Notification = $user->username." marked ". $request->service." provided by you as not yet completed.";
 		}
 	elseif($servicer[0]->notifications!=NULL)
 	{
-		$Notification = $user->username." mark not completed yet as the ". $request->service." serviced of you". ",". $servicer[0]->notifications; 
+		$Notification = $user->username." marked ". $request->service." provided by you as not yet completed.". ",". $servicer[0]->notifications;
 	}
 		$this->update($servicer[0]->id, ['notifications' => $Notification]);
 
@@ -575,7 +575,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 
 
 public function randomlink($id,$link,$length = 20) {
-    
+
     // dnd((string)$id." ".$link);
     $this->update($id, ['emailLink' => $link]);
 
@@ -595,9 +595,9 @@ public function sendVerification($email,$id)
 $link = "https://localhost/CodeBiz/MVC/emails/setActive/".$id."/shdshbxhkankdxsakxnjkj3242kj434jg54hhdaksdhsxdhsbdmas";
 
 // dnd($link);
-	$subject = "Thank you for registering to " . 'BoardingVibes';
+	$subject = "Thank you for joining with " . 'BoardingVibes';
 
-$mail_content = 
+$mail_content =
 
         'Please click the following link to verify your user account "https://localhost/CodeBiz/MVC/emails/setActive/'.$id.'/shdshbxhkankdxsakxnjkj3242kj434jg54hhdaksdhsxdhsbdmas"';
 
@@ -643,7 +643,7 @@ $link = "https://localhost/CodeBiz/MVC/emails/getNewPassword/".$id."/".$emaillin
 // dnd($link);
 	$subject = "Thank you for registering to " . 'BoardingVibes';
 
-$mail_content = 
+$mail_content =
 
         $m." ".$link
 
@@ -697,7 +697,7 @@ public function updateObserverCus($request,$customer,$provider)
 		}
 	else
 	{
-		$Notification = "Your ". $request->topic." has been aceepted by ".$customer->username. ",".$provider->notifications; 
+		$Notification = "Your ". $request->topic." has been aceepted by ".$customer->username. ",".$provider->notifications;
 	}
 	// dnd($Notification);
 
@@ -717,7 +717,7 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = $customer->username." has been cancelled the acceptance to your ".$request->topic. ",".$provider->notifications; 
+		$Notification = $customer->username." has been cancelled the acceptance to your ".$request->topic. ",".$provider->notifications;
 	}
 	// dnd($Notification);
 
@@ -735,7 +735,7 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = "You cancelled acceptance of the ". $request->topic." which was request by the ".$provider->username. ",".$customer->notifications; 
+		$Notification = "You cancelled acceptance of the ". $request->topic." which was request by the ".$provider->username. ",".$customer->notifications;
 	}
 		return $this->update($customer->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -751,7 +751,7 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = "You accepted the ". $request->topic." which was requested by the ".$pro->username. ",".$cus->notifications; 
+		$Notification = "You accepted the ". $request->topic." which was requested by the ".$pro->username. ",".$cus->notifications;
 	}
 		return $this->update($cus->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -769,7 +769,7 @@ return $this->update($provider->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification =  "Your ". 'acceptance for the '.$request->topic.' request'." has been confirmed by ".$provider->username. ",".$customer->notifications; 
+		$Notification =  "Your ". 'acceptance for the '.$request->topic.' request'." has been confirmed by ".$provider->username. ",".$customer->notifications;
 	}
 	// dnd($Notification);
 
@@ -787,7 +787,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = "You confirm the ". $request->topic." which was accepted by the ".$customer->username. ",".$provider->notifications; 
+		$Notification = "You confirm the ". $request->topic." which was accepted by the ".$customer->username. ",".$provider->notifications;
 	}
 		return $this->update($provider->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -807,7 +807,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 	// 	}
 	// else
 	// {
-	// 	$Notification =  $request->topic." has been given to another topic provider by ".$customer->username. ",".$provider->notifications; 
+	// 	$Notification =  $request->topic." has been given to another topic provider by ".$customer->username. ",".$provider->notifications;
 	// }
 
  	// 	return $this->update($provider->id, ['notifications' => $Notification]);
@@ -826,7 +826,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification =  'Confirmation for your '.$requests->topic.' acceptance'." has been cancelled by ".$provider->username. ",".$customer->notifications; 
+		$Notification =  'Confirmation for your '.$requests->topic.' acceptance'." has been cancelled by ".$provider->username. ",".$customer->notifications;
 	}
 	// dnd($Notification);
 
@@ -844,7 +844,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = "You cancelled the ". $requests->topic." confirmation of ".$customer->username. ",".$provider->notifications; 
+		$Notification = "You cancelled the ". $requests->topic." confirmation of ".$customer->username. ",".$provider->notifications;
 	}
 		return $this->update($provider->id, ['notifications' => $Notification]);
 	// dnd($Notification);
@@ -860,7 +860,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	elseif($user->notifications!=NULL)
 	{
-		$Notification = "You mark complete as the ". $request->topic." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+		$Notification = "You mark complete as the ". $request->topic." serviced of ". $servicer[0]->username. ",".$user->notifications;
 	}
 		$this->update($user->id, ['notifications' => $Notification]);
 
@@ -870,7 +870,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	elseif($servicer[0]->notifications!=NULL)
 	{
-		$Notification = $user->username." mark complete as the ". $request->topic." serviced of you". ",". $servicer[0]->notifications; 
+		$Notification = $user->username." mark complete as the ". $request->topic." serviced of you". ",". $servicer[0]->notifications;
 	}
 		$this->update($servicer[0]->id, ['notifications' => $Notification]);
 
@@ -888,7 +888,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	elseif($user->notifications!=NULL)
 	{
-		$Notification = "You mark not completed yet as the ". $request->topic." serviced of ". $servicer[0]->username. ",".$user->notifications; 
+		$Notification = "You mark not completed yet as the ". $request->topic." serviced of ". $servicer[0]->username. ",".$user->notifications;
 	}
 		$this->update($user->id, ['notifications' => $Notification]);
 
@@ -898,7 +898,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	elseif($servicer[0]->notifications!=NULL)
 	{
-		$Notification = $user->username." mark not completed yet as the ". $request->topic." serviced of you". ",". $servicer[0]->notifications; 
+		$Notification = $user->username." mark not completed yet as the ". $request->topic." serviced of you". ",". $servicer[0]->notifications;
 	}
 		$this->update($servicer[0]->id, ['notifications' => $Notification]);
 
@@ -951,7 +951,7 @@ return $this->update($customer->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = "Your ".$vv." has been reported in several times.". ",".$reciever->notifications; 
+		$Notification = "Your ".$vv." has been reported in several times.". ",".$reciever->notifications;
 	}
 	// dnd($Notification);
 
@@ -988,7 +988,7 @@ return $this->update($reciever->id, ['notifications' => $Notification]);
 		$hh = $obj->username;
 	}
 
-	
+
 
 	if($reciever->notifications==NULL)
 		{
@@ -996,7 +996,7 @@ return $this->update($reciever->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = $vv." of ".$hh." has been exceded the maximum reported times..". ",".$reciever->notifications; 
+		$Notification = $vv." of ".$hh." has been exceded the maximum reported times..". ",".$reciever->notifications;
 	}
 	// dnd($Notification);
 
@@ -1024,7 +1024,7 @@ return $this->update($reciever->id, ['notifications' => $Notification]);
 		}
 	else
 	{
-		$Notification = $message. ",".$reciever->notifications; 
+		$Notification = $message. ",".$reciever->notifications;
 	}
 	// dnd($Notification);
 
@@ -1044,24 +1044,24 @@ public function DeleteNoti($reciever)
 
 public function reEntryPassword($password)
 {
-	
+
 	return $this->update(currentUser()->id, ['password' => $password]);
 
 }
 
 public function uploadPhoto($id,$file)
 {
-	
+
 	return $this->update($id, ['photolink' => $file]);
 
 }
 
 
-	
+
 }
 
 
- 
+
 
 
 
