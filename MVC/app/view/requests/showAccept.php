@@ -20,7 +20,10 @@
 					<a href="<?=PROOT?>requests/confirm/<?=$this->request->id?>/<?=$provider->id?>" > Confirm </a>
 				<?php endif; ?>
 				<?php if((($this->request->confirmProviderId != $provider->id) && ($this->request->confirmProviderId != 0)) ):?>
-					<a disable > Confirmed </a>
+					<a disable > Not selected </a>
+				<?php endif; ?>
+				<?php if($this->request->completed == 1 && $this->request->confirmProviderId == $provider->id):?>
+					<a  disabled > Finished </a>
 				<?php endif; ?>
 				<?php if($this->request->confirmProviderId == $provider->id):?>
 					<?php if($this->request->completed == 0): ?>
