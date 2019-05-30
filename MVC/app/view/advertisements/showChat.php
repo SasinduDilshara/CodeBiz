@@ -4,7 +4,7 @@
 <?php $this->start('body'); ?>
 
 <div class = "card border-primary mb-3" style="max-width: 30rem; margin:auto; top:5rem;">
-	<div class="card-header" style="text-align: center"> Chat </div>
+	<!-- <div class="card-header" style="text-align: center"> Chat </div> -->
 	<div class="card-body" style="background-color:#001128">
     <div style="background:url(<?=PROOT?>img/chat.jpg) 50% 50% no-repeat;height: 30rem;overflow: auto;">
 	<?php if($this->chat):?>
