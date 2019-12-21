@@ -9,6 +9,7 @@ class Cookie
 			return true;
 		}
 		return false;
+
 	}
 
 	public static function delete($name)

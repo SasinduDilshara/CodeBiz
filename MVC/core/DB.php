@@ -46,6 +46,7 @@ class DB  //never use directly. check if exists and use
 
             if ($this->_query->execute()) {
                 $this->_result = $this->_query->fetchALL(PDO::FETCH_OBJ);
+                // dnd($this->_result);
                 $this->_count = $this->_query->rowCount();
                 $this->_last_insert_id = $this->_pdo->lastInsertID();
             } else {
@@ -63,7 +64,7 @@ class DB  //never use directly. check if exists and use
 		$bind = [];
 		$order = '';
 		$limit = '';
-
+// dnd($params);
 		//condition
 
 		if(isset($params['conditions']))

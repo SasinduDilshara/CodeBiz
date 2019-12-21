@@ -5,6 +5,7 @@ class HomeController extends Controller
 	public function __construct($controller , $action)
 	{
 		parent::__construct($controller , $action);
+		 $this->view->setLayout('homeLay');
 	}
 
 	protected function load_model($model)
@@ -47,6 +48,25 @@ class HomeController extends Controller
 		//ddnd($_SESSION);
 		$this->view->render('home/index');
 	}
+
+
+	public function aboutAction()
+	{
+
+		$this->view->render('home/about');
+
+	}
+
+
+	// public function aboutAction()
+	// {
+
+	// 	$this->view->render('home/about');
+
+	// }
+
+	
+
 }
 
 ?>

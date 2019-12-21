@@ -32,8 +32,13 @@ function autoload($className)
 spl_autoload_register('autoload'); //function can pass as a string
 session_start();
 
+// dnd($_SERVER["PATH_INFO"]);
+// $_SERVER["PATH_INFO"]= base64_encode($_SERVER["PATH_INFO"]);
 
 	$url = isset($_SERVER["PATH_INFO"]) ? explode('/',ltrim($_SERVER['PATH_INFO'],'/')) : [];
+
+	// $url = base64_encode($url);
+	// dnd($url);
 
 
 	//dnd($db)

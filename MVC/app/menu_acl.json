@@ -1,20 +1,44 @@
 {
 
+
+"Admin":{
+
+
+"Register A New Admin" : "register/register/Admin",
+
+"Site Details" : {
+
+	"Show Accounts" : "admin/allaccsbefore",
+	"separator" : "<br>"
+
+},
+
+"Send Notification" : "admin/sendNoti",
+
+
+
+
+"Logout" : "register/logout"
+	
+},
+
 "Provider":{
 
 
-	"Contacts" : {
-		"My Contacts" : "contacts",
-		"separator" : "<br>",
-		"Add Contacts" : "contacts/add"
-	},
+
 
 	"Advertisements" : {
-		"My Adds" : "advertisements",
+		"New Advertisement" : "advertisements/choose",
 		"separator" : "<br>",
-		"Add Advertisements" : "advertisements/add"
+		"My Advertisements<br>" : "advertisements",
+		"Confirmed advertisements" : "advertisements/ShowConfirmRequests"
 	},
 
+	"Requests" : {
+		"Confirmed requests<br>" : "requests/ShowConfirmRequests",
+		"Completed requests" : "requests/FinishedRequests"
+
+	},
 
 	"Logout" : "register/logout"
 	
@@ -22,21 +46,21 @@
 
 "Customer":{
 
-	"Contacts" : {
-		"My Contacts" : "contacts",
-		"separator" : "<br>",
-		"Add Contacts" : "contacts/add"
-	},
+
+
+	"Advertisements" : {
+		"Confirmed advertisements" : "advertisements/ShowConfirmRequests"
+	}, 
 
 	"Requests" : {
-
-		"My Requests" : "requests",
+		"New request" : "requests/add",
 		"separator" : "<br>",
-		"Add Requests" : "requests/add",
-		"separator" : "<br>"
-
+		"My Requests<br>" : "requests",
+		"Confirmed request<br>" : "requests/ShowConfirmRequests",
+		"Completed requests" : "requests/FinishedRequests"
 
 	},
+
 
 	"Logout" : "register/logout"
 
@@ -44,7 +68,11 @@
 
 "Guest":{
 
-		"Register" : "register/register",
+	"Register" : {
+		"Customer" : "register/register/Customer",
+		"separator" : "<br>",
+		"Provider " : "register/register/Provider"
+	},
 
 
 

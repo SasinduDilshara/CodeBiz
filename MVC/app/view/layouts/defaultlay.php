@@ -10,21 +10,32 @@
 
      <script src="<?=PROOT?>js/jQuery-2.2.4.min.js"></script>
      <script src="<?=PROOT?>js/bootstrap.min.js"></script>
-     
+        <script type="text/javascript">
+      function disableButton(id){
+        document.getElementById(id).disabled = true;
+        // alert("Button has been disabled.");
+      }
+    </script>
+
+
 
     <title><?= $this->siteTitle() ?></title>
    <?php $this->content('head'); ?>
 
   </head>
-  <body> 
+  <body style="background-image:url(<?=PROOT?>img/Background.jpg)">
     <!-- bye -->
     <?php include 'main_menu_3.php' ?>
+    <?php if(currentUser()) include 'notificationbar.php' ?>
     <!-- <div class="container-fluid" style="min-height:cal(100% - 125px);"> <-->
 
        <?= $this->content('body'); ?>
        <style type="text/css">
          body {
-            /* background-color:clouds; */
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center;
+          background-size:cover;
          }
        </style>
 
@@ -37,7 +48,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
 
-  
-  
+
+
   </body>
 </html>

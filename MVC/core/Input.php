@@ -11,7 +11,10 @@ class Input
 	{	
 		//var_dump(isset($_POST($input)));
 		if(isset($_POST[$input]))
-		{
+		{	
+			if($input == 'password') {
+				return self::sanitize(md5($_POST[$input]));
+			}
 			return self::sanitize($_POST[$input]);
 		}
 		elseif(isset($_GET[$input]))

@@ -1,33 +1,182 @@
 {
-	"Guest":{
-		"denied" : {},
-		"Home" : ["*"],
-		"Register" :["login","register"],
-		"Advertisements" : ["search"],
-		"Restricted" : ["*"]
+	"Guest": {
+		"denied": {},
+		"Home": [
+			"*"
+		],
+		"Register": [
+			"login",
+			"register",
+			"verification"
+		],
+		"Advertisements": [
+			"search",
+			"details",
+			"index",
+			"accept"
+		],
+		"Restricted": [
+			"*"
+		],
+		"Emails": [
+			"*"
+		],
+		"Accounts": [
+			"details"
+		],
+		"Test": [
+			"*"
+		]
 	},
-
-	"Provider" :
-	 {
-	 	"denied" : { "Register" : [ "login","register"]
-	 	},
-	 	"Register" : ["logout"],
-	 	"Contacts" :["*"],
-	 	"Advertisements" : ["*"],
-	 	"Home" : ["*"],
-	 	"Accounts" : ["edit","index","delete"]
-	 },
-
-	 "Customer" :
-	 {
-	 	"denied" : { "Register" : [ "login","register"]
-	 	},
-	 	"Register" : ["logout"],
-	 	"Contacts" :["*"],
-	 	"Tools"    : ["*"],
-	 	"Home" : ["*"],
-	 	"Accounts" : ["*"],
-	 	"Advertisements" : ["search"],
-	 	"Requests" : ["*"]
-	 }
+	"Admin": {
+		"denied": {
+			"Register": [
+				"login"
+			]
+		},
+		"Register": [
+			"logout",
+			"report",
+			"register"
+		],
+		"Requests": [
+			"*"
+		],
+		"Advertisements": [
+			"*"
+		],
+		"Accounts": [
+			"*"
+		],
+		"Home": [
+			"*"
+		],
+		"Messages": [
+			"*"
+		],
+		"Notifications": [
+			"*"
+		],
+		"Emails": [
+			"*"
+		],
+		"Admin": [
+			"*"
+		]
+	},
+	"Provider": {
+		"denied": {
+			"Register": [
+				"login",
+				"register"
+			]
+		},
+		"Register": [
+			"logout",
+			"confirmed",
+			"confirmedADD",
+			"verification",
+			"report"
+		],
+		"Contacts": [
+			"*"
+		],
+		"Advertisements": [
+			"*"
+		],
+		"Home": [
+			"*"
+		],
+		"Accounts": [
+			"*"
+		],
+		"Requests": [
+			"select",
+			"search",
+			"details",
+			"accept",
+			"cancel",
+			"ShowConfirmRequests",
+			"askQuestion",
+			"showChat",
+			"clearChat",
+			"FinishedRequests",
+			"markCompleted",
+			"UnmarkCompleted",
+			"confirmedADD",
+			"confirmed",
+			"markrate",
+			"report"
+		],
+		"Messages": [
+			"*"
+		],
+		"Notifications": [
+			"*"
+		],
+		"Emails": [
+			"*"
+		]
+	},
+	"Customer": {
+		"denied": {
+			"Register": [
+				"login",
+				"register"
+			],
+			"Advertisements": [
+				"index"
+			]
+		},
+		"Register": [
+			"logout",
+			"confirmed",
+			"confirmedADD",
+			"verification",
+			"report"
+		],
+		"Contacts": [
+			"*"
+		],
+		"Tools": [
+			"*"
+		],
+		"Home": [
+			"*"
+		],
+		"Accounts": [
+			"*"
+		],
+		"Advertisements": [
+			"select",
+			"search",
+			"details",
+			"accept",
+			"cancel",
+			"ShowConfirmRequests",
+			"askQuestion",
+			"showChat",
+			"clearChat",
+			"FinishedRequests",
+			"markCompleted",
+			"UnmarkCompleted",
+			"confirmed",
+			"markrate",
+			"confirmedADD",
+			"report",
+			"report"
+		],
+		"Requests": [
+			"*"
+		],
+		"Messages": [
+			"*"
+		],
+		"Emails": [
+			"*"
+		],
+		"Notifications": [
+			"*"
+		]
+	}
 }

@@ -89,36 +89,25 @@
                 <label for="phoneNumber"><h4>Contact Number 2</h4></label>
                 <input 
                 type="text" 
+                name="phoneNumber"
+                id="phoneNumber" 
+                class="form-control" 
+                title="must be a valid Phone number"
+                value="<?=$this->post['phoneNumber'] ?>">
+            </div>
+
+            <div>
+                <label for="phoneNumber2"><h4>Contact Number 2</h4></label>
+                <input 
+                type="text" 
                 name="phoneNumber2" 
                 id="phoneNumber2" 
                 class="form-control" 
                 title="must be a valid Phone number"
                 value="<?=$this->post['phoneNumber2'] ?>">
             </div>
-            <div>
-                <label for="serviceType"><h4>Service Type</h4></label><br>
-                  <input type="checkbox" name="serviceType[]" id="serviceType"   value="Washing" > Washing<br>
-                  <input type="checkbox" name="serviceType[]" id="serviceType"   value="Cleaning"> Cleaning<br>
-                  <input type="checkbox" name="serviceType[]" id="serviceType"   value="Food"> Food<br>
-                  <input type="checkbox" name="serviceType[]" id="serviceType"   value="Requests"> Allow Requests<br>
 
-            </div
-            <div>
-                <label for="userType"><h4>User type</h4></label><br>
-                  <input type="radio" name="userType" id="userType"   value="Provider" checked> Provider<br>
-                  <input type="radio" name="userType" id="userType"   value="Customer"> Customer<br>
-                  <input type="radio" name="userType" id="userType"   value="Both"> Both Provider and Customer<br>
-            </div>
-            <div>
-                <label for="customerResidence"><h4>Customer Residence</h4></label>
-                <input 
-                type="text" 
-                name="customerResidence" 
-                id="customerResidence" 
-                class="form-control" 
-                required
-                value="<?=$this->post['customerResidence'] ?>">
-            </div>
+
         </div>
         
         <div class="text-center">

@@ -10,7 +10,7 @@ class Router
 		//mula element 1 ain karala //return karanawa pop(0)
 		// dnd($controller);
 		//echo $controller . '<br>';
-		//dnd($url);
+		// dnd($url);
 
 //action
 		$action =(isset($url[0]) && $url[0] !='') ? $url[0].'Action': 'indexAction';
@@ -29,10 +29,12 @@ class Router
 		//echo $action . '<br>';
 		//dnd($url);
 //params
+        // dnd($action_name);
 		$queryParams = $url;
 		//$dispatch = new User();
 		$dispatch = new $controller($controller_name,$action); //dispatcher controller namin cls ekak hadagena eekata parameter denawa. 
 		//dnd($dispatch);
+        // dnd($controller." ".$action);
 		if(method_exists($controller, $action))
 		{
 			call_user_func_array([$dispatch,$action],$queryParams ); // array of parameters pass to it 
@@ -113,10 +115,26 @@ class Router
             foreach(currentUser()-> acls() as $a)
             {
                 // dnd($current_user_acls);
+                // dnd(currentUser()-> acls());
                 $current_user_acls[]=$a;
             }
 
         }
+
+        elseif(currentUser()->userType=="Admin")
+        {
+            $current_user_acls[]="Admin";
+            // dnd('l');
+            // dnd(currentUser()-> acls());
+            foreach(currentUser()-> acls() as $a)
+            {
+                dnd('l');
+                // dnd($current_user_acls);
+                $current_user_acls[]=$a;
+            }
+
+        }
+
         }
 
     	 // return true;

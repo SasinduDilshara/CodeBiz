@@ -1,6 +1,6 @@
 <?php
 
-class UserSession extends Model
+class Usersession extends Model
 {
 	public function __construct()
 	{
@@ -33,11 +33,12 @@ class UserSession extends Model
         if(Cookie::exists(REMEMBER_ME_COOKIE_NAME))
         {
             $userSession = $userSession->findFirst([
-                'conditions' => "agent=? AND session=?",
+                'conditions' => "user_agent = ? AND session = ?",
                 'bind' => [Session::uagent_no_version(), Cookie::get(REMEMBER_ME_COOKIE_NAME)]
             ]);
         }
         if(!$userSession) return false;
+        // dnd($userSession);
         return $userSession;
 
    }

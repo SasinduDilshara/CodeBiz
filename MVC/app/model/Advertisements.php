@@ -1,22 +1,33 @@
 <?php
 
-class Advertisements extends Model
+abstract class Advertisements extends Model implements Observable
 {
-	public function __construct($advertisement='')
+	public $observers=[];
+	public $confirmobservers=[];
+	public $cancelAceeptsObservers = [];
+	public $CancelConfirmobservers = [];
+	public $type;
+	public function __construct($table,$advertisement='')
 	{
-		$table = 'advertisements';
+		//$table = 'advertisements';
 		parent:: __construct($table);
 		$this->_softDelete = false;
+		$observers = [];
+		$confirmobservers = [];
+		$cancelAceeptsObservers = [];
+		$CancelConfirmobservers = [];
+
 	}
 
-	public $deleted =0;
+	// public $deleted =0;
 
-	public function findByLocationAndType($location,$type,$params=[])
+
+public function findByLocationAndType($location,$params=[])
 	{
 		$conditions =
 		 [
-		'conditions' => 'location= ? AND type= ?',
-		'bind' => [$location , $type]
+		'conditions' => 'area= ?',
+		'bind' => [$location]
 	];
 
 	$conditions = array_merge($conditions,$params);
@@ -35,42 +46,61 @@ class Advertisements extends Model
 
 
 
-	public function findBySearch($location,$topic)
+	public function findBySearch($location)
 	{
 		// dnd($contact_id);
 		// dnd($user_id);
 		$conditions =
 		 [
-		'conditions' => 'location = ? AND topic = ?',
-		'bind' => [$location , $topic]
+		'conditions' => 'area = ?',
+		'bind' => [$location]
+	];
+
+	// dnd($conditions);
+	$conditions = array_merge($conditions);
+	// dnd($conditions);
+
+	return $this->find($conditions);
+	}
+
+	public function findById($id,$params=[])
+	{
+		// dnd($contact_id);
+		// dnd($user_id);
+		$conditions =
+		 [
+		'conditions' => 'id = ?',
+		'bind' => [$id]
 	];
 
 	// dnd($conditions);
 	$conditions = array_merge($conditions,$params);
 	// dnd($conditions);
 
-	return $this->find($conditions);
+	return $this->findFirst($conditions);
 	}
 
-
-
-
-	public function displayName()
+	public function displayTopic()
 	{
 		return $this->topic;
 	}
 
 	public static $addValidation =
 	[
-		'location' =>[
-			'display' =>'location',
+		'area' =>[
+			'display' =>'Location',
+			'required' => true
+	],
+
+	'topic' =>[
+			'display' =>'Topic',
 			'required' => true,
-			'min' => 6
+			'min' => 4
 	],
 	
-		'topic' =>
+		'description' =>
 		[
-			'display' =>'Topic',
+			'display' =>'Description',
 			'required' => true
 			// 'max' => 155
 		] 
@@ -94,34 +124,424 @@ class Advertisements extends Model
 	return $this->findFirst($conditions);
 	}
 
-	public function displayAdd()
+	public abstract function displayAdd();
+	public abstract function displayAddLabel();
+
+
+
+
+
+
+
+
+	public function setAccepted($id,$advertisement,$owner)
 	{
-		$address = '';
-		if(!empty($this->location))
+		// dnd($advertisement);
+
+	if(currentUser()->username == $owner->username)
+	{
+		// dnd('1');
+		if($advertisement->CustomerId==null)
 		{
-			$address.=$this->location."<br>";
-
+			// dnd('1');
+			$this->update($id, ['CustomerId' => (string)($owner->id)]);
+			// $this->update($id, ['providerName' => $owner->username]);
 		}
-		// if(!empty($this->address1))
-		// {
-		// 	$address.=$this->address1."<br>"; //if two or more address
-
-		// }
-		if(!empty($this->topic))
+		else
 		{
-			$address.=$this->topic.",";
+			// dnd('11');
+			// dnd($request->providerId+","+(string)($owner->id));;
+			$this->update($id, ['CustomerId' => $advertisement->CustomerId.",".(string)($owner->id)]);
 		}
-
-			// $address.=$this->state." ".$this->zip."<br>";
-		// }
-		return $address;
 	}
 
-	public function displayAddLabel()
+	elseif(currentUser()->username != $owner->username)
+		{
+			// dnd($advertisement->confirmCustomerId);
+		// $this->update($id, ['accepted' => 1]);
+			$x = $advertisement->confirmCustomerId.",".(string)($owner->id);
+			$x = ltrim($x,',');
+// dnd($x);
+			$this->update($id, ['confirmCustomerId' => $x]);
+		// $this->update($id, ['confirmCustomerId' => $owner->id]);
+		}
+		// dnd($owner);
+
+	}
+
+
+	public function MarkComplete($id,$userId)
 	{
-		$html = $this->displayName()."<br>";
-		$html .= $this->displayAdd();
-		return $html;
+		// dnd($userId);
+		$this->update($id, ['completed' => 1]);
+		$this->update($id, ['completeId' => $userId]);
+
+		return true;
+	}
+
+		public function MarkReport($type,$id,$user_id,$other,$add)
+	{
+		// dnd($userId);
+		$xxxx= (string)($add->reportedBy).",".(string)$user_id;
+		$this->update($id, ['reported' => ($add->reported+1)]);
+		$this->update($id, ['reportedBy' => $xxxx]);
+
+		return true;
+	}
+
+	public function UnMarkComplete($id)
+	{
+		// dnd($userId);
+		$this->update($id, ['completed' => 0]);
+		$this->update($id, ['completeId' => 0]);
+		$this->update($id, ['rated' => 0]);
+		$this->update($id, ['ratedType' => '']);
+
+		return true;
+	}
+
+	
+
+	public function unsetAccepted($id,$newcustomers,$owner)
+	{
+	if(currentUser() && currentUser()->username != $owner->username)
+		{
+		// $this->update($id, ['accepted' => 0]);
+			$this->update($id, ['chatCus' => '' ]);
+		$this->update($id, ['confirmCustomerId' => $newcustomers]);
+		}
+		// dnd($owner);
+	else if(currentUser() && currentUser()->username == $owner->username)
+	{
+		// $this->update($id, ['accepted' => 0]);
+		$this->update($id, ['confirmCustomerrId' => $newcustomers ]);
+		$this->update($id, ['chatPro' => '' ]);
+		
+	}
+
+	// $this->update($id, ['chat' => '' ]);
+
+}
+
+	public function unsetConfirm($id,$request,$owner,$list)
+	{
+		if(currentUser() && currentUser()->username != $owner->username && in_array((string)(currentUser()->id),explode(",",$request->confirmCustomerId)))
+			{
+			$this->update($id, ['confirmCustomerId' => $list]);
+			}
+	}
+
+	public function notifyAccepts($advertisement,$customer,$provider)
+	{
+		// dnd($requests);
+		// dnd($this->observers);
+		foreach($this->observers as $observer)
+		{
+			// if(true || currentUser()->userType == "Provider")
+			// {
+			$observer->updateObserverCus($advertisement,$customer,$provider);
+		    // }
+		    // if(true || currentUser()->userType == "Customer")
+		    // {
+		    $observer->updateProviderCus($advertisement,$customer,$provider);
+		    // }
+		}
+	}
+	public function attachAccepts($observer)
+		{
+			// dnd($this->observers);
+			// dnd($observer);
+			array_push($this->observers,$observer);
+		}
+	public function detachAccepts($observer)
+		{
+			// array_push($this->observers,$observer);
+		}
+
+	public function notifyConfirms($requests,$provider,$customer)
+	{
+		// dnd($requests);
+		// dnd($this->confirmobservers);
+		foreach($this->confirmobservers as $observer)
+		{
+			// dnd("p");
+			// if(true || currentUser()->userType == "Customer")
+			// {
+			$observer->updateConfirmObserverCus($requests,$provider,$customer);
+		    // }
+		    // if(true)
+		    // {
+		    $observer->updateCustomerCus($requests,$provider,$customer);
+		    // }
+		}
+	}
+	public function attachConfirms($observer)
+		{
+			// dnd($this->confirmobservers);
+			// dnd($observer);
+			array_push($this->confirmobservers,$observer);
+		}
+	public function detachConfirms($observer)
+		{
+			// array_push($this->observers,$observer);
+		}
+
+ 	public function sendAcceptance($request,$customer,$provider)
+ 	{
+ 		currentUser()->sendMessage($request,$provider,$customer);
+ 	}
+ 	// public function sendOthers($provider_)
+ 	// {
+
+ 	// }
+ 	public function deleteProviderId($customerList)
+ 	{
+ 	 	$newList='';
+ 		foreach ($customerList as $ids) 
+ 		{
+ 			if($ids!=currentUser()->id)
+ 			{
+ 				$newList.=$ids.",";
+ 			}
+ 			// $index+=1
+ 		}
+ 		$newList = rtrim($newList,',');
+ 		// dnd($newList);
+ 		return $newList;
+ 	}
+
+ 	
+
+ 	public function deleteconfirmCusId($customerList)
+ 	{
+ 	 	$newList='';
+ 		foreach ($customerList as $ids) 
+ 		{
+ 			if($ids!=currentUser()->id)
+ 			{
+ 				$newList.=$ids.",";
+ 			}
+ 			// $index+=1
+ 		}
+ 		$newList = rtrim($newList,',');
+ 		return $newList;
+ 	}
+
+ 	 	public function deleteProviderName($providerList)
+ 	{
+ 	 	$newList='';
+ 		foreach ($providerList as $ids) 
+ 		{
+ 			if($ids!=currentUser()->username)
+ 			{
+ 				$newList.=$ids.",";
+ 			}
+ 			// $index+=1
+ 		}
+ 		$newList = rtrim($newList,',');
+ 		return $newList;
+ 	}
+
+ 	public function updateCancellation($id,$Idlist,$NameList)
+ 	{
+ 		// dnd($NameList);
+ 		$this->update($id, ['CustomerId' => $Idlist]);
+ 		$this->update($id, ['confirmCustomerId' => $NameList]);
+
+ 	}
+
+
+
+	public function notifyCancellation($requests,$customer,$owner)
+	{
+		// dnd($requests);
+		// dnd($this->observers);
+		foreach($this->cancelAceeptsObservers as $observer)
+		{
+			// if(true)
+			// {
+			$observer->updateCancelObserverCus($requests,$customer,$owner);
+		    // }
+		    // if(true)
+		    // {
+		    $observer->updateCancelProviderCus($requests,$customer,$owner);
+		    // }
+		}
+	}
+	public function attachCancellation($observer)
+		{
+			// dnd($this->observers);
+			// dnd($observer);
+			array_push($this->cancelAceeptsObservers,$observer);
+		}
+	public function deattachCancellation($observer)
+		{
+			// array_push($this->observers,$observer);
+		}
+
+	public function notifyCancelConfirms($requests,$customer,$provider)
+	{
+		// dnd($requests);
+		// dnd($this->confirmobservers);
+		foreach($this->CancelConfirmobservers as $observer)
+		{
+			// dnd("p");
+			// if(true || $observer->userType == "Customer")
+			// {
+			$observer->updateCancelConfirmObserverCus($requests,$customer,$provider);
+		    // }
+		    // if(true || $observer->userType == "Provider")
+		    // {
+		    $observer->updateCancelCustomerCus($requests,$customer,$provider);
+		    // }
+		}
+	}
+
+	public function attachCancelConfirms($observer)
+	{
+			// dnd($this->observers);
+			// dnd($observer);
+			array_push($this->CancelConfirmobservers,$observer);
+	}
+
+	public function deattachCancelConfirms($observer)
+	{
+
+	}
+
+	public function getmessage($id,$advertisement,$message)
+	{
+		if(($advertisement->chatPro == ''))
+		{
+			$CHATS = $message;
+		}
+		else
+		{
+			$CHATS = $advertisement->chatPro.','.$message;
+			// dnd($CHATS);
+		}
+	if(($advertisement->chatCus == ''))
+		{
+			$CHATS = $message;
+		}
+		else
+		{
+			$CHATS = $advertisement->chatCus.','.$message;
+			// dnd($CHATS);
+		}
+
+		$this->update($id, ['chatPro' => $CHATS]);
+		$this->update($id, ['chatCus' => $CHATS]);
+	return $CHATS;
+	}
+
+	public function setChatEmpty($advertisement)
+	{
+		if(currentUser()->userType == "Customer")
+		{
+			return $this->update($advertisement->id, ['chatCus' => '']);
+		}
+		return $this->update($advertisement->id, ['chatPro' => '']);
+	}
+
+	public function updateRate($advertisement,$id,$rate,$s)
+	{
+		$rate=$advertisement->rated + $rate;
+		if($advertisement->ratedType == '')
+		{
+			$c = '';
+		}
+		else
+		{
+			$c = ',';
+		}
+		if(currentUser()->userType == "Provider")
+		{
+			$ratedType = $advertisement->ratedType .$c. $s->username;
+		}
+		else{
+			$ratedType = $advertisement->ratedType .$c .currentUser()->id;
+		}
+		$this->update($id, ['rated' => $rate]);
+		$this->update($id, ['ratedType' => $ratedType]);
+		// $this->update($id, ['confirmProviderId' => $newproviders]);
+	}
+
+
+	public function unAdsetAccepted($id,$advertisement,$customer,$confirms)
+	{
+		$a ='';
+		// dnd($confirms);
+		// dnd((string)($customer->id));
+		foreach($confirms as $confirm)
+			{
+				if($confirm == (string)($customer->id))
+				{
+					continue;
+				}
+				$a= $a.$confirm.",";
+			}
+			// dnd($a);
+			$this->update($id, ['confirmCustomerId' => rtrim($a,",")]);
+			return rtrim($a,",");
+	}
+
+	public function findByUserconfirmId($id,$params=[])
+	{
+		$list =[];
+
+		$conditions =
+		 [
+		'conditions' => 'confirmCustomerId != ?',
+		'bind' => ['']
+	];
+
+	$conditions = array_merge($conditions,$params);
+	// dnd($conditions);
+
+	$array = $this->find($conditions);
+
+	if(count($array) == 0)
+		{
+			return array();
+		}
+	foreach($array as $b)
+	{
+		if(in_array((string)($id), explode(",",$b->confirmCustomerId)))
+		{
+			array_push($list, $b);
+		}
+		// dnd($list);
+		
+	}
+
+return $list;
+	
+	}
+
+	public function filterByConfirm($advertisements,$id)
+	{
+		$list = [];
+		if(count($advertisements) == 0)
+		{
+			return array();
+		}
+		foreach($advertisements as $advertisement)
+		{
+			if($advertisement->confirmCustomerId != '')
+			{
+				array_push($list, $advertisement);
+			}
+			// dnd($list[1]);
+			
+		}
+		return $list;
+	}
+
+	public function uploadPhoto($id,$file)
+	{
+		// dnd($userId);
+		return $this->update($id, ['photolink' => $file]);
 	}
 
 }

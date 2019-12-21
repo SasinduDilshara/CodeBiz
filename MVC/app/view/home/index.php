@@ -6,8 +6,8 @@
 
 <!-- search bar -->
 
-<?php include 'searchbar.php' ?>
+ <?php include 'searchbar.php' ?>
 
-
+<!-- Other links -->
 
 <?php $this->end(); ?>

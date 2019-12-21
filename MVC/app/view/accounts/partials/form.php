@@ -102,7 +102,7 @@
                   <input type="checkbox" name="serviceType[]" id="serviceType"   value="Food"> Food<br>
                   <input type="checkbox" name="serviceType[]" id="serviceType"   value="Requests"> Allow Requests<br>
 
-            </div
+            </div>
             <div>
                 <label for="userType"><h4>User type</h4></label><br>
                   <input type="radio" name="userType" id="userType"   value="Provider" checked> Provider<br>
